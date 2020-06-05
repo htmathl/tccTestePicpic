@@ -15,4 +15,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/txtdaJoy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#012125"
+        android:text="OIII GALERINHA "
+        android:textColor="#009688"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="443dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
