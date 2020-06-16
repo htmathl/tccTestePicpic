@@ -4,17 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#6F57B1">
+    android:background="@drawable/edt_cadastro1"
+    android:backgroundTint="#fff">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="428dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/waves" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="0dp"
+        android:layout_height="571dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_plano_de_fundo" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="@font/roboto"
+        android:gravity="center"
         android:text="Cadastro "
-        android:textColor="#FFFFFF"
+        android:textColor="@color/corTextoCadastro"
         android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,31 +46,37 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="32dp"
         android:fontFamily="@font/roboto"
+        android:gravity="center"
         android:text="Agora um email de verificação foi enviado para você. Insira o código de acesso, por favor."
-        android:textColor="#FFFFFF"
+        android:textColor="@color/corTextoCadastro"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="0dp"
+    <EditText
+        android:id="@+id/edtCodigo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="111dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/borda_arredondada"
+        android:background="@drawable/edt_cadastro1"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/roboto"
-        android:text="Seu código "
+        android:gravity="center"
+        android:hint="Seu código "
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="16sp"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textColorHint="@color/design_default_color_on_secondary"
+        android:textSize="15sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -57,31 +86,20 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:background="@drawable/borda_mt_arredondada"
-        android:backgroundTint="#FFFFFF"
-        android:editable="true"
+        android:layout_marginTop="568dp"
+        android:background="@drawable/btn_cadastro_pronto"
         android:ellipsize="start"
         android:fontFamily="@font/roboto"
         android:shadowColor="#FFFFFF"
         android:text="Pronto "
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#6F57B1"
-        android:textSize="16sp"
+        android:textColor="@color/corPrincipal"
+        android:textSize="22sp"
         android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:srcCompat="@drawable/waves" />
+        app:layout_constraintTop_toTopOf="@+id/imageView8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
