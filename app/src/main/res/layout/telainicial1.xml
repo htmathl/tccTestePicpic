@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".telaInicial">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="411dp"
+        android:layout_height="156dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_waves" />
+
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="322dp"
+        android:layout_height="291dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout"
+        app:srcCompat="@mipmap/ic_pensa" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="564dp"
+        android:layout_height="377dp"
+        android:layout_marginTop="384dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@mipmap/ic_bolinhas_foreground" />
+
+    <TextView
+        android:id="@+id/txtNomeApp"
+        android:layout_width="302dp"
+        android:layout_height="46dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="488dp"
+        android:layout_marginEnd="52dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="center_horizontal|top"
+        android:text="NOME DO APP"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="648dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/btn_cadastro_pronto"
+        android:ellipsize="start"
+        android:fontFamily="@font/roboto"
+        android:shadowColor="#FFFFFF"
+        android:text="Login"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/corPrincipal"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="189dp"
+        android:layout_height="204dp"
+        android:layout_marginTop="572dp"
+        android:layout_marginEnd="212dp"
+        android:background="@mipmap/ic_fundo_roxo_foreground"
+        android:ellipsize="start"
+        android:fontFamily="@font/roboto"
+        android:shadowColor="#FFFFFF"
+        android:text="Registrar-se"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/corTextoCadastro"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
