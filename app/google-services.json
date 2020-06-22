@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "443586145298",
+    "firebase_url": "https://meritasu-6b0f3.firebaseio.com",
+    "project_id": "meritasu-6b0f3",
+    "storage_bucket": "meritasu-6b0f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443586145298:android:9bf9d3fd3879db268f7ccb",
+        "android_client_info": {
+          "package_name": "com.example.testepicpic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443586145298-m2kbdbghc3fk8ceime7885qu672a91ou.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.testepicpic",
+            "certificate_hash": "d2b792b0e745fb9d655a8d4e1e0b061505e161df"
+          }
+        },
+        {
+          "client_id": "443586145298-tdc1eoql2lktmoeur6tfo5nm6aok0ic5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJjyWqClztBMiJwgXXCzNSTZgCJVEsG24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443586145298-tdc1eoql2lktmoeur6tfo5nm6aok0ic5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
