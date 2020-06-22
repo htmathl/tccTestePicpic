@@ -91,7 +91,7 @@
         android:layout_height="204dp"
         android:layout_marginTop="572dp"
         android:layout_marginEnd="212dp"
-        android:background="@mipmap/ic_fundoRoxo_foreground"
+        android:background="@mipmap/ic_fundo_roxo_foreground"
         android:ellipsize="start"
         android:fontFamily="@font/roboto"
         android:shadowColor="#FFFFFF"
