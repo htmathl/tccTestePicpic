@@ -30,28 +30,19 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:fontFamily="@font/roboto"
-        android:text="Cadastro "
-        android:textColor="#FFFFFF"
-        android:textSize="60sp"
-        android:textStyle="bold"
+        style="@style/TituloCadastro"
+        android:text="Cadastro"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.598"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
+        style="@style/TextoCadastro"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_marginTop="60dp"
-        android:fontFamily="@font/roboto"
         android:text="Qual seu gênero? "
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -63,7 +54,6 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/edt_cadastro1"
-        android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/roboto"
         android:text="Feminino"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -139,20 +129,10 @@
         app:layout_constraintTop_toBottomOf="@+id/button6" />
 
     <Button
-        android:id="@+id/button2"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="568dp"
-        android:background="@drawable/btn_cadastro_pronto"
+        android:id="@+id/btnLogin"
+        style="@style/BtnProntoCadastro"
         android:ellipsize="start"
-        android:fontFamily="@font/roboto"
-        android:shadowColor="#FFFFFF"
-        android:text="Pronto "
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#6F57B1"
-        android:textSize="22sp"
-        android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".tela_cadastro2"
+    android:background="#ffffff">
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="0dp"
+        android:layout_height="562dp"
+        android:background="@drawable/ic_plano_de_fundo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_waves"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout2">
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/button"
+        style="@style/BtnProntoCadastro"
+        android:onClick="Pronto2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        style="@style/TituloCadastro"
+        android:text="Cadastro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="302dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="60dp"
+        style="@style/TextoCadastro"
+        android:text="Vamos começar com dados para lembrarmos quem é você :)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        style="@style/edtCadastro"
+        android:layout_marginTop="58dp"
+        android:hint="Seu melhor email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <EditText
+        android:id="@+id/edtSenha"
+        style="@style/edtCadastro"
+        android:layout_marginTop="33dp"
+        android:hint="Sua melhor senha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+
+    <EditText
+        android:id="@+id/edtConfirmS"
+        style="@style/edtCadastro"
+        android:layout_marginTop="33dp"
+        android:hint="Confirme sua senha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtSenha" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
