@@ -9,14 +9,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="487dp"
-        android:layout_height="493dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/waves" />
 
     <ImageView
@@ -32,75 +31,47 @@
 
     <Button
         android:id="@+id/button11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/edt_cadastro1"
-        android:backgroundTint="@color/corTextoCadastro"
+        style="@style/edtCadastro"
+        android:layout_marginTop="16dp"
         android:text="lembrete para medir glicemia"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button10" />
 
     <Button
         android:id="@+id/button12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/edtCadastro"
         android:layout_marginTop="16dp"
-        android:background="@drawable/edt_cadastro1"
-        android:backgroundTint="@color/corTextoCadastro"
-        android:text="lembrete para aplicar insulina"
+        android:text="Lembrete para aplicar insulina"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button11" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:fontFamily="@font/roboto"
-        android:gravity="center"
+        style="@style/TituloCadastro"
         android:text="Cadastro "
-        android:textColor="@color/corTextoCadastro"
-        android:textSize="60sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
+        style="@style/TextoCadastro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/roboto"
-        android:gravity="center"
+        android:layout_marginTop="32dp"
         android:text="Quais lembrete você gostaria de receber? ps: pode esolher mais de um :D"
-        android:textColor="@color/corTextoCadastro"
-        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/btnLogin"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="612dp"
-        android:background="@drawable/btn_cadastro_pronto"
-        android:ellipsize="start"
-        android:fontFamily="@font/roboto"
-        android:shadowColor="#FFFFFF"
-        android:text="Pronto "
+        style="@style/BtnProntoCadastro"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="@color/corPrincipal"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
@@ -108,24 +79,20 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="303dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/edt_cadastro1"
-        android:backgroundTint="@color/corTextoCadastro"
-        android:text="lembrete para beber água"
+        style="@style/edtCadastro"
+        android:layout_marginTop="32dp"
+        android:text="Lembrete para beber água"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/button10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:background="@drawable/edt_cadastro1"
-        android:backgroundTint="@color/corTextoCadastro"
-        android:text="lembrete para remédios"
+        style="@style/edtCadastro"
+        android:layout_marginTop="16dp"
+        android:hint="Lembrete para remédios"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
