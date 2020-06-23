@@ -1,20 +1,18 @@
 package com.example.testepicpic;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class tela_cadastro2 extends AppCompatActivity {
-
+public class tela_cadastro3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_cadastro2);
+        setContentView(R.layout.tela_cadastro3);
     }
-    public void Pronto2(View view){
-        Intent matheus  = new Intent(tela_cadastro2.this , tela_cadastro3.class);
+    public void Pronto3(View view){
+        Intent matheus  = new Intent(tela_cadastro3.this , tela_cadastro4.class);
         startActivity(matheus);
     }
 }

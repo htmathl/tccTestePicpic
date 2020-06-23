@@ -20,10 +20,11 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="413dp"
-        android:layout_height="531dp"
+        android:layout_width="411dp"
+        android:layout_height="515dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_plano_de_fundo" />

@@ -98,6 +98,7 @@
             android:background="@drawable/bg_btn_fundo_branco"
             android:ellipsize="start"
             android:fontFamily="@font/roboto"
+            android:onClick="Proximo"
             android:shadowColor="#FFFFFF"
             android:text="Login"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"

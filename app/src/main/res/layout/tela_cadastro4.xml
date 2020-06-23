@@ -62,7 +62,7 @@
         android:text="Nome "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView15"
         app:layout_constraintVertical_bias="0.005" />
@@ -81,9 +81,11 @@
         android:textColorHint="#000000"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/edtgenero"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtnome"
-        app:layout_constraintVertical_bias="0.060000002"
-        tools:layout_editor_absoluteX="55dp" />
+        app:layout_constraintVertical_bias="0.060000002" />
 
     <EditText
         android:id="@+id/edtgenero"
@@ -99,15 +101,16 @@
         android:textColorHint="#000000"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/edtidade"
         app:layout_constraintTop_toBottomOf="@+id/edtnome"
-        app:layout_constraintVertical_bias="0.062"
-        tools:layout_editor_absoluteX="229dp" />
+        app:layout_constraintVertical_bias="0.062" />
 
     <EditText
         android:id="@+id/edtpeso"
         android:layout_width="150dp"
         android:layout_height="43dp"
-        android:layout_marginStart="24dp"
         android:background="@drawable/edt_cadastro1"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
@@ -117,6 +120,8 @@
         android:textColor="#000000"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/edtaltura"
         app:layout_constraintTop_toBottomOf="@+id/edtnome"
         app:layout_constraintVertical_bias="0.249" />
@@ -134,9 +139,11 @@
         android:textColor="#000000"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/edtpeso"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtidade"
-        app:layout_constraintVertical_bias="0.060000002"
-        tools:layout_editor_absoluteX="55dp" />
+        app:layout_constraintVertical_bias="0.060000002" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -147,6 +154,7 @@
         android:background="@drawable/btn_cadastro_pronto"
         android:ellipsize="start"
         android:fontFamily="@font/roboto"
+        android:onClick="Pronto"
         android:shadowColor="#FFFFFF"
         android:text="Pronto "
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"

@@ -5,14 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.Entry;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickMiau(View view){
-        Intent matheus  = new Intent(MainActivity.this , cadastro.class);
+        Intent matheus  = new Intent(MainActivity.this , tela_cadastro1.class);
         startActivity(matheus);
 
     }
