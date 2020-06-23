@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    tools:context=".tela_cadastro5"
+    android:background="#ffffff">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageView10"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/waves" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/imageView11"
         android:layout_width="0dp"
         android:layout_height="571dp"
         android:scaleType="fitXY"
@@ -29,7 +29,7 @@
         app:srcCompat="@drawable/ic_plano_de_fundo" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView10"
         style="@style/TituloCadastro"
         android:text="Cadastro"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,106 +37,96 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         style="@style/TextoCadastro"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
         android:layout_marginTop="60dp"
-        android:text="Qual seu gênero? "
+        android:text="Qual o tipo da sua diabete?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/button10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="313dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/edt_cadastro1"
+        android:backgroundTint="@color/corTextoCadastro"
         android:fontFamily="@font/roboto"
-        android:text="Feminino"
+        android:text="Pré-diabetes"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCodigo" />
+        app:layout_constraintStart_toStartOf="@+id/imageView11"
+        app:layout_constraintTop_toTopOf="@+id/imageView11" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/button11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/edt_cadastro1"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/corTextoCadastro"
         android:fontFamily="@font/roboto"
-        android:text="Masculino"
+        android:text="Tipo 1"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/button10" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/button12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/edt_cadastro1"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/corTextoCadastro"
         android:fontFamily="@font/roboto"
-        android:text="Outro (informar)"
+        android:text="Tipo 2"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/button11" />
 
     <Button
-        android:id="@+id/txtCodigo"
+        android:id="@+id/button13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="314dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/edt_cadastro1"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/corTextoCadastro"
         android:fontFamily="@font/roboto"
-        android:text="Seu gênero"
+        android:text="Gestaciona"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+        app:layout_constraintTop_toBottomOf="@+id/button12" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/button14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/edt_cadastro1"
-        android:backgroundTint="#FFFFFF"
+        android:layout_marginTop="568dp"
+        android:background="@drawable/btn_cadastro_pronto"
         android:fontFamily="@font/roboto"
-        android:text="Prefiro não informar "
+        android:text="Pronto"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="16sp"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
-
-    <Button
-        android:id="@+id/btnLogin"
-        style="@style/BtnProntoCadastro"
-        android:ellipsize="start"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
