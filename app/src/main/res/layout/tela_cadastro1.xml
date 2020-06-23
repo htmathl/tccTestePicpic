@@ -5,57 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".telaInicial">
+    tools:context=".tela_cadastro1">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView2"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animacao_tela_principal" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="156dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        android:background="@drawable/ic_waves"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" >
 
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_waves" />
-
-
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="44dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/animacao_tela_principal" />
     </FrameLayout>
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="322dp"
-        android:layout_height="291dp"
-        android:layout_marginTop="156dp"
-        android:layout_marginEnd="44dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/frameLayout"
-        app:srcCompat="@mipmap/ic_pensa" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="564dp"
-        android:layout_height="377dp"
-        android:layout_marginTop="384dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@mipmap/ic_bolinhas_foreground" />
 
     <TextView
         android:id="@+id/txtNomeApp"
-        android:layout_width="302dp"
-        android:layout_height="46dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="488dp"
-        android:layout_marginEnd="52dp"
         android:fontFamily="@font/roboto"
         android:gravity="center_horizontal|top"
         android:text="NOME DO APP"
@@ -63,46 +56,55 @@
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/frameLayout" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animationView2" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginTop="648dp"
-        android:layout_marginEnd="25dp"
-        android:background="@drawable/btn_cadastro_pronto"
-        android:ellipsize="start"
-        android:fontFamily="@font/roboto"
-        android:shadowColor="#FFFFFF"
-        android:text="Login"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="@color/corPrincipal"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:typeface="normal"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <Button
-        android:id="@+id/btnRegistrar"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="189dp"
-        android:layout_height="204dp"
-        android:layout_marginTop="572dp"
-        android:layout_marginEnd="212dp"
-        android:background="@mipmap/ic_fundo_roxo_foreground"
-        android:ellipsize="start"
-        android:fontFamily="@font/roboto"
-        android:shadowColor="#FFFFFF"
-        android:text="Registrar-se"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="@color/corTextoCadastro"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/btnRegistrar"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="32dp"
+            android:width="168dp"
+            android:background="@drawable/bg_btn_fundo_roxo"
+            android:ellipsize="start"
+            android:fontFamily="@font/roboto"
+            android:shadowColor="#FFFFFF"
+            android:text="Registrar-se"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/corTextoCadastro"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="32dp"
+            android:width="168dp"
+            android:background="@drawable/bg_btn_fundo_branco"
+            android:ellipsize="start"
+            android:fontFamily="@font/roboto"
+            android:shadowColor="#FFFFFF"
+            android:text="Login"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/corPrincipal"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
