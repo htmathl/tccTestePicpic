@@ -9,8 +9,8 @@
 
     <FrameLayout
         android:id="@+id/frameLayout2"
-        android:layout_width="421dp"
-        android:layout_height="480dp"
+        android:layout_width="0dp"
+        android:layout_height="562dp"
         android:background="@drawable/ic_plano_de_fundo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
