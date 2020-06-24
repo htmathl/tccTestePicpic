@@ -39,7 +39,7 @@ public class tela_cadastro2 extends AppCompatActivity {
 
         email = findViewById(R.id.edtEmail);
         senha = findViewById(R.id.edtSenha);
-        btnPronto2 = findViewById(R.id.btnPronto1);
+        btnPronto2 = findViewById(R.id.btnPronto);
 
         btnPronto2.setOnClickListener(new View.OnClickListener() {
             @Override

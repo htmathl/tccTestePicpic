@@ -88,7 +88,7 @@
             android:typeface="normal" />
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnPronto"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="40dp"

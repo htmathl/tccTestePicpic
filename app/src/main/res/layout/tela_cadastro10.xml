@@ -7,34 +7,31 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-    <ImageView
-        android:id="@+id/imageView9"
+    <FrameLayout
+        android:id="@+id/frameLayout2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="500dp"
+        android:background="@drawable/ic_plano_de_fundo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/waves" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="0dp"
-        android:layout_height="571dp"
-        android:scaleType="fitXY"
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/waves"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_plano_de_fundo" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout2">
+    </FrameLayout>
 
     <TextView
         android:id="@+id/txtCadastro"
         style="@style/TituloCadastro"
         android:text="Cadastro "
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,43 +46,33 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="32dp"
         android:text="Quais lembretes você gostaria de receber? ps: pode esolher mais de um"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCadastro" />
 
     <Button
         android:id="@+id/btnPronto"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="592dp"
-        android:background="@drawable/btn_cadastro_pronto"
+        style="@style/BtnProntoCadastro"
         android:ellipsize="start"
-        android:fontFamily="@font/roboto"
         android:shadowColor="#FFFFFF"
         android:text="Pronto "
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="@color/corPrincipal"
-        android:textSize="22sp"
-        android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView10" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.chip.ChipGroup
         android:layout_width="0dp"
         android:layout_height="220dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/bg_copo"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView9"
-        app:layout_constraintVertical_bias="0.23000002">
+        app:layout_constraintTop_toBottomOf="@+id/txtPergunta">
 
         <LinearLayout
             android:layout_width="match_parent"
