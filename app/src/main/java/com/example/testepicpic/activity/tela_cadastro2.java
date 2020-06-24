@@ -3,6 +3,7 @@ package com.example.testepicpic.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class tela_cadastro2 extends AppCompatActivity {
 
     private EditText email;
     private EditText senha;
+    private EditText confSenha;
     private Button btnPronto2;
 
     FirebaseAuth autenticacao;
@@ -38,6 +40,7 @@ public class tela_cadastro2 extends AppCompatActivity {
 
         email = findViewById(R.id.edtEmail);
         senha = findViewById(R.id.edtSenha);
+        confSenha = findViewById(R.id.edtConfirmS);
         btnPronto2 = findViewById(R.id.button9);
 
         btnPronto2.setOnClickListener(new View.OnClickListener() {
@@ -46,18 +49,26 @@ public class tela_cadastro2 extends AppCompatActivity {
 
                 String textoEmail = email.getText().toString();
                 String textoSenha = senha.getText().toString();
+                String textoConfSenha = confSenha.getText().toString();
 
                 if(!textoEmail.isEmpty()) {
 
                     if(!textoSenha.isEmpty()) {
 
-                        user.setEmail(textoEmail);
-                        user.setSenha(textoSenha);
+                        if(!textoConfSenha.isEmpty()) {
 
-                        cadastrar();
+                            if(textoSenha.equals(textoConfSenha)) {
+                                user.setEmail(textoEmail);
+                                user.setSenha(textoSenha);
 
-                        /*Intent matheus  = new Intent(tela_cadastro2.this , tela_cadastro3.class);
-                        startActivity(matheus);*/
+                                cadastrar();
+                            } else  {
+                                Toast.makeText(tela_cadastro2.this, "As senhas não estão iguais", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } else {
+                            Toast.makeText(tela_cadastro2.this, "Confirme sua senha não poder estar vazio", Toast.LENGTH_SHORT).show();
+                        }
 
                     } else {
                         Toast.makeText(tela_cadastro2.this, "Senha não pode estar vazio", Toast.LENGTH_SHORT).show();
@@ -71,6 +82,8 @@ public class tela_cadastro2 extends AppCompatActivity {
 
     }
 
+    /* lembrar de inserir mais tarde o ultimo botão "pronto" das telas de cadastro, para mão haver conlito de criação de conta */
+
     public void cadastrar() {
         autenticacao = ConfigFirebase.getFirebaseAutenticacao();
         autenticacao.createUserWithEmailAndPassword(
@@ -79,7 +92,8 @@ public class tela_cadastro2 extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    Toast.makeText(tela_cadastro2.this, "Sucesso ao cadastrar", Toast.LENGTH_SHORT).show();
+                    Intent telaCad02  = new Intent(tela_cadastro2.this , tela_cadastro3.class);
+                    startActivity(telaCad02);
                 } else {
 
                 String excessao = "";
