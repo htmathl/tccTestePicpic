@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.testepicpic.R;
 
-public class tela_cadastro5 extends AppCompatActivity {
+public class Cadastro05Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_cadastro5);
+        setContentView(R.layout.activity_cadastro_04);
     }
 }

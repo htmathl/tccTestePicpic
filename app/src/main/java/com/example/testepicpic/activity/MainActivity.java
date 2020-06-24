@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickMiau(View view){
-        Intent matheus  = new Intent(MainActivity.this , tela_cadastro1.class);
+        Intent matheus  = new Intent(MainActivity.this , PrincipalActivity.class);
         startActivity(matheus);
 
     }

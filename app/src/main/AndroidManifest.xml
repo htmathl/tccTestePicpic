@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.tela_cadastro5"></activity>
-        <activity android:name=".activity.tela_cadastro2" />
-        <activity android:name=".activity.tela_cadastro1"></activity>
-        <activity android:name=".activity.tela_cadastro3"></activity>
-        <activity android:name=".activity.tela_cadastro4"></activity>
-
+        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.Cadastro05Activity" />
+        <activity android:name=".activity.Cadastro01Activity" />
+        <activity android:name=".activity.PrincipalActivity" />
+        <activity android:name=".activity.Cadastro02Activity" />
+        <activity android:name=".activity.Cadastro04Activity" />
         <activity
-            android:name=".activity.overview"
+            android:name=".activity.OverviewActivity"
             android:label="@string/title_activity_overview" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
