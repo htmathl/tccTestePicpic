@@ -11,6 +11,7 @@
         <item name="android:gravity">center</item>
 
     </style>
+
     <style name="TextoCadastro">
         <item name="android:textColor">@color/corTextoCadastro</item>
         <item name="android:textSize">20sp</item>

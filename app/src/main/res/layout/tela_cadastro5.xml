@@ -7,26 +7,25 @@
     tools:context=".tela_cadastro5"
     android:background="#ffffff">
 
-    <ImageView
-        android:id="@+id/imageView10"
+    <FrameLayout
+        android:id="@+id/frameLayout2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="500dp"
+        android:background="@drawable/ic_plano_de_fundo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/waves" />
+        app:layout_constraintTop_toTopOf="parent">
+    </FrameLayout>
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="400dp"
-        android:layout_height="541dp"
-        android:scaleType="fitXY"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/waves"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_plano_de_fundo" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout2">
+    </FrameLayout>
 
     <TextView
         android:id="@+id/textView10"
@@ -47,47 +46,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-    <Button
-        android:id="@+id/button10"
-        style="@style/edtCadastro"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:layout_marginTop="313dp"
-        android:text="Pré-diabetes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView11"
-        app:layout_constraintTop_toTopOf="@+id/imageView11" />
-
-    <Button
-        android:id="@+id/button11"
-        style="@style/edtCadastro"
-        android:layout_marginTop="16dp"
-        android:text="Tipo 1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button10" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+        <RadioButton
+            android:id="@+id/rdbPrediabetes"
+            style="@style/rdbDiabetes"
+            android:layout_marginTop="10dp"
+            android:text="@string/pre_diabetes" />
+
+        <RadioButton
+            android:id="@+id/rdbTipo1"
+            style="@style/rdbDiabetes"
+            android:text="@string/tipo1" />
+
+        <RadioButton
+            android:id="@+id/rdbTipo2"
+            style="@style/rdbDiabetes"
+            android:text="@string/tipo2" />
+
+        <RadioButton
+            android:id="@+id/rdbGest"
+            style="@style/rdbDiabetes"
+            android:text="@string/gestacional" />
+
+
+    </RadioGroup>
 
     <Button
-        android:id="@+id/button12"
-        style="@style/edtCadastro"
-        android:layout_marginTop="16dp"
-        android:text="Tipo 2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button11" />
-
-    <Button
-        android:id="@+id/button13"
-        style="@style/edtCadastro"
-        android:layout_marginTop="16dp"
-        android:text="Gestaciona"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button12" />
-
-    <Button
-        android:id="@+id/button14"
+        android:id="@+id/btnPronto"
         style="@style/BtnProntoCadastro"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
