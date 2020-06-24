@@ -1,6 +1,8 @@
-package com.example.testepicpic;
+package com.example.testepicpic.activity;
 
 import android.os.Bundle;
+
+import com.example.testepicpic.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
