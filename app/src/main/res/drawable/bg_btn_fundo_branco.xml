@@ -8,7 +8,11 @@
             <!-- arredondando a borda -->
             <corners android:radius="30dp"/>
             <!-- cor da borda e tamanho -->
-            <stroke android:color="#6247AA" android:width="3dp"/>
+            <stroke android:color="#6247AA" android:width="2dp"/>
+            <size
+                android:height="32dp"
+                android:width="168dp"
+                />
         </shape>
     </item>
 
