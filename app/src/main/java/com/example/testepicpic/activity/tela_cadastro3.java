@@ -1,9 +1,11 @@
-package com.example.testepicpic;
+package com.example.testepicpic.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.testepicpic.R;
 
 public class tela_cadastro3 extends AppCompatActivity {
     @Override

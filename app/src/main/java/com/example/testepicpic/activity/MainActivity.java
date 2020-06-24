@@ -1,4 +1,4 @@
-package com.example.testepicpic;
+package com.example.testepicpic.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.testepicpic.R;
 import com.github.mikephil.charting.charts.LineChart;
 
 public class MainActivity extends AppCompatActivity {
