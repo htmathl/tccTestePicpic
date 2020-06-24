@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="pre_diabetes">Pré-diabetes</string>
+    <string name="tipo1">Tipo 1</string>
+    <string name="tipo2">Tipo 2</string>
+    <string name="gestacional">Gestacional</string>
+</resources>

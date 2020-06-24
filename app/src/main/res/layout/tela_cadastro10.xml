@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtCadastro" />
 
     <Button
-        android:id="@+id/btnPronto"
+        android:id="@+id/button9"
         style="@style/BtnProntoCadastro"
         android:ellipsize="start"
         android:shadowColor="#FFFFFF"

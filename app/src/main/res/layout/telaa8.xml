@@ -163,7 +163,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnPronto"
+                android:id="@+id/button9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -216,7 +216,7 @@
                 android:textColor="#FFFFFF" />
 
             <Button
-                android:id="@+id/btnPronto"
+                android:id="@+id/button14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -275,7 +275,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="345dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_btn_exames"
+                android:background="@drawable/bg_btn_fundo_branco"
                 android:ems="10"
                 android:hint="ml/dl"
                 android:inputType="textPersonName"

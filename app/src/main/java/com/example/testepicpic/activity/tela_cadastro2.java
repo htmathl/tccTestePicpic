@@ -3,7 +3,6 @@ package com.example.testepicpic.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +38,7 @@ public class tela_cadastro2 extends AppCompatActivity {
 
         email = findViewById(R.id.edtEmail);
         senha = findViewById(R.id.edtSenha);
-        btnPronto2 = findViewById(R.id.btnPronto);
+        btnPronto2 = findViewById(R.id.button9);
 
         btnPronto2.setOnClickListener(new View.OnClickListener() {
             @Override
