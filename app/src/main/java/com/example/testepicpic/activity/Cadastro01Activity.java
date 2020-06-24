@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 
-public class tela_cadastro2 extends AppCompatActivity {
+public class Cadastro01Activity extends AppCompatActivity {
 
     private EditText email;
     private EditText senha;
@@ -36,7 +36,7 @@ public class tela_cadastro2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_cadastro2);
+        setContentView(R.layout.activity_cadastro_01);
 
         email = findViewById(R.id.edtEmail);
         senha = findViewById(R.id.edtSenha);
@@ -63,19 +63,19 @@ public class tela_cadastro2 extends AppCompatActivity {
 
                                 cadastrar();
                             } else  {
-                                Toast.makeText(tela_cadastro2.this, "As senhas não estão iguais", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Cadastro01Activity.this, "As senhas não estão iguais", Toast.LENGTH_SHORT).show();
                             }
 
                         } else {
-                            Toast.makeText(tela_cadastro2.this, "Confirme sua senha não poder estar vazio", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Cadastro01Activity.this, "Confirme sua senha não poder estar vazio", Toast.LENGTH_SHORT).show();
                         }
 
                     } else {
-                        Toast.makeText(tela_cadastro2.this, "Senha não pode estar vazio", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Cadastro01Activity.this, "Senha não pode estar vazio", Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
-                    Toast.makeText(tela_cadastro2.this, "Email não pode estar vazio", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Cadastro01Activity.this, "Email não pode estar vazio", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -92,7 +92,7 @@ public class tela_cadastro2 extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    Intent telaCad02  = new Intent(tela_cadastro2.this , tela_cadastro3.class);
+                    Intent telaCad02  = new Intent(Cadastro01Activity.this , Cadastro02Activity.class);
                     startActivity(telaCad02);
                 } else {
 
@@ -111,7 +111,7 @@ public class tela_cadastro2 extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(tela_cadastro2.this, excessao, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Cadastro01Activity.this, excessao, Toast.LENGTH_SHORT).show();
                 }
             }
         });

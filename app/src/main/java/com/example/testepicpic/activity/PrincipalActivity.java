@@ -3,18 +3,22 @@ package com.example.testepicpic.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testepicpic.R;
 
-public class tela_cadastro3 extends AppCompatActivity {
+public class PrincipalActivity extends AppCompatActivity {
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_cadastro3);
+        setContentView(R.layout.activity_principal);
     }
-    public void Pronto3(View view){
-        Intent matheus  = new Intent(tela_cadastro3.this , tela_cadastro4.class);
+
+    public void Proximo(View view){
+        Intent matheus  = new Intent(PrincipalActivity.this , Cadastro01Activity.class);
         startActivity(matheus);
+
     }
 }

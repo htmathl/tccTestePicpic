@@ -8,17 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testepicpic.R;
 
-public class tela_cadastro1 extends AppCompatActivity {
-
-    @Override
-    protected void onCreate( Bundle savedInstanceState) {
+public class Cadastro04Activity extends AppCompatActivity {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_cadastro1);
+        setContentView(R.layout.activity_cadastro_03);
     }
-
-    public void Proximo(View view){
-        Intent matheus  = new Intent(tela_cadastro1.this , tela_cadastro2.class);
+    public void Pronto4(View view){
+        Intent matheus  = new Intent(Cadastro04Activity.this , Cadastro05Activity.class);
         startActivity(matheus);
-
     }
 }
