@@ -9,15 +9,17 @@ import android.view.WindowManager;
 
 import com.example.testepicpic.R;
 import com.example.testepicpic.activity.PrincipalActivity;
+import com.example.testepicpic.config.ConfigFirebase;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreenActivity extends AppCompatActivity {
+
+    private FirebaseAuth autenticacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -25,6 +27,6 @@ public class SplashScreenActivity extends AppCompatActivity {
                 startActivity(new Intent(getBaseContext(), PrincipalActivity.class));
                 finish();
             }
-        }, 5000);
+        }, 2500);
     }
 }

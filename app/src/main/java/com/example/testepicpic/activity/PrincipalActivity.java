@@ -16,9 +16,13 @@ public class PrincipalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
     }
 
-    public void Proximo(View view){
-        Intent matheus  = new Intent(PrincipalActivity.this , Cadastro01Activity.class);
-        startActivity(matheus);
+    public void Cadastro(View view){
+        Intent cadastro  = new Intent(PrincipalActivity.this , Cadastro01Activity.class);
+        startActivity(cadastro);
+    }
 
+    public void Login(View view){
+        Intent login  = new Intent(PrincipalActivity.this , Cadastro13Activity.class);
+        startActivity(login);
     }
 }

@@ -267,7 +267,8 @@
             android:layout_marginRight="80dp"
             android:background="@drawable/bg_btn_fundo_branco"
             android:fontFamily="@font/roboto_bold"
-            android:text="Exames"
+            android:onClick="sair"
+            android:text="Sair"
             android:textColor="#6247AA"
             android:textSize="18sp" />
     </LinearLayout>
@@ -310,7 +311,6 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="5dp"
             android:backgroundTint="#00FFFFFF"
-            android:onClick="onClickMiau"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/ic_component20" />
 

@@ -8,10 +8,13 @@ import android.view.View;
 
 import com.example.testepicpic.R;
 import com.github.mikephil.charting.charts.LineChart;
+import com.example.testepicpic.config.ConfigFirebase;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
     LineChart graficoGlicemia;
+    private FirebaseAuth autenticacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +24,12 @@ public class MainActivity extends AppCompatActivity {
         graficoGlicemia = (LineChart) findViewById(R.id.grafico_glicemia);
     }
 
-    public void onClickMiau(View view){
-        Intent matheus  = new Intent(MainActivity.this , PrincipalActivity.class);
-        startActivity(matheus);
 
+
+    public void sair(View view){
+        autenticacao = ConfigFirebase.getFirebaseAutenticacao();
+        autenticacao.signOut();
+        finish();
     }
+
 }

@@ -80,7 +80,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btn_login"
         style="@style/BtnProntoCadastro"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"

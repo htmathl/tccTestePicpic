@@ -30,8 +30,10 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btn_login"
         style="@style/BtnProntoCadastro"
+        android:layout_height="48dp"
+        android:layout_marginTop="56dp"
         android:ellipsize="start"
         android:shadowColor="#FFFFFF"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -39,34 +41,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edtEmail"
-        style="@style/edtCadastro"
-        android:layout_marginTop="56dp"
-        android:text="Seu melhor email"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <EditText
-        android:id="@+id/edtSenha"
-        style="@style/edtCadastro"
-        android:layout_marginTop="32dp"
-        android:text="Sua melhor senha "
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSenha3" />
 
     <TextView
         android:id="@+id/textView5"
         style="@style/TextoCadastro"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="40dp"
         android:text="Lembramos de você!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
@@ -80,5 +62,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtEmail3"
+        style="@style/edtCadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="56dp"
+        android:hint="Seu melhor email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <EditText
+        android:id="@+id/edtSenha3"
+        style="@style/edtCadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="Sua melhor senha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
