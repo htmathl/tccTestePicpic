@@ -16,9 +16,7 @@
         <activity android:name=".activity.PrincipalActivity" />
         <activity android:name=".activity.Cadastro02Activity" />
         <activity android:name=".activity.Cadastro04Activity" />
-        <activity
-            android:name=".activity.OverviewActivity"
-            android:label="@string/title_activity_overview" />
+
         <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
