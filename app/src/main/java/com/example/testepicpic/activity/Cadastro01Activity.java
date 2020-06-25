@@ -41,7 +41,7 @@ public class Cadastro01Activity extends AppCompatActivity {
         email = findViewById(R.id.edtEmail);
         senha = findViewById(R.id.edtSenha);
         confSenha = findViewById(R.id.edtConfirmS);
-        btnPronto2 = findViewById(R.id.button9);
+        btnPronto2 = findViewById(R.id.btn_login);
 
         btnPronto2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,8 +92,8 @@ public class Cadastro01Activity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    Intent telaCad02  = new Intent(Cadastro01Activity.this , Cadastro02Activity.class);
-                    startActivity(telaCad02);
+                    startActivity(new Intent(Cadastro01Activity.this, PrincipalActivity.class));
+                    finish();
                 } else {
 
                 String excessao = "";
