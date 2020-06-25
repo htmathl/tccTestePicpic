@@ -19,8 +19,6 @@ public class SliderActivity extends IntroActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_slider);
 
-        verificarUserLogado();
-
         setButtonBackVisible(false);
         setButtonNextVisible(false);
 
@@ -38,11 +36,31 @@ public class SliderActivity extends IntroActivity {
 
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.branco)
+                .fragment(R.layout.intro_3)
+                .build()
+        );
+
+        addSlide(new FragmentSlide.Builder()
+                .background(R.color.branco)
+                .fragment(R.layout.intro_4)
+                .build()
+        );
+
+        addSlide(new FragmentSlide.Builder()
+                .background(R.color.branco)
                 .fragment(R.layout.intro_final)
+                .canGoForward(false)
                 .build()
         );
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        verificarUserLogado();
+    }
+
     public void btnEntrar(View v) {
         startActivity(new Intent(this, PrincipalActivity.class));
     }
