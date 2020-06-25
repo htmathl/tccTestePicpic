@@ -17,12 +17,12 @@ public class PrincipalActivity extends AppCompatActivity {
     }
 
     public void Cadastro(View view){
-        Intent cadastro  = new Intent(PrincipalActivity.this , Cadastro01Activity.class);
+        Intent cadastro  = new Intent(PrincipalActivity.this , CadastroActivity.class);
         startActivity(cadastro);
     }
 
     public void Login(View view){
-        Intent login  = new Intent(PrincipalActivity.this , Cadastro13Activity.class);
+        Intent login  = new Intent(PrincipalActivity.this , LoginActivity.class);
         startActivity(login);
     }
 }

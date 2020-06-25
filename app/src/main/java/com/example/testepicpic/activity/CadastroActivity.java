@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 
-public class Cadastro01Activity extends AppCompatActivity {
+public class CadastroActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText senha;
@@ -36,7 +36,7 @@ public class Cadastro01Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_01);
+        setContentView(R.layout.activity_cadastro);
 
         email = findViewById(R.id.edtEmail);
         senha = findViewById(R.id.edtSenha);
@@ -63,19 +63,19 @@ public class Cadastro01Activity extends AppCompatActivity {
 
                                 cadastrar();
                             } else  {
-                                Toast.makeText(Cadastro01Activity.this, "As senhas não estão iguais", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CadastroActivity.this, "As senhas não estão iguais", Toast.LENGTH_SHORT).show();
                             }
 
                         } else {
-                            Toast.makeText(Cadastro01Activity.this, "Confirme sua senha não poder estar vazio", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CadastroActivity.this, "Confirme sua senha não poder estar vazio", Toast.LENGTH_SHORT).show();
                         }
 
                     } else {
-                        Toast.makeText(Cadastro01Activity.this, "Senha não pode estar vazio", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CadastroActivity.this, "Senha não pode estar vazio", Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
-                    Toast.makeText(Cadastro01Activity.this, "Email não pode estar vazio", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastroActivity.this, "Email não pode estar vazio", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -92,7 +92,7 @@ public class Cadastro01Activity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    startActivity(new Intent(Cadastro01Activity.this, PrincipalActivity.class));
+                    startActivity(new Intent(CadastroActivity.this, PrincipalActivity.class));
                     finish();
                 } else {
 
@@ -111,7 +111,7 @@ public class Cadastro01Activity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(Cadastro01Activity.this, excessao, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastroActivity.this, excessao, Toast.LENGTH_SHORT).show();
                 }
             }
         });
