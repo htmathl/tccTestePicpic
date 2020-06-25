@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 
-public class Cadastro13Activity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText senha;
@@ -34,7 +34,7 @@ public class Cadastro13Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_13);
+        setContentView(R.layout.activity_login);
 
         email = findViewById(R.id.edtEmail3);
         senha = findViewById(R.id.edtSenha3);
@@ -57,11 +57,11 @@ public class Cadastro13Activity extends AppCompatActivity {
                         validarLogin();
 
                     } else {
-                        Toast.makeText(Cadastro13Activity.this, "Senha não pode estar vazio", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Senha não pode estar vazio", Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
-                    Toast.makeText(Cadastro13Activity.this, "Email não pode estar vazio", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Email não pode estar vazio", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -76,9 +76,8 @@ public class Cadastro13Activity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            Toast.makeText(Cadastro13Activity.this, "Bem vindo, " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Bem vindo, " + user.getEmail(), Toast.LENGTH_SHORT).show();
                             verificarUserLogado();
-                            finish();
                         } else {
 
                             String excessao = "";
@@ -93,7 +92,7 @@ public class Cadastro13Activity extends AppCompatActivity {
                                 excessao = "Erro ao cadastrar usuário" + e.getMessage();
                                 e.printStackTrace();
                             }
-                            Toast.makeText(Cadastro13Activity.this, excessao, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, excessao, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -103,7 +102,8 @@ public class Cadastro13Activity extends AppCompatActivity {
             public void verificarUserLogado() {
                 autenticacao = ConfigFirebase.getFirebaseAutenticacao();
                 if(autenticacao.getCurrentUser() != null) {
-                    startActivity(new Intent(Cadastro13Activity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
                 }
             }
         });
