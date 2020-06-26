@@ -20,6 +20,8 @@
         <item>Tipo 2</item>
         <item>Gestacional</item>
     </string-array>
+
+
     <string-array name="genero">
         <item> Feminino </item>
         <item> Masculino </item>
