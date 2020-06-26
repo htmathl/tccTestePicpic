@@ -12,4 +12,8 @@
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="edtLayout">
+        <item name="android:gravity">center</item>
+        <item name="android:textColorHint">#000</item>
+    </style>
 </resources>

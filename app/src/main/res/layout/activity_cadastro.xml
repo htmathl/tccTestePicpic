@@ -40,7 +40,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtConfirmS" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
     <TextView
         android:id="@+id/textView8"
@@ -61,32 +61,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <EditText
-        android:id="@+id/edtEmail"
-        style="@style/edtCadastro"
-        android:layout_height="48dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/edtLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:hint="Seu melhor email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9">
 
-    <EditText
-        android:id="@+id/edtSenha"
-        style="@style/edtCadastro"
-        android:layout_marginTop="24dp"
-        android:hint="Sua melhor senha"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmail"
+            style="@style/edtCadastro"
+            android:hint="Seu melhor email"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/edtConfirmS"
-        style="@style/edtCadastro"
-        android:layout_marginTop="24dp"
-        android:hint="Confirme sua senha"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        style="@style/edtLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtSenha"
+            style="@style/edtCadastro"
+            android:hint="Sua melhor senha"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
+        style="@style/edtLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtConfirmS"
+            style="@style/edtCadastro"
+            android:hint="Confirme sua senha"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

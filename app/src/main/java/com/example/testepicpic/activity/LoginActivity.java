@@ -14,6 +14,7 @@ import com.example.testepicpic.R;
 import com.example.testepicpic.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.example.testepicpic.config.ConfigFirebase;
@@ -23,8 +24,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText email;
-    private EditText senha;
+    private TextInputEditText email;
+    private TextInputEditText senha;
     private Button btnLogar;
 
     FirebaseAuth autenticacao;

@@ -15,6 +15,7 @@ import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -24,9 +25,9 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    private EditText email;
-    private EditText senha;
-    private EditText confSenha;
+    private TextInputEditText email;
+    private TextInputEditText senha;
+    private TextInputEditText confSenha;
     private Button btnPronto2;
 
     FirebaseAuth autenticacao;
