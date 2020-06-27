@@ -72,5 +72,6 @@ public class SliderActivity extends IntroActivity {
     }
     public void abrirTelaPrincipal() {
         startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }

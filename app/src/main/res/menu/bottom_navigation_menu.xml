@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/overview"
+        android:enabled="true"
+        android:icon="@drawable/ic_casa11"
+        android:title="@string/overview"/>
+    <item
+        android:id="@+id/calendario"
+        android:enabled="true"
+        android:icon="@drawable/ic_calendario1"
+        android:title="@string/calendario"
+        />
+
+    <item
+        android:id="@+id/reltorio"
+        android:enabled="true"
+        android:icon="@drawable/ic_exame11"
+        android:title="@string/relatorio"
+        />
+    <item
+        android:id="@+id/perfil"
+        android:enabled="true"
+        android:icon="@drawable/ic_doutilizador11"
+        android:title="@string/perfil"
+        />
+
+</menu>

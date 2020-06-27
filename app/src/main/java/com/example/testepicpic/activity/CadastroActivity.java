@@ -2,6 +2,7 @@ package com.example.testepicpic.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -93,8 +94,9 @@ public class CadastroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    Toast.makeText(CadastroActivity.this, "Bem vindo, " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastroActivity.this, "Bem vindo,  " + user.getEmail(), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CadastroActivity.this, MainActivity.class));
+                    LocalBroadcastManager.getInstance(CadastroActivity.this).sendBroadcast(new Intent("fecharTelaPrincipal"));
                     finish();
                 } else {
 
@@ -118,5 +120,4 @@ public class CadastroActivity extends AppCompatActivity {
             }
         });
     }
-
 }

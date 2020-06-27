@@ -24,11 +24,10 @@ public class MainActivity extends AppCompatActivity {
         graficoGlicemia = (LineChart) findViewById(R.id.grafico_glicemia);
     }
 
-
-
     public void sair(View view){
         autenticacao = ConfigFirebase.getFirebaseAutenticacao();
         autenticacao.signOut();
+        startActivity(new Intent(this, SliderActivity.class));
         finish();
     }
 

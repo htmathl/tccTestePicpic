@@ -13,6 +13,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="overview">Visão geral</string>
+    <string name="calendario">Calendário</string>
+    <string name="relatorio">Relatório</string>
+    <string name="perfil">Períl</string>
 
     <string-array name="tipos_diabetes">
         <item>Pré-Diabetes</item>
@@ -28,4 +32,5 @@
         <item> Outro </item>
         <item> Prefiro não informar </item>
     </string-array>
+    <string name="title_activity_app">MainActivity</string>
 </resources>
