@@ -2,6 +2,7 @@ package com.example.testepicpic.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -78,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Bem vindo, " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                            LocalBroadcastManager.getInstance(LoginActivity.this).sendBroadcast(new Intent("fecharTelaPrincipal"));
                             verificarUserLogado();
                         } else {
 

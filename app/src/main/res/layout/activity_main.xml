@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_waves"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -271,71 +272,17 @@
             android:text="Sair"
             android:textColor="#6247AA"
             android:textSize="18sp" />
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
+        android:background="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="#00FFFFFF"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/casa" />
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="#00FFFFFF"
-
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/ic_calendario1" />
-
-        <ImageButton
-            android:id="@+id/imageButton6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="#00FFFFFF"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/ic_component20" />
-
-        <ImageButton
-            android:id="@+id/imageButton5"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="#00FFFFFF"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/ic_exame11" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="#FFFFFFFF"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/ic_doutilizador11" />
-
-    </LinearLayout>
-
-    <!-- Forma 1 -->
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
