@@ -2,32 +2,32 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/overview"
+        android:id="@+id/item_overview"
         android:enabled="true"
         android:icon="@drawable/ic_casa11"
         android:title="@string/overview"/>
     <item
-        android:id="@+id/calendario"
+        android:id="@+id/item_calendario"
         android:enabled="true"
         android:icon="@drawable/ic_calendario1"
         android:title="@string/calendario"
         />
 
     <item
-        android:id="@+id/btn_fab"
+        android:id="@+id/item_fab"
         android:enabled="false"
         android:iconTint="@color/branco"
         android:title="@string/fab"
         />
 
     <item
-        android:id="@+id/reltorio"
+        android:id="@+id/item_reltorio"
         android:enabled="true"
         android:icon="@drawable/ic_exame11"
         android:title="@string/relatorio"
         />
     <item
-        android:id="@+id/perfil"
+        android:id="@+id/item_perfil"
         android:enabled="true"
         android:icon="@drawable/ic_doutilizador11"
         android:title="@string/perfil"
