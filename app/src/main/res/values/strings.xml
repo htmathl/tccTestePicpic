@@ -16,7 +16,8 @@
     <string name="overview">Visão geral</string>
     <string name="calendario">Calendário</string>
     <string name="relatorio">Relatório</string>
-    <string name="perfil">Períl</string>
+    <string name="perfil">Perfil</string>
+    <string name="fab">.</string>
 
     <string-array name="tipos_diabetes">
         <item>Pré-Diabetes</item>
