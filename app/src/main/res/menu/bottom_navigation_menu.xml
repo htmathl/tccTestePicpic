@@ -14,6 +14,13 @@
         />
 
     <item
+        android:id="@+id/btn_fab"
+        android:enabled="false"
+        android:iconTint="@color/branco"
+        android:title="@string/fab"
+        />
+
+    <item
         android:id="@+id/reltorio"
         android:enabled="true"
         android:icon="@drawable/ic_exame11"
