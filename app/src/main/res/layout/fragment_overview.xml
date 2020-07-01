@@ -36,7 +36,6 @@
                 android:layout_marginBottom="12dp">
 
                 <TextView
-                    android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -205,7 +204,7 @@
                 android:layout_marginBottom="12dp">
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
