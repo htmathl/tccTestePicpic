@@ -1,7 +1,12 @@
 package com.example.testepicpic.model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.example.testepicpic.config.ConfigFirebase;
+import com.google.firebase.database.Exclude;
+
 public class Usuario {
 
+    private String idUser;
     private String email;
     private String senha;
     private String nome;
@@ -14,6 +19,15 @@ public class Usuario {
     private String[] medicacao;
     private boolean[] lembretes;
 
+    @Exclude
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -22,6 +36,7 @@ public class Usuario {
         this.email = email;
     }
 
+    @Exclude
     public String getSenha() {
         return senha;
     }
@@ -30,7 +45,7 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getNome() {
+    /*public String getNome() {
         return nome;
     }
 
@@ -100,8 +115,16 @@ public class Usuario {
 
     public void setLembretes(boolean[] lembretes) {
         this.lembretes = lembretes;
-    }
+    }*/
 
     public Usuario() {
     }
+
+    public void salvar(){
+        DatabaseReference firebase = ConfigFirebase.getFirebase();
+        firebase.child("users")
+                .child(this.idUser)
+                .setValue(this);
+    }
+
 }

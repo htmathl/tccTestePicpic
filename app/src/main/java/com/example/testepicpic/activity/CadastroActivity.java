@@ -6,6 +6,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.testepicpic.R;
 import com.example.testepicpic.config.ConfigFirebase;
+import com.example.testepicpic.helper.Base64Custom;
 import com.example.testepicpic.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -97,6 +99,11 @@ public class CadastroActivity extends AppCompatActivity {
                     Toast.makeText(CadastroActivity.this, "Bem vindo,  " + user.getEmail(), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CadastroActivity.this, MainActivity.class));
                     LocalBroadcastManager.getInstance(CadastroActivity.this).sendBroadcast(new Intent("fecharTelaPrincipal"));
+
+                    String idUser = Base64Custom.codificarBase64(user.getEmail());
+                    user.setIdUser(idUser);
+                    user.salvar();
+
                     finish();
                 } else {
 
