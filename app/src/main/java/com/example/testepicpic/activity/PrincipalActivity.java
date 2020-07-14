@@ -37,10 +37,12 @@ public class PrincipalActivity extends AppCompatActivity {
     public void Cadastro(View view){
         Intent cadastro  = new Intent(PrincipalActivity.this , CadastroActivity.class);
         startActivity(cadastro);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
 
     public void Login(View view){
         Intent login  = new Intent(PrincipalActivity.this , LoginActivity.class);
         startActivity(login);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
 }

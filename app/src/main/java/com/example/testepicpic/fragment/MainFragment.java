@@ -12,10 +12,10 @@ import com.example.testepicpic.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_Principal#newInstance} factory method to
+ * Use the {@link MainFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_Principal extends Fragment {
+public class MainFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class Fragment_Principal extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Fragment_Principal() {
+    public MainFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class Fragment_Principal extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_Principal.
+     * @return A new instance of fragment Fragment_main.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragment_Principal newInstance(String param1, String param2) {
-        Fragment_Principal fragment = new Fragment_Principal();
+    public static MainFragment newInstance(String param1, String param2) {
+        MainFragment fragment = new MainFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class Fragment_Principal extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment__principal, container, false);
+        return inflater.inflate(R.layout.fragment_main, container, false);
     }
 }
