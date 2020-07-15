@@ -1,14 +1,18 @@
 package com.example.testepicpic.fragment;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TimePicker;
 
 import com.example.testepicpic.R;
+import com.example.testepicpic.activity.MainActivity;
+
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +20,8 @@ import com.example.testepicpic.R;
  * create an instance of this fragment.
  */
 public class CadastroHorarioFragment extends Fragment {
+    ImageButton btnAddHoras;
+    int Hour, min;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,12 +61,35 @@ public class CadastroHorarioFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cadastro_horario, container, false);
+
+
+        View view = inflater.inflate(R.layout.fragment_cadastro_horario, container, false);
+        ;
+        btnAddHoras = view.findViewById(R.id.btnAddHora);
+
+        btnAddHoras.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+                Calendar c = Calendar.getInstance();
+                Hour = c.get(Calendar.HOUR_OF_DAY);
+                min = c.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+                    }
+                }, Hour, min,true);
+            }
+        });
+        return view;
     }
 }
