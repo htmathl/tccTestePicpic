@@ -1,4 +1,4 @@
-package com.example.testepicpic.activity;
+package com.example.testepicpic.fragment;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.example.testepicpic.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Cadastro12#newInstance} factory method to
+ * Use the {@link CadastroTipoDiabetesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Cadastro12 extends Fragment {
+public class CadastroTipoDiabetesFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class Cadastro12 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Cadastro12() {
+    public CadastroTipoDiabetesFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class Cadastro12 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Cadastro12.
+     * @return A new instance of fragment CadastroTipoDiabetesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Cadastro12 newInstance(String param1, String param2) {
-        Cadastro12 fragment = new Cadastro12();
+    public static CadastroTipoDiabetesFragment newInstance(String param1, String param2) {
+        CadastroTipoDiabetesFragment fragment = new CadastroTipoDiabetesFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class Cadastro12 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cadastro12, container, false);
+        return inflater.inflate(R.layout.fragment_cadastro_tipo_diabetes, container, false);
     }
 }

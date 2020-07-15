@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.CadastroLembretes2Fragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtPergunta"
+            style="@style/TextoCadastro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Quais lembretes você gostaria de receber? ps: pode escolher mais de um"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnPronto5"
+            style="@style/BtnProntoCadastro"
+            android:layout_marginTop="64dp"
+            android:ellipsize="start"
+            android:shadowColor="#FFFFFF"
+            android:text="Pronto "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:typeface="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_copo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPergunta">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:orientation="vertical">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:gravity="center"
+                    android:text="Insulina"
+                    android:textColor="#574290"
+                    android:textSize="18dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip3"
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:gravity="center"
+                    android:text="Água "
+                    android:textColor="#574290"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip4"
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:gravity="center"
+                    android:text="Medicamentos"
+                    android:textColor="#574290"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </com.google.android.material.chip.ChipGroup>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
