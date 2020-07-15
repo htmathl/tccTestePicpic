@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.CadastroHorarioFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/TextoCadastro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Selecione seus horários"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="367dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/bg_copo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/linha_roxa2"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/txtSelecione"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Lembretes"
+                    android:textColor="@color/corPrincipal"
+                    android:textSize="16dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="8dp">
+
+                <ImageButton
+                    android:id="@+id/btnAddHora"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:src="@drawable/add" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/btnPronto6"
+            style="@style/BtnProntoCadastro"
+            android:layout_marginTop="64dp"
+            android:shadowColor="#FFFFFF"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:typeface="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
