@@ -7,7 +7,6 @@
     android:background="#888686"
     tools:context=".posclickmais">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <ImageButton
         android:id="@+id/fab_button"
@@ -22,76 +21,50 @@
         tools:layout_conversion_absoluteHeight="59dp"
         tools:layout_conversion_absoluteWidth="59dp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="74dp"
-        android:layout_height="78dp"
+    <ImageButton
+        android:id="@+id/btnGlicemia"
+        style="@style/imgBtnInserir"
         android:layout_marginBottom="48dp"
-        android:background="@drawable/ic_ellipse_24"
-        android:drawableBottom="@drawable/ic_diabetes_"
+        android:src="@drawable/ic_diabetes_"
         app:layout_constraintBottom_toTopOf="@+id/fab_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.81"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="74dp"
-        android:layout_height="74dp"
+    <ImageButton
+        android:id="@+id/bntInsulina"
+        style="@style/imgBtnInserir"
         android:layout_marginBottom="124dp"
-        android:background="@drawable/ic_ellipse_24"
-        android:drawableBottom="@drawable/ic_injecao"
-        app:layout_constraintBottom_toTopOf="@+id/fab_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="74dp"
-        android:layout_height="78dp"
-        android:layout_marginBottom="316dp"
-        android:background="@drawable/ic_ellipse_24"
-        android:drawableTop="@drawable/ic_gym"
-        android:foregroundGravity="center"
-        android:gravity="center"
+        android:src="@drawable/ic_injecao"
         app:layout_constraintBottom_toTopOf="@+id/fab_button"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="74dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="15dp"
+    <ImageButton
+        android:id="@+id/btnExercicio"
+        style="@style/imgBtnInserir"
+        android:layout_marginBottom="316dp"
+        android:src="@drawable/ic_gym"
+        app:layout_constraintBottom_toTopOf="@+id/fab_button"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnHumor"
+        style="@style/imgBtnInserir"
         android:layout_marginBottom="424dp"
-        android:background="@drawable/ic_ellipse_24"
-        android:drawableBottom="@drawable/ic_smile"
+        android:src="@drawable/ic_smile"
         app:layout_constraintBottom_toTopOf="@+id/fab_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.704"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="74dp"
-        android:layout_height="78dp"
+    <ImageButton
+        android:id="@+id/btnAlimento"
+        style="@style/imgBtnInserir"
         android:layout_marginBottom="240dp"
-        android:background="@drawable/ic_ellipse_24"
-        android:drawableBottom="@drawable/ic_cooking"
-        android:foregroundGravity="center"
-        android:gravity="center"
+        android:src="@drawable/ic_cooking"
         app:layout_constraintBottom_toTopOf="@+id/fab_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.783"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="688dp" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

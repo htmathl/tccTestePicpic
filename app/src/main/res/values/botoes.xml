@@ -35,7 +35,10 @@
         <item name="android:textColor">#6F57B1</item>
     </style>
     
-    <style name="b">
+    <style name="imgBtnInserir">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/ic_ellipse_24</item>
 
     </style>
 </resources>
