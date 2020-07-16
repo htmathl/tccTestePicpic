@@ -239,7 +239,6 @@
             android:layout_marginRight="80dp"
             android:background="@drawable/bg_btn_fundo_branco"
             android:fontFamily="@font/roboto_bold"
-            android:onClick="sair"
             android:text="Sair"
             android:textColor="#6247AA"
             android:textSize="18sp" />

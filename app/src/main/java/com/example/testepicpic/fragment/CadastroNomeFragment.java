@@ -31,7 +31,6 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
 
     public String pNome, pIdade, pPeso, pAltura, pGenero;
 
-    private CadastroEmailFragment cadastroEmailFragment = new CadastroEmailFragment();
     private CadastroTipoDiabetesFragment cadastroTipoDiabetesFragment = new CadastroTipoDiabetesFragment();
     private Usuario user = new Usuario();
 

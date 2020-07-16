@@ -37,7 +37,7 @@
     <Button
         android:id="@+id/button3"
         android:layout_width="74dp"
-        android:layout_height="78dp"
+        android:layout_height="74dp"
         android:layout_marginBottom="124dp"
         android:background="@drawable/ic_ellipse_24"
         android:drawableBottom="@drawable/ic_injecao"
@@ -52,12 +52,11 @@
         android:layout_height="78dp"
         android:layout_marginBottom="316dp"
         android:background="@drawable/ic_ellipse_24"
-        android:drawableBottom="@drawable/ic_gym"
+        android:drawableTop="@drawable/ic_gym"
         android:foregroundGravity="center"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/fab_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -86,5 +85,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.783"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="688dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
