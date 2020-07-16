@@ -2,6 +2,7 @@ package com.example.testepicpic.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.testepicpic.R;
 import com.example.testepicpic.config.ConfigFirebase;
+import com.example.testepicpic.fragment.CadastroNomeFragment;
 import com.example.testepicpic.helper.Base64Custom;
 import com.example.testepicpic.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,6 +39,10 @@ public class CadastroActivity extends AppCompatActivity {
 
     private Usuario user = new Usuario();
 
+    private CadastroNomeFragment cadastroNomeFragment = new CadastroNomeFragment();
+
+    public String pNome = cadastroNomeFragment.pNome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +51,14 @@ public class CadastroActivity extends AppCompatActivity {
         email = findViewById(R.id.edtEmail);
         senha = findViewById(R.id.edtSenha);
         confSenha = findViewById(R.id.edtConfirmS);
-        btnPronto2 = findViewById(R.id.btn_login);
+        btnPronto2 = findViewById(R.id.btnCadastrar);
 
-        btnPronto2.setOnClickListener(new View.OnClickListener() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.frameConteudoCad, cadastroNomeFragment);
+        transaction.commit();
+
+
+        /*btnPronto2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -82,8 +93,12 @@ public class CadastroActivity extends AppCompatActivity {
                     Toast.makeText(CadastroActivity.this, "Email não pode estar vazio", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
 
+    }
+
+    public String getpNome() {
+        return pNome;
     }
 
     /* lembrar de inserir mais tarde o ultimo botão "pronto" das telas de cadastro, para mão haver conlito de criação de conta */

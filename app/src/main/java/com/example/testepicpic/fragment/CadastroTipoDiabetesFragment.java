@@ -3,10 +3,16 @@ package com.example.testepicpic.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
 
@@ -16,6 +22,13 @@ import com.example.testepicpic.R;
  * create an instance of this fragment.
  */
 public class CadastroTipoDiabetesFragment extends Fragment {
+
+    private Button btnPronto02;
+    private RadioGroup radioGroup;
+    private RadioButton prediabetes, tipo1, tipo2, gestacional;
+    private String tipoDiabetes;
+
+    private CadastroEmailFragment cadastroEmailFragment = new CadastroEmailFragment();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +74,80 @@ public class CadastroTipoDiabetesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cadastro_tipo_diabetes, container, false);
+        View view = inflater.inflate(R.layout.fragment_cadastro_tipo_diabetes, container, false);
+
+        btnPronto02 = view.findViewById(R.id.btnPronto02);
+        radioGroup = view.findViewById(R.id.radioGroup2);
+        prediabetes = view.findViewById(R.id.rdbPrediabetes);
+        tipo1 = view.findViewById(R.id.rdbTipo1);
+        tipo2 = view.findViewById(R.id.rdbTipo2);
+        gestacional = view.findViewById(R.id.rdbGest);
+
+        btnPronto02.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String pNome = getArguments().getString("pNome");
+                String pIdade = getArguments().getString("pIdade");
+                String pAltura = getArguments().getString("pAltura");
+                String pPeso = getArguments().getString("pPeso");
+                String pGenero = getArguments().getString("pGenero");
+
+                Bundle argsTipo = new Bundle();
+                argsTipo.putString("pNome", pNome);
+                argsTipo.putString("pIdade", pIdade);
+                argsTipo.putString("pAltura", pAltura);
+                argsTipo.putString("pPeso", pPeso);
+                argsTipo.putString("pGenero", pGenero);
+
+                if(prediabetes.isChecked()) {
+                    tipoDiabetes = "Pré-diabetes";
+
+                    FragmentManager manager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    argsTipo.putString("tipoDiabetes", tipoDiabetes);
+                    cadastroEmailFragment.setArguments(argsTipo);
+                    transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
+                    transaction.commit();
+                }
+                else if(tipo1.isChecked()){
+                    tipoDiabetes = "Tipo 1";
+
+                    FragmentManager manager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    argsTipo.putString("tipoDiabetes", tipoDiabetes);
+                    cadastroEmailFragment.setArguments(argsTipo);
+                    transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
+                    transaction.commit();
+
+                }
+                else if(tipo2.isChecked()){
+                    tipoDiabetes = "Tipo 2";
+
+                    FragmentManager manager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    argsTipo.putString("tipoDiabetes", tipoDiabetes);
+                    cadastroEmailFragment.setArguments(argsTipo);
+                    transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
+                    transaction.commit();
+
+                }
+                else if (gestacional.isChecked()){
+                    tipoDiabetes = "Gestacional";
+
+                    FragmentManager manager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    argsTipo.putString("tipoDiabetes", tipoDiabetes);
+                    cadastroEmailFragment.setArguments(argsTipo);
+                    transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
+                    transaction.commit();
+
+                } else {
+                    Toast.makeText(getActivity(), "Selecione um tipo", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        return view;
     }
 }

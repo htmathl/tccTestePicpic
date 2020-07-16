@@ -3,19 +3,37 @@ package com.example.testepicpic.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 
 import com.example.testepicpic.R;
+import com.example.testepicpic.model.Usuario;
+import com.google.android.material.textfield.TextInputEditText;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CadastroNomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CadastroNomeFragment extends Fragment {
+public class CadastroNomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+
+    private TextInputEditText nome, idade, peso, altura;
+    private Spinner genero;
+    private Button btnPronto01;
+
+    public String pNome, pIdade, pPeso, pAltura, pGenero;
+
+    private CadastroEmailFragment cadastroEmailFragment = new CadastroEmailFragment();
+    private CadastroTipoDiabetesFragment cadastroTipoDiabetesFragment = new CadastroTipoDiabetesFragment();
+    private Usuario user = new Usuario();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +79,71 @@ public class CadastroNomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cadastro_nome, container, false);
+        View view = inflater.inflate(R.layout.fragment_cadastro_nome, container, false);
+
+        genero = view.findViewById(R.id.spinnergenero2);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.genero, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genero.setAdapter(adapter);
+        genero.setOnItemSelectedListener(this);
+
+        nome = view.findViewById(R.id.edtNome);
+        idade = view.findViewById(R.id.edtIdade);
+        peso = view.findViewById(R.id.edtPeso);
+        altura = view.findViewById(R.id.edtAltura);
+
+        btnPronto01 = view.findViewById(R.id.btnPronto01);
+
+        btnPronto01.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String textoNome = nome.getText().toString();
+                String textoIdade = idade.getText().toString();
+                String textoPeso = peso.getText().toString();
+                String textoAltura = altura.getText().toString();
+                String textoGenero = genero.getSelectedItem().toString();
+
+                if(!textoNome.isEmpty()) {
+                    if(!textoIdade.isEmpty()) {
+                        if(!textoPeso.isEmpty()) {
+                            if(!textoAltura.isEmpty()) {
+
+                                pNome = textoNome;
+                                pIdade = textoIdade;
+                                pAltura = textoAltura;
+                                pPeso = textoPeso;
+                                pGenero = textoGenero;
+
+                                FragmentManager manager = getActivity().getSupportFragmentManager();
+                                FragmentTransaction transaction = manager.beginTransaction();
+                                Bundle args = new Bundle();
+                                args.putString("pNome", pNome);
+                                args.putString("pIdade", pIdade);
+                                args.putString("pAltura", pAltura);
+                                args.putString("pPeso", pPeso);
+                                args.putString("pGenero", pGenero);
+                                cadastroTipoDiabetesFragment.setArguments(args);
+                                transaction.replace(R.id.frameConteudoCad, cadastroTipoDiabetesFragment);
+                                transaction.commit();
+                            }
+                        }
+                    }
+                }
+
+            }
+        });
+
+        return view;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        parent.getItemAtPosition(position);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

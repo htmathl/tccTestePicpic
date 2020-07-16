@@ -13,7 +13,8 @@ public class Usuario {
     private int idade;
     private double altura;
     private double peso;
-    private int tipoDiabetes;
+    private String genero;
+    private String tipoDiabetes;
     private boolean utilizoInsulina;
     private boolean utilizoMedicacao;
     private String[] medicacao;
@@ -45,7 +46,7 @@ public class Usuario {
         this.senha = senha;
     }
 
-    /*public String getNome() {
+    public String getNome() {
         return nome;
     }
 
@@ -77,14 +78,23 @@ public class Usuario {
         this.peso = peso;
     }
 
-    public int getTipoDiabetes() {
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+
+    public String getTipoDiabetes() {
         return tipoDiabetes;
     }
 
-    public void setTipoDiabetes(int tipoDiabetes) {
+    public void setTipoDiabetes(String tipoDiabetes) {
         this.tipoDiabetes = tipoDiabetes;
     }
-
+/*
     public boolean isUtilizoInsulina() {
         return utilizoInsulina;
     }

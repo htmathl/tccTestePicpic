@@ -10,6 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Spinner
+            android:id="@+id/spinnergenero2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edt_cadastro_pqn"
+            android:gravity="center"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
         <TextView
             android:id="@+id/textView17"
             style="@style/TextoCadastro"
@@ -45,7 +59,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/textInputLayout3"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toStartOf="@+id/spinnergenero2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,25 +70,8 @@
                 android:id="@+id/edtIdade"
                 style="@style/edtCadastro"
                 android:background="@drawable/edt_cadastro_pqn"
-                android:hint="Idade" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout3"
-            style="@style/edtLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textInputLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtGenero"
-                style="@style/edtCadastro"
-                android:background="@drawable/edt_cadastro_pqn"
-                android:hint="Genero" />
+                android:hint="Idade"
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -92,7 +90,8 @@
                 android:id="@+id/edtAltura"
                 style="@style/edtCadastro"
                 android:background="@drawable/edt_cadastro_pqn"
-                android:hint="Altura" />
+                android:hint="Altura"
+                android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -104,18 +103,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textInputLayout4"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+            app:layout_constraintTop_toBottomOf="@+id/spinnergenero2">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtPeso"
                 style="@style/edtCadastro"
                 android:background="@drawable/edt_cadastro_pqn"
-                android:hint="Peso" />
+                android:hint="Peso"
+                android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
-            android:id="@+id/btnPronto2"
+            android:id="@+id/btnPronto01"
             style="@style/BtnProntoCadastro"
             android:layout_marginTop="64dp"
             android:ellipsize="start"

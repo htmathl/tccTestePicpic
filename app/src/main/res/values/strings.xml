@@ -28,10 +28,11 @@
 
 
     <string-array name="genero">
+        <item> Gênero </item>
         <item> Feminino </item>
         <item> Masculino </item>
         <item> Outro </item>
-        <item> Prefiro não informar </item>
+        <item> Não informar </item>
     </string-array>
     <string name="title_activity_app">MainActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
