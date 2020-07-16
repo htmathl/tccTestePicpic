@@ -24,6 +24,7 @@ import com.example.testepicpic.R;
 import com.example.testepicpic.fragment.CalendarFragment;
 import com.example.testepicpic.fragment.OverviewFragment;
 import com.example.testepicpic.fragment.PerfilFragment;
+import com.example.testepicpic.fragment.PosClickMaisFragment;
 import com.example.testepicpic.fragment.RelatorioFragment;
 import com.github.mikephil.charting.charts.LineChart;
 import com.example.testepicpic.config.ConfigFirebase;
@@ -46,8 +47,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private PerfilFragment perfilFragment = new PerfilFragment();
 
     private LineChart graficoGlicemia;
-
-
+    private PosClickMaisFragment clickMaisFragment=  new PosClickMaisFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,22 +64,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             public void onClick(View v) {
                 if(menuAberto) {
                     fabButton.animate().setInterpolator(interpolator).rotation(45f).setDuration(500).start();
-
-
                     menuAberto =! menuAberto;
+                    getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                            .replace(R.id.substituicao,clickMaisFragment).commit();
+
                 } else {
                     fabButton.animate().setInterpolator(interpolator).rotation(0f).setDuration(500).start();
                     menuAberto =! menuAberto;
+                    getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                            .replace(R.id.substituicao,overviewFragment).commit();
+
+
                 }
             }
         });
 
-        fabButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent it = new Intent(MainActivity.this, posclickmais.class);
-                startActivity(it);
-            }
-        });
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);

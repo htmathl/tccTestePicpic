@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.PosClickMaisFragment">
+
+     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#888686"
+        tools:context=".posclickmais">
+
+
+        <ImageButton
+            android:id="@+id/fab_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/ic_component20"
+            android:elevation="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteHeight="59dp"
+            tools:layout_conversion_absoluteWidth="59dp" />
+
+        <ImageButton
+            android:id="@+id/btnGlicemia"
+            style="@style/imgBtnInserir"
+            android:layout_marginBottom="48dp"
+            android:src="@drawable/ic_diabetes_"
+            android:elevation="25dp"
+            app:layout_constraintBottom_toTopOf="@+id/fab_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+        <ImageButton
+            android:id="@+id/bntInsulina"
+            style="@style/imgBtnInserir"
+            android:layout_marginBottom="124dp"
+            android:src="@drawable/ic_injecao"
+            android:elevation="25dp"
+            app:layout_constraintBottom_toTopOf="@+id/fab_button"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnExercicio"
+            style="@style/imgBtnInserir"
+            android:layout_marginBottom="316dp"
+            android:src="@drawable/ic_gym"
+            android:elevation="25dp"
+            app:layout_constraintBottom_toTopOf="@+id/fab_button"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnHumor"
+            style="@style/imgBtnInserir"
+            android:layout_marginBottom="424dp"
+            android:src="@drawable/ic_smile"
+            android:elevation="25dp"
+            app:layout_constraintBottom_toTopOf="@+id/fab_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+        <ImageButton
+            android:id="@+id/btnAlimento"
+            style="@style/imgBtnInserir"
+            android:layout_marginBottom="240dp"
+            android:src="@drawable/ic_cooking"
+            android:elevation="25dp"
+            app:layout_constraintBottom_toTopOf="@+id/fab_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
