@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private LineChart graficoGlicemia;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +71,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     fabButton.animate().setInterpolator(interpolator).rotation(0f).setDuration(500).start();
                     menuAberto =! menuAberto;
                 }
+            }
+        });
+
+        fabButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent it = new Intent(MainActivity.this, posclickmais.class);
+                startActivity(it);
             }
         });
 
