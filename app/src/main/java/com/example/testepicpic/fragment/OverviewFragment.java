@@ -1,5 +1,6 @@
 package com.example.testepicpic.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.testepicpic.R;
+import com.example.testepicpic.activity.SliderActivity;
+import com.example.testepicpic.config.ConfigFirebase;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +21,10 @@ import com.example.testepicpic.R;
  * create an instance of this fragment.
  */
 public class OverviewFragment extends Fragment {
+
+    private Button btnSairProv;
+
+    private FirebaseAuth autenticacao;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +70,22 @@ public class OverviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_overview, container, false);
+        View view = inflater.inflate(R.layout.fragment_overview, container, false);
+
+        btnSairProv = view.findViewById(R.id.btnExames);
+
+        btnSairProv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                autenticacao = ConfigFirebase.getFirebaseAutenticacao();
+                autenticacao.signOut();
+                startActivity(new Intent(getActivity(), SliderActivity.class));
+                getActivity().finish();
+
+            }
+        });
+
+        return view;
     }
 }

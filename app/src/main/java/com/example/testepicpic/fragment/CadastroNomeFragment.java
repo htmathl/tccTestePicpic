@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
 import com.example.testepicpic.model.Usuario;
@@ -125,9 +126,17 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
                                 cadastroTipoDiabetesFragment.setArguments(args);
                                 transaction.replace(R.id.frameConteudoCad, cadastroTipoDiabetesFragment);
                                 transaction.commit();
+                            } else {
+                                Toast.makeText(getActivity(), "Prencha o campo altura", Toast.LENGTH_LONG).show();
                             }
+                        } else {
+                            Toast.makeText(getActivity(), "Prencha o campo campo peso", Toast.LENGTH_LONG).show();
                         }
+                    } else {
+                        Toast.makeText(getActivity(),"Preenca o campo idade", Toast.LENGTH_LONG).show();
                     }
+                } else {
+                    Toast.makeText(getActivity(), "Preencha o campo nome", Toast.LENGTH_LONG).show();
                 }
 
             }
