@@ -2,20 +2,13 @@ package com.example.testepicpic.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.accounts.Account;
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.OvershootInterpolator;
-import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -24,7 +17,6 @@ import com.example.testepicpic.R;
 import com.example.testepicpic.fragment.CalendarFragment;
 import com.example.testepicpic.fragment.OverviewFragment;
 import com.example.testepicpic.fragment.PerfilFragment;
-import com.example.testepicpic.fragment.PosClickMaisFragment;
 import com.example.testepicpic.fragment.RelatorioFragment;
 import com.github.mikephil.charting.charts.LineChart;
 import com.example.testepicpic.config.ConfigFirebase;
@@ -47,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private PerfilFragment perfilFragment = new PerfilFragment();
 
     private LineChart graficoGlicemia;
-    private PosClickMaisFragment clickMaisFragment=  new PosClickMaisFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         graficoGlicemia = (LineChart) findViewById(R.id.grafico_glicemia);
 
         fabButton = findViewById(R.id.fab_button);
+        final ConstraintLayout c = findViewById(R.id.constrait);
 
 
         fabButton.setOnClickListener(new View.OnClickListener() {
@@ -65,14 +57,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 if(menuAberto) {
                     fabButton.animate().setInterpolator(interpolator).rotation(45f).setDuration(500).start();
                     menuAberto =! menuAberto;
-                    getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                            .replace(R.id.substituicao,clickMaisFragment).commit();
+
+                    c.setVisibility(v.VISIBLE);
+
 
                 } else {
                     fabButton.animate().setInterpolator(interpolator).rotation(0f).setDuration(500).start();
                     menuAberto =! menuAberto;
-                    getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                            .replace(R.id.substituicao,overviewFragment).commit();
+                    c.setVisibility(v.INVISIBLE);
 
 
                 }
