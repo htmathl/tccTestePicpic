@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
+                            autenticacao = ConfigFirebase.getFirebaseAutenticacao();
                             Toast.makeText(LoginActivity.this, "Bem vindo, " + user.getEmail(), Toast.LENGTH_SHORT).show();
                             LocalBroadcastManager.getInstance(LoginActivity.this).sendBroadcast(new Intent("fecharTelaPrincipal"));
                             verificarUserLogado();

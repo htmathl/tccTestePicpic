@@ -16,6 +16,7 @@ public class SliderActivity extends IntroActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setFullscreen(true);
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_slider);
 
@@ -23,32 +24,26 @@ public class SliderActivity extends IntroActivity {
         setButtonNextVisible(false);
 
         addSlide(new FragmentSlide.Builder()
-                .background(R.color.branco)
+                .background(R.color.colorSlider)
                 .fragment(R.layout.intro_1)
                 .build()
         );
 
         addSlide(new FragmentSlide.Builder()
-                .background(R.color.branco)
+                .background(R.color.colorSlider)
                 .fragment(R.layout.intro_2)
                 .build()
         );
 
         addSlide(new FragmentSlide.Builder()
-                .background(R.color.branco)
+                .background(R.color.colorSlider)
                 .fragment(R.layout.intro_3)
                 .build()
         );
 
         addSlide(new FragmentSlide.Builder()
-                .background(R.color.branco)
+                .background(R.color.colorSlider)
                 .fragment(R.layout.intro_4)
-                .build()
-        );
-
-        addSlide(new FragmentSlide.Builder()
-                .background(R.color.branco)
-                .fragment(R.layout.intro_final)
                 .canGoForward(false)
                 .build()
         );

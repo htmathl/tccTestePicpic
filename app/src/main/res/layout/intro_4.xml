@@ -9,14 +9,14 @@
     <Button
         android:id="@+id/btnRegistrar2"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
         android:width="168dp"
         android:background="@drawable/bg_btn_fundo_branco"
         android:ellipsize="start"
         android:fontFamily="@font/roboto"
+        android:onClick="btnEntrar"
         android:shadowColor="#FFFFFF"
         android:text="Começar"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -26,17 +26,17 @@
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_login" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView33"
         style="@style/EditText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Voce pode adicionar lembretes para seus medicamentos diários."
-        android:textSize="30sp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/animationView5" />
 
@@ -57,23 +57,9 @@
         android:id="@+id/onda_principal"
         android:layout_width="0dp"
         android:layout_height="156dp"
-        android:background="@drawable/ic_waves"
+        android:background="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animationView"
-            android:layout_width="0dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="44dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/onda_principal"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/animacao_tela_principal" />
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

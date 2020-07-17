@@ -158,7 +158,7 @@ public class CadastroEmailFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    Toast.makeText(getActivity(), "Bem vindo,  " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Bem vindo,  " + user.getNome(), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getActivity(), MainActivity.class));
                     LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(new Intent("fecharTelaPrincipal"));
 
