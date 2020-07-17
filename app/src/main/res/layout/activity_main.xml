@@ -71,7 +71,7 @@
         android:layout_height="match_parent"
         android:background="#BF000000"
         android:elevation="11dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,6 +89,15 @@
             app:layout_constraintHorizontal_bias="0.40"
             app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
+        <TextView
+            android:id="@+id/txtGlicemia"
+            style="@style/txtDoBtnOverview"
+            android:text="Glicemia"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/btnGlicemia" />
+
         <ImageButton
             android:id="@+id/bntInulina"
             style="@style/imgBtnInserir"
@@ -99,6 +108,15 @@
             app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <TextView
+            android:id="@+id/txtInsulina"
+            style="@style/txtDoBtnOverview"
+            android:text="Insulina"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bntInulina" />
+
         <ImageButton
             android:id="@+id/btnExercicio"
             style="@style/imgBtnInserir"
@@ -108,6 +126,15 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/txtExercicio"
+            style="@style/txtDoBtnOverview"
+            android:text="Exercício"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnExercicio" />
+
 
         <ImageButton
             android:id="@+id/btnHumor"
@@ -118,6 +145,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="@+id/guideline2" />
+        <TextView
+            android:id="@+id/txtHumor"
+            style="@style/txtDoBtnOverview"
+            android:text="Humor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/btnHumor" />
 
         <ImageButton
             android:id="@+id/btnAlimento"
@@ -128,6 +163,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.40"
             app:layout_constraintStart_toStartOf="@+id/guideline2" />
+        <TextView
+            android:id="@+id/txtAlimento"
+            style="@style/txtDoBtnOverview"
+            android:text="Alimentação"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/btnAlimento" />
+
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
