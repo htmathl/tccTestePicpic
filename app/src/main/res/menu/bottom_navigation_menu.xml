@@ -16,7 +16,6 @@
     <item
         android:id="@+id/item_fab"
         android:enabled="false"
-        android:iconTint="@color/branco"
         android:title="@string/fab"
         />
 
@@ -28,9 +27,8 @@
         />
     <item
         android:id="@+id/item_perfil"
-        android:enabled="true"
-        android:icon="@drawable/ic_doutilizador11"
-        android:title="@string/perfil"
+        android:enabled="false"
+        android:title="@string/fab"
         />
 
 </menu>
