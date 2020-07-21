@@ -23,6 +23,7 @@
             android:layout_marginTop="32dp"
             android:text="Perfil"
             android:textSize="36sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.388"
             app:layout_constraintStart_toEndOf="@+id/miaumiua"
@@ -37,46 +38,83 @@
             android:background="@drawable/ic_baseline_arrow_forward_ios_24"
             android:rotation="180"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:name=".activity_ajustes"
+            android:parentFragmetName=".activity.MainActivity"
 
-        <TextView
-            android:id="@+id/textView35"
-            android:layout_width="246dp"
-            android:layout_height="16dp"
-            android:layout_marginTop="128dp"
-            android:text="AI SÓ COLOCAR O RESTO MIAU MIAU"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/perfil"
+            app:civ_border_color="#FF000000"
+
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.563"
+            app:layout_constraintHorizontal_bias="0.19"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView34" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.18" />
 
         <Button
             android:id="@+id/btnConfigPerfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Button"
+            android:layout_width="200dp"
+            android:layout_height="58dp"
+            android:background="@drawable/configs_roxo"
+            android:text="Nome "
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.32"
+            app:layout_constraintStart_toEndOf="@+id/profile_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.19999999" />
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="187dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_btn_fundo_roxo"
+            android:gravity="center"
+            android:text="Configurações "
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView35" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_image"
+            app:layout_constraintVertical_bias="0.06999999" />
 
         <Button
             android:id="@+id/btnConfigTratamento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Button"
+            android:layout_width="254dp"
+            android:layout_height="58dp"
+            android:background="@drawable/bg_configs"
+            android:text="Tratamento "
+            android:textColor="#6247AA"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnConfigPerfil" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.47000003" />
 
         <Button
             android:id="@+id/btnConfigNotificacaos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="254dp"
+            android:layout_height="58dp"
             android:layout_marginTop="40dp"
-            android:text="Button"
+            android:background="@drawable/bg_configs"
+            android:text="Notificações"
+            android:textColor="#6247AA"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.507"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,10 +122,13 @@
 
         <Button
             android:id="@+id/btnConfigBackup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="254dp"
+            android:layout_height="58dp"
             android:layout_marginTop="40dp"
-            android:text="Button"
+            android:background="@drawable/bg_configs"
+            android:text="Backup"
+            android:textColor="#6247AA"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,10 +136,13 @@
 
         <Button
             android:id="@+id/btnConfigAjuda"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="254dp"
+            android:layout_height="58dp"
             android:layout_marginTop="40dp"
-            android:text="Button"
+            android:background="@drawable/bg_configs"
+            android:text="Ajuda"
+            android:textColor="#6247AA"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +168,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_configs"
+            android:background="@drawable/configs_roxo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -136,6 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="Button" />
+
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -127,4 +127,39 @@ public class AjustesActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK) {
+            Bitmap imagem = null;
+            try {
+                switch (requestCode) {
+                    case SELECAO_CAMERA:
+                    imagem= (Bitmap)data.getExtras().get("data");
+                    break;
+                    case SELECAO_GALERIA:
+                        Uri localImagemSelecionada = data.getData();
+                        imagem = MediaStore.Images.Media.getBitmap(getContentResolver(), localImagemSelecionada);
+                    break;
+                }
+                if(imagem != null) {
+                    imagem
+                }
+            }catch (Exception e){
+        }
+
+            }
+        }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        for (int permissaoResultado: grantResults) {
+            if (permissaoResultado == PackageManager.PERMISSION_DENIED){
+
+            }
+        }
+    }
 }
