@@ -91,7 +91,7 @@ public class ConfigPerfilFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_config_perfil, container, false);
         // permissao
-        Permissao.validarpermisoes(permissoesNecessarias, this, 1);
+        Permissao.validarpermisoes(permissoesNecessarias, getActivity(), 1);
         imageButtonCamera = view.findViewById(R.id.imageButtonCamera);
         imageButtonGaleria = view.findViewById(R.id.imageButtonGaleria);
 
