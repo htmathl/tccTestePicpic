@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private FirebaseAuth autenticacao;
 
-    private ImageButton fabButton;
+    private ImageButton fabButton, buttonPerfil;
     private OvershootInterpolator interpolator = new OvershootInterpolator();
     private boolean menuAberto = true;
 
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         graficoGlicemia = (LineChart) findViewById(R.id.grafico_glicemia);
 
         fabButton = findViewById(R.id.fab_button);
+        buttonPerfil = findViewById(R.id.btnPerfil);
         final ConstraintLayout c = findViewById(R.id.constrait);
 
 
@@ -68,6 +69,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
                 }
+            }
+        });
+
+        buttonPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AjustesActivity.class));
             }
         });
 
@@ -110,12 +118,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                         .replace(R.id.substituicao, relatorioFragment).commit();
                 txtOndaPrincipal.setText("Relatório");
-                return true;
-
-            case R.id.item_perfil:
-                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                        .replace(R.id.substituicao, perfilFragment).commit();
-                txtOndaPrincipal.setText("Perfil");
                 return true;
         }
 

@@ -103,9 +103,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
+                    android:background="@drawable/ic_agua"
                     android:checked="true"
-                    android:drawableBottom="@drawable/ic_agua"
                     android:textOff=""
                     android:textOn="" />
 
@@ -114,9 +113,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
+                    android:background="@drawable/ic_agua"
                     android:checked="false"
-                    android:drawableBottom="@drawable/ic_agua"
                     android:textOff=""
                     android:textOn="" />
 
@@ -125,8 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    android:drawableBottom="@drawable/ic_agua"
+                    android:background="@drawable/ic_agua"
                     android:textOff=""
                     android:textOn="" />
 
@@ -135,8 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    android:drawableBottom="@drawable/ic_agua"
+                    android:background="@drawable/ic_agua"
                     android:textOff=""
                     android:textOn="" />
 
@@ -145,8 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    android:drawableBottom="@drawable/ic_agua"
+                    android:background="@drawable/ic_agua"
                     android:textOff=""
                     android:textOn="" />
 
@@ -155,8 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    android:drawableBottom="@drawable/ic_agua"
+                    android:background="@drawable/ic_agua"
                     android:textOff=""
                     android:textOn="" />
 
@@ -165,8 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    android:drawableBottom="@drawable/ic_agua"
+                    android:background="@drawable/ic_agua"
                     android:textOff=""
                     android:textOn="" />
 
@@ -175,8 +168,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    android:drawableBottom="@drawable/ic_agua"
+                    android:background="@drawable/ic_agua"
                     android:textOff=""
                     android:textOn="" />
 

@@ -4,9 +4,9 @@
     <item>
         <shape android:shape="rectangle">
             <!-- cor do sólido -->
-            <solid android:color="#6247AA"/>
+            <solid android:color="#fff"/>
             <!-- arredondando a borda -->
-            <corners android:radius="30dp"/>
+            <corners android:topLeftRadius="30dp" android:bottomRightRadius="30dp"/>
             <!-- cor da borda e tamanho -->
             <stroke android:color="#6247AA" android:width="2dp"/>
             <size
