@@ -93,6 +93,13 @@ public class OverviewFragment extends Fragment {
 
                 if(copo){
                     copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo = false;
                 }
             }
@@ -101,89 +108,141 @@ public class OverviewFragment extends Fragment {
         copo2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                if(!copo) {
+                    copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo = !copo;
+                } else {
+                    copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo = !copo;
+                }
+
             }
         });
 
         copo3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                if(!copo) {
+                    copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo = !copo;
+                } else {
+                    copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo = !copo;
+                }
             }
         });
 
         copo4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                if(!copo) {
+                    copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo = !copo;
+                } else {
+                    copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo = !copo;
+                }
             }
         });
 
         copo5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                if(!copo) {
+                    copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo = !copo;
+                } else {
+                    copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo = !copo;
+                }
             }
         });
 
         copo6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                if(!copo) {
+                    copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo = !copo;
+                } else {
+                    copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo = !copo;
+                }
             }
         });
 
-        copo6.setOnClickListener(new View.OnClickListener() {
+        copo7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-            }
-        });
-
-        copo6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                if(!copo) {
+                    copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo = !copo;
+                } else {
+                    copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo = !copo;
+                }
             }
         });
 
         copo8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                if(!copo) {
+                    copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo = !copo;
+                } else {
+                    copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo =!copo;
+                }
             }
         });
 
