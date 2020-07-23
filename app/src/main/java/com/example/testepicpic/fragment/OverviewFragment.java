@@ -10,9 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+
 import com.example.testepicpic.R;
-import com.example.testepicpic.activity.SliderActivity;
-import com.example.testepicpic.config.ConfigFirebase;
+import com.example.testepicpic.activity.*;
+import com.example.testepicpic.config.*;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
@@ -22,8 +23,8 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class OverviewFragment extends Fragment {
 
-    private Button btnSairProv;
-
+    private Button btnSairProv, copo1, copo2, copo3, copo4, copo5, copo6, copo7, copo8;
+    private boolean copo = false;
     private FirebaseAuth autenticacao;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -73,6 +74,131 @@ public class OverviewFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_overview, container, false);
 
         btnSairProv = view.findViewById(R.id.btnExames);
+        copo1 = view.findViewById(R.id.copo1);
+        copo2 = view.findViewById(R.id.copo2);
+        copo3 = view.findViewById(R.id.copo3);
+        copo4 = view.findViewById(R.id.copo4);
+        copo5 = view.findViewById(R.id.copo5);
+        copo6 = view.findViewById(R.id.copo6);
+        copo7 = view.findViewById(R.id.copo7);
+        copo8 = view.findViewById(R.id.copo8);
+
+        copo1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (copo == false){
+                    copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                    copo = true;
+                }
+
+                if(copo){
+                    copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua));
+                    copo = false;
+                }
+            }
+        });
+
+        copo2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+            }
+        });
+
+        copo3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+            }
+        });
+
+        copo4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+            }
+        });
+
+        copo5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+            }
+        });
+
+        copo6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+            }
+        });
+
+        copo6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+            }
+        });
+
+        copo6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+            }
+        });
+
+        copo8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+                copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
+            }
+        });
+
+        btnSairProv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                autenticacao = ConfigFirebase.getFirebaseAutenticacao();
+                autenticacao.signOut();
+                startActivity(new Intent(getActivity(), SliderActivity.class));
+                getActivity().finish();
+
+            }
+        });
+
 
         btnSairProv.setOnClickListener(new View.OnClickListener() {
             @Override
