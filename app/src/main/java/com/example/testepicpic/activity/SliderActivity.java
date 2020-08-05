@@ -25,25 +25,25 @@ public class SliderActivity extends IntroActivity {
 
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.colorSlider)
-                .fragment(R.layout.intro_1)
+                .fragment(R.layout.fragment_intro_1)
                 .build()
         );
 
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.colorSlider)
-                .fragment(R.layout.intro_2)
+                .fragment(R.layout.fragment_intro_2)
                 .build()
         );
 
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.colorSlider)
-                .fragment(R.layout.intro_3)
+                .fragment(R.layout.fragment_intro_3)
                 .build()
         );
 
         addSlide(new FragmentSlide.Builder()
                 .background(R.color.colorSlider)
-                .fragment(R.layout.intro_4)
+                .fragment(R.layout.fragment_intro_4)
                 .canGoForward(false)
                 .build()
         );
