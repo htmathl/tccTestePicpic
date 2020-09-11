@@ -71,7 +71,8 @@
         android:layout_marginTop="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        android:textColorHint="#000">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtEmail3"
