@@ -70,4 +70,12 @@
         <item> Regular(ação rápida)</item>
         <item> Lispro, Aspart ou Glulisina (ação ultra rápida)</item>
     </string-array>
+
+    <string-array name="tipos_exercicio">
+        <item>Caminhada</item>
+        <item>Natação</item>
+        <item>Musculação</item>
+        <item>Funcional</item>
+    </string-array>
+
 </resources>

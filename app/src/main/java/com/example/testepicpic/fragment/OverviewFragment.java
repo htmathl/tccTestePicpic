@@ -86,12 +86,9 @@ public class OverviewFragment extends Fragment {
         copo1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (copo == false){
+                if(!copo) {
                     copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                    copo = true;
-                }
-
-                if(copo){
+                } else {
                     copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua));
@@ -100,8 +97,8 @@ public class OverviewFragment extends Fragment {
                     copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
-                    copo = false;
                 }
+                copo = !copo;
             }
         });
 
@@ -111,8 +108,7 @@ public class OverviewFragment extends Fragment {
                 if(!copo) {
                     copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                    copo = !copo;
-                } else {
+                }else {
                     copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua));
@@ -120,8 +116,8 @@ public class OverviewFragment extends Fragment {
                     copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
-                    copo = !copo;
                 }
+                copo = !copo;
 
             }
         });
@@ -133,7 +129,6 @@ public class OverviewFragment extends Fragment {
                     copo1.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                    copo = !copo;
                 } else {
                     copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua));
@@ -141,8 +136,8 @@ public class OverviewFragment extends Fragment {
                     copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
-                    copo = !copo;
                 }
+                copo = !copo;
             }
         });
 
@@ -154,15 +149,14 @@ public class OverviewFragment extends Fragment {
                     copo2.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                    copo = !copo;
                 } else {
                     copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
-                    copo = !copo;
                 }
+                copo = !copo;
             }
         });
 
@@ -175,14 +169,13 @@ public class OverviewFragment extends Fragment {
                     copo3.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                    copo = !copo;
                 } else {
                     copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
-                    copo = !copo;
                 }
+                copo = !copo;
             }
         });
 
@@ -196,13 +189,12 @@ public class OverviewFragment extends Fragment {
                     copo4.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                    copo = !copo;
                 } else {
                     copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
-                    copo = !copo;
                 }
+                copo = !copo;
             }
         });
 
@@ -217,12 +209,11 @@ public class OverviewFragment extends Fragment {
                     copo5.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                    copo = !copo;
                 } else {
                     copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua));
                     copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
-                    copo = !copo;
                 }
+                copo = !copo;
             }
         });
 
@@ -238,36 +229,20 @@ public class OverviewFragment extends Fragment {
                     copo6.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo7.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
                     copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua2));
-                    copo = !copo;
                 } else {
                     copo8.setBackground(getResources().getDrawable(R.drawable.ic_agua));
-                    copo =!copo;
                 }
+                copo = !copo;
             }
         });
 
         btnSairProv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 autenticacao = ConfigFirebase.getFirebaseAutenticacao();
                 autenticacao.signOut();
                 startActivity(new Intent(getActivity(), SliderActivity.class));
                 getActivity().finish();
-
-            }
-        });
-
-
-        btnSairProv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                autenticacao = ConfigFirebase.getFirebaseAutenticacao();
-                autenticacao.signOut();
-                startActivity(new Intent(getActivity(), SliderActivity.class));
-                getActivity().finish();
-
             }
         });
 

@@ -16,13 +16,6 @@
         android:roundIcon="@mipmap/ic_launcher_logo_branca_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.AjustesActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activity.SliderActivity"
             android:theme="@style/Theme.Intro" />
@@ -30,6 +23,7 @@
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.CadastroActivity" />
         <activity android:name=".activity.PrincipalActivity" />
+        <activity android:name=".activity.AjustesActivity"/>
         <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

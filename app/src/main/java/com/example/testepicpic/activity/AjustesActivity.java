@@ -37,8 +37,6 @@ public class AjustesActivity extends AppCompatActivity {
     private ConfigBackupFragment backupFragment = new ConfigBackupFragment();
     private ConfigAjudaFragment ajudaFragment = new ConfigAjudaFragment();
 
-
-
     private Button btnConfigPerfil, btnConfigTratamento, btnConfigNotificacaos, btnConfigBackup, btnConfigAjuda, sla;
     private ImageButton miaumiau;
     private ConstraintLayout constraintLayout;
