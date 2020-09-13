@@ -28,7 +28,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
     private RadioButton prediabetes, tipo1, tipo2, gestacional;
     private String tipoDiabetes;
 
-    private CadastroEmailFragment cadastroEmailFragment = new CadastroEmailFragment();
+    private CadastroInsulinaFragment cadastroInsulinaFragment = new CadastroInsulinaFragment();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -106,8 +106,8 @@ public class CadastroTipoDiabetesFragment extends Fragment {
                     FragmentManager manager = getActivity().getSupportFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
                     argsTipo.putString("tipoDiabetes", tipoDiabetes);
-                    cadastroEmailFragment.setArguments(argsTipo);
-                    transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
+                    cadastroInsulinaFragment.setArguments(argsTipo);
+                    transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
                     transaction.commit();
                 }
                 else if(tipo1.isChecked()){
@@ -116,8 +116,8 @@ public class CadastroTipoDiabetesFragment extends Fragment {
                     FragmentManager manager = getActivity().getSupportFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
                     argsTipo.putString("tipoDiabetes", tipoDiabetes);
-                    cadastroEmailFragment.setArguments(argsTipo);
-                    transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
+                    cadastroInsulinaFragment.setArguments(argsTipo);
+                    transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
                     transaction.commit();
 
                 }
@@ -127,8 +127,8 @@ public class CadastroTipoDiabetesFragment extends Fragment {
                     FragmentManager manager = getActivity().getSupportFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
                     argsTipo.putString("tipoDiabetes", tipoDiabetes);
-                    cadastroEmailFragment.setArguments(argsTipo);
-                    transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
+                    cadastroInsulinaFragment.setArguments(argsTipo);
+                    transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
                     transaction.commit();
 
                 }
@@ -138,8 +138,8 @@ public class CadastroTipoDiabetesFragment extends Fragment {
                     FragmentManager manager = getActivity().getSupportFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
                     argsTipo.putString("tipoDiabetes", tipoDiabetes);
-                    cadastroEmailFragment.setArguments(argsTipo);
-                    transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
+                    cadastroInsulinaFragment.setArguments(argsTipo);
+                    transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
                     transaction.commit();
 
                 } else {

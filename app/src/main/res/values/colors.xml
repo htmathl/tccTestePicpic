@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6247AA</color>
+    <color name="colorPrimary">#6F57B1</color>
     <color name="branco">#fff</color>
     <color name="corPrincipal">#6F57B1</color>
     <color name="corTextoCadastro">#FFFFFF</color>

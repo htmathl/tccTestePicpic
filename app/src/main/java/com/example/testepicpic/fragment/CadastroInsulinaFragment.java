@@ -7,6 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
 
@@ -16,6 +20,10 @@ import com.example.testepicpic.R;
  * create an instance of this fragment.
  */
 public class CadastroInsulinaFragment extends Fragment {
+
+    private RadioGroup radioGroup, radioGroup2;
+    private RadioButton rbUtiliza1, rbNUtiliza1, rbUtiliza2, rbNUtiliza2;
+    private Button btn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +69,29 @@ public class CadastroInsulinaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cadastro_insulina, container, false);
+        View view = inflater.inflate(R.layout.fragment_cadastro_insulina, container, false);
+
+        radioGroup = view.findViewById(R.id.rgInsulina);
+        radioGroup2 = view.findViewById(R.id.rgOutrasMedicacoes);
+
+        rbUtiliza1 = view.findViewById(R.id.rdbUtiliza1);
+        rbNUtiliza1 = view.findViewById(R.id.rdbNUtiliza1);
+        rbUtiliza2 = view.findViewById(R.id.rdbUtiliza2);
+        rbNUtiliza2 = view.findViewById(R.id.rdbNUtiliza2);
+
+        btn = view.findViewById(R.id.btn_login);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(rbNUtiliza1.isChecked()) {
+                    rbNUtiliza1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+                    Toast.makeText(getActivity(), "miau", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        return view;
     }
 }
