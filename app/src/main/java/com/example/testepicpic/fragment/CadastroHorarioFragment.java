@@ -88,6 +88,9 @@ public class CadastroHorarioFragment extends Fragment {
 
                     }
                 }, Hour, min,true);
+
+                timePickerDialog.show();
+
             }
         });
         return view;

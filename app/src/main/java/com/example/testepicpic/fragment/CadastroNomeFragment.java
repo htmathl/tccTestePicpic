@@ -127,6 +127,7 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
                                 transaction.replace(R.id.frameConteudoCad, cadastroTipoDiabetesFragment);
                                 transaction.addToBackStack(null);
                                 transaction.commit();
+
                             } else {
                                 Toast.makeText(getActivity(), "Prencha o campo altura", Toast.LENGTH_LONG).show();
                             }
