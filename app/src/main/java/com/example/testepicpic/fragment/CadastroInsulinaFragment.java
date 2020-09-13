@@ -34,6 +34,7 @@ public class CadastroInsulinaFragment extends Fragment {
     private String utilizaInsulina, utilizaMedicacoes;
 
     private CadastroLembretesFragment cadastroLembretesFragment = new CadastroLembretesFragment();
+    private CadastroOutrasMedicacoesFragment cadastroOutrasMedicacoesFragment = new CadastroOutrasMedicacoesFragment();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -118,8 +119,14 @@ public class CadastroInsulinaFragment extends Fragment {
                     if(rbUtiliza2.isChecked()) {
                         utilizaMedicacoes = "sim";
 
-
-
+                        FragmentManager manager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transaction = manager.beginTransaction();
+                        argsInsu.putString("pUtilizaInsulina", utilizaInsulina);
+                        argsInsu.putString("pUtilizaMedicacoes", utilizaMedicacoes);
+                        cadastroLembretesFragment.setArguments(argsInsu);
+                        transaction.replace(R.id.frameConteudoCad, cadastroOutrasMedicacoesFragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
 
                     } else if (rbNUtiliza2.isChecked()) {
                         utilizaMedicacoes = "não";
@@ -142,8 +149,14 @@ public class CadastroInsulinaFragment extends Fragment {
                     if(rbUtiliza2.isChecked()) {
                         utilizaMedicacoes = "sim";
 
-
-
+                        FragmentManager manager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transaction = manager.beginTransaction();
+                        argsInsu.putString("pUtilizaInsulina", utilizaInsulina);
+                        argsInsu.putString("pUtilizaMedicacoes", utilizaMedicacoes);
+                        cadastroLembretesFragment.setArguments(argsInsu);
+                        transaction.replace(R.id.frameConteudoCad, cadastroOutrasMedicacoesFragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
 
                     } else if (rbNUtiliza2.isChecked()) {
                         utilizaMedicacoes = "não";
