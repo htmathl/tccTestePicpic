@@ -115,8 +115,7 @@ public class CadastroEmailFragment extends Fragment {
                                 String altura = getArguments().getString("pAltura");
                                 String peso = getArguments().getString("pPeso");
                                 String genero = getArguments().getString("pGenero");
-
-                                String tipoDiabetes = getArguments().getString("tipoDiabetes");
+                                String tipoDiabetes = getArguments().getString("ptipoDiabetes");
 
                                 user.setNome(nome);
                                 user.setIdade(Integer.parseInt(idade));

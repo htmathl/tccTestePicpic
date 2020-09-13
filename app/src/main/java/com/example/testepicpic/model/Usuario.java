@@ -94,7 +94,7 @@ public class Usuario {
     public void setTipoDiabetes(String tipoDiabetes) {
         this.tipoDiabetes = tipoDiabetes;
     }
-/*
+
     public boolean isUtilizoInsulina() {
         return utilizoInsulina;
     }
@@ -111,6 +111,7 @@ public class Usuario {
         this.utilizoMedicacao = utilizoMedicacao;
     }
 
+    /*
     public String[] getMedicacao() {
         return medicacao;
     }

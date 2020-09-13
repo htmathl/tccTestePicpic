@@ -2,7 +2,11 @@ package com.example.testepicpic.fragment;
 
 import android.os.Bundle;
 
+import androidx.constraintlayout.solver.widgets.ConstraintTableLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +18,8 @@ import android.widget.Toast;
 
 import com.example.testepicpic.R;
 
+import static android.view.View.INVISIBLE;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CadastroInsulinaFragment#newInstance} factory method to
@@ -23,7 +29,11 @@ public class CadastroInsulinaFragment extends Fragment {
 
     private RadioGroup radioGroup, radioGroup2;
     private RadioButton rbUtiliza1, rbNUtiliza1, rbUtiliza2, rbNUtiliza2;
+    private ConstraintLayout clInsulina;
     private Button btn;
+    private String utilizaInsulina, utilizaMedicacoes;
+
+    private CadastroLembretesFragment cadastroLembretesFragment = new CadastroLembretesFragment();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -69,7 +79,7 @@ public class CadastroInsulinaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_cadastro_insulina, container, false);
+        final View view = inflater.inflate(R.layout.fragment_cadastro_insulina, container, false);
 
         radioGroup = view.findViewById(R.id.rgInsulina);
         radioGroup2 = view.findViewById(R.id.rgOutrasMedicacoes);
@@ -79,15 +89,79 @@ public class CadastroInsulinaFragment extends Fragment {
         rbUtiliza2 = view.findViewById(R.id.rdbUtiliza2);
         rbNUtiliza2 = view.findViewById(R.id.rdbNUtiliza2);
 
+        clInsulina = view.findViewById(R.id.clInsulina);
+
         btn = view.findViewById(R.id.btn_login);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(rbNUtiliza1.isChecked()) {
-                    rbNUtiliza1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
-                    Toast.makeText(getActivity(), "miau", Toast.LENGTH_LONG).show();
+                String pNome = getArguments().getString("pNome");
+                String pIdade = getArguments().getString("pIdade");
+                String pAltura = getArguments().getString("pAltura");
+                String pPeso = getArguments().getString("pPeso");
+                String pGenero = getArguments().getString("pGenero");
+                String pTipoDiabetes = getArguments().getString("tipoDiabetes");
+
+                Bundle argsInsu = new Bundle();
+                argsInsu.putString("pNome", pNome);
+                argsInsu.putString("pIdade", pIdade);
+                argsInsu.putString("pAltura", pAltura);
+                argsInsu.putString("pPeso", pPeso);
+                argsInsu.putString("pGenero", pGenero);
+                argsInsu.putString("pTipoDiabetes", pTipoDiabetes);
+
+                if(rbUtiliza1.isChecked()) {
+                    utilizaInsulina = "sim";
+
+                    if(rbUtiliza2.isChecked()) {
+                        utilizaMedicacoes = "sim";
+
+
+
+
+                    } else if (rbNUtiliza2.isChecked()) {
+                        utilizaMedicacoes = "não";
+
+                        FragmentManager manager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transaction = manager.beginTransaction();
+                        argsInsu.putString("pUtilizaInsulina", utilizaInsulina);
+                        argsInsu.putString("pUtilizaMedicacoes", utilizaMedicacoes);
+                        cadastroLembretesFragment.setArguments(argsInsu);
+                        transaction.replace(R.id.frameConteudoCad, cadastroLembretesFragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                    } else {
+                        Toast.makeText(getActivity(), "Selecione uma opção para uso de medicação", Toast.LENGTH_LONG).show();
+                    }
+
+                } else if(rbNUtiliza1.isChecked()) {
+                    utilizaInsulina = "não";
+
+                    if(rbUtiliza2.isChecked()) {
+                        utilizaMedicacoes = "sim";
+
+
+
+
+                    } else if (rbNUtiliza2.isChecked()) {
+                        utilizaMedicacoes = "não";
+
+                        FragmentManager manager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transaction = manager.beginTransaction();
+                        argsInsu.putString("pUtilizaInsulina", utilizaInsulina);
+                        argsInsu.putString("pUtilizaMedicacoes", utilizaMedicacoes);
+                        cadastroLembretesFragment.setArguments(argsInsu);
+                        transaction.replace(R.id.frameConteudoCad, cadastroLembretesFragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                    } else {
+                        Toast.makeText(getActivity(), "Selecione uma opção para uso de medicação", Toast.LENGTH_LONG).show();
+                    }
+
+                } else {
+                    Toast.makeText(getActivity(), "Selecione uma opção para uso de Insulina", Toast.LENGTH_LONG).show();
                 }
             }
         });

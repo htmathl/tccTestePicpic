@@ -3,6 +3,7 @@ package com.example.testepicpic.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.example.testepicpic.R;
 import com.example.testepicpic.config.ConfigFirebase;
@@ -16,7 +17,7 @@ public class SliderActivity extends IntroActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setFullscreen(true);
+        setFullscreen(false);
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_slider);
 

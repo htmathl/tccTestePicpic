@@ -2,6 +2,7 @@ package com.example.testepicpic.fragment;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -70,6 +71,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -108,6 +110,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
                     argsTipo.putString("tipoDiabetes", tipoDiabetes);
                     cadastroInsulinaFragment.setArguments(argsTipo);
                     transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
+                    transaction.addToBackStack(null);
                     transaction.commit();
                 }
                 else if(tipo1.isChecked()){
@@ -118,6 +121,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
                     argsTipo.putString("tipoDiabetes", tipoDiabetes);
                     cadastroInsulinaFragment.setArguments(argsTipo);
                     transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
+                    transaction.addToBackStack(null);
                     transaction.commit();
 
                 }
@@ -129,6 +133,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
                     argsTipo.putString("tipoDiabetes", tipoDiabetes);
                     cadastroInsulinaFragment.setArguments(argsTipo);
                     transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
+                    transaction.addToBackStack(null);
                     transaction.commit();
 
                 }
@@ -140,6 +145,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
                     argsTipo.putString("tipoDiabetes", tipoDiabetes);
                     cadastroInsulinaFragment.setArguments(argsTipo);
                     transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
+                    transaction.addToBackStack(null);
                     transaction.commit();
 
                 } else {

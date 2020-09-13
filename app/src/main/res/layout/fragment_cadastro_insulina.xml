@@ -21,7 +21,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView16"
             app:layout_constraintVertical_bias="0.0" />
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+            android:id="@+id/clInsulina"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
@@ -87,7 +87,7 @@
             android:layout_marginTop="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+            app:layout_constraintTop_toBottomOf="@+id/clInsulina">
 
             <LinearLayout
                 android:id="@+id/linear2"
