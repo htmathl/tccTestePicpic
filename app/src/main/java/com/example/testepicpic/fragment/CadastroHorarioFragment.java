@@ -79,14 +79,14 @@ public class CadastroHorarioFragment extends Fragment {
         btnAddHoras3 = view.findViewById(R.id.btnAddHora3);
         btnAddHoras4 = view.findViewById(R.id.btnAddHora4);
 
+        Calendar c = Calendar.getInstance();
+        Hour = c.get(Calendar.HOUR_OF_DAY);
+        min = c.get(Calendar.MINUTE);
+
         btnAddHoras.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-
-                Calendar c = Calendar.getInstance();
-                Hour = c.get(Calendar.HOUR_OF_DAY);
-                min = c.get(Calendar.MINUTE);
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
@@ -103,9 +103,6 @@ public class CadastroHorarioFragment extends Fragment {
         btnAddHoras1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                Hour = c.get(Calendar.HOUR_OF_DAY);
-                min = c.get(Calendar.MINUTE);
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
@@ -122,9 +119,6 @@ public class CadastroHorarioFragment extends Fragment {
         btnAddHoras2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                Hour = c.get(Calendar.HOUR_OF_DAY);
-                min = c.get(Calendar.MINUTE);
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
@@ -141,9 +135,6 @@ public class CadastroHorarioFragment extends Fragment {
         btnAddHoras3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                Hour = c.get(Calendar.HOUR_OF_DAY);
-                min = c.get(Calendar.MINUTE);
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
@@ -160,9 +151,6 @@ public class CadastroHorarioFragment extends Fragment {
         btnAddHoras4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                Hour = c.get(Calendar.HOUR_OF_DAY);
-                min = c.get(Calendar.MINUTE);
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
