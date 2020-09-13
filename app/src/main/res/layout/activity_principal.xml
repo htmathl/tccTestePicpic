@@ -91,7 +91,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:width="168dp"
-        android:background="@drawable/configs_roxo"
+        android:background="@drawable/bg_btn_fundo_roxo"
         android:ellipsize="start"
         android:fontFamily="@font/roboto"
         android:onClick="Cadastro"

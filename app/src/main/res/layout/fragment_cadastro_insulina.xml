@@ -42,6 +42,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <RadioGroup
+                    android:id="@+id/rgInsulina"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -68,9 +69,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="200dp"
                 android:background="@color/corPrincipal"
                 android:text="  Insulina  "
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -100,12 +102,13 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <RadioGroup
+                    android:id="@+id/rgOutrasMedicacoes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/rbdUtiliza2"
+                        android:id="@+id/rdbUtiliza2"
                         style="@style/rdbInsulina"
                         android:layout_marginRight="10dp"
                         android:text="Utilizo" />
@@ -126,9 +129,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="127dp"
                 android:background="@color/corPrincipal"
                 android:text="  Outras Medicações  "
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
