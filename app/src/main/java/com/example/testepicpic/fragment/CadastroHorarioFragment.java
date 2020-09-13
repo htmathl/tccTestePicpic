@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.example.testepicpic.R;
@@ -20,7 +21,8 @@ import java.util.Calendar;
  * create an instance of this fragment.
  */
 public class CadastroHorarioFragment extends Fragment {
-    ImageButton btnAddHoras;
+    ImageButton btnAddHoras, btnAddHoras1, btnAddHoras2, btnAddHoras3, btnAddHoras4;
+    TextView txtGlicemia2, txtInsulina2, txtAgua2, txtMedicamento2;
     int Hour, min;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -72,6 +74,10 @@ public class CadastroHorarioFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cadastro_horario, container, false);
         ;
         btnAddHoras = view.findViewById(R.id.btnAddHora);
+        btnAddHoras1 = view.findViewById(R.id.btnAddHora1);
+        btnAddHoras2 = view.findViewById(R.id.btnAddHora2);
+        btnAddHoras3 = view.findViewById(R.id.btnAddHora3);
+        btnAddHoras4 = view.findViewById(R.id.btnAddHora4);
 
         btnAddHoras.setOnClickListener(new View.OnClickListener(){
 
@@ -91,6 +97,82 @@ public class CadastroHorarioFragment extends Fragment {
 
                 timePickerDialog.show();
 
+            }
+        });
+
+        btnAddHoras1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar c = Calendar.getInstance();
+                Hour = c.get(Calendar.HOUR_OF_DAY);
+                min = c.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        txtGlicemia2 = view.findViewById(R.id.txtGlicemia2);
+                        txtGlicemia2.setText(hourOfDay + ":"+minute);
+                    }
+                }, Hour, min,true);
+
+                timePickerDialog.show();
+            }
+        });
+
+        btnAddHoras2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar c = Calendar.getInstance();
+                Hour = c.get(Calendar.HOUR_OF_DAY);
+                min = c.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        txtInsulina2 = view.findViewById(R.id.txtInsulina2);
+                        txtInsulina2.setText(hourOfDay + ":"+minute);
+                    }
+                }, Hour, min,true);
+
+                timePickerDialog.show();
+            }
+        });
+
+        btnAddHoras3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar c = Calendar.getInstance();
+                Hour = c.get(Calendar.HOUR_OF_DAY);
+                min = c.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        txtAgua2 = view.findViewById(R.id.txtAgua2);
+                        txtAgua2.setText(hourOfDay + ":"+minute);
+                    }
+                }, Hour, min,true);
+
+                timePickerDialog.show();
+            }
+        });
+
+        btnAddHoras4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar c = Calendar.getInstance();
+                Hour = c.get(Calendar.HOUR_OF_DAY);
+                min = c.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        txtMedicamento2 = view.findViewById(R.id.txtMedicamento2);
+                        txtMedicamento2.setText(hourOfDay + ":"+minute);
+                    }
+                }, Hour, min,true);
+
+                timePickerDialog.show();
             }
         });
         return view;

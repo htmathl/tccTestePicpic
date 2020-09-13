@@ -44,9 +44,138 @@
                     android:layout_width="wrap_content"
                     android:fontFamily="@font/roboto_bold"
                     android:text="Lembretes"
+                    android:gravity="center"
                     android:textColor="@color/corPrincipal"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/linha_roxa3"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/txtGlicemia"
+                    android:fontFamily="@font/roboto"
+                    android:text="Horário da glicemia: "
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtGlicemia2"
+                    android:fontFamily="@font/roboto"
+                    android:paddingLeft="10dp"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnAddHora1"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="#fff"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/add" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:background="@drawable/linha_roxa3">
+
+                <TextView
+                    android:id="@+id/txtInsulina"
+                    android:text="Horário da insulina: "
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/txtInsulina2"
+                    android:text=""
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/btnAddHora2"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="#fff"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/add" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:background="@drawable/linha_roxa3">
+
+                <TextView
+                    android:id="@+id/txtAgua"
+                    android:text="Horário para beber água: "
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/txtAgua2"
+                    android:text=""
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/btnAddHora3"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="#fff"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/add" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:background="@drawable/linha_roxa3">
+
+                <TextView
+                    android:id="@+id/txtMedicamento"
+                    android:text="Horário dos remédios:  "
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/txtMedicamento2"
+                    android:text=""
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"
+                    android:textSize="16sp"/>
+
+                <ImageButton
+                    android:id="@+id/btnAddHora4"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="#fff"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/add" />
             </TableRow>
 
             <TableRow
@@ -57,7 +186,7 @@
 
                 <ImageButton
                     android:id="@+id/btnAddHora"
-                    android:layout_width="80dp"
+                    android:layout_width="153dp"
                     android:layout_height="wrap_content"
                     android:background="#fff"
                     android:src="@drawable/add" />
