@@ -9,6 +9,55 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <CheckBox
+                    android:id="@+id/cbGlicemia"
+                    style="@style/rdbDiabetes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lembrete para medir a glicemia" />
+
+                <CheckBox
+                    android:id="@+id/cbInsulina"
+                    style="@style/rdbDiabetes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lembretes para aplicar insulina" />
+
+                <CheckBox
+                    android:id="@+id/cbAgua"
+                    style="@style/rdbDiabetes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lembretes para beber água" />
+
+                <CheckBox
+                    android:id="@+id/cbRemedios"
+                    style="@style/rdbDiabetes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lembretes para remédios" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <TextView
             android:id="@+id/textView2"
             style="@style/TextoCadastro"
@@ -22,55 +71,15 @@
 
 
         <Button
-            android:id="@+id/button11"
-            style="@style/edtCadastro"
-            android:layout_marginTop="16dp"
-            android:text="Lembrete para medir glicemia"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-        <Button
-            android:id="@+id/button12"
-            style="@style/edtCadastro"
-            android:layout_marginTop="16dp"
-            android:text="Lembrete para aplicar insulina"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button11" />
-
-        <Button
-            android:id="@+id/button2"
-            style="@style/edtCadastro"
-            android:layout_marginTop="16dp"
-            android:text="Lembrete para beber água"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button12" />
-
-        <Button
-            android:id="@+id/btnPronto4"
-            style="@style/edtCadastro"
-            android:layout_marginTop="16dp"
-            android:hint="Lembrete para remédios"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
-
-        <Button
             android:id="@+id/btn_login"
             style="@style/BtnProntoCadastro"
+            android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnPronto4" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
