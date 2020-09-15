@@ -107,7 +107,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
 
                     FragmentManager manager = getActivity().getSupportFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
-                    argsTipo.putString("tipoDiabetes", tipoDiabetes);
+                    argsTipo.putString("ptipoDiabetes", tipoDiabetes);
                     cadastroInsulinaFragment.setArguments(argsTipo);
                     transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
                     transaction.addToBackStack(null);
@@ -118,7 +118,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
 
                     FragmentManager manager = getActivity().getSupportFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
-                    argsTipo.putString("tipoDiabetes", tipoDiabetes);
+                    argsTipo.putString("ptipoDiabetes", tipoDiabetes);
                     cadastroInsulinaFragment.setArguments(argsTipo);
                     transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
                     transaction.addToBackStack(null);
@@ -130,7 +130,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
 
                     FragmentManager manager = getActivity().getSupportFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
-                    argsTipo.putString("tipoDiabetes", tipoDiabetes);
+                    argsTipo.putString("ptipoDiabetes", tipoDiabetes);
                     cadastroInsulinaFragment.setArguments(argsTipo);
                     transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
                     transaction.addToBackStack(null);
@@ -142,7 +142,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
 
                     FragmentManager manager = getActivity().getSupportFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
-                    argsTipo.putString("tipoDiabetes", tipoDiabetes);
+                    argsTipo.putString("ptipoDiabetes", tipoDiabetes);
                     cadastroInsulinaFragment.setArguments(argsTipo);
                     transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
                     transaction.addToBackStack(null);

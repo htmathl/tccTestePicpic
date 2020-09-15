@@ -116,6 +116,10 @@ public class CadastroEmailFragment extends Fragment {
                                 String peso = getArguments().getString("pPeso");
                                 String genero = getArguments().getString("pGenero");
                                 String tipoDiabetes = getArguments().getString("ptipoDiabetes");
+                                boolean utilizaInsulina = getArguments().getBoolean("pUtilizaInsulina");
+                                boolean utilizaMedicacoes = getArguments().getBoolean("pUtilizaMedicacoes");
+                                //String[] medicacoes = getArguments().getStringArray("pMedicacoes");
+                                boolean[] lembretes = getArguments().getBooleanArray("pLembretes");
 
                                 user.setNome(nome);
                                 user.setIdade(Integer.parseInt(idade));
@@ -123,6 +127,10 @@ public class CadastroEmailFragment extends Fragment {
                                 user.setPeso(Double.parseDouble(peso));
                                 user.setGenero(genero);
                                 user.setTipoDiabetes(tipoDiabetes);
+                                user.setUtilizoInsulina(utilizaInsulina);
+                                user.setUtilizoMedicacao(utilizaMedicacoes);
+                                //user.setMedicacao(medicacoes);
+                                user.setLembretes(lembretes);
                                 user.setEmail(textoEmail);
                                 user.setSenha(textoSenha);
 

@@ -16,6 +16,7 @@ import com.example.testepicpic.R;
  * create an instance of this fragment.
  */
 public class CadastroOutrasMedicacoesFragment extends Fragment {
+    private CadastroLembretesFragment cadastroLembretesFragment = new CadastroLembretesFragment();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,7 +62,9 @@ public class CadastroOutrasMedicacoesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_cadastro_outras_medicacoes, container, false);
+        final View view = inflater.inflate(R.layout.fragment_cadastro_outras_medicacoes, container, false);
+
+
 
 
 
