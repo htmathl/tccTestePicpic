@@ -27,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.database.DatabaseReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -119,7 +120,7 @@ public class CadastroEmailFragment extends Fragment {
                                 boolean utilizaInsulina = getArguments().getBoolean("pUtilizaInsulina");
                                 boolean utilizaMedicacoes = getArguments().getBoolean("pUtilizaMedicacoes");
                                 //String[] medicacoes = getArguments().getStringArray("pMedicacoes");
-                                boolean[] lembretes = getArguments().getBooleanArray("pLembretes");
+
 
                                 user.setNome(nome);
                                 user.setIdade(Integer.parseInt(idade));
@@ -130,7 +131,7 @@ public class CadastroEmailFragment extends Fragment {
                                 user.setUtilizoInsulina(utilizaInsulina);
                                 user.setUtilizoMedicacao(utilizaMedicacoes);
                                 //user.setMedicacao(medicacoes);
-                                user.setLembretes(lembretes);
+                                //user.setLembretes(lembretes);
                                 user.setEmail(textoEmail);
                                 user.setSenha(textoSenha);
 
@@ -173,6 +174,8 @@ public class CadastroEmailFragment extends Fragment {
                     user.setIdUser(idUser);
                     user.salvar();
 
+                    salvarLembretesMedicacoes();
+
                     getActivity().finish();
                 } else {
 
@@ -195,5 +198,65 @@ public class CadastroEmailFragment extends Fragment {
                 }
             }
         });
+    }
+    public void salvarLembretesMedicacoes() {
+
+        assert getArguments() != null;
+        boolean[] lembretes = getArguments().getBooleanArray("pLembretes");
+        boolean utilizaMedicacoes = getArguments().getBoolean("pUtilizaMedicacoes");
+        DatabaseReference firebase = ConfigFirebase.getFirebase();
+
+        //salvar lembretes e medicacoes
+
+        if (lembretes == null) {
+
+            firebase.child("lembretes")
+                    .child(user.getIdUser())
+                    .setValue("miau");
+
+        } else {
+
+            for(int i = 0; i < lembretes.length; i++) {
+                switch (i) {
+                    case 0:
+                        firebase.child("users")
+                                .child(user.getIdUser())
+                                .child("lembretes")
+                                .child("Glicemia")
+                                .setValue(lembretes[i]);
+                        break;
+                    case 1:
+                        firebase.child("users")
+                                .child(user.getIdUser())
+                                .child("lembretes")
+                                .child("Insulina")
+                                .setValue(lembretes[i]);
+                        break;
+                    case 2:
+                        firebase.child("users")
+                                .child(user.getIdUser())
+                                .child("lembretes")
+                                .child("Água")
+                                .setValue(lembretes[i]);
+                        break;
+                    case 3:
+                        if(utilizaMedicacoes)
+                            firebase.child("users")
+                                    .child(user.getIdUser())
+                                    .child("lembretes")
+                                    .child("Remédios")
+                                    .setValue(lembretes[i]);
+                        else
+                            firebase.child("users")
+                                    .child(user.getIdUser())
+                                    .child("lembretes")
+                                    .child("Remédios")
+                                    .setValue(false);
+                        break;
+                }
+
+            }
+        }
+
     }
 }

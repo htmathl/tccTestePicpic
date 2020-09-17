@@ -38,7 +38,6 @@ public class CadastroInsulinaFragment extends Fragment {
     private String[] medicacoes;
 
     private CadastroLembretesFragment cadastroLembretesFragment = new CadastroLembretesFragment();
-    private CadastroOutrasMedicacoesFragment cadastroOutrasMedicacoesFragment = new CadastroOutrasMedicacoesFragment();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -130,8 +129,8 @@ public class CadastroInsulinaFragment extends Fragment {
                         FragmentTransaction transaction = manager.beginTransaction();
                         argsInsu.putBoolean("pUtilizaInsulina", utilizaInsulina);
                         argsInsu.putBoolean("pUtilizaMedicacoes", utilizaMedicacoes);
-                        cadastroOutrasMedicacoesFragment.setArguments(argsInsu);
-                        transaction.replace(R.id.frameConteudoCad, cadastroOutrasMedicacoesFragment);
+                        cadastroLembretesFragment.setArguments(argsInsu);
+                        transaction.replace(R.id.frameConteudoCad, cadastroLembretesFragment);
                         transaction.addToBackStack(null);
                         transaction.commit();
 
@@ -163,8 +162,8 @@ public class CadastroInsulinaFragment extends Fragment {
                         FragmentTransaction transaction = manager.beginTransaction();
                         argsInsu.putBoolean("pUtilizaInsulina", utilizaInsulina);
                         argsInsu.putBoolean("pUtilizaMedicacoes", utilizaMedicacoes);
-                        cadastroOutrasMedicacoesFragment.setArguments(argsInsu);
-                        transaction.replace(R.id.frameConteudoCad, cadastroOutrasMedicacoesFragment);
+                        cadastroLembretesFragment.setArguments(argsInsu);
+                        transaction.replace(R.id.frameConteudoCad, cadastroLembretesFragment);
                         transaction.addToBackStack(null);
                         transaction.commit();
 
