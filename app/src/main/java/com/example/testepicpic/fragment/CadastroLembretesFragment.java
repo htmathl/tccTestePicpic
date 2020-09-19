@@ -11,10 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,17 +77,32 @@ public class CadastroLembretesFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_cadastro_lembretes, container, false);
 
+        final boolean pUtilizaMedicacoes = getArguments().getBoolean("pUtilizaMedicacoes");
+
         btnLogin = view.findViewById(R.id.btn_login);
+
         cbGlicemia = view.findViewById(R.id.cbGlicemia);
         cbInsulina = view.findViewById(R.id.cbInsulina);
         cbAgua = view.findViewById(R.id.cbAgua);
         cbRemedios = view.findViewById(R.id.cbRemedios);
 
-        final boolean[] plembretes = {cbGlicemia.isChecked(), cbInsulina.isChecked(), cbAgua.isChecked(), cbRemedios.isChecked()};
+        if(!pUtilizaMedicacoes) {
+            cbRemedios.setVisibility(View.INVISIBLE);
+        }
+
+        final CheckBox[] lembretes = {cbGlicemia, cbInsulina, cbAgua, cbRemedios};
+
+        final boolean[] plembretes = new boolean[4];
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                for(int i = 0; i < lembretes.length; i++){
+                    if(lembretes[i].isChecked()) {
+                        plembretes[i] = true;
+                    }
+                }
 
                 assert getArguments() != null;
                 String pNome = getArguments().getString("pNome");
@@ -95,7 +112,6 @@ public class CadastroLembretesFragment extends Fragment {
                 String pGenero = getArguments().getString("pGenero");
                 String pTipoDiabetes = getArguments().getString("ptipoDiabetes");
                 boolean pUtilizaInsulina = getArguments().getBoolean("pUtilizaInsulina");
-                boolean pUtilizaMedicacoes = getArguments().getBoolean("pUtilizaMedicacoes");
                 String[] pMedicacoes = getArguments().getStringArray("pMedicacoes");
 
                 Bundle argsLembre = new Bundle();

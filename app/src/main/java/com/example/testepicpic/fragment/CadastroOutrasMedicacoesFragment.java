@@ -3,10 +3,13 @@ package com.example.testepicpic.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.testepicpic.R;
 
@@ -16,7 +19,10 @@ import com.example.testepicpic.R;
  * create an instance of this fragment.
  */
 public class CadastroOutrasMedicacoesFragment extends Fragment {
+
     private CadastroLembretesFragment cadastroLembretesFragment = new CadastroLembretesFragment();
+
+    private Button btnProx;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,8 +69,6 @@ public class CadastroOutrasMedicacoesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_cadastro_outras_medicacoes, container, false);
-
-
 
 
 

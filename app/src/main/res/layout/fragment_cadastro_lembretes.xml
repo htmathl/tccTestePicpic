@@ -31,6 +31,7 @@
                     style="@style/rdbDiabetes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
                     android:text="Lembrete para medir a glicemia" />
 
                 <CheckBox
@@ -38,6 +39,7 @@
                     style="@style/rdbDiabetes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
                     android:text="Lembretes para aplicar insulina" />
 
                 <CheckBox
@@ -45,6 +47,7 @@
                     style="@style/rdbDiabetes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
                     android:text="Lembretes para beber água" />
 
                 <CheckBox
@@ -52,6 +55,7 @@
                     style="@style/rdbDiabetes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
                     android:text="Lembretes para remédios" />
 
             </LinearLayout>
