@@ -31,70 +31,17 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    private TextInputEditText email;
-    private TextInputEditText senha;
-    private TextInputEditText confSenha;
-    private Button btnPronto2;
-
-    FirebaseAuth autenticacao;
-
-    private Usuario user = new Usuario();
-
     private CadastroNomeFragment cadastroNomeFragment = new CadastroNomeFragment();
 
-    public String pNome = cadastroNomeFragment.pNome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        email = findViewById(R.id.edtEmail);
-        senha = findViewById(R.id.edtSenha);
-        confSenha = findViewById(R.id.edtConfirmS);
-        btnPronto2 = findViewById(R.id.btnCadastrar);
-
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.frameConteudoCad, cadastroNomeFragment);
         transaction.commit();
-
-
-        /*btnPronto2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String textoEmail = email.getText().toString();
-                String textoSenha = senha.getText().toString();
-                String textoConfSenha = confSenha.getText().toString();
-
-                if(!textoEmail.isEmpty()) {
-
-                    if(!textoSenha.isEmpty()) {
-
-                        if(!textoConfSenha.isEmpty()) {
-
-                            if(textoSenha.equals(textoConfSenha)) {
-                                user.setEmail(textoEmail);
-                                user.setSenha(textoSenha);
-
-                                cadastrar();
-                            } else  {
-                                Toast.makeText(CadastroActivity.this, "As senhas não estão iguais", Toast.LENGTH_SHORT).show();
-                            }
-
-                        } else {
-                            Toast.makeText(CadastroActivity.this, "Confirme sua senha não poder estar vazio", Toast.LENGTH_SHORT).show();
-                        }
-
-                    } else {
-                        Toast.makeText(CadastroActivity.this, "Senha não pode estar vazio", Toast.LENGTH_SHORT).show();
-                    }
-
-                } else {
-                    Toast.makeText(CadastroActivity.this, "Email não pode estar vazio", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });*/
 
     }
 
@@ -108,49 +55,4 @@ public class CadastroActivity extends AppCompatActivity {
         }
     }
 
-    public String getpNome() {
-        return pNome;
-    }
-
-    /* lembrar de inserir mais tarde o ultimo botão "pronto" das telas de cadastro, para mão haver conlito de criação de conta */
-
-    public void cadastrar() {
-        autenticacao = ConfigFirebase.getFirebaseAutenticacao();
-        autenticacao.createUserWithEmailAndPassword(
-                user.getEmail(), user.getSenha()
-        ).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
-                    Toast.makeText(CadastroActivity.this, "Bem vindo,  " + user.getEmail(), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(CadastroActivity.this, MainActivity.class));
-                    LocalBroadcastManager.getInstance(CadastroActivity.this).sendBroadcast(new Intent("fecharTelaPrincipal"));
-
-                    String idUser = Base64Custom.codificarBase64(user.getEmail());
-                    user.setIdUser(idUser);
-                    user.salvar();
-
-                    finish();
-                } else {
-
-                String excessao = "";
-
-                    try {
-                        throw task.getException();
-                    } catch (FirebaseAuthWeakPasswordException e) {
-                        excessao = "Digite uma senha mais forte";
-                    } catch (FirebaseAuthInvalidCredentialsException e) {
-                        excessao = "Digite um email válido";
-                    } catch (FirebaseAuthUserCollisionException e) {
-                        excessao = "Esta cinta já foi cadstrada";
-                    } catch (Exception e) {
-                        excessao = "Erro ao cadastrar: " + e.getMessage();
-                        e.printStackTrace();
-                    }
-
-                    Toast.makeText(CadastroActivity.this, excessao, Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
 }

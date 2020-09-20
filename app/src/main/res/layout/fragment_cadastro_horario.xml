@@ -41,13 +41,32 @@
 
                 <TextView
                     android:id="@+id/txtSelecione"
-                    android:layout_width="wrap_content"
+                    android:layout_width="142dp"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Lembretes"
                     android:gravity="center"
+                    android:text="Lembretes"
                     android:textColor="@color/corPrincipal"
                     android:textSize="16sp" />
 
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|top">
+
+                <Spinner
+                    android:id="@+id/spLembretes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edt_cadastro_pqn"
+                    android:gravity="center"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/textInputLayout2"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
             </TableRow>
 
             <TableRow
@@ -68,7 +87,6 @@
                     android:id="@+id/txtGlicemia2"
                     android:fontFamily="@font/roboto"
                     android:paddingLeft="10dp"
-                    android:text=""
                     android:textColor="#000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
