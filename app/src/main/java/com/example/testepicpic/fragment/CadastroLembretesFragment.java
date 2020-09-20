@@ -29,7 +29,7 @@ public class CadastroLembretesFragment extends Fragment {
 
     private Button btnLogin;
 
-    private CadastroEmailFragment cadastroEmailFragment = new CadastroEmailFragment();
+    private CadastroHorarioFragment cadastroHorarioFragment = new CadastroHorarioFragment();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -128,8 +128,8 @@ public class CadastroLembretesFragment extends Fragment {
 
                 FragmentManager manager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
-                cadastroEmailFragment.setArguments(argsLembre);
-                transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
+                cadastroHorarioFragment.setArguments(argsLembre);
+                transaction.replace(R.id.frameConteudoCad, cadastroHorarioFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
 
