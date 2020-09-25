@@ -86,6 +86,7 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genero.setAdapter(adapter);
         genero.setOnItemSelectedListener(this);
+        
 
         nome = view.findViewById(R.id.edtNome);
         idade = view.findViewById(R.id.edtIdade);
@@ -108,25 +109,26 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
                     if(!textoIdade.isEmpty()) {
                         if(!textoPeso.isEmpty()) {
                             if(!textoAltura.isEmpty()) {
+                                    pNome = textoNome;
+                                    pIdade = textoIdade;
+                                    pAltura = textoAltura;
+                                    pPeso = textoPeso;
+                                    pGenero = textoGenero;
 
-                                pNome = textoNome;
-                                pIdade = textoIdade;
-                                pAltura = textoAltura;
-                                pPeso = textoPeso;
-                                pGenero = textoGenero;
-
-                                FragmentManager manager = getActivity().getSupportFragmentManager();
-                                FragmentTransaction transaction = manager.beginTransaction();
-                                Bundle args = new Bundle();
-                                args.putString("pNome", pNome);
-                                args.putString("pIdade", pIdade);
-                                args.putString("pAltura", pAltura);
-                                args.putString("pPeso", pPeso);
-                                args.putString("pGenero", pGenero);
-                                cadastroTipoDiabetesFragment.setArguments(args);
-                                transaction.replace(R.id.frameConteudoCad, cadastroTipoDiabetesFragment);
-                                transaction.addToBackStack(null);
-                                transaction.commit();
+                                    FragmentManager manager = getActivity().getSupportFragmentManager();
+                                    FragmentTransaction transaction = manager.beginTransaction();
+                                    Bundle args = new Bundle();
+                                    args.putString("pNome", pNome);
+                                    args.putString("pIdade", pIdade);
+                                    args.putString("pAltura", pAltura);
+                                    args.putString("pPeso", pPeso);
+                                    args.putString("pGenero", pGenero);
+                                    cadastroTipoDiabetesFragment.setArguments(args);
+                                    transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
+                                    transaction.replace(R.id.frameConteudoCad, cadastroTipoDiabetesFragment);
+                                    // te ajudei a apagar :)))) ah por isso foi mó rapido do nada deu um dash o bagulhoklajkijdsasdjao posso add nas outras telas? pd ok bye bye chuac
+                                    transaction.addToBackStack(null);
+                                    transaction.commit();
 
                             } else {
                                 Toast.makeText(getActivity(), "Prencha o campo altura", Toast.LENGTH_LONG).show();
