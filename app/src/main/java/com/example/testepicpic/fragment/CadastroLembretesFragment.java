@@ -129,6 +129,7 @@ public class CadastroLembretesFragment extends Fragment {
                 FragmentManager manager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 cadastroHorarioFragment.setArguments(argsLembre);
+                transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
                 transaction.replace(R.id.frameConteudoCad, cadastroHorarioFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();

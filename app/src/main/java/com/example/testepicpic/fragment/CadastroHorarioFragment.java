@@ -153,6 +153,7 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
             FragmentManager manager = getActivity().getSupportFragmentManager();
             FragmentTransaction transaction = manager.beginTransaction();
             cadastroEmailFragment.setArguments(argsHour);
+            transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
             transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
             transaction.addToBackStack(null);
             transaction.commit();

@@ -130,6 +130,7 @@ public class CadastroInsulinaFragment extends Fragment {
                         argsInsu.putBoolean("pUtilizaInsulina", utilizaInsulina);
                         argsInsu.putBoolean("pUtilizaMedicacoes", utilizaMedicacoes);
                         cadastroLembretesFragment.setArguments(argsInsu);
+                        transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
                         transaction.replace(R.id.frameConteudoCad, cadastroLembretesFragment);
                         transaction.addToBackStack(null);
                         transaction.commit();
@@ -144,6 +145,7 @@ public class CadastroInsulinaFragment extends Fragment {
                         argsInsu.putBoolean("pUtilizaMedicacoes", utilizaMedicacoes);
                         argsInsu.putStringArray("pMedicacoes", medicacoes);
                         cadastroLembretesFragment.setArguments(argsInsu);
+                        transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
                         transaction.replace(R.id.frameConteudoCad, cadastroLembretesFragment);
                         transaction.addToBackStack(null);
                         transaction.commit();
@@ -163,6 +165,7 @@ public class CadastroInsulinaFragment extends Fragment {
                         argsInsu.putBoolean("pUtilizaInsulina", utilizaInsulina);
                         argsInsu.putBoolean("pUtilizaMedicacoes", utilizaMedicacoes);
                         cadastroLembretesFragment.setArguments(argsInsu);
+                        transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
                         transaction.replace(R.id.frameConteudoCad, cadastroLembretesFragment);
                         transaction.addToBackStack(null);
                         transaction.commit();
@@ -177,6 +180,7 @@ public class CadastroInsulinaFragment extends Fragment {
                         argsInsu.putBoolean("pUtilizaMedicacoes", utilizaMedicacoes);
                         argsInsu.putStringArray("pMedicacoes", medicacoes);
                         cadastroLembretesFragment.setArguments(argsInsu);
+                        transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
                         transaction.replace(R.id.frameConteudoCad, cadastroLembretesFragment);
                         transaction.addToBackStack(null);
                         transaction.commit();

@@ -126,7 +126,6 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
                                     cadastroTipoDiabetesFragment.setArguments(args);
                                     transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
                                     transaction.replace(R.id.frameConteudoCad, cadastroTipoDiabetesFragment);
-                                    // te ajudei a apagar :)))) ah por isso foi mó rapido do nada deu um dash o bagulhoklajkijdsasdjao posso add nas outras telas? pd ok bye bye chuac
                                     transaction.addToBackStack(null);
                                     transaction.commit();
 
