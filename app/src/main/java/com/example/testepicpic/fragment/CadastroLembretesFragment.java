@@ -10,8 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +24,8 @@ import com.example.testepicpic.R;
  * create an instance of this fragment.
  */
 public class CadastroLembretesFragment extends Fragment {
+
+    private CheckBox cbGlicemia, cbInsulina, cbAgua, cbRemedios;
 
     private Button btnLogin;
 
@@ -68,16 +75,60 @@ public class CadastroLembretesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_cadastro_lembretes, container, false);
+        final View view = inflater.inflate(R.layout.fragment_cadastro_lembretes, container, false);
+
+        final boolean pUtilizaMedicacoes = getArguments().getBoolean("pUtilizaMedicacoes");
 
         btnLogin = view.findViewById(R.id.btn_login);
+
+        cbGlicemia = view.findViewById(R.id.cbGlicemia);
+        cbInsulina = view.findViewById(R.id.cbInsulina);
+        cbAgua = view.findViewById(R.id.cbAgua);
+        cbRemedios = view.findViewById(R.id.cbRemedios);
+
+        if(!pUtilizaMedicacoes) {
+            cbRemedios.setVisibility(View.INVISIBLE);
+        }
+
+        final CheckBox[] lembretes = {cbGlicemia, cbInsulina, cbAgua, cbRemedios};
+
+        final boolean[] plembretes = new boolean[4];
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                for(int i = 0; i < lembretes.length; i++){
+                    if(lembretes[i].isChecked()) {
+                        plembretes[i] = true;
+                    }
+                }
+
+                assert getArguments() != null;
+                String pNome = getArguments().getString("pNome");
+                String pIdade = getArguments().getString("pIdade");
+                String pAltura = getArguments().getString("pAltura");
+                String pPeso = getArguments().getString("pPeso");
+                String pGenero = getArguments().getString("pGenero");
+                String pTipoDiabetes = getArguments().getString("ptipoDiabetes");
+                boolean pUtilizaInsulina = getArguments().getBoolean("pUtilizaInsulina");
+                String[] pMedicacoes = getArguments().getStringArray("pMedicacoes");
+
+                Bundle argsLembre = new Bundle();
+                argsLembre.putString("pNome", pNome);
+                argsLembre.putString("pIdade", pIdade);
+                argsLembre.putString("pAltura", pAltura);
+                argsLembre.putString("pPeso", pPeso);
+                argsLembre.putString("pGenero", pGenero);
+                argsLembre.putString("ptipoDiabetes", pTipoDiabetes);
+                argsLembre.putBoolean("pUtilizaInsulina", pUtilizaInsulina);
+                argsLembre.putBoolean("pUtilizaMedicacoes", pUtilizaMedicacoes);
+                argsLembre.putStringArray("pMedicacoes", pMedicacoes);
+                argsLembre.putBooleanArray("pLembretes", plembretes);
+
                 FragmentManager manager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
+                cadastroHorarioFragment.setArguments(argsLembre);
                 transaction.replace(R.id.frameConteudoCad, cadastroHorarioFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();

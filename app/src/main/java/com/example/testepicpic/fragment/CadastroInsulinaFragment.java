@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.solver.widgets.ConstraintTableLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Constraints;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -29,12 +31,13 @@ public class CadastroInsulinaFragment extends Fragment {
 
     private RadioGroup radioGroup, radioGroup2;
     private RadioButton rbUtiliza1, rbNUtiliza1, rbUtiliza2, rbNUtiliza2;
-    private ConstraintLayout clInsulina;
+    private ConstraintLayout clInsulina, clOutrasMed;
+    private LinearLayout linearLayout;
     private Button btn;
-    private String utilizaInsulina, utilizaMedicacoes;
+    private boolean utilizaInsulina, utilizaMedicacoes;
+    private String[] medicacoes;
 
     private CadastroLembretesFragment cadastroLembretesFragment = new CadastroLembretesFragment();
-    private CadastroOutrasMedicacoesFragment cadastroOutrasMedicacoesFragment = new CadastroOutrasMedicacoesFragment();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,6 +94,8 @@ public class CadastroInsulinaFragment extends Fragment {
         rbNUtiliza2 = view.findViewById(R.id.rdbNUtiliza2);
 
         clInsulina = view.findViewById(R.id.clInsulina);
+        clOutrasMed = view.findViewById(R.id.clOutrasMed);
+        linearLayout = view.findViewById(R.id.linear2);
 
         btn = view.findViewById(R.id.btn_login);
 
@@ -98,12 +103,13 @@ public class CadastroInsulinaFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                assert getArguments() != null;
                 String pNome = getArguments().getString("pNome");
                 String pIdade = getArguments().getString("pIdade");
                 String pAltura = getArguments().getString("pAltura");
                 String pPeso = getArguments().getString("pPeso");
                 String pGenero = getArguments().getString("pGenero");
-                String pTipoDiabetes = getArguments().getString("tipoDiabetes");
+                String pTipoDiabetes = getArguments().getString("ptipoDiabetes");
 
                 Bundle argsInsu = new Bundle();
                 argsInsu.putString("pNome", pNome);
@@ -111,60 +117,65 @@ public class CadastroInsulinaFragment extends Fragment {
                 argsInsu.putString("pAltura", pAltura);
                 argsInsu.putString("pPeso", pPeso);
                 argsInsu.putString("pGenero", pGenero);
-                argsInsu.putString("pTipoDiabetes", pTipoDiabetes);
+                argsInsu.putString("ptipoDiabetes", pTipoDiabetes);
 
                 if(rbUtiliza1.isChecked()) {
-                    utilizaInsulina = "sim";
+                    utilizaInsulina = true;
 
                     if(rbUtiliza2.isChecked()) {
-                        utilizaMedicacoes = "sim";
+                        utilizaMedicacoes = true;
 
                         FragmentManager manager = getActivity().getSupportFragmentManager();
                         FragmentTransaction transaction = manager.beginTransaction();
-                        argsInsu.putString("pUtilizaInsulina", utilizaInsulina);
-                        argsInsu.putString("pUtilizaMedicacoes", utilizaMedicacoes);
-                        cadastroLembretesFragment.setArguments(argsInsu);
-                        transaction.replace(R.id.frameConteudoCad, cadastroOutrasMedicacoesFragment);
-                        transaction.addToBackStack(null);
-                        transaction.commit();
-
-                    } else if (rbNUtiliza2.isChecked()) {
-                        utilizaMedicacoes = "não";
-
-                        FragmentManager manager = getActivity().getSupportFragmentManager();
-                        FragmentTransaction transaction = manager.beginTransaction();
-                        argsInsu.putString("pUtilizaInsulina", utilizaInsulina);
-                        argsInsu.putString("pUtilizaMedicacoes", utilizaMedicacoes);
+                        argsInsu.putBoolean("pUtilizaInsulina", utilizaInsulina);
+                        argsInsu.putBoolean("pUtilizaMedicacoes", utilizaMedicacoes);
                         cadastroLembretesFragment.setArguments(argsInsu);
                         transaction.replace(R.id.frameConteudoCad, cadastroLembretesFragment);
                         transaction.addToBackStack(null);
                         transaction.commit();
+
+                    } else if (rbNUtiliza2.isChecked()) {
+                        utilizaMedicacoes = false;
+                        medicacoes = null;
+
+                        FragmentManager manager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transaction = manager.beginTransaction();
+                        argsInsu.putBoolean("pUtilizaInsulina", utilizaInsulina);
+                        argsInsu.putBoolean("pUtilizaMedicacoes", utilizaMedicacoes);
+                        argsInsu.putStringArray("pMedicacoes", medicacoes);
+                        cadastroLembretesFragment.setArguments(argsInsu);
+                        transaction.replace(R.id.frameConteudoCad, cadastroLembretesFragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+
                     } else {
                         Toast.makeText(getActivity(), "Selecione uma opção para uso de medicação", Toast.LENGTH_LONG).show();
                     }
 
                 } else if(rbNUtiliza1.isChecked()) {
-                    utilizaInsulina = "não";
+                    utilizaInsulina = false;
 
                     if(rbUtiliza2.isChecked()) {
-                        utilizaMedicacoes = "sim";
+                        utilizaMedicacoes = true;
 
                         FragmentManager manager = getActivity().getSupportFragmentManager();
                         FragmentTransaction transaction = manager.beginTransaction();
-                        argsInsu.putString("pUtilizaInsulina", utilizaInsulina);
-                        argsInsu.putString("pUtilizaMedicacoes", utilizaMedicacoes);
+                        argsInsu.putBoolean("pUtilizaInsulina", utilizaInsulina);
+                        argsInsu.putBoolean("pUtilizaMedicacoes", utilizaMedicacoes);
                         cadastroLembretesFragment.setArguments(argsInsu);
-                        transaction.replace(R.id.frameConteudoCad, cadastroOutrasMedicacoesFragment);
+                        transaction.replace(R.id.frameConteudoCad, cadastroLembretesFragment);
                         transaction.addToBackStack(null);
                         transaction.commit();
 
                     } else if (rbNUtiliza2.isChecked()) {
-                        utilizaMedicacoes = "não";
+                        utilizaMedicacoes = false;
+                        medicacoes = null;
 
                         FragmentManager manager = getActivity().getSupportFragmentManager();
                         FragmentTransaction transaction = manager.beginTransaction();
-                        argsInsu.putString("pUtilizaInsulina", utilizaInsulina);
-                        argsInsu.putString("pUtilizaMedicacoes", utilizaMedicacoes);
+                        argsInsu.putBoolean("pUtilizaInsulina", utilizaInsulina);
+                        argsInsu.putBoolean("pUtilizaMedicacoes", utilizaMedicacoes);
+                        argsInsu.putStringArray("pMedicacoes", medicacoes);
                         cadastroLembretesFragment.setArguments(argsInsu);
                         transaction.replace(R.id.frameConteudoCad, cadastroLembretesFragment);
                         transaction.addToBackStack(null);

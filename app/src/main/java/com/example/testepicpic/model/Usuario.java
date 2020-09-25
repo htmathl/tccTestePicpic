@@ -17,7 +17,7 @@ public class Usuario {
     private String tipoDiabetes;
     private boolean utilizoInsulina;
     private boolean utilizoMedicacao;
-    private String[] medicacao;
+    //private String[] medicacao;
     private boolean[] lembretes;
 
     @Exclude
@@ -86,7 +86,6 @@ public class Usuario {
         this.genero = genero;
     }
 
-
     public String getTipoDiabetes() {
         return tipoDiabetes;
     }
@@ -111,14 +110,13 @@ public class Usuario {
         this.utilizoMedicacao = utilizoMedicacao;
     }
 
-    /*
-    public String[] getMedicacao() {
+    /*public String[] getMedicacao() {
         return medicacao;
     }
 
     public void setMedicacao(String[] medicacao) {
         this.medicacao = medicacao;
-    }
+    }*/
 
     public boolean[] getLembretes() {
         return lembretes;
@@ -126,7 +124,7 @@ public class Usuario {
 
     public void setLembretes(boolean[] lembretes) {
         this.lembretes = lembretes;
-    }*/
+    }
 
     public Usuario() {
     }
