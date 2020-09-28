@@ -151,6 +151,7 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
             //Pesquisar como fazer pra voltar 2 fragments.
 
             FragmentManager manager = getActivity().getSupportFragmentManager();
+            manager.popBackStack();
             FragmentTransaction transaction = manager.beginTransaction();
             cadastroEmailFragment.setArguments(argsHour);
             transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
