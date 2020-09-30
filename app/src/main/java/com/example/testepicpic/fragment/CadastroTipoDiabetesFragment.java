@@ -121,6 +121,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
                     FragmentTransaction transaction = manager.beginTransaction();
                     argsTipo.putString("ptipoDiabetes", tipoDiabetes);
                     cadastroInsulinaFragment.setArguments(argsTipo);
+                    transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
                     transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
@@ -133,6 +134,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
                     FragmentTransaction transaction = manager.beginTransaction();
                     argsTipo.putString("ptipoDiabetes", tipoDiabetes);
                     cadastroInsulinaFragment.setArguments(argsTipo);
+                    transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
                     transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
@@ -145,6 +147,7 @@ public class CadastroTipoDiabetesFragment extends Fragment {
                     FragmentTransaction transaction = manager.beginTransaction();
                     argsTipo.putString("ptipoDiabetes", tipoDiabetes);
                     cadastroInsulinaFragment.setArguments(argsTipo);
+                    transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
                     transaction.replace(R.id.frameConteudoCad, cadastroInsulinaFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();

@@ -93,17 +93,17 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
         View view = inflater.inflate(R.layout.fragment_cadastro_horario, container, false);
 
         btnAddHoras = view.findViewById(R.id.btnAddHora);
-        btnAddHoras1 = view.findViewById(R.id.btnAddHora1);
-        btnAddHoras2 = view.findViewById(R.id.btnAddHora2);
-        btnAddHoras3 = view.findViewById(R.id.btnAddHora3);
-        btnAddHoras4 = view.findViewById(R.id.btnAddHora4);
+       // btnAddHoras1 = view.findViewById(R.id.btnAddHora1);
+       // btnAddHoras2 = view.findViewById(R.id.btnAddHora2);
+       // btnAddHoras3 = view.findViewById(R.id.btnAddHora3);
+        //btnAddHoras4 = view.findViewById(R.id.btnAddHora4);
 
         btnPronto = view.findViewById(R.id.btnPronto6);
 
-        txtGlicemia2 = view.findViewById(R.id.txtGlicemia2);
-        txtInsulina2 = view.findViewById(R.id.txtInsulina2);
-        txtAgua2 = view.findViewById(R.id.txtAgua2);
-        txtMedicamento2 = view.findViewById(R.id.txtMedicamento2);
+        //txtGlicemia2 = view.findViewById(R.id.txtGlicemia2);
+        //txtInsulina2 = view.findViewById(R.id.txtInsulina2);
+        //txtAgua2 = view.findViewById(R.id.txtAgua2);
+        //txtMedicamento2 = view.findViewById(R.id.txtMedicamento2);
 
         Calendar c = Calendar.getInstance();
         Hour = c.get(Calendar.HOUR_OF_DAY);
