@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.testepicpic.R;
 import com.example.testepicpic.model.Usuario;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +28,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class CadastroNomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private TextInputEditText nome, idade, peso, altura;
+    private TextInputLayout lnome, lidade, lpeso, laltura;
     private Spinner genero;
     private Button btnPronto01;
 
@@ -86,6 +88,11 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genero.setAdapter(adapter);
         genero.setOnItemSelectedListener(this);
+
+        lnome = view.findViewById(R.id.textInputLayout);
+        lidade = view.findViewById(R.id.textInputLayout2);
+        laltura = view.findViewById(R.id.textInputLayout4);
+        lpeso = view.findViewById(R.id.textInputLayout5);
         
 
         nome = view.findViewById(R.id.edtNome);
@@ -130,15 +137,19 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
                                     transaction.commit();
 
                             } else {
+                                laltura.setErrorTextAppearance(R.style.corVermelha);
                                 Toast.makeText(getActivity(), "Prencha o campo altura", Toast.LENGTH_LONG).show();
                             }
                         } else {
+                            lpeso.setErrorTextAppearance(R.style.corVermelha);
                             Toast.makeText(getActivity(), "Prencha o campo campo peso", Toast.LENGTH_LONG).show();
                         }
                     } else {
+                        lidade.setErrorTextAppearance(R.style.corVermelha);
                         Toast.makeText(getActivity(),"Preenca o campo idade", Toast.LENGTH_LONG).show();
                     }
                 } else {
+                    lnome.setErrorTextAppearance(R.style.corVermelha);
                     Toast.makeText(getActivity(), "Preencha o campo nome", Toast.LENGTH_LONG).show();
                 }
 

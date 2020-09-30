@@ -27,6 +27,8 @@
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="corVermelha">#ff0000</style>
     
 
 </resources>
