@@ -93,7 +93,7 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
         lidade = view.findViewById(R.id.textInputLayout2);
         laltura = view.findViewById(R.id.textInputLayout4);
         lpeso = view.findViewById(R.id.textInputLayout5);
-        
+
 
         nome = view.findViewById(R.id.edtNome);
         idade = view.findViewById(R.id.edtIdade);
@@ -137,19 +137,19 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
                                     transaction.commit();
 
                             } else {
-                                laltura.setErrorTextAppearance(R.style.corVermelha);
+                                laltura.setErrorTextAppearance(R.style.edtCadasrtoErroPqn);
                                 Toast.makeText(getActivity(), "Prencha o campo altura", Toast.LENGTH_LONG).show();
                             }
                         } else {
-                            lpeso.setErrorTextAppearance(R.style.corVermelha);
+                            lpeso.setErrorTextAppearance(R.style.edtCadasrtoErroPqn);
                             Toast.makeText(getActivity(), "Prencha o campo campo peso", Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        lidade.setErrorTextAppearance(R.style.corVermelha);
+                        lidade.setErrorTextAppearance(R.style.edtCadasrtoErroPqn);
                         Toast.makeText(getActivity(),"Preenca o campo idade", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    lnome.setErrorTextAppearance(R.style.corVermelha);
+                    lnome.setErrorTextAppearance(R.style.edtCadastroErro);
                     Toast.makeText(getActivity(), "Preencha o campo nome", Toast.LENGTH_LONG).show();
                 }
 

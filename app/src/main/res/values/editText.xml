@@ -28,8 +28,17 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="corVermelha">#ff0000</style>
     <style name="corPreta">#000</style>
+
+    <style name="edtCadastroErro">
+        <item name="background">@drawable/edt_cadastro_erro</item>
+        <item name="android:textColorHint">#ff0000</item>
+    </style>
+
+    <style name="edtCadasrtoErroPqn">
+        <item name="background">@drawable/edt_cadastro_erro_pqn</item>
+        <item name="android:textColorHint">#ff0000</item>
+    </style>
     
 
 </resources>
