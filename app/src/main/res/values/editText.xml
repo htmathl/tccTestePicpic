@@ -29,6 +29,7 @@
     </style>
 
     <style name="corVermelha">#ff0000</style>
+    <style name="corPreta">#000</style>
     
 
 </resources>
