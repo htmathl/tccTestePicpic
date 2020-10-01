@@ -93,17 +93,9 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
         View view = inflater.inflate(R.layout.fragment_cadastro_horario, container, false);
 
         btnAddHoras = view.findViewById(R.id.btnAddHora);
-       // btnAddHoras1 = view.findViewById(R.id.btnAddHora1);
-       // btnAddHoras2 = view.findViewById(R.id.btnAddHora2);
-       // btnAddHoras3 = view.findViewById(R.id.btnAddHora3);
-        //btnAddHoras4 = view.findViewById(R.id.btnAddHora4);
 
         btnPronto = view.findViewById(R.id.btnPronto6);
 
-        //txtGlicemia2 = view.findViewById(R.id.txtGlicemia2);
-        //txtInsulina2 = view.findViewById(R.id.txtInsulina2);
-        //txtAgua2 = view.findViewById(R.id.txtAgua2);
-        //txtMedicamento2 = view.findViewById(R.id.txtMedicamento2);
 
         Calendar c = Calendar.getInstance();
         Hour = c.get(Calendar.HOUR_OF_DAY);
@@ -180,7 +172,7 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
 
                     if(select.equals("Glicemia")) {
 
-                        Toast.makeText(getActivity(), "miales", Toast.LENGTH_LONG).show();
+
 
                     } else if(select.equals("Insulina")) {
 
@@ -212,67 +204,6 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
             }
         });
 
-        btnAddHoras1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        txtGlicemia2.setText(hourOfDay + ":" + minute);
-                    }
-                }, Hour, min,true);
-
-                timePickerDialog.show();
-            }
-        });
-
-        btnAddHoras2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        txtInsulina2.setText(hourOfDay + ":"+minute);
-                    }
-                }, Hour, min,true);
-
-                timePickerDialog.show();
-            }
-        });
-
-        btnAddHoras3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
-                        txtAgua2.setText(hourOfDay + ":"+minute);
-                    }
-                }, Hour, min,true);
-
-                timePickerDialog.show();
-            }
-        });
-
-        btnAddHoras4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
-                        txtMedicamento2.setText(hourOfDay + ":"+minute);
-                    }
-                }, Hour, min,true);
-
-                timePickerDialog.show();
-            }
-        });
         return view;
     }
 

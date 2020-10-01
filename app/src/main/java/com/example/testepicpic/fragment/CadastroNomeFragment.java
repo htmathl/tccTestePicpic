@@ -2,6 +2,7 @@ package com.example.testepicpic.fragment;
 
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -137,11 +138,13 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
                                     transaction.commit();
 
                             } else {
-                                laltura.setErrorTextAppearance(R.style.edtCadasrtoErroPqn);
+                                laltura.setError("recado");
+                                altura.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edt_cadastro_erro_pqn));
                                 Toast.makeText(getActivity(), "Prencha o campo altura", Toast.LENGTH_LONG).show();
                             }
                         } else {
-                            lpeso.setErrorTextAppearance(R.style.edtCadasrtoErroPqn);
+                            peso.setError(null);
+                            peso.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edt_cadastro_erro_pqn));
                             Toast.makeText(getActivity(), "Prencha o campo campo peso", Toast.LENGTH_LONG).show();
                         }
                     } else {
