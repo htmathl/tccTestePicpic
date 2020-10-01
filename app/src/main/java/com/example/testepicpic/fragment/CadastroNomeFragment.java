@@ -138,7 +138,7 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
                                     transaction.commit();
 
                             } else {
-                                laltura.setError("recado");
+                                altura.setError(null);
                                 altura.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edt_cadastro_erro_pqn));
                                 Toast.makeText(getActivity(), "Prencha o campo altura", Toast.LENGTH_LONG).show();
                             }
@@ -148,11 +148,13 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
                             Toast.makeText(getActivity(), "Prencha o campo campo peso", Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        lidade.setErrorTextAppearance(R.style.edtCadasrtoErroPqn);
+                        idade.setError(null);
+                        idade.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edt_cadastro_erro_pqn));
                         Toast.makeText(getActivity(),"Preenca o campo idade", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    lnome.setErrorTextAppearance(R.style.edtCadastroErro);
+                    nome.setError(null);
+                    nome.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edt_cadastro_erro));
                     Toast.makeText(getActivity(), "Preencha o campo nome", Toast.LENGTH_LONG).show();
                 }
 
