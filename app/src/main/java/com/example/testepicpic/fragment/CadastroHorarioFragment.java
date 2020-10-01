@@ -12,16 +12,17 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.example.testepicpic.R;
-import com.example.testepicpic.activity.MainActivity;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -40,6 +41,14 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
     private Button btnPronto;
     private TextView txtGlicemia2, txtInsulina2, txtAgua2, txtMedicamento2;
     private Spinner spLembretes;
+    private RadioGroup radioGroup;
+    private RadioButton rbDom, rbSeg, rbTer, rbQua, rbQui, rbSex, rbSab;
+
+    private LinearLayout linearDom, linearSeg, linearTer, linearQua, linearQui, linearSex, linearSab;
+    private LinearLayout linearGlicemia;
+
+    private FrameLayout frameLembretesDias;
+
     int Hour, min;
 
     private List<String> lemre = new ArrayList<String>();
@@ -90,11 +99,30 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
                              Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.fragment_cadastro_horario, container, false);
+        final View view = inflater.inflate(R.layout.fragment_cadastro_horario, container, false);
 
         btnAddHoras = view.findViewById(R.id.btnAddHora);
 
         btnPronto = view.findViewById(R.id.btnPronto6);
+
+        radioGroup = view.findViewById(R.id.rg_dias_semanas);
+        rbDom = view.findViewById(R.id.rbDom);
+        rbSeg = view.findViewById(R.id.rbSeg);
+        rbTer = view.findViewById(R.id.rbTer);
+        rbQua = view.findViewById(R.id.rbQua);
+        rbQui = view.findViewById(R.id.rbQui);
+        rbSex = view.findViewById(R.id.rbSex);
+        rbSab = view.findViewById(R.id.rbSab);
+
+        linearDom = view.findViewById(R.id.linearDom);
+        linearSeg = view.findViewById(R.id.linearSeg);
+        linearTer = view.findViewById(R.id.linearTer);
+        linearQua = view.findViewById(R.id.linearQua);
+        linearQui = view.findViewById(R.id.linearQui);
+        linearSex = view.findViewById(R.id.linearSex);
+        linearSab = view.findViewById(R.id.linearSab);
+
+        linearGlicemia = view.findViewById(R.id.linearGlicemia);
 
 
         Calendar c = Calendar.getInstance();
@@ -163,25 +191,56 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
 
         spLembretes.setAdapter(adapter);
 
+        spLembretes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    int item = parent.getSelectedItemPosition();
+
+                    switch(item) {
+                        case 0:
+
+                            linearGlicemia.setVisibility(View.VISIBLE);
+
+                            rbDom.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    if(rbDom.isChecked()) {
+
+                                        linearSeg.setVisibility(View.GONE);
+                                        linearTer.setVisibility(View.GONE);
+                                        linearQua.setVisibility(View.GONE);
+                                        linearQui.setVisibility(View.GONE);
+                                        linearSex.setVisibility(View.GONE);
+                                        linearSab.setVisibility(View.GONE);
+
+                                        linearDom.setVisibility(View.VISIBLE);
+
+                                    }
+
+                                }
+                            });
+                            break;
+                        case 1:
+                            linearGlicemia.setVisibility(View.GONE);
+                            break;
+
+                    }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         btnPronto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!lemre.isEmpty()) {
-
-                    String select = spLembretes.getSelectedItem().toString();
-
-                    if(select.equals("Glicemia")) {
 
 
 
-                    } else if(select.equals("Insulina")) {
-
-                    } else if(select.equals("Água")) {
-
-                    } else if(select.equals("Remédios")) {
-
-                    }
-                }
             }
         });
 
