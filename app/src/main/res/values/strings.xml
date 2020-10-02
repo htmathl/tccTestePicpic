@@ -28,7 +28,6 @@
 
 
     <string-array name="genero">
-        <item> Gênero </item>
         <item> Feminino </item>
         <item> Masculino </item>
         <item> Outro </item>

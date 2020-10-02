@@ -28,7 +28,7 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="corPreta">#000</style>
+    <style name="corBranca">#000</style>
 
     <style name="edtCadastroErro">
         <item name="background">@drawable/edt_cadastro_erro</item>

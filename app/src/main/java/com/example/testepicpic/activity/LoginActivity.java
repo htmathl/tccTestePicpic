@@ -2,6 +2,7 @@ package com.example.testepicpic.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.content.Intent;
@@ -60,10 +61,14 @@ public class LoginActivity extends AppCompatActivity {
 
                     } else {
                         Toast.makeText(LoginActivity.this, "Senha não pode estar vazio", Toast.LENGTH_SHORT).show();
+                        senha.setError(null);
+                        senha.setBackground(ContextCompat.getDrawable(LoginActivity.this, R.drawable.edt_cadastro_erro));
                     }
 
                 } else {
                     Toast.makeText(LoginActivity.this, "Email não pode estar vazio", Toast.LENGTH_SHORT).show();
+                    email.setError(null);
+                    email.setBackground(ContextCompat.getDrawable(LoginActivity.this, R.drawable.edt_cadastro_erro));
                 }
 
             }
