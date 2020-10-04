@@ -12,17 +12,19 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
 
+import java.sql.Array;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -37,17 +39,36 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
 
     private CadastroEmailFragment cadastroEmailFragment = new CadastroEmailFragment();
 
-    private ImageButton btnAddHoras, btnAddHoras1, btnAddHoras2, btnAddHoras3, btnAddHoras4;
+    private Button btnAddHoras;
     private Button btnPronto;
-    private TextView txtGlicemia2, txtInsulina2, txtAgua2, txtMedicamento2;
+    private TextView txtGlicemia2, txtInsulina2, txtAgua2, txtmiau;
     private Spinner spLembretes;
-    private RadioGroup radioGroup;
-    private RadioButton rbDom, rbSeg, rbTer, rbQua, rbQui, rbSex, rbSab;
 
-    private LinearLayout linearDom, linearSeg, linearTer, linearQua, linearQui, linearSex, linearSab;
     private LinearLayout linearGlicemia;
+    private LinearLayout linearDom, linearSeg, linearTer, linearQua, linearQui, linearSex, linearSab;
+    private LinearLayout linearPriDom;
+
+    private int[] listahora;
+    private int[] listaaaa;
+
+    private TextView txtGliDomPri;
 
     private FrameLayout frameLembretesDias;
+
+    private CheckBox cbDom, cbSeg, cbTer, cbQua, cbQui, cbSex, cbSab;
+
+    boolean[] pDiasGli = new boolean[7];
+    boolean[] pdiasInsu = new boolean[7];
+    boolean[] pdiasAgu = new boolean[7], pDiasReme = new boolean[7];
+
+    private ArrayList<String> pSelectLista = new ArrayList<String>();
+
+    ArrayList<Integer> pListaHorarioGlicemia = new ArrayList<Integer>();
+    ArrayList<Integer> pListaHorarioInsulina = new ArrayList<Integer>();
+    ArrayList<Integer> pListaHorarioAgua = new ArrayList<Integer>();
+    ArrayList<Integer> pListaHorarioRemedios = new ArrayList<Integer>();
+
+
 
     int Hour, min;
 
@@ -102,32 +123,25 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
         final View view = inflater.inflate(R.layout.fragment_cadastro_horario, container, false);
 
         btnAddHoras = view.findViewById(R.id.btnAddHora);
-
         btnPronto = view.findViewById(R.id.btnPronto6);
-
-        radioGroup = view.findViewById(R.id.rg_dias_semanas);
-        rbDom = view.findViewById(R.id.rbDom);
-        rbSeg = view.findViewById(R.id.rbSeg);
-        rbTer = view.findViewById(R.id.rbTer);
-        rbQua = view.findViewById(R.id.rbQua);
-        rbQui = view.findViewById(R.id.rbQui);
-        rbSex = view.findViewById(R.id.rbSex);
-        rbSab = view.findViewById(R.id.rbSab);
-
-        linearDom = view.findViewById(R.id.linearDom);
-        linearSeg = view.findViewById(R.id.linearSeg);
-        linearTer = view.findViewById(R.id.linearTer);
-        linearQua = view.findViewById(R.id.linearQua);
-        linearQui = view.findViewById(R.id.linearQui);
-        linearSex = view.findViewById(R.id.linearSex);
-        linearSab = view.findViewById(R.id.linearSab);
 
         linearGlicemia = view.findViewById(R.id.linearGlicemia);
 
+        txtmiau = view.findViewById(R.id.txtmiau);
+
+        cbDom = view.findViewById(R.id.cbDom);
+        cbSeg = view.findViewById(R.id.cbSeg);
+        cbTer = view.findViewById(R.id.cbTer);
+        cbQua = view.findViewById(R.id.cbQua);
+        cbQui = view.findViewById(R.id.cbQui);
+        cbSex = view.findViewById(R.id.cbSex);
+        cbSab = view.findViewById(R.id.cbSab);
 
         Calendar c = Calendar.getInstance();
         Hour = c.get(Calendar.HOUR_OF_DAY);
         min = c.get(Calendar.MINUTE);
+
+        txtmiau.setText("Adicionar Horário");
 
         final boolean[] pLembretes = getArguments().getBooleanArray("pLembretes");
         assert getArguments() != null;
@@ -141,7 +155,7 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
         final String[] pMedicacoes = getArguments().getStringArray("pMedicacoes");
         final boolean pUtilizaMedicacoes = getArguments().getBoolean("pUtilizaMedicacoes");
 
-        Bundle argsHour = new Bundle();
+        final Bundle argsHour = new Bundle();
         argsHour.putString("pNome", pNome);
         argsHour.putString("pIdade", pIdade);
         argsHour.putString("pAltura", pAltura);
@@ -186,60 +200,37 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
         spLembretes = view.findViewById(R.id.spLembretes);
         List<String> list = new ArrayList<>(Arrays.asList(lembrefi));
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, list);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spLembretes.setAdapter(adapter);
 
-        spLembretes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    int item = parent.getSelectedItemPosition();
-
-                    switch(item) {
-                        case 0:
-
-                            linearGlicemia.setVisibility(View.VISIBLE);
-
-                            rbDom.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-
-                                    if(rbDom.isChecked()) {
-
-                                        linearSeg.setVisibility(View.GONE);
-                                        linearTer.setVisibility(View.GONE);
-                                        linearQua.setVisibility(View.GONE);
-                                        linearQui.setVisibility(View.GONE);
-                                        linearSex.setVisibility(View.GONE);
-                                        linearSab.setVisibility(View.GONE);
-
-                                        linearDom.setVisibility(View.VISIBLE);
-
-                                    }
-
-                                }
-                            });
-                            break;
-                        case 1:
-                            linearGlicemia.setVisibility(View.GONE);
-                            break;
-
-                    }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         btnPronto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(txtmiau.getText().equals("Adicionar Horário")){
+                    Toast.makeText(getActivity(), "Adicone algum horario ou não selecione nenhum lembrete",
+                            Toast.LENGTH_LONG).show();
+                } else {
 
+                    argsHour.putBooleanArray("pDiasGliA", pDiasGli);
+                    argsHour.putBooleanArray("pDiasInsuA", pdiasInsu);
+                    argsHour.putBooleanArray("pDiasAguA", pdiasAgu);
+                    argsHour.putBooleanArray("pDiasRemeA", pDiasReme);
+                    argsHour.putIntegerArrayList("pListaHorarioInsulina",pListaHorarioInsulina);
+                    argsHour.putIntegerArrayList("pListaHorarioGlicemia",pListaHorarioGlicemia);
+                    argsHour.putIntegerArrayList("pListaHorarioAgua",pListaHorarioAgua);
+                    argsHour.putIntegerArrayList("pListaHorarioRemedios",pListaHorarioRemedios);
 
+                    FragmentManager manager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    cadastroEmailFragment.setArguments(argsHour);
+                    transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
+                    transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+
+                }
 
             }
         });
@@ -249,16 +240,110 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
             @Override
             public void onClick(View v) {
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                if(txtmiau.getText().equals("Adicionar Horário")){
+                    Toast.makeText(getActivity(), "Algo de errado não esta certo", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    String pSelect = spLembretes.getSelectedItem().toString();
+
+                    CheckBox[] dias = {cbDom, cbSeg, cbTer, cbQua, cbQui, cbSex, cbSab};
+
+                        switch (pSelect) {
+                            case "Glicemia":
+                                if(!pSelectLista.contains("Glicemia"))
+                                    pSelectLista.add("Glicemia");
+
+                                for(int i= 0; i < pDiasGli.length; i++) {
+                                    if(dias[i].isChecked())
+                                        pDiasGli[i] = true;
+                                }
+
+                                break;
+                            case "Insulina":
+                                if(!pSelectLista.contains("Insulina"))
+                                    pSelectLista.add("Insulina");
+
+                                for(int i= 0; i < pdiasInsu.length; i++) {
+                                    if(dias[i].isChecked())
+                                        pdiasInsu[i] = true;
+                                }
+
+                                break;
+                            case "Água":
+                                if(!pSelectLista.contains("Água"))
+                                    pSelectLista.add("Água");
+
+                                for(int i= 0; i < pdiasAgu.length; i++) {
+                                    if(dias[i].isChecked())
+                                        pdiasAgu[i] = true;
+                                }
+
+                                break;
+                            case "Remédios":
+                                if(!pSelectLista.contains("Remédios"))
+                                    pSelectLista.add("Remédios");
+
+                                for(int i= 0; i < pDiasReme.length; i++) {
+                                    if(dias[i].isChecked())
+                                        pDiasReme[i] = true;
+                                }
+
+                                break;
+                        }
+
+                        Toast.makeText(getActivity(), Arrays.toString(pDiasReme), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), Arrays.toString(pdiasAgu), Toast.LENGTH_LONG).show();
+
+                        Toast.makeText(getActivity(), pListaHorarioAgua.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), pListaHorarioRemedios.toString(), Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+
+        txtmiau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                TimePickerDialog timePickerDialog1 = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
+                        String select = spLembretes.getSelectedItem().toString();
+
+                        switch (select) {
+                            case "Glicemia":
+
+                                pListaHorarioGlicemia.add(hourOfDay * 60 + minute);
+
+                                txtmiau.setText(String.format("%02d:%02d", hourOfDay, minute));
+
+                                break;
+                            case "Insulina":
+
+                                pListaHorarioInsulina.add(hourOfDay * 60 + minute);
+
+                                txtmiau.setText(String.format("%02d:%02d", hourOfDay, minute));
+
+                                break;
+                            case "Água":
+                                pListaHorarioAgua.add(hourOfDay * 60 + minute);
+
+                                txtmiau.setText(String.format("%02d:%02d", hourOfDay, minute));
+                                break;
+                            case "Remédios":
+                                pListaHorarioRemedios.add(hourOfDay * 60 + minute);
+
+                                txtmiau.setText(String.format("%02d:%02d", hourOfDay, minute));
+                                break;
+                        }
 
 
                     }
-                }, Hour, min,true);
+                }, Hour, min, true);
 
-                timePickerDialog.show();
+                timePickerDialog1.show();
 
             }
         });
@@ -275,4 +360,5 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
 }

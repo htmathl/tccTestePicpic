@@ -114,9 +114,13 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
                 String textoGenero = genero.getSelectedItem().toString();
 
                 if(!textoNome.isEmpty()) {
+                    nome.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edt_cadastro1));
                     if(!textoIdade.isEmpty()) {
+                        idade.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edt_cadastro_pqn));
                         if(!textoPeso.isEmpty()) {
+                            peso.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edt_cadastro_pqn));
                             if(!textoAltura.isEmpty()) {
+                                altura.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edt_cadastro_pqn));
                                     pNome = textoNome;
                                     pIdade = textoIdade;
                                     pAltura = textoAltura;
