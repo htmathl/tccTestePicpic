@@ -1,5 +1,7 @@
 package com.example.testepicpic.model;
 
+import com.example.testepicpic.helper.Base64Custom;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.google.firebase.database.Exclude;
@@ -134,6 +136,13 @@ public class Usuario {
         firebase.child("users")
                 .child(this.idUser)
                 .setValue(this);
+    }
+    public static String getIdentificadorUsuario() {
+        FirebaseAuth usuario = ConfigFirebase.getFirebaseAutenticacao();
+        String email = usuario.getCurrentUser().getEmail();
+        String identificadorUsuario = Base64Custom.codificarBase64(email);
+
+        return identificadorUsuario;
     }
 
 }

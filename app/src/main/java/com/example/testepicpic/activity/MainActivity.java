@@ -3,6 +3,7 @@ package com.example.testepicpic.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.testepicpic.R;
+import com.example.testepicpic.fragment.AddAlimentacao;
+import com.example.testepicpic.fragment.AddBemEstar;
+import com.example.testepicpic.fragment.AddExercicio;
+import com.example.testepicpic.fragment.AddGlicemia;
+import com.example.testepicpic.fragment.AddInsulina;
 import com.example.testepicpic.fragment.CalendarFragment;
 import com.example.testepicpic.fragment.OverviewFragment;
 import com.example.testepicpic.fragment.PerfilFragment;
@@ -37,6 +43,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private CalendarFragment calendarFragment = new CalendarFragment();
     private RelatorioFragment relatorioFragment = new RelatorioFragment();
     private PerfilFragment perfilFragment = new PerfilFragment();
+
+    private ImageButton btnHumor,btnAlimento,btnInsulina,btnExercicio,btnGlicemia;
+
+    private AddBemEstar addBemEstar = new AddBemEstar();
+    private AddAlimentacao addAlimentacao = new AddAlimentacao();
+    private AddExercicio addExercicio = new AddExercicio();
+    private AddGlicemia addGlicemia = new AddGlicemia();
+    private AddInsulina addInsulina = new AddInsulina();
 
     private LineChart graficoGlicemia;
 
@@ -84,7 +98,55 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.item_overview);
 
+        btnHumor = findViewById(R.id.btnHumor);
+        btnAlimento = findViewById(R.id.btnAlimento);
+        btnExercicio = findViewById(R.id.btnExercicio);
+        btnGlicemia = findViewById(R.id.btnGlicemia);
+        btnInsulina = findViewById(R.id.bntInsulina);
+
+        btnHumor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AddInfosActivity.class));
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+              //  transaction.add(R.id.FrameAddInfos,addBemEstar);
+
+            }
+        });
+
+        btnAlimento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AddInfosActivity.class));
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+              //  transaction.add(R.id.FrameAddInfos,addAlimentacao);
+
+            }
+        });
+
+        btnExercicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AddInfosActivity.class));
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+              //  transaction.add(R.id.FrameAddInfos,addExercicio);
+
+            }
+        });
+
+        btnInsulina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AddInfosActivity.class));
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+             //   transaction.add(R.id.FrameAddInfos,addInsulina);
+
+            }
+        });
+
+
     }
+
 
     public void sair(View view){
         autenticacao = ConfigFirebase.getFirebaseAutenticacao();

@@ -7,9 +7,6 @@ import android.os.Build;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.testepicpic.activity.AjustesActivity;
-import com.example.testepicpic.fragment.ConfigPerfilFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
