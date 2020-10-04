@@ -77,7 +77,10 @@ public class CadastroLembretesFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_cadastro_lembretes, container, false);
 
+        assert getArguments() != null;
         final boolean pUtilizaMedicacoes = getArguments().getBoolean("pUtilizaMedicacoes");
+        final boolean pUtilizaInsulina = getArguments().getBoolean("pUtilizaInsulina");
+
 
         btnLogin = view.findViewById(R.id.btn_login);
 
@@ -86,9 +89,11 @@ public class CadastroLembretesFragment extends Fragment {
         cbAgua = view.findViewById(R.id.cbAgua);
         cbRemedios = view.findViewById(R.id.cbRemedios);
 
-        if(!pUtilizaMedicacoes) {
-            cbRemedios.setVisibility(View.INVISIBLE);
-        }
+        if(!pUtilizaMedicacoes)
+            cbRemedios.setVisibility(View.GONE);
+
+        if(!pUtilizaInsulina)
+            cbInsulina.setVisibility(View.GONE);
 
         final CheckBox[] lembretes = {cbGlicemia, cbInsulina, cbAgua, cbRemedios};
 
@@ -111,7 +116,6 @@ public class CadastroLembretesFragment extends Fragment {
                 String pPeso = getArguments().getString("pPeso");
                 String pGenero = getArguments().getString("pGenero");
                 String pTipoDiabetes = getArguments().getString("ptipoDiabetes");
-                boolean pUtilizaInsulina = getArguments().getBoolean("pUtilizaInsulina");
                 String[] pMedicacoes = getArguments().getStringArray("pMedicacoes");
 
                 Bundle argsLembre = new Bundle();

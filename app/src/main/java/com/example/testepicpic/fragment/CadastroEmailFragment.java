@@ -29,6 +29,10 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.DatabaseReference;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CadastroEmailFragment#newInstance} factory method to
@@ -204,7 +208,31 @@ public class CadastroEmailFragment extends Fragment {
         assert getArguments() != null;
         boolean[] lembretes = getArguments().getBooleanArray("pLembretes");
         boolean utilizaMedicacoes = getArguments().getBoolean("pUtilizaMedicacoes");
+        boolean[] diasGli = getArguments().getBooleanArray("pDiasGliA");
+        boolean[] diasInsu = getArguments().getBooleanArray("pDiasInsuA");
+        boolean[] diasAgu = getArguments().getBooleanArray("pDiasAguA");
+        boolean[] diasReme = getArguments().getBooleanArray("pDiasRemeA");
+
+        ArrayList<Integer> listaHorarioInsulina = getArguments().getIntegerArrayList("pListaHorarioInsulina");
+        ArrayList<Integer> listaHorarioGlicemia = getArguments().getIntegerArrayList("pListaHorarioGlicemia");
+        ArrayList<Integer> listaHorarioAgua = getArguments().getIntegerArrayList("pListaHorarioAgua");
+        ArrayList<Integer> listaHorarioRemedios = getArguments().getIntegerArrayList("pListaHorarioRemedios");
         DatabaseReference firebase = ConfigFirebase.getFirebase();
+
+        String[] diass = {"Domingo","Segunda", "Terça", "Quarta", "Quinta","Sexta","Sábado"};
+
+        assert listaHorarioGlicemia != null;
+        Integer[] ArrayGlicemia = new Integer[listaHorarioGlicemia.size()];
+        ArrayGlicemia = listaHorarioGlicemia.toArray(ArrayGlicemia);
+        assert listaHorarioInsulina != null;
+        Integer[] ArrayInsulina = new Integer[listaHorarioInsulina.size()];
+        ArrayInsulina = listaHorarioInsulina.toArray(ArrayInsulina);
+        assert listaHorarioAgua != null;
+        Integer[] ArrayAgua = new Integer[listaHorarioAgua.size()];
+        ArrayAgua = listaHorarioAgua.toArray(ArrayAgua);
+        assert listaHorarioRemedios != null;
+        Integer[] ArrayRemedios = new Integer[listaHorarioRemedios.size()];
+        ArrayRemedios = listaHorarioRemedios.toArray(ArrayRemedios);
 
         //salvar lembretes e medicacoes
 
@@ -219,39 +247,108 @@ public class CadastroEmailFragment extends Fragment {
             for(int i = 0; i < lembretes.length; i++) {
                 switch (i) {
                     case 0:
-                        firebase.child("users")
-                                .child(user.getIdUser())
-                                .child("lembretes")
-                                .child("Glicemia")
-                                .setValue(lembretes[i]);
+                        if(lembretes[i]) {
+                            assert diasGli != null;
+                            for(int j = 0; j < diasGli.length; j++){
+                                for(int k = 0; k < ArrayGlicemia.length; k++) {
+                                    if(diasGli[j]){
+                                        firebase.child("users")
+                                                .child(user.getIdUser())
+                                                .child("lembretes")
+                                                .child("Glicemia")
+                                                .child("dias")
+                                                .child(diass[j])
+                                                .child(String.valueOf(k))
+                                                .setValue(ArrayGlicemia[k]);
+                                    }
+                                }
+                            }
+
+                        } else {
+                            firebase.child("users")
+                                    .child(user.getIdUser())
+                                    .child("lembretes")
+                                    .child("Glicemia")
+                                    .setValue(lembretes[i]);
+                        }
                         break;
                     case 1:
-                        firebase.child("users")
-                                .child(user.getIdUser())
-                                .child("lembretes")
-                                .child("Insulina")
-                                .setValue(lembretes[i]);
+                        if(lembretes[i]) {
+                            assert diasInsu != null;
+                            for(int j = 0; j < diasInsu.length; j++){
+                                for(int k = 0; k < ArrayInsulina.length; k++) {
+                                    if(diasInsu[j]){
+                                        firebase.child("users")
+                                                .child(user.getIdUser())
+                                                .child("lembretes")
+                                                .child("Insulina")
+                                                .child("dias")
+                                                .child(diass[j])
+                                                .child(String.valueOf(k))
+                                                .setValue(ArrayInsulina[k]);
+                                    }
+                                }
+                            }
+
+                        } else {
+                            firebase.child("users")
+                                    .child(user.getIdUser())
+                                    .child("lembretes")
+                                    .child("Insulina")
+                                    .setValue(lembretes[i]);
+                        }
                         break;
                     case 2:
-                        firebase.child("users")
-                                .child(user.getIdUser())
-                                .child("lembretes")
-                                .child("Água")
-                                .setValue(lembretes[i]);
+                        if(lembretes[i]) {
+                            assert diasAgu != null;
+                            for(int j = 0; j < diasAgu.length; j++){
+                                for(int k = 0; k < ArrayAgua.length; k++) {
+                                    if(diasAgu[j]){
+                                        firebase.child("users")
+                                                .child(user.getIdUser())
+                                                .child("lembretes")
+                                                .child("Água")
+                                                .child("dias")
+                                                .child(diass[j])
+                                                .child(String.valueOf(k))
+                                                .setValue(ArrayAgua[k]);
+                                    }
+                                }
+                            }
+
+                        } else {
+                            firebase.child("users")
+                                    .child(user.getIdUser())
+                                    .child("lembretes")
+                                    .child("Água")
+                                    .setValue(lembretes[i]);
+                        }
                         break;
                     case 3:
-                        if(utilizaMedicacoes)
+                        if(lembretes[i]) {
+                            assert diasReme != null;
+                            for(int j = 0; j < diasReme.length; j++){
+                                for(int k = 0; k < ArrayRemedios.length; k++) {
+                                    if(diasReme[j]){
+                                        firebase.child("users")
+                                                .child(user.getIdUser())
+                                                .child("lembretes")
+                                                .child("Remédios")
+                                                .child("dias")
+                                                .child(diass[j])
+                                                .child(String.valueOf(k))
+                                                .setValue(ArrayRemedios[k]);
+                                    }
+                                }
+                            }
+
+                        } else {
                             firebase.child("users")
                                     .child(user.getIdUser())
                                     .child("lembretes")
                                     .child("Remédios")
                                     .setValue(lembretes[i]);
-                        else
-                            firebase.child("users")
-                                    .child(user.getIdUser())
-                                    .child("lembretes")
-                                    .child("Remédios")
-                                    .setValue(false);
+                        }
                         break;
                 }
 

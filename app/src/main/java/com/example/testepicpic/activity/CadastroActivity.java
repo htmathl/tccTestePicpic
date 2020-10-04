@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.testepicpic.R;
 import com.example.testepicpic.config.ConfigFirebase;
+import com.example.testepicpic.fragment.CadastroHorarioFragment;
 import com.example.testepicpic.fragment.CadastroNomeFragment;
 import com.example.testepicpic.helper.Base64Custom;
 import com.example.testepicpic.model.Usuario;
@@ -33,6 +34,8 @@ public class CadastroActivity extends AppCompatActivity {
 
     private CadastroNomeFragment cadastroNomeFragment = new CadastroNomeFragment();
 
+    private CadastroHorarioFragment cadastroHorarioFragment = new CadastroHorarioFragment();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,8 @@ public class CadastroActivity extends AppCompatActivity {
     public void onBackPressed() {
         if(getFragmentManager().getBackStackEntryCount() == 0) {
             super.onBackPressed();
+        } else if (getFragmentManager().getBackStackEntryCount() == 4) {
+            getSupportFragmentManager().beginTransaction().remove(cadastroHorarioFragment).commit();
         }
         else {
             getFragmentManager().popBackStack();
