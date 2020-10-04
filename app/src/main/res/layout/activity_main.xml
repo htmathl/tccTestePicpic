@@ -114,7 +114,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btnGlicemia" />
 
         <ImageButton
-            android:id="@+id/bntInulina"
+            android:id="@+id/bntInsulina"
             style="@style/imgBtnInserir"
             android:layout_marginBottom="396dp"
             android:src="@drawable/ic_injecao"
@@ -130,7 +130,7 @@
             app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bntInulina" />
+            app:layout_constraintTop_toBottomOf="@+id/bntInsulina" />
 
         <ImageButton
             android:id="@+id/btnExercicio"

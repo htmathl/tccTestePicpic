@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.162" />
+            app:layout_constraintVertical_bias="0.174" />
 
         <LinearLayout
             android:layout_width="405dp"
@@ -30,7 +30,7 @@
             android:orientation="horizontal"
             android:paddingLeft="16dp"
             android:paddingTop="0dp"
-            android:paddingRight="16dp"
+            android:paddingRight="1dp"
             android:paddingBottom="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,9 +43,11 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="center"
+                android:hint="Nome"
                 android:inputType="textPersonName"
-                android:text="Nome "
+                android:paddingRight="1dp"
                 android:textColor="#6247AA"
+                android:textColorHint="#6247AA"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -58,9 +60,10 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/imageButtonCamera"
+            android:id="@+id/imgbtnCamera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="144dp"
             android:src="@drawable/ic_baseline_photo_camera_24"
             app:layout_constraintBottom_toBottomOf="@+id/circleImageViewPerfil"
             app:layout_constraintEnd_toStartOf="@+id/imageButtonGaleria"
@@ -71,9 +74,10 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageButton
-            android:id="@+id/imageButtonGaleria"
+            android:id="@+id/imgbtnGaleria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="148dp"
             android:src="@drawable/ic_baseline_photo_library_24"
             app:layout_constraintBottom_toBottomOf="@+id/circleImageViewPerfil"
             app:layout_constraintEnd_toEndOf="parent"
