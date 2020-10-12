@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private ImageButton fabButton, buttonPerfil;
     private OvershootInterpolator interpolator = new OvershootInterpolator();
     private boolean menuAberto = true;
+    private int position;
 
     private BottomNavigationView bottomNavigationView;
     private static final String TAG = "MainActivity";
@@ -65,6 +67,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         buttonPerfil = findViewById(R.id.btnPerfil);
         final ConstraintLayout c = findViewById(R.id.constrait);
 
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setSelectedItemId(R.id.item_overview);
+
+        btnHumor = findViewById(R.id.btnHumor);
+        btnAlimento = findViewById(R.id.btnAlimento);
+        btnExercicio = findViewById(R.id.btnExercicio);
+        btnGlicemia = findViewById(R.id.btnGlicemia);
+        btnInsulina = findViewById(R.id.bntInsulina);
 
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,15 +83,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 if(menuAberto) {
                     fabButton.animate().setInterpolator(interpolator).rotation(45f).setDuration(500).start();
                     menuAberto =! menuAberto;
-
-                    c.setVisibility(v.VISIBLE);
+                    c.setVisibility(View.VISIBLE);
 
 
                 } else {
                     fabButton.animate().setInterpolator(interpolator).rotation(0f).setDuration(500).start();
                     menuAberto =! menuAberto;
-                    c.setVisibility(v.INVISIBLE);
-
+                    c.setVisibility(View.GONE);
 
                 }
             }
@@ -94,22 +103,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         });
 
 
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.item_overview);
-
-        btnHumor = findViewById(R.id.btnHumor);
-        btnAlimento = findViewById(R.id.btnAlimento);
-        btnExercicio = findViewById(R.id.btnExercicio);
-        btnGlicemia = findViewById(R.id.btnGlicemia);
-        btnInsulina = findViewById(R.id.bntInsulina);
-
         btnHumor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, AddInfosActivity.class));
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-              //  transaction.add(R.id.FrameAddInfos,addBemEstar);
+                position = 0;
+                Intent intent = new Intent(MainActivity.this, AddInfosActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
 
             }
         });
@@ -117,9 +117,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         btnAlimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, AddInfosActivity.class));
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-              //  transaction.add(R.id.FrameAddInfos,addAlimentacao);
+                position = 1;
+                Intent intent = new Intent(MainActivity.this, AddInfosActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
 
             }
         });
@@ -127,9 +128,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         btnExercicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, AddInfosActivity.class));
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-              //  transaction.add(R.id.FrameAddInfos,addExercicio);
+                position = 2;
+                Intent intent = new Intent(MainActivity.this, AddInfosActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
 
             }
         });
@@ -137,9 +139,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         btnInsulina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, AddInfosActivity.class));
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-             //   transaction.add(R.id.FrameAddInfos,addInsulina);
+                position = 3;
+                Intent intent = new Intent(MainActivity.this, AddInfosActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
+            }
+        });
+
+        btnGlicemia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                position = 4;
+                Intent intent = new Intent(MainActivity.this, AddInfosActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
 
             }
         });
