@@ -29,6 +29,18 @@ public class PrincipalActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, new IntentFilter("fecharTelaPrincipal"));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, new IntentFilter("fecharTelaPrincipal"));
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
@@ -37,12 +49,10 @@ public class PrincipalActivity extends AppCompatActivity {
     public void Cadastro(View view){
         Intent cadastro  = new Intent(PrincipalActivity.this , CadastroActivity.class);
         startActivity(cadastro);
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
 
     public void Login(View view){
         Intent login  = new Intent(PrincipalActivity.this , LoginActivity.class);
         startActivity(login);
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
 }

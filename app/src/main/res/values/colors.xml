@@ -4,5 +4,5 @@
     <color name="branco">#fff</color>
     <color name="corPrincipal">#6b52af</color>
     <color name="corTextoCadastro">#FFFFFF</color>
-    <color name="colorSlider">#ccc4e4</color>
+    <color name="colorSlider">#81000000</color>
 </resources>
