@@ -3,9 +3,7 @@ package com.example.testepicpic.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,11 +14,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.testepicpic.R;
-import com.example.testepicpic.fragment.AddAlimentacao;
-import com.example.testepicpic.fragment.AddBemEstar;
-import com.example.testepicpic.fragment.AddExercicio;
-import com.example.testepicpic.fragment.AddGlicemia;
-import com.example.testepicpic.fragment.AddInsulina;
+import com.example.testepicpic.fragment.AddAlimentacaoFragment;
+import com.example.testepicpic.fragment.AddBemEstarFragment;
+import com.example.testepicpic.fragment.AddExercicioFragment;
+import com.example.testepicpic.fragment.AddGlicemiaFragment;
+import com.example.testepicpic.fragment.AddInsulinaFragment;
 import com.example.testepicpic.fragment.CalendarFragment;
 import com.example.testepicpic.fragment.OverviewFragment;
 import com.example.testepicpic.fragment.PerfilFragment;
@@ -48,11 +46,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private ImageButton btnHumor,btnAlimento,btnInsulina,btnExercicio,btnGlicemia;
 
-    private AddBemEstar addBemEstar = new AddBemEstar();
-    private AddAlimentacao addAlimentacao = new AddAlimentacao();
-    private AddExercicio addExercicio = new AddExercicio();
-    private AddGlicemia addGlicemia = new AddGlicemia();
-    private AddInsulina addInsulina = new AddInsulina();
+    private AddBemEstarFragment addBemEstarFragment = new AddBemEstarFragment();
+    private AddAlimentacaoFragment addAlimentacaoFragment = new AddAlimentacaoFragment();
+    private AddExercicioFragment addExercicioFragment = new AddExercicioFragment();
+    private AddGlicemiaFragment addGlicemiaFragment = new AddGlicemiaFragment();
+    private AddInsulinaFragment addInsulinaFragment = new AddInsulinaFragment();
 
     private LineChart graficoGlicemia;
 

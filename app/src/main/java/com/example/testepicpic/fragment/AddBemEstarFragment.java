@@ -12,10 +12,10 @@ import com.example.testepicpic.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AddBemEstar#newInstance} factory method to
+ * Use the {@link AddBemEstarFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddBemEstar extends Fragment {
+public class AddBemEstarFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class AddBemEstar extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AddBemEstar() {
+    public AddBemEstarFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class AddBemEstar extends Fragment {
      * @return A new instance of fragment AddBemEstar.
      */
     // TODO: Rename and change types and number of parameters
-    public static AddBemEstar newInstance(String param1, String param2) {
-        AddBemEstar fragment = new AddBemEstar();
+    public static AddBemEstarFragment newInstance(String param1, String param2) {
+        AddBemEstarFragment fragment = new AddBemEstarFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

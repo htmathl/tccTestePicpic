@@ -6,19 +6,19 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.example.testepicpic.R;
-import com.example.testepicpic.fragment.AddAlimentacao;
-import com.example.testepicpic.fragment.AddBemEstar;
-import com.example.testepicpic.fragment.AddExercicio;
-import com.example.testepicpic.fragment.AddGlicemia;
-import com.example.testepicpic.fragment.AddInsulina;
+import com.example.testepicpic.fragment.AddAlimentacaoFragment;
+import com.example.testepicpic.fragment.AddBemEstarFragment;
+import com.example.testepicpic.fragment.AddExercicioFragment;
+import com.example.testepicpic.fragment.AddGlicemiaFragment;
+import com.example.testepicpic.fragment.AddInsulinaFragment;
 
 public class AddInfosActivity extends AppCompatActivity {
 
-    private AddGlicemia addGlicemia = new AddGlicemia();
-    private AddInsulina addInsulina = new AddInsulina();
-    private AddAlimentacao addAlimentacao = new AddAlimentacao();
-    private AddBemEstar addBemEstar = new AddBemEstar();
-    private AddExercicio addExercicio = new AddExercicio();
+    private AddGlicemiaFragment addGlicemiaFragment = new AddGlicemiaFragment();
+    private AddInsulinaFragment addInsulinaFragment = new AddInsulinaFragment();
+    private AddAlimentacaoFragment addAlimentacaoFragment = new AddAlimentacaoFragment();
+    private AddBemEstarFragment addBemEstarFragment = new AddBemEstarFragment();
+    private AddExercicioFragment addExercicioFragment = new AddExercicioFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,23 +34,23 @@ public class AddInfosActivity extends AppCompatActivity {
 
         switch (position) {
             case 0:
-                transaction.replace(R.id.frameAddInfos , addBemEstar);
+                transaction.replace(R.id.frameAddInfos, addBemEstarFragment);
                 transaction.commit();
                 break;
             case 1:
-                transaction.replace(R.id.frameAddInfos, addAlimentacao);
+                transaction.replace(R.id.frameAddInfos, addAlimentacaoFragment);
                 transaction.commit();
                 break;
             case 2:
-                transaction.replace(R.id.frameAddInfos, addExercicio);
+                transaction.replace(R.id.frameAddInfos, addExercicioFragment);
                 transaction.commit();
                 break;
             case 3:
-                transaction.replace(R.id.frameAddInfos, addInsulina);
+                transaction.replace(R.id.frameAddInfos, addInsulinaFragment);
                 transaction.commit();
                 break;
             case 4:
-                transaction.replace(R.id.frameAddInfos, addGlicemia);
+                transaction.replace(R.id.frameAddInfos, addGlicemiaFragment);
                 transaction.commit();
                 break;
         }
