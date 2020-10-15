@@ -8,18 +8,26 @@
     <!-- TODO: Update blank fragment layout -->
 
     <FrameLayout
+        android:id="@+id/frameLayout4"
+        android:layout_width="0dp"
+        android:layout_height="500dp"
+        android:background="@drawable/ic_plano_de_fundo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <FrameLayout
         android:id="@+id/frameLayout2"
-        android:layout_width="408dp"
-        android:layout_height="331dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginBottom="37dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/waves"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
     </FrameLayout>
 
@@ -33,16 +41,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/txtDeslize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Deslize para baixo para sair "
-            android:textColor="#6247AA"
-            android:textSize="15dp"
-            android:textStyle="bold" />
 
         <Space
             android:layout_width="361dp"
