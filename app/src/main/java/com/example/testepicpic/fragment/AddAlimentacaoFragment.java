@@ -5,10 +5,12 @@ import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 import com.example.testepicpic.R;
 
@@ -21,6 +23,7 @@ public class AddAlimentacaoFragment extends Fragment {
 
     private Button btnAddAliCafe, btnAddAliAlmoco, btnAddAliJanta, btnAddAliLanches, btnCancelar;
     private ConstraintLayout clAddAli;
+    private CheckBox cVegetais, cFrutas, cLegumes, cGraos, cIntegrais, cBatata, cOvo, cLaticinios, cNozes, cPeixe, cCarne, cDoce, cAperitivos, cLanches, cAlcool, cAdocante, cSuplementos, cRefriDiet, cRefri;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,6 +77,21 @@ public class AddAlimentacaoFragment extends Fragment {
         btnAddAliLanches = view.findViewById(R.id.btnAddAliLanches);
         btnCancelar = view.findViewById(R.id.btnCancelar);
 
+        cVegetais = view.findViewById(R.id.checkBox);
+        cFrutas = view.findViewById(R.id.checkBox3);
+        cLegumes = view.findViewById(R.id.checkBox4);
+        cGraos = view.findViewById(R.id.checkBox6);
+        cIntegrais = view.findViewById(R.id.checkBox7);
+        cBatata = view.findViewById(R.id.checkBox2);
+        cOvo = view.findViewById(R.id.checkBox8);
+        cLaticinios = view.findViewById(R.id.checkBox9);
+        cNozes = view.findViewById(R.id.checkBox10);
+        cCarne = view.findViewById(R.id.checkBox14);
+        cDoce = view.findViewById(R.id.checkBox15);
+        cAperitivos = view.findViewById(R.id.checkBox19);
+        cLanches = view.findViewById(R.id.checkBox16);
+        cAlcool = view.findViewById(R.id.checkBox18);
+
         clAddAli = view.findViewById(R.id.clAddAli);
 
         btnAddAliAlmoco.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +111,9 @@ public class AddAlimentacaoFragment extends Fragment {
 
             }
         });
+
+
+
 
 
         return view;
