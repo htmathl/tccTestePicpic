@@ -3,14 +3,18 @@ package com.example.testepicpic.fragment;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
 
@@ -22,7 +26,7 @@ import com.example.testepicpic.R;
 public class AddAlimentacaoFragment extends Fragment {
 
     private Button btnAddAliCafe, btnAddAliAlmoco, btnAddAliJanta, btnAddAliLanches, btnCancelar;
-    private ConstraintLayout clAddAli;
+    private ConstraintLayout clAddAli, clOriginal;
     private CheckBox cVegetais, cFrutas, cLegumes, cGraos, cIntegrais, cBatata, cOvo, cLaticinios, cNozes, cPeixe, cCarne, cDoce, cAperitivos, cLanches, cAlcool, cAdocante, cSuplementos, cRefriDiet, cRefri;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -86,17 +90,30 @@ public class AddAlimentacaoFragment extends Fragment {
         cOvo = view.findViewById(R.id.checkBox8);
         cLaticinios = view.findViewById(R.id.checkBox9);
         cNozes = view.findViewById(R.id.checkBox10);
+        cPeixe = view.findViewById(R.id.checkBox11);
         cCarne = view.findViewById(R.id.checkBox14);
         cDoce = view.findViewById(R.id.checkBox15);
         cAperitivos = view.findViewById(R.id.checkBox19);
         cLanches = view.findViewById(R.id.checkBox16);
         cAlcool = view.findViewById(R.id.checkBox18);
+        cAdocante = view.findViewById(R.id.checkbox20);
+        cSuplementos = view.findViewById(R.id.checkbox21);
+        cRefriDiet = view.findViewById(R.id.checkbox22);
+        cRefri = view.findViewById(R.id.checkbox23);
 
         clAddAli = view.findViewById(R.id.clAddAli);
+        clOriginal = view.findViewById(R.id.clOriginal);
+
+        final CheckBox[] comidas = {cVegetais, cFrutas, cLegumes, cGraos, cIntegrais, cBatata, cOvo, cLaticinios, cNozes, cPeixe, cCarne, cDoce, cAperitivos, cLanches, cAlcool, cAdocante, cSuplementos, cRefriDiet, cRefri};
+
 
         btnAddAliAlmoco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
+
+                clAddAli.startAnimation(animation);
 
                 clAddAli.setVisibility(View.VISIBLE);
 
@@ -106,16 +123,21 @@ public class AddAlimentacaoFragment extends Fragment {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
+
+                clAddAli.startAnimation(animation);
 
                 clAddAli.setVisibility(View.GONE);
 
+                for(CheckBox comida : comidas) {
+                    if(comida.isChecked())
+                        comida.setChecked(false);
+                }
             }
         });
 
-
-
-
-
         return view;
     }
+
+
 }

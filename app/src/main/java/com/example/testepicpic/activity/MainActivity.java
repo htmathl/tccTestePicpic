@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -21,7 +23,6 @@ import com.example.testepicpic.fragment.AddGlicemiaFragment;
 import com.example.testepicpic.fragment.AddInsulinaFragment;
 import com.example.testepicpic.fragment.CalendarFragment;
 import com.example.testepicpic.fragment.OverviewFragment;
-import com.example.testepicpic.fragment.PerfilFragment;
 import com.example.testepicpic.fragment.RelatorioFragment;
 import com.github.mikephil.charting.charts.LineChart;
 import com.example.testepicpic.config.ConfigFirebase;
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private OverviewFragment overviewFragment = new OverviewFragment();
     private CalendarFragment calendarFragment = new CalendarFragment();
     private RelatorioFragment relatorioFragment = new RelatorioFragment();
-    private PerfilFragment perfilFragment = new PerfilFragment();
 
     private ImageButton btnHumor,btnAlimento,btnInsulina,btnExercicio,btnGlicemia;
 
@@ -75,17 +75,26 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         btnGlicemia = findViewById(R.id.btnGlicemia);
         btnInsulina = findViewById(R.id.bntInsulina);
 
+
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(menuAberto) {
                     fabButton.animate().setInterpolator(interpolator).rotation(45f).setDuration(500).start();
+                    Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.to_down);
+
+                    c.startAnimation(animation);
+
                     menuAberto =! menuAberto;
                     c.setVisibility(View.VISIBLE);
 
 
                 } else {
                     fabButton.animate().setInterpolator(interpolator).rotation(0f).setDuration(500).start();
+                    Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.from_top);
+
+                    c.startAnimation(animation);
+
                     menuAberto =! menuAberto;
                     c.setVisibility(View.GONE);
 
@@ -157,7 +166,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
     }
-
 
     public void sair(View view){
         autenticacao = ConfigFirebase.getFirebaseAutenticacao();

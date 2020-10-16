@@ -72,8 +72,8 @@ public class ConfigPerfilFragment extends Fragment {
      * @return A new instance of fragment PerfilFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PerfilFragment newInstance(String param1, String param2) {
-        PerfilFragment fragment = new PerfilFragment();
+    public static ConfigPerfilFragment newInstance(String param1, String param2) {
+        ConfigPerfilFragment fragment = new ConfigPerfilFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -97,7 +97,7 @@ public class ConfigPerfilFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_perfil, container, false);
+        View view = inflater.inflate(R.layout.fragment_config_perfil, container, false);
 
         imgbtnGaleria = view.findViewById(R.id.imgbtnGaleria);
         imgbtnCamera = view.findViewById(R.id.imgbtnCamera);
