@@ -296,7 +296,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_legumes_1"
+                        android:drawableTop="@drawable/legumes"
                         android:gravity="center"
                         android:text="Vegetais" />
 
@@ -316,7 +316,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_peas"
+                        android:drawableTop="@drawable/pea"
                         android:gravity="center"
                         android:text="Legumes" />
 
@@ -326,7 +326,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_wheat_1"
+                        android:drawableTop="@drawable/wheat"
                         android:gravity="center"
                         android:text="Grãos" />
 
@@ -336,7 +336,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_pao_1"
+                        android:drawableTop="@drawable/pao"
                         android:gravity="center"
                         android:text="Integrais" />
 
@@ -354,7 +354,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_batata_1"
+                        android:drawableTop="@drawable/batata"
                         android:gravity="center"
                         android:text="Batata" />
 
@@ -373,7 +373,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_dairy_products_1"
+                        android:drawableTop="@drawable/dairy_produtcs"
                         android:gravity="center"
                         android:text="Laticínios" />
 
@@ -383,7 +383,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_nuts_1"
+                        android:drawableTop="@drawable/nuts"
                         android:gravity="center"
                         android:text="Nozes" />
 
@@ -393,7 +393,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_fish_1"
+                        android:drawableTop="@drawable/fish"
                         android:gravity="center"
                         android:text="Peixes" />
 
@@ -411,7 +411,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_meat_1"
+                        android:drawableTop="@drawable/meat"
                         android:gravity="center"
                         android:text="Carnes" />
 
@@ -421,7 +421,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_sweets_1"
+                        android:drawableTop="@drawable/sweet"
                         android:gravity="center"
                         android:text="Doces" />
 
@@ -431,7 +431,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_appetizer_1"
+                        android:drawableTop="@drawable/appetizer"
                         android:gravity="center"
                         android:text="Aperitivos" />
 
@@ -441,7 +441,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_fast_food_1"
+                        android:drawableTop="@drawable/fast_food"
                         android:gravity="center"
                         android:text="Lanches" />
 
@@ -451,7 +451,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_alcoholic_drinks_1"
+                        android:drawableTop="@drawable/alcoholic_drinks"
                         android:gravity="center"
                         android:text="Álcool" />
 
@@ -468,7 +468,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_sweets_1"
+                        android:drawableTop="@drawable/sweet"
                         android:gravity="center"
                         android:text="Adoçante" />
 
@@ -477,7 +477,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_suplemento_de_proteina_1"
+                        android:drawableTop="@drawable/suplemento"
                         android:gravity="center"
                         android:text="Suplementos" />
 
@@ -486,7 +486,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_refrigerante_diet_1"
+                        android:drawableTop="@drawable/refrigerante_diet"
                         android:gravity="center"
                         android:text="Refri diet" />
 
@@ -495,7 +495,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/ic_drinque_suave_1"
+                        android:drawableTop="@drawable/drinque_suave"
                         android:gravity="center"
                         android:text="Refrigerante" />
 
