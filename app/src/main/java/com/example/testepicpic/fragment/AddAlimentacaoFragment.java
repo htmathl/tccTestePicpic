@@ -2,11 +2,13 @@ package com.example.testepicpic.fragment;
 
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.testepicpic.R;
 
@@ -16,6 +18,9 @@ import com.example.testepicpic.R;
  * create an instance of this fragment.
  */
 public class AddAlimentacaoFragment extends Fragment {
+
+    private Button btnAddAliCafe, btnAddAliAlmoco, btnAddAliJanta, btnAddAliLanches, btnCancelar;
+    private ConstraintLayout clAddAli;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +66,35 @@ public class AddAlimentacaoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_alimentacao, container, false);
+        View view = inflater.inflate(R.layout.fragment_add_alimentacao, container, false);
+
+        btnAddAliAlmoco = view.findViewById(R.id.btnAddAliAlmoco);
+        btnAddAliJanta = view.findViewById(R.id.btnAddAliJanta);
+        btnAddAliCafe = view.findViewById(R.id.btnAddAliCafe);
+        btnAddAliLanches = view.findViewById(R.id.btnAddAliLanches);
+        btnCancelar = view.findViewById(R.id.btnCancelar);
+
+        clAddAli = view.findViewById(R.id.clAddAli);
+
+        btnAddAliAlmoco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clAddAli.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clAddAli.setVisibility(View.GONE);
+
+            }
+        });
+
+
+        return view;
     }
 }
