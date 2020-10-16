@@ -1,7 +1,9 @@
 package com.example.testepicpic.fragment;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
@@ -14,9 +16,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.example.testepicpic.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,9 +32,12 @@ import com.example.testepicpic.R;
  */
 public class AddAlimentacaoFragment extends Fragment {
 
-    private Button btnAddAliCafe, btnAddAliAlmoco, btnAddAliJanta, btnAddAliLanches, btnCancelar;
-    private ConstraintLayout clAddAli, clOriginal;
+    private Button btnAddAliCafe, btnAddAliAlmoco, btnAddAliJanta, btnAddAliLanches, btnCancelar, btnAliDia, btnSalvar;
+    private ConstraintLayout clAddAli;
     private CheckBox cVegetais, cFrutas, cLegumes, cGraos, cIntegrais, cBatata, cOvo, cLaticinios, cNozes, cPeixe, cCarne, cDoce, cAperitivos, cLanches, cAlcool, cAdocante, cSuplementos, cRefriDiet, cRefri;
+
+    private String format = "dd/mm/yy";
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format, new Locale("pt", "Br"));
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,10 +85,14 @@ public class AddAlimentacaoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_alimentacao, container, false);
 
+        btnAliDia = view.findViewById(R.id.btnAliDia);
+
         btnAddAliAlmoco = view.findViewById(R.id.btnAddAliAlmoco);
         btnAddAliJanta = view.findViewById(R.id.btnAddAliJanta);
         btnAddAliCafe = view.findViewById(R.id.btnAddAliCafe);
         btnAddAliLanches = view.findViewById(R.id.btnAddAliLanches);
+
+        btnSalvar = view.findViewById(R.id.btnSalvar);
         btnCancelar = view.findViewById(R.id.btnCancelar);
 
         cVegetais = view.findViewById(R.id.checkBox);
@@ -102,10 +116,42 @@ public class AddAlimentacaoFragment extends Fragment {
         cRefri = view.findViewById(R.id.checkbox23);
 
         clAddAli = view.findViewById(R.id.clAddAli);
-        clOriginal = view.findViewById(R.id.clOriginal);
 
         final CheckBox[] comidas = {cVegetais, cFrutas, cLegumes, cGraos, cIntegrais, cBatata, cOvo, cLaticinios, cNozes, cPeixe, cCarne, cDoce, cAperitivos, cLanches, cAlcool, cAdocante, cSuplementos, cRefriDiet, cRefri};
 
+        btnAliDia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Calendar calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                    }
+                }, year, month, day);
+
+                datePickerDialog.show();
+
+            }
+        });
+
+        btnAddAliCafe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
+
+                clAddAli.startAnimation(animation);
+
+                clAddAli.setVisibility(View.VISIBLE);
+
+            }
+        });
 
         btnAddAliAlmoco.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +162,41 @@ public class AddAlimentacaoFragment extends Fragment {
                 clAddAli.startAnimation(animation);
 
                 clAddAli.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        btnAddAliJanta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
+
+                clAddAli.startAnimation(animation);
+
+                clAddAli.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        btnAddAliLanches.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
+
+                clAddAli.startAnimation(animation);
+
+                clAddAli.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
 
             }
         });

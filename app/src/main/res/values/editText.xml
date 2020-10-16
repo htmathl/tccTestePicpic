@@ -39,6 +39,5 @@
         <item name="background">@drawable/edt_cadastro_erro_pqn</item>
         <item name="android:textColorHint">#ff0000</item>
     </style>
-    
 
 </resources>
