@@ -45,23 +45,32 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="30dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="@id/linearLayout5"
         app:layout_constraintStart_toStartOf="@id/linearLayout5"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView7"
+        <Button
+            android:id="@+id/btnAliDia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="Hoje "
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#050505"
+            android:background="#00FFFFFF"
+            android:fontFamily="@font/roboto"
+            android:text="Hoje"
+            android:textAllCaps="false"
             android:textSize="30sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text='Selecione o dia clicando em "hoje".' />
     </LinearLayout>
 
     <LinearLayout
@@ -246,7 +255,7 @@
         android:layout_height="match_parent"
         android:background="#BF000000"
         android:clickable="true"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -512,10 +521,17 @@
                 android:id="@+id/editTextTextMultiLine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/edt_geral_borda_branca"
                 android:ems="10"
                 android:gravity="start|top"
+                android:hint="Descreva como foi a refeição"
                 android:inputType="textMultiLine"
+                android:maxLines="11"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
@@ -533,12 +549,12 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button3"
+                app:layout_constraintEnd_toStartOf="@+id/btnSalvar"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnSalvar"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="36dp"
