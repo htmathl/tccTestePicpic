@@ -2,7 +2,6 @@ package com.example.testepicpic.fragment;
 
 import android.os.Bundle;
 
-import androidx.constraintlayout.solver.widgets.ConstraintTableLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Constraints;
 import androidx.fragment.app.Fragment;
