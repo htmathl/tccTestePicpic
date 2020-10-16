@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clOriginal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="auto">
@@ -363,7 +364,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
-                        android:button="@drawable/egg"
+                        android:button="@null"
+                        android:drawableTop="@drawable/egg"
                         android:gravity="center"
                         android:text="Ovo" />
 
@@ -464,15 +466,17 @@
                     android:orientation="horizontal">
 
                     <CheckBox
+                        android:id="@+id/checkbox20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:button="@null"
-                        android:drawableTop="@drawable/sweet"
+                        android:drawableTop="@drawable/sugar"
                         android:gravity="center"
                         android:text="Adoçante" />
 
                     <CheckBox
+                        android:id="@+id/checkbox21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
@@ -482,6 +486,7 @@
                         android:text="Suplementos" />
 
                     <CheckBox
+                        android:id="@+id/checkbox22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
@@ -491,6 +496,7 @@
                         android:text="Refri diet" />
 
                     <CheckBox
+                        android:id="@+id/checkbox23"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
@@ -503,14 +509,13 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/editTextTextMultiLine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/bg_btn_fundo_branco"
+                android:layout_weight="1"
                 android:ems="10"
-                android:hint="Descrição"
-                android:inputType="textPersonName"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
@@ -519,9 +524,14 @@
                 android:id="@+id/btnCancelar"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="56dp"
-                android:background="@drawable/bg_btn_fundo_branco"
+                android:layout_marginBottom="36dp"
+                android:background="#00FFFFFF"
+                android:backgroundTint="#00FFFFFF"
                 android:text="Cancelar"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/button3"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -531,9 +541,13 @@
                 android:id="@+id/button3"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="56dp"
-                android:background="@drawable/bg_btn_fundo_branco"
+                android:layout_marginBottom="36dp"
+                android:background="#00FFFFFF"
                 android:text="Salvar"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
