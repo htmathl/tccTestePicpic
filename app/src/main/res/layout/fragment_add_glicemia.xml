@@ -7,24 +7,12 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <FrameLayout
-        android:id="@+id/frameLayout4"
-        android:layout_width="0dp"
-        android:layout_height="500dp"
-        android:background="@drawable/ic_plano_de_fundo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/frameLayout2"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/waves"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
@@ -42,139 +30,181 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Space
-            android:layout_width="361dp"
-            android:layout_height="135dp" />
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@id/linearLayout5"
+            app:layout_constraintStart_toStartOf="@id/linearLayout5"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/btnHumorDia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:fontFamily="@font/roboto"
+                android:text="Hoje"
+                android:textAllCaps="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text='Selecione o dia clicando em "hoje".' />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="74dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:gravity="center"
             android:padding="10dp">
 
             <TextView
                 android:id="@+id/textView52"
-                android:layout_width="44dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/roboto"
                 android:text="Nível"
+                android:gravity="center_vertical"
                 android:textColor="#000000"
-                android:textSize="30dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edtNumGlicemia"
                 android:layout_width="144dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_btn_fundo_branco"
-                android:ems="10"
+                android:background="@drawable/edt_geral_borda_branca"
                 android:gravity="center"
                 android:hint="ml/dl"
                 android:inputType="textPersonName" />
 
-            <ImageButton
-                android:id="@+id/btnSalvarGlicemia"
-                android:layout_width="36dp"
-                android:layout_height="41dp"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:srcCompat="@mipmap/ic_maoo_foreground" />
-
         </LinearLayout>
 
-        <Space
-            android:layout_width="336dp"
-            android:layout_height="20dp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="28dp" />
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="114dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/txtHorario "
+                    android:id="@+id/txtHorario"
                     android:layout_width="166dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="@font/roboto"
                     android:text="Horário da medição "
                     android:textColor="#000000"
-                    android:textSize="24sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edtHorarioMed"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_btn_fundo_branco"
+                    android:background="@drawable/edt_geral_borda_branca"
                     android:ems="10"
                     android:gravity="center"
                     android:hint="00:00"
                     android:inputType="textPersonName" />
             </LinearLayout>
-        </RadioGroup>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="209dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btnCheck"
-                android:layout_width="89dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:srcCompat="@mipmap/ic_check_foreground" />
+            android:orientation="vertical"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:gravity="center"
+            android:padding="10dp">
 
             <TextView
-                android:id="@+id/txtGlicemia"
-                android:layout_width="177dp"
+                android:id="@+id/textView54"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="Glicemia"
-                android:textColor="#6247AA"
-                android:textSize="30dp"
+                android:fontFamily="@font/roboto"
+                android:text="Indique no mapa onde furou o dedo"
+                android:gravity="center_vertical"
+                android:textColor="#000000"
+                android:textSize="16sp"
                 android:textStyle="bold" />
-
             <ImageButton
-                android:id="@+id/btnNext"
-                android:layout_width="65dp"
-                android:layout_height="55dp"
+                android:id="@+id/btnSalvarGlicemia"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
-                app:srcCompat="@mipmap/ic_setalado_foreground" />
-
+                app:srcCompat="@mipmap/ic_maoo_foreground" />
         </LinearLayout>
-
-        <Space
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="16dp" />
+            android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/btnBolinhasPassar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            app:srcCompat="@drawable/ic_elipsesintro1" />
+            <LinearLayout
+                android:id="@+id/linearLayout11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageButton
+                    android:id="@+id/imageButton7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="56dp"
+                    android:background="@drawable/ic_tick_1" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    style="@style/Widget.AppCompat.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Glicemia"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="56dp"
+                    android:background="@drawable/ic_next_2_1" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </LinearLayout>
 
