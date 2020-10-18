@@ -36,6 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <LinearLayout
             android:id="@+id/linearLayout7"
             android:layout_width="match_parent"
@@ -83,7 +84,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
-            <Button
+
+            <RadioButton
                 android:id="@+id/btnAddHumorBem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -91,11 +93,16 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn_add_alimentos"
                 android:drawableTop="@drawable/happy"
-                android:padding="8dp"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:paddingLeft="40dp"
+                android:paddingTop="8dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="8dp"
                 android:text="Feliz"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-            <Button
+            <RadioButton
                 android:id="@+id/btnAddHumorNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -103,9 +110,19 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn_add_alimentos"
                 android:drawableTop="@drawable/normal"
-                android:padding="8dp"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:paddingLeft="40dp"
+                android:paddingTop="8dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="8dp"
                 android:text="Normal"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+
+
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -120,7 +137,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
-            <Button
+
+            <RadioButton
                 android:id="@+id/btnAddHumorSad"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -128,35 +146,35 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn_add_alimentos"
                 android:drawableTop="@drawable/sad"
-                android:padding="8dp"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:paddingLeft="40dp"
+                android:paddingTop="8dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="8dp"
                 android:text="Triste"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-            <Button
-                android:id="@+id/btnAddHumor2"
+            <RadioButton
+                android:id="@+id/btnAddHumorBrabo"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_add_alimentos"
                 android:drawableTop="@drawable/bravo"
-                android:padding="8dp"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:paddingLeft="40dp"
+                android:paddingTop="8dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="8dp"
                 android:text="Bravo"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
+
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:background="#00FFFFFF"
-            android:text="Salvar"
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
 
         <EditText
             android:id="@+id/editTextDescriçãoHumor"
@@ -187,15 +205,15 @@
                 android:id="@+id/linearLayout11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginBottom="4dp"
+                android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="@id/Layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
                 <ImageButton
-                    android:id="@+id/imageButton7"
+                    android:id="@+id/btnTerminar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="80dp"
@@ -213,7 +231,7 @@
                     android:textStyle="bold" />
 
                 <ImageButton
-                    android:id="@+id/imageButton4"
+                    android:id="@+id/btnProximo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"

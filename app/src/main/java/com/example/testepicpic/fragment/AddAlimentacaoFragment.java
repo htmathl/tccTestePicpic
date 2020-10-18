@@ -249,7 +249,7 @@ public class AddAlimentacaoFragment extends Fragment {
 
                 strPComidasCafe = edtDescricaoAli.getText().toString();
 
-                ref =ConfigFirebase.getFirebase();
+                ref = ConfigFirebase.getFirebase();
 
                 if(btnAliDia.getText().toString().equals("Hoje")) {
                     pYear = Calendar.getInstance().get(Calendar.YEAR);
@@ -342,37 +342,54 @@ public class AddAlimentacaoFragment extends Fragment {
                             dialogC.setPositiveButton("Salvar", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    for(int i = 0; i < comidas.length; i++) {
-                                if(comidas[i].isChecked())
-                                    pComidasJanta[i] = true;
-                            }
 
-                            for(int i = 0; i < pComidasAlmoco.length; i++) {
-                                ref.child("users")
+                                    for(int i = 0; i < comidas.length; i++) {
+                                        if(comidas[i].isChecked())
+                                            pComidasAlmoco[i] = true;
+                                    }
+
+                                    for(int i = 0; i < pComidasAlmoco.length; i++) {
+                                        ref.child("users")
+                                            .child(currentId)
+                                            .child("inserção")
+                                            .child("alimentação")
+                                            .child("Almoço")
+                                            .child(String.valueOf(pYear))
+                                            .child(String.valueOf(pMonth))
+                                            .child(String.valueOf(pDay))
+                                            .child(listaComidas[i])
+                                            .setValue(pComidasAlmoco[i]);
+                                    }
+
+                                    ref.child("users")
                                         .child(currentId)
                                         .child("inserção")
                                         .child("alimentação")
-                                        .child("café")
+                                        .child("Almoço")
                                         .child(String.valueOf(pYear))
                                         .child(String.valueOf(pMonth))
                                         .child(String.valueOf(pDay))
-                                        .child(listaComidas[i])
-                                        .setValue(pComidasAlmoco[i]);
-                            }
+                                        .child("descrição")
+                                        .setValue(strPComidasCafe);
 
-                            ref.child("users")
-                                    .child(currentId)
-                                    .child("inserção")
-                                    .child("alimentação")
-                                    .child("Almoço")
-                                    .child(String.valueOf(pYear))
-                                    .child(String.valueOf(pMonth))
-                                    .child(String.valueOf(pDay))
-                                    .child("descrição")
-                                    .setValue(strPComidasCafe);
+                                    Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
+
+                                    Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
+
+                                    clAddAli.startAnimation(animation);
+
+                                    clAddAli.setVisibility(View.GONE);
+
+                                    for(CheckBox comida : comidas) {
+                                        if(comida.isChecked())
+                                            comida.setChecked(false);
+                                    }
+
+                                    if(edtDescricaoAli.getText() != null)
+                                        edtDescricaoAli.setText(null);
+
                                 }
-                                    });
-
+                            });
 
                                 dialogC.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                                     @Override
@@ -401,37 +418,54 @@ public class AddAlimentacaoFragment extends Fragment {
                             dialogC.setPositiveButton("Salvar", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
+
                                      for(int i = 0; i < comidas.length; i++) {
-                                if(comidas[i].isChecked())
-                                    pComidasJanta[i] = true;
-                            }
+                                        if(comidas[i].isChecked())
+                                            pComidasJanta[i] = true;
+                                     }
 
-                            for(int i = 0; i < pComidasJanta.length; i++) {
-                                ref.child("users")
-                                        .child(currentId)
-                                        .child("inserção")
-                                        .child("alimentação")
-                                        .child("café")
-                                        .child(String.valueOf(pYear))
-                                        .child(String.valueOf(pMonth))
-                                        .child(String.valueOf(pDay))
-                                        .child(listaComidas[i])
-                                        .setValue(pComidasJanta[i]);
-                            }
+                                     for(int i = 0; i < pComidasJanta.length; i++) {
+                                        ref.child("users")
+                                            .child(currentId)
+                                            .child("inserção")
+                                            .child("alimentação")
+                                            .child("Janta")
+                                            .child(String.valueOf(pYear))
+                                            .child(String.valueOf(pMonth))
+                                            .child(String.valueOf(pDay))
+                                            .child(listaComidas[i])
+                                            .setValue(pComidasJanta[i]);
+                                     }
 
-                            ref.child("users")
-                                    .child(currentId)
-                                    .child("inserção")
-                                    .child("alimentação")
-                                    .child("Almoço")
-                                    .child(String.valueOf(pYear))
-                                    .child(String.valueOf(pMonth))
-                                    .child(String.valueOf(pDay))
-                                    .child("descrição")
-                                    .setValue(strPComidasCafe);
+                                        ref.child("users")
+                                            .child(currentId)
+                                            .child("inserção")
+                                            .child("alimentação")
+                                            .child("Janta")
+                                            .child(String.valueOf(pYear))
+                                            .child(String.valueOf(pMonth))
+                                            .child(String.valueOf(pDay))
+                                            .child("descrição")
+                                            .setValue(strPComidasCafe);
+
+                                    Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
+
+                                    Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
+
+                                    clAddAli.startAnimation(animation);
+
+                                    clAddAli.setVisibility(View.GONE);
+
+                                    for(CheckBox comida : comidas) {
+                                        if(comida.isChecked())
+                                            comida.setChecked(false);
+                                    }
+
+                                    if(edtDescricaoAli.getText() != null)
+                                        edtDescricaoAli.setText(null);
+
                                 }
                             });
-
 
                             dialogC.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                                 @Override
@@ -444,7 +478,6 @@ public class AddAlimentacaoFragment extends Fragment {
 
                             dialogC.create();
                             dialogC.show();
-
 
                         } else {
                             Toast.makeText(getActivity(), "Por favor, preencha a descrição da refeição", Toast.LENGTH_SHORT).show();
@@ -470,7 +503,7 @@ public class AddAlimentacaoFragment extends Fragment {
                                                 .child(currentId)
                                                 .child("inserção")
                                                 .child("alimentação")
-                                                .child("café")
+                                                .child("Lanches")
                                                 .child(String.valueOf(pYear))
                                                 .child(String.valueOf(pMonth))
                                                 .child(String.valueOf(pDay))
@@ -482,15 +515,31 @@ public class AddAlimentacaoFragment extends Fragment {
                                             .child(currentId)
                                             .child("inserção")
                                             .child("alimentação")
-                                            .child("Almoço")
+                                            .child("Lanches")
                                             .child(String.valueOf(pYear))
                                             .child(String.valueOf(pMonth))
                                             .child(String.valueOf(pDay))
                                             .child("descrição")
                                             .setValue(strPComidasCafe);
+
+                                    Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
+
+                                    Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
+
+                                    clAddAli.startAnimation(animation);
+
+                                    clAddAli.setVisibility(View.GONE);
+
+                                    for(CheckBox comida : comidas) {
+                                        if(comida.isChecked())
+                                            comida.setChecked(false);
+                                    }
+
+                                    if(edtDescricaoAli.getText() != null)
+                                        edtDescricaoAli.setText(null);
+
                                 }
                             });
-
 
                             dialogC.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                                 @Override
@@ -503,6 +552,7 @@ public class AddAlimentacaoFragment extends Fragment {
 
                             dialogC.create();
                             dialogC.show();
+
                         } else {
                             Toast.makeText(getActivity(), "Por favor, preencha a descrição da refeição", Toast.LENGTH_SHORT).show();
                         }
@@ -514,19 +564,34 @@ public class AddAlimentacaoFragment extends Fragment {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
+                AlertDialog.Builder cancelar = new AlertDialog.Builder(getActivity());
+                cancelar.setTitle("Deseja apagar os itens selecionados?");
+                cancelar.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
 
-                clAddAli.startAnimation(animation);
+                        clAddAli.startAnimation(animation);
 
-                clAddAli.setVisibility(View.GONE);
+                        clAddAli.setVisibility(View.GONE);
 
-                for(CheckBox comida : comidas) {
-                    if(comida.isChecked())
-                        comida.setChecked(false);
-                }
+                        for(CheckBox comida : comidas) {
+                            if(comida.isChecked())
+                                comida.setChecked(false);
+                        }
 
-                if(edtDescricaoAli.getText() != null)
-                    edtDescricaoAli.setText(null);
+                        if(edtDescricaoAli.getText() != null)
+                            edtDescricaoAli.setText(null);
+                    }
+                });
+                cancelar.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                cancelar.create();
+                cancelar.show();
 
             }
         });
