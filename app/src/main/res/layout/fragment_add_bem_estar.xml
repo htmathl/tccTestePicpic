@@ -9,27 +9,15 @@
 
     <FrameLayout
         android:id="@+id/frameLayout2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/waves"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout4">
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/frameLayout4"
-        android:layout_width="0dp"
-        android:layout_height="500dp"
-        android:background="@drawable/ic_plano_de_fundo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
+
 
     <LinearLayout
         android:id="@+id/linearLayout5"
@@ -40,11 +28,202 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/bg_copo"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@id/linearLayout5"
+            app:layout_constraintStart_toStartOf="@id/linearLayout5"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/btnHumorDia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:fontFamily="@font/roboto"
+                android:text="Hoje"
+                android:textAllCaps="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text='Selecione o dia clicando em "hoje".' />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="40dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+            <Button
+                android:id="@+id/btnAddHumorBem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_add_alimentos"
+                android:drawableTop="@drawable/happy"
+                android:padding="8dp"
+                android:text="Feliz"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <Button
+                android:id="@+id/btnAddHumorNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_add_alimentos"
+                android:drawableTop="@drawable/normal"
+                android:padding="8dp"
+                android:text="Normal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="40dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+            <Button
+                android:id="@+id/btnAddHumorSad"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_add_alimentos"
+                android:drawableTop="@drawable/sad"
+                android:padding="8dp"
+                android:text="Triste"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <Button
+                android:id="@+id/btnAddHumor2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_add_alimentos"
+                android:drawableTop="@drawable/bravo"
+                android:padding="8dp"
+                android:text="Bravo"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="#00FFFFFF"
+            android:text="Salvar"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/editTextDescriçãoHumor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/edt_geral_borda_branca"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Descreva como foi seu humor"
+            android:inputType="textMultiLine"
+            android:maxLines="11"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@id/Layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageButton
+                    android:id="@+id/imageButton7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="80dp"
+                    android:background="@drawable/ic_tick_1" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    style="@style/Widget.AppCompat.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Humor"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imageButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:background="@drawable/ic_next_2_1" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

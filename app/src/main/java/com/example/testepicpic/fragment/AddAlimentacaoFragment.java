@@ -222,6 +222,7 @@ public class AddAlimentacaoFragment extends Fragment {
 
                 clAddAli.setVisibility(View.VISIBLE);
 
+
             }
         });
 
