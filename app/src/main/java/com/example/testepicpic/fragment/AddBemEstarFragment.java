@@ -1,5 +1,6 @@
 package com.example.testepicpic.fragment;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,10 +8,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.RadioButton;
 
 import com.example.testepicpic.R;
+
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +24,10 @@ import com.example.testepicpic.R;
  */
 public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
     private RadioButton brabo, normal, triste, feliz;
+
+    private int pDay, pMonth, pYear;
+
+    private Button btnHumorDia;
 
     private int indice;
 
@@ -77,7 +86,31 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
         feliz.setOnCheckedChangeListener(this);
         normal.setOnCheckedChangeListener(this);
 
+        btnHumorDia = view.findViewById(R.id.btnHumorDia);
 
+        btnHumorDia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Calendar calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        btnHumorDia.setText(dayOfMonth + "/" + (month+1) + "/" + year);
+                        pDay = dayOfMonth;
+                        pMonth = (month+1);
+                        pYear = year;
+                    }
+                }, year, month, day);
+
+                datePickerDialog.show();
+
+            }
+        });
 
         return view;
     }

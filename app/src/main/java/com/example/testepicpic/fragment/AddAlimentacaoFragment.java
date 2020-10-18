@@ -3,6 +3,7 @@ package com.example.testepicpic.fragment;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,9 +23,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.testepicpic.R;
+import com.example.testepicpic.activity.AddInfosActivity;
+import com.example.testepicpic.activity.MainActivity;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.helper.Base64Custom;
 import com.example.testepicpic.model.Usuario;
@@ -50,6 +54,7 @@ import java.util.Locale;
 public class AddAlimentacaoFragment extends Fragment {
 
     private Button btnAddAliCafe, btnAddAliAlmoco, btnAddAliJanta, btnAddAliLanches, btnCancelar, btnAliDia, btnSalvar;
+    private ImageButton ibtnTerminar, ibtnProximo;
     private ConstraintLayout clAddAli;
     private CheckBox cVegetais, cFrutas, cLegumes, cGraos, cIntegrais, cBatata, cOvo, cLaticinios, cNozes, cPeixe, cCarne, cDoce, cAperitivos, cLanches, cAlcool, cAdocante, cSuplementos, cRefriDiet, cRefri;
     private EditText edtDescricaoAli;
@@ -145,6 +150,9 @@ public class AddAlimentacaoFragment extends Fragment {
         cSuplementos = view.findViewById(R.id.checkbox21);
         cRefriDiet = view.findViewById(R.id.checkbox22);
         cRefri = view.findViewById(R.id.checkbox23);
+
+        ibtnTerminar = view.findViewById(R.id.btnTerminar);
+        ibtnProximo = view.findViewById(R.id.btnProximo);
 
         edtDescricaoAli = view.findViewById(R.id.edtDescicaoAli);
 
@@ -592,6 +600,24 @@ public class AddAlimentacaoFragment extends Fragment {
                 });
                 cancelar.create();
                 cancelar.show();
+
+            }
+        });
+
+        ibtnTerminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                getActivity().finish();
+
+            }
+        });
+
+        ibtnProximo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
 
             }
         });
