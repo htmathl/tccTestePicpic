@@ -20,7 +20,7 @@ public class Usuario {
     private boolean utilizoInsulina;
     private boolean utilizoMedicacao;
     //private String[] medicacao;
-    private boolean[] lembretes;
+    //private boolean[] lembretes;
 
     @Exclude
     public String getIdUser() {
@@ -118,7 +118,7 @@ public class Usuario {
 
     public void setMedicacao(String[] medicacao) {
         this.medicacao = medicacao;
-    }*/
+    }
 
     public boolean[] getLembretes() {
         return lembretes;
@@ -126,7 +126,7 @@ public class Usuario {
 
     public void setLembretes(boolean[] lembretes) {
         this.lembretes = lembretes;
-    }
+    }*/
 
     public Usuario() {
     }
