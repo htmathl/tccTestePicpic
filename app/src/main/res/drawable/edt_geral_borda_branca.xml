@@ -10,7 +10,7 @@
                 android:topLeftRadius="8dp"
                 android:topRightRadius="8dp" />
             <size
-                android:height="48dp"
+                android:height="78dp"
                 android:width="300dp"
                 />
             <solid
