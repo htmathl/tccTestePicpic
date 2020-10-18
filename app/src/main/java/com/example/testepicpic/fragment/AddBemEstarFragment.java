@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
 
 import com.example.testepicpic.R;
 
@@ -15,7 +17,10 @@ import com.example.testepicpic.R;
  * Use the {@link AddBemEstarFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddBemEstarFragment extends Fragment {
+public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
+    private RadioButton brabo, normal, triste, feliz;
+
+    private int indice;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +65,46 @@ public class AddBemEstarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_bem_estar, container, false);
+        View view =  inflater.inflate(R.layout.fragment_add_bem_estar, container, false);
+
+        brabo = view.findViewById(R.id.btnAddHumorBrabo);
+        triste = view.findViewById(R.id.btnAddHumorSad);
+        feliz = view.findViewById(R.id.btnAddHumorBem);
+        normal = view.findViewById(R.id.btnAddHumorNormal);
+
+        brabo.setOnCheckedChangeListener(this);
+        triste.setOnCheckedChangeListener(this);
+        feliz.setOnCheckedChangeListener(this);
+        normal.setOnCheckedChangeListener(this);
+
+
+
+        return view;
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if(isChecked){
+            if(buttonView.getId() == R.id.btnAddHumorBrabo){
+                triste.setChecked(false);
+                feliz.setChecked(false);
+                normal.setChecked(false);
+            }
+            if(buttonView.getId() == R.id.btnAddHumorSad){
+                brabo.setChecked(false);
+                feliz.setChecked(false);
+                normal.setChecked(false);
+            }
+            if(buttonView.getId() == R.id.btnAddHumorBem){
+                triste.setChecked(false);
+                brabo.setChecked(false);
+                normal.setChecked(false);
+            }
+            if(buttonView.getId() == R.id.btnAddHumorNormal){
+                triste.setChecked(false);
+                feliz.setChecked(false);
+                brabo.setChecked(false);
+            }
+        }
     }
 }
