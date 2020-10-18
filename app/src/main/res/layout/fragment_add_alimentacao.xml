@@ -223,7 +223,7 @@
         app:layout_constraintStart_toStartOf="@+id/linearLayout5">
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/btnTerminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="50dp"
@@ -241,7 +241,7 @@
             android:textStyle="bold" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/btnProximo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
