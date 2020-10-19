@@ -1,6 +1,8 @@
 package com.example.testepicpic.fragment;
 
+import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -213,22 +215,44 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
                             Toast.LENGTH_LONG).show();
                 } else {
 
-                    argsHour.putBooleanArray("pDiasGliA", pDiasGli);
-                    argsHour.putBooleanArray("pDiasInsuA", pdiasInsu);
-                    argsHour.putBooleanArray("pDiasAguA", pdiasAgu);
-                    argsHour.putBooleanArray("pDiasRemeA", pDiasReme);
-                    argsHour.putIntegerArrayList("pListaHorarioInsulina",pListaHorarioInsulina);
-                    argsHour.putIntegerArrayList("pListaHorarioGlicemia",pListaHorarioGlicemia);
-                    argsHour.putIntegerArrayList("pListaHorarioAgua",pListaHorarioAgua);
-                    argsHour.putIntegerArrayList("pListaHorarioRemedios",pListaHorarioRemedios);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-                    FragmentManager manager = getActivity().getSupportFragmentManager();
-                    FragmentTransaction transaction = manager.beginTransaction();
-                    cadastroEmailFragment.setArguments(argsHour);
-                    transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
-                    transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
+                    builder.setTitle("Quer mesmo Continuar?");
+
+                    builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            argsHour.putBooleanArray("pDiasGliA", pDiasGli);
+                            argsHour.putBooleanArray("pDiasInsuA", pdiasInsu);
+                            argsHour.putBooleanArray("pDiasAguA", pdiasAgu);
+                            argsHour.putBooleanArray("pDiasRemeA", pDiasReme);
+                            argsHour.putIntegerArrayList("pListaHorarioInsulina",pListaHorarioInsulina);
+                            argsHour.putIntegerArrayList("pListaHorarioGlicemia",pListaHorarioGlicemia);
+                            argsHour.putIntegerArrayList("pListaHorarioAgua",pListaHorarioAgua);
+                            argsHour.putIntegerArrayList("pListaHorarioRemedios",pListaHorarioRemedios);
+
+                            FragmentManager manager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction transaction = manager.beginTransaction();
+                            cadastroEmailFragment.setArguments(argsHour);
+                            transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
+                            transaction.replace(R.id.frameConteudoCad, cadastroEmailFragment);
+                            transaction.addToBackStack(null);
+                            transaction.commit();
+
+                        }
+                    });
+
+                    builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+
+                        }
+                    });
+
+                    builder.create();
+                    builder.show();
 
                 }
 
@@ -244,58 +268,75 @@ public class CadastroHorarioFragment extends Fragment implements AdapterView.OnI
                     Toast.makeText(getActivity(), "Algo de errado não esta certo", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    String pSelect = spLembretes.getSelectedItem().toString();
 
-                    CheckBox[] dias = {cbDom, cbSeg, cbTer, cbQua, cbQui, cbSex, cbSab};
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-                        switch (pSelect) {
-                            case "Glicemia":
-                                if(!pSelectLista.contains("Glicemia"))
-                                    pSelectLista.add("Glicemia");
+                    builder.setTitle("Deseja mesmo adicionar este horario?");
 
-                                for(int i= 0; i < pDiasGli.length; i++) {
-                                    if(dias[i].isChecked())
-                                        pDiasGli[i] = true;
-                                }
+                    builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                                break;
-                            case "Insulina":
-                                if(!pSelectLista.contains("Insulina"))
-                                    pSelectLista.add("Insulina");
+                            String pSelect = spLembretes.getSelectedItem().toString();
 
-                                for(int i= 0; i < pdiasInsu.length; i++) {
-                                    if(dias[i].isChecked())
-                                        pdiasInsu[i] = true;
-                                }
+                            CheckBox[] dias = {cbDom, cbSeg, cbTer, cbQua, cbQui, cbSex, cbSab};
 
-                                break;
-                            case "Água":
-                                if(!pSelectLista.contains("Água"))
-                                    pSelectLista.add("Água");
+                            switch (pSelect) {
+                                case "Glicemia":
+                                    if(!pSelectLista.contains("Glicemia"))
+                                        pSelectLista.add("Glicemia");
 
-                                for(int i= 0; i < pdiasAgu.length; i++) {
-                                    if(dias[i].isChecked())
-                                        pdiasAgu[i] = true;
-                                }
+                                    for(int i= 0; i < pDiasGli.length; i++) {
+                                        if(dias[i].isChecked())
+                                            pDiasGli[i] = true;
+                                    }
 
-                                break;
-                            case "Remédios":
-                                if(!pSelectLista.contains("Remédios"))
-                                    pSelectLista.add("Remédios");
+                                    break;
+                                case "Insulina":
+                                    if(!pSelectLista.contains("Insulina"))
+                                        pSelectLista.add("Insulina");
 
-                                for(int i= 0; i < pDiasReme.length; i++) {
-                                    if(dias[i].isChecked())
-                                        pDiasReme[i] = true;
-                                }
+                                    for(int i= 0; i < pdiasInsu.length; i++) {
+                                        if(dias[i].isChecked())
+                                            pdiasInsu[i] = true;
+                                    }
 
-                                break;
+                                    break;
+                                case "Água":
+                                    if(!pSelectLista.contains("Água"))
+                                        pSelectLista.add("Água");
+
+                                    for(int i= 0; i < pdiasAgu.length; i++) {
+                                        if(dias[i].isChecked())
+                                            pdiasAgu[i] = true;
+                                    }
+
+                                    break;
+                                case "Remédios":
+                                    if(!pSelectLista.contains("Remédios"))
+                                        pSelectLista.add("Remédios");
+
+                                    for(int i= 0; i < pDiasReme.length; i++) {
+                                        if(dias[i].isChecked())
+                                            pDiasReme[i] = true;
+                                    }
+                                    break;
+                            }
+
+                            Toast.makeText(getActivity(), "Horário adicionado", Toast.LENGTH_SHORT).show();
                         }
+                    });
 
-                        Toast.makeText(getActivity(), Arrays.toString(pDiasReme), Toast.LENGTH_LONG).show();
-                        Toast.makeText(getActivity(), Arrays.toString(pdiasAgu), Toast.LENGTH_LONG).show();
+                    builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                        Toast.makeText(getActivity(), pListaHorarioAgua.toString(), Toast.LENGTH_LONG).show();
-                        Toast.makeText(getActivity(), pListaHorarioRemedios.toString(), Toast.LENGTH_LONG).show();
+
+                        }
+                    });
+
+                    builder.create();
+                    builder.show();
 
                 }
 
