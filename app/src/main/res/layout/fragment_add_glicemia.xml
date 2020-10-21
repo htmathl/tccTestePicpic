@@ -101,6 +101,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/txtHorario"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/roboto"
+                android:text="Horário da medição "
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnHorarioGli"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edt_geral_borda_branca"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="00:00"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
@@ -128,6 +159,7 @@
                 android:background="#00FFFFFF"
                 app:srcCompat="@mipmap/ic_maoo_foreground" />
         </LinearLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -168,8 +200,8 @@
                     android:background="@drawable/ic_next_2_1" />
 
             </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
