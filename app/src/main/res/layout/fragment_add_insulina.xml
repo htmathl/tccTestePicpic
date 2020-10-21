@@ -20,14 +20,19 @@
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="346dp"
-        android:layout_height="715dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/bg_copo"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:id="@+id/linearLayout7"
             android:layout_width="match_parent"
@@ -41,7 +46,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Button
-                android:id="@+id/btnHumorDia"
+                android:id="@+id/btnInsulinaDia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -66,158 +71,166 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <TextView
                 android:id="@+id/textView52"
-                android:layout_width="44dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_margin="4dp"
                 android:fontFamily="@font/roboto"
-                android:text="Nível"
                 android:gravity="center_vertical"
+                android:text="Nível"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edtNumGlicemia"
-                android:layout_width="144dp"
+                android:layout_width="150dp"
                 android:layout_height="40dp"
-                android:layout_weight="1"
+                android:layout_margin="4dp"
                 android:background="@drawable/edt_geral_borda_branca"
                 android:gravity="center"
                 android:hint="ml/dl"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:padding="5dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <TextView
                 android:id="@+id/txtHorarioInsulina"
-                android:layout_width="40dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Horário"
+                android:layout_margin="4dp"
                 android:gravity="center_vertical"
+                android:text="Horário"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/edtTimeInsulina"
-                android:layout_width="144dp"
+            <Button
+                android:id="@+id/btnTimeInsulina"
+                android:layout_width="150dp"
                 android:layout_height="40dp"
-                android:layout_weight="1"
+                android:layout_margin="4dp"
                 android:background="@drawable/edt_geral_borda_branca"
                 android:gravity="center"
                 android:hint="00:00"
-                android:inputType="time" />
+                android:inputType="time"
+                android:padding="5dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <TextView
                 android:id="@+id/txtLocaldeAplicacao"
-                android:layout_width="40dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_margin="4dp"
                 android:text="Local da Aplicação"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editTextTextPersonName6"
-                android:layout_width="144dp"
+            <Spinner
+                android:id="@+id/spLocal"
+                android:layout_width="150dp"
                 android:layout_height="40dp"
-                android:layout_weight="1"
+                android:layout_margin="4dp"
                 android:background="@drawable/edt_geral_borda_branca"
                 android:gravity="center"
-                android:hint="Ex: barriga"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:padding="5dp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/textView51"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
             android:gravity="center"
             android:text="Categoria "
             android:textColor="#000000"
             android:textSize="30dp"
             android:textStyle="bold" />
 
-        <Space
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="28dp" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-            <LinearLayout
+            <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="52dp"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
-                android:orientation="horizontal"
-                android:padding="10dp">
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:orientation="horizontal">
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rdbRapida"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:paddingLeft="20dp"
-                    android:text="Rápida "
-                    android:textColor="#6247AA"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    style="@style/rdbInsulina"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:checked="true"
+                    android:text="Rápida"
+                    android:textSize="18sp" />
 
                 <RadioButton
                     android:id="@+id/rdbDevagar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:paddingLeft="20dp"
+                    style="@style/rdbInsulina"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
                     android:text="Devagar"
-                    android:textColor="#6247AA"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-                </RadioGroup>
-            </LinearLayout>
+                    android:textSize="18sp" />
+
+            </RadioGroup>
+        </LinearLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:id="@+id/linearLayout11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="18dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -225,7 +238,7 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <ImageButton
-                    android:id="@+id/imageButton7"
+                    android:id="@+id/ibtnTerminar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="56dp"
@@ -243,7 +256,7 @@
                     android:textStyle="bold" />
 
                 <ImageButton
-                    android:id="@+id/imageButton4"
+                    android:id="@+id/ibtnProximo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="56dp"

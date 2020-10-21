@@ -86,7 +86,7 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
         feliz.setOnCheckedChangeListener(this);
         normal.setOnCheckedChangeListener(this);
 
-        btnHumorDia = view.findViewById(R.id.btnHumorDia);
+        btnHumorDia = view.findViewById(R.id.btnInsulinaDia);
 
         btnHumorDia.setOnClickListener(new View.OnClickListener() {
             @Override

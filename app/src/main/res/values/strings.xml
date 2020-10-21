@@ -26,12 +26,21 @@
         <item>Gestacional</item>
     </string-array>
 
-
     <string-array name="genero">
         <item> Feminino </item>
         <item> Masculino </item>
         <item> Outro </item>
         <item> Não informar </item>
+    </string-array>
+
+    <string-array name="localAplicacaoInsulina">
+        <item>Braço esquerdo</item>
+        <item>Braço direito</item>
+        <item>Abdômen</item>
+        <item>Nádega esquerda</item>
+        <item>Nádega direta</item>
+        <item>Coxa esquerda</item>
+        <item>Coxa direira</item>
     </string-array>
 
     <string name="title_activity_app">MainActivity</string>
