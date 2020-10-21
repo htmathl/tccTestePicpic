@@ -493,7 +493,7 @@ public class AddAlimentacaoFragment extends Fragment {
                         break;
 
                     case 3:
-                        if(strPComidasCafe != null) {
+                        if(strPComidasCafe.equals("")) {
                             AlertDialog.Builder dialogC = new AlertDialog.Builder(getActivity());
 
                             dialogC.setTitle("Deseja mesmo salvar?");

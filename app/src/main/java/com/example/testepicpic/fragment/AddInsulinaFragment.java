@@ -1,7 +1,9 @@
 package com.example.testepicpic.fragment;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,11 +16,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
+import com.example.testepicpic.config.ConfigFirebase;
+import com.example.testepicpic.helper.Base64Custom;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -31,15 +40,25 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
 
     private Button btnInsulinaDia, btnTimeInsulina;
 
-    private EditText edtNumGlicemia;
+    private EditText edtNumInsulina;
 
     private Spinner spLocal;
 
     private RadioButton rdbRapida, rdbDevagar;
 
+    private ImageButton ibtnTermiar;
+
     private int pDay, pMonth, pYear;
 
-    private int Hour, min;
+    private int Hour, min, hora;
+
+    private DatabaseReference database;
+
+    private String currentId;
+
+    private String numInsulina;
+
+    private String local, categoria;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -90,7 +109,7 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
         btnInsulinaDia = view.findViewById(R.id.btnInsulinaDia);
         btnTimeInsulina = view.findViewById(R.id.btnTimeInsulina);
 
-        edtNumGlicemia = view.findViewById(R.id.edtNumGlicemia);
+        edtNumInsulina = view.findViewById(R.id.edtNumInsulina);
 
         spLocal = view.findViewById(R.id.spLocal);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.localAplicacaoInsulina, android.R.layout.simple_spinner_item);
@@ -98,6 +117,11 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
         spLocal.setAdapter(adapter);
 
         spLocal.setOnItemSelectedListener(this);
+
+        ibtnTermiar = view.findViewById(R.id.ibtnTerminar);
+
+        rdbDevagar = view.findViewById(R.id.rdbDevagar);
+        rdbRapida = view.findViewById(R.id.rdbRapida);
 
         Calendar c = Calendar.getInstance();
         Hour = c.get(Calendar.HOUR_OF_DAY);
@@ -126,14 +150,16 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
             }
         });
 
+
         btnTimeInsulina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+                        hora = (hourOfDay * 60 + minute);
 
                         btnTimeInsulina.setText(String.format("%02d:%02d", hourOfDay, minute));
 
@@ -141,6 +167,111 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
                 }, Hour, min, true);
 
                 timePickerDialog.show();
+            }
+        });
+
+
+        ibtnTermiar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                recuperarUsurario();
+
+                database = ConfigFirebase.getFirebase();
+
+                numInsulina = edtNumInsulina.getText().toString();
+
+                local = spLocal.getSelectedItem().toString();
+
+                if(!edtNumInsulina.getText().toString().equals("")) {
+                    if (!btnTimeInsulina.getText().toString().equals("")) {
+
+                        if(btnInsulinaDia.getText().equals("Hoje")) {
+
+                            pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+                            pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
+                            pYear = Calendar.getInstance().get(Calendar.YEAR);
+
+                        }
+
+                        if(rdbDevagar.isChecked())
+                            categoria = "Devagar";
+
+                        if(rdbRapida.isChecked())
+                            categoria = "Rápida";
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                        builder.setTitle("Deseja mesmo salvar?");
+
+                        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                database.child("users")
+                                        .child(currentId)
+                                        .child("inserção")
+                                        .child("insulina")
+                                        .child(String.valueOf(pYear))
+                                        .child(String.valueOf(pMonth))
+                                        .child(String.valueOf(pDay))
+                                        .child("nível")
+                                        .setValue(numInsulina);
+
+                                database.child("users")
+                                        .child(currentId)
+                                        .child("inserção")
+                                        .child("insulina")
+                                        .child(String.valueOf(pYear))
+                                        .child(String.valueOf(pMonth))
+                                        .child(String.valueOf(pDay))
+                                        .child("horário")
+                                        .setValue(hora);
+
+                                database.child("users")
+                                        .child(currentId)
+                                        .child("inserção")
+                                        .child("insulina")
+                                        .child(String.valueOf(pYear))
+                                        .child(String.valueOf(pMonth))
+                                        .child(String.valueOf(pDay))
+                                        .child("local da aplicação")
+                                        .setValue(local);
+
+                                database.child("users")
+                                        .child(currentId)
+                                        .child("inserção")
+                                        .child("insulina")
+                                        .child(String.valueOf(pYear))
+                                        .child(String.valueOf(pMonth))
+                                        .child(String.valueOf(pDay))
+                                        .child("categoria")
+                                        .setValue(categoria);
+
+                                Toast.makeText(getActivity(), "Pronto, já salvamos :)", Toast.LENGTH_SHORT).show();
+
+                                getActivity().finish();
+
+                            }
+                        });
+
+                        builder.setNegativeButton("não", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+
+                        builder.create();
+                        builder.show();
+
+
+                    } else {
+                        Toast.makeText(getActivity(), "Por favor, preencha o campo horário", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "Por favor, preencha o campo Nível", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -156,4 +287,14 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    public void recuperarUsurario() {
+        FirebaseAuth auth = ConfigFirebase.getFirebaseAutenticacao();
+
+        String email = auth.getCurrentUser().getEmail();
+        assert email != null;
+        currentId = Base64Custom.codificarBase64(email);
+
+    }
+
 }
