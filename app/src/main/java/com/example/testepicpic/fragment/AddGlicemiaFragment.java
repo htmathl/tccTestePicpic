@@ -1,5 +1,6 @@
 package com.example.testepicpic.fragment;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TimePicker;
 
 import com.example.testepicpic.R;
+
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +23,10 @@ import com.example.testepicpic.R;
  * create an instance of this fragment.
  */
 public class AddGlicemiaFragment extends Fragment {
+    private Button btnHorarioGli;
+    private int Hour, min;
+    private EditText edtNivelGli;
+    private ImageButton ibtnTerminar, ibtnProximo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +72,32 @@ public class AddGlicemiaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_glicemia, container, false);
+        View view = inflater.inflate(R.layout.fragment_add_glicemia, container, false);
+
+        btnHorarioGli = view.findViewById(R.id.btnHorarioGli);
+        edtNivelGli = view.findViewById(R.id.edtNumGlicemia);
+
+        ibtnProximo = view.findViewById(R.id.ibtnProxima);
+        ibtnTerminar = view.findViewById(R.id.ibtnTerminar);
+
+        Calendar c = Calendar.getInstance();
+        Hour = c.get(Calendar.HOUR_OF_DAY);
+        min = c.get(Calendar.MINUTE);
+
+
+        btnHorarioGli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timepicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        btnHorarioGli.setHint(String.format("%02d:%02d", hourOfDay, minute));
+                    }
+                }, Hour, min, true);
+                timepicker.show();
+            }
+        });
+
+        return view;
     }
 }
