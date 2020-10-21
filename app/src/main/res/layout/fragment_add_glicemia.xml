@@ -9,8 +9,8 @@
 
     <FrameLayout
         android:id="@+id/frameLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/waves"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,8 +20,12 @@
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="346dp"
-        android:layout_height="715dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/bg_copo"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -67,22 +71,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="32dp"
             android:gravity="center"
+            android:orientation="horizontal"
             android:padding="10dp">
 
             <TextView
                 android:id="@+id/textView52"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/roboto"
                 android:layout_margin="4dp"
-                android:text="Nível"
+                android:fontFamily="@font/roboto"
                 android:gravity="center_vertical"
+                android:text="Nível"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -91,18 +95,19 @@
                 android:id="@+id/edtNumGlicemia"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
+                android:layout_margin="4dp"
                 android:background="@drawable/edt_geral_borda_branca"
                 android:gravity="center"
                 android:hint="ml/dl"
-                android:inputType="textPersonName" />
+                android:inputType="numberDecimal" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp">
@@ -111,6 +116,7 @@
                 android:id="@+id/txtHorario"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
+                android:layout_margin="4dp"
                 android:fontFamily="@font/roboto"
                 android:text="Horário da medição "
                 android:textColor="#000000"
@@ -125,19 +131,20 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="00:00"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:layout_margin="4dp" />
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="32dp"
             android:gravity="center"
+            android:orientation="vertical"
             android:padding="10dp">
 
             <TextView
@@ -146,11 +153,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto"
-                android:text="Indique no mapa onde furou o dedo"
                 android:gravity="center_vertical"
+                android:text="Indique no mapa onde furou o dedo"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
             <ImageButton
                 android:id="@+id/btnSalvarGlicemia"
                 android:layout_width="wrap_content"
@@ -168,6 +176,9 @@
                 android:id="@+id/linearLayout11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="16dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
