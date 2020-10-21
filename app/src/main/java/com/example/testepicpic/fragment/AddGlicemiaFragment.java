@@ -1,5 +1,6 @@
 package com.example.testepicpic.fragment;
 
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
@@ -23,10 +25,12 @@ import java.util.Calendar;
  * create an instance of this fragment.
  */
 public class AddGlicemiaFragment extends Fragment {
-    private Button btnHorarioGli;
+    private Button btnHorarioGli, btnGliDia;
     private int Hour, min;
     private EditText edtNivelGli;
     private ImageButton ibtnTerminar, ibtnProximo;
+
+    private int pDay, pMonth, pYear;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,6 +80,7 @@ public class AddGlicemiaFragment extends Fragment {
 
         btnHorarioGli = view.findViewById(R.id.btnHorarioGli);
         edtNivelGli = view.findViewById(R.id.edtNumGlicemia);
+        btnGliDia = view.findViewById(R.id.btnGliDia);
 
         ibtnProximo = view.findViewById(R.id.ibtnProxima);
         ibtnTerminar = view.findViewById(R.id.ibtnTerminar);
@@ -84,6 +89,29 @@ public class AddGlicemiaFragment extends Fragment {
         Hour = c.get(Calendar.HOUR_OF_DAY);
         min = c.get(Calendar.MINUTE);
 
+        btnGliDia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Calendar calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        btnGliDia.setText(dayOfMonth + "/" + (month+1) + "/" + year);
+                        pDay = dayOfMonth;
+                        pMonth = (month+1);
+                        pYear = year;
+                    }
+                }, year, month, day);
+
+                datePickerDialog.show();
+            }
+        });
+
 
         btnHorarioGli.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +119,7 @@ public class AddGlicemiaFragment extends Fragment {
                 TimePickerDialog timepicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        btnHorarioGli.setHint(String.format("%02d:%02d", hourOfDay, minute));
+                        btnHorarioGli.setText(String.format("%02d:%02d", hourOfDay, minute));
                     }
                 }, Hour, min, true);
                 timepicker.show();
