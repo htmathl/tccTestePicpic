@@ -19,6 +19,7 @@
     </FrameLayout>
 
 
+
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="0dp"
@@ -35,6 +36,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+
 
 
         <LinearLayout
@@ -120,9 +123,6 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 
-
-
-
         </LinearLayout>
 
         <LinearLayout
@@ -175,6 +175,106 @@
 
         </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+
+                <RadioButton
+                    android:id="@+id/btnAddHumorStress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_add_alimentos"
+                    android:drawableTop="@drawable/estresse"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:paddingLeft="40dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="40dp"
+                    android:paddingBottom="8dp"
+                    android:text="Estresse"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <RadioButton
+                    android:id="@+id/btnAddHumorRelax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_add_alimentos"
+                    android:drawableTop="@drawable/relaxado"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:paddingLeft="40dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="40dp"
+                    android:paddingBottom="8dp"
+                    android:text="Relaxado"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="40dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+
+            <RadioButton
+                android:id="@+id/btnAddHumorAnim"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_add_alimentos"
+                android:drawableTop="@drawable/animado"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:paddingLeft="40dp"
+                android:paddingTop="8dp"
+                android:paddingRight="39dp"
+                android:paddingBottom="8dp"
+                android:text="Animado"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <RadioButton
+                android:id="@+id/btnAddHumorCansado"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_add_alimentos"
+                android:drawableTop="@drawable/dormindinho"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:paddingLeft="40dp"
+                android:paddingTop="8dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="8dp"
+                android:text="Cansado"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+
+        </LinearLayout>
+
 
         <EditText
             android:id="@+id/editTextDescriçãoHumor"
@@ -195,6 +295,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sintomas"
+            android:gravity="center"
+            android:textSize="28sp"
+            android:textColor="#000"
+            android:fontFamily="@font/roboto"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            />
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/Layout"
             android:layout_width="match_parent"
@@ -206,6 +319,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="@id/Layout"
@@ -216,7 +331,7 @@
                     android:id="@+id/btnTerminar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="80dp"
+                    android:layout_marginRight="56dp"
                     android:background="@drawable/ic_tick_1" />
 
                 <TextView
@@ -225,7 +340,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Humor"
+                    android:text="Bem-estar"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -234,7 +349,7 @@
                     android:id="@+id/btnProximo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
+                    android:layout_marginLeft="56dp"
                     android:background="@drawable/ic_next_2_1" />
 
             </LinearLayout>
