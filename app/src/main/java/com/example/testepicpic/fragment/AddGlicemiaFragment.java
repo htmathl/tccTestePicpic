@@ -6,11 +6,14 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -39,13 +42,15 @@ public class AddGlicemiaFragment extends Fragment {
 
     private EditText edtNivelGli;
 
-    private ImageButton ibtnTerminar, ibtnProximo;
+    private ImageButton ibtnTerminar, ibtnProximo, ibtnDedoGlicemia;
 
     private int pDay, pMonth, pYear;
 
     private DatabaseReference database;
 
     private String currentId, numGlicemia;
+
+    private ConstraintLayout clDedoGli;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -100,6 +105,10 @@ public class AddGlicemiaFragment extends Fragment {
         ibtnProximo = view.findViewById(R.id.ibtnProxima);
         ibtnTerminar = view.findViewById(R.id.ibtnTerminar);
 
+        ibtnDedoGlicemia = view.findViewById(R.id.btnDedoGlicemia);
+
+        clDedoGli = view.findViewById(R.id.clGlicemiaDedo);
+
         Calendar c = Calendar.getInstance();
         Hour = c.get(Calendar.HOUR_OF_DAY);
         min = c.get(Calendar.MINUTE);
@@ -143,6 +152,32 @@ public class AddGlicemiaFragment extends Fragment {
                     }
                 }, Hour, min, true);
                 timepicker.show();
+            }
+        });
+
+        ibtnDedoGlicemia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
+
+                clDedoGli.startAnimation(animation);
+
+                clDedoGli.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        clDedoGli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
+
+                clDedoGli.startAnimation(animation);
+
+                clDedoGli.setVisibility(View.GONE);
+
             }
         });
 
