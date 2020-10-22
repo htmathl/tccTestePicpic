@@ -224,10 +224,11 @@
 
         <ImageButton
             android:id="@+id/btnTerminar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginRight="50dp"
-            android:background="@drawable/ic_tick_1" />
+            android:backgroundTint="#00FFFFFF"
+            android:src="@mipmap/ic_check_foreground" />
 
         <TextView
             android:id="@+id/textView19"
@@ -242,10 +243,11 @@
 
         <ImageButton
             android:id="@+id/btnProximo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="50dp"
-            android:background="@drawable/ic_next_2_1" />
+            android:backgroundTint="#00FFFFFF"
+            android:src="@mipmap/ic_setalado_foreground" />
 
     </LinearLayout>
 

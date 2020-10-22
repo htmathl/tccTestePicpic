@@ -98,7 +98,7 @@
                 android:layout_margin="4dp"
                 android:background="@drawable/edt_geral_borda_branca"
                 android:gravity="center"
-                android:hint="ml/dl"
+                android:hint="doses"
                 android:inputType="numberDecimal"
                 android:padding="5dp" />
 
@@ -238,10 +238,11 @@
 
                 <ImageButton
                     android:id="@+id/ibtnTerminar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginRight="56dp"
-                    android:background="@drawable/ic_tick_1" />
+                    android:backgroundTint="#00FFFFFF"
+                    android:src="@mipmap/ic_check_foreground" />
 
                 <TextView
                     android:id="@+id/textView19"
@@ -256,10 +257,11 @@
 
                 <ImageButton
                     android:id="@+id/ibtnProximo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="56dp"
-                    android:background="@drawable/ic_next_2_1" />
+                    android:backgroundTint="#00FFFFFF"
+                    android:src="@mipmap/ic_setalado_foreground" />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
