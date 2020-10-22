@@ -141,29 +141,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="12dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="12dp"
             android:gravity="center"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:padding="10dp">
 
             <TextView
                 android:id="@+id/textView54"
-                android:layout_width="wrap_content"
+                android:layout_width="170dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_margin="4dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center_vertical"
-                android:text="Indique no mapa onde furou o dedo"
+                android:text="Indique onde furou o dedo"
+                android:textAlignment="viewStart"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/btnDedoGlicemia"
-                android:layout_width="80dp"
+                android:layout_width="60dp"
                 android:layout_height="80dp"
+                android:layout_margin="4dp"
                 android:background="#00FFFFFF"
                 app:srcCompat="@mipmap/ic_maoo_foreground" />
         </LinearLayout>
@@ -177,6 +178,7 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="6dp"
                 android:fontFamily="@font/roboto"
                 android:text="Categoria:"
                 android:textColor="#000"
@@ -244,6 +246,7 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/hora_dormir"
                             android:gravity="center"
                             android:text="Hora de dormir" />
 
@@ -253,6 +256,7 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/trabalho_office"
                             android:gravity="center"
                             android:text="Trabalho no escritório" />
 
@@ -262,6 +266,7 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/trabalho_manual"
                             android:gravity="center"
                             android:text="Trabalho manual" />
 
@@ -271,6 +276,7 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/festa"
                             android:gravity="center"
                             android:text="Festa" />
 
@@ -280,8 +286,9 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/doente"
                             android:gravity="center"
-                            android:text="CheckBox" />
+                            android:text="Doente" />
 
                         <CheckBox
                             android:id="@+id/checkBox21"
@@ -289,8 +296,9 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/mentruation"
                             android:gravity="center"
-                            android:text="CheckBox" />
+                            android:text="Mentruação" />
 
                         <CheckBox
                             android:id="@+id/checkBox22"
@@ -298,8 +306,9 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/dirigindo"
                             android:gravity="center"
-                            android:text="CheckBox" />
+                            android:text="Dirigindo" />
 
                         <CheckBox
                             android:id="@+id/checkBox23"
@@ -307,8 +316,9 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/correcao"
                             android:gravity="center"
-                            android:text="CheckBox" />
+                            android:text="Correção" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -363,6 +373,7 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/madrugada"
                             android:gravity="center"
                             android:text="Madrugada" />
 
@@ -372,8 +383,9 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/trabalho_casa"
                             android:gravity="center"
-                            android:text="Trabalho em casa" />
+                            android:text="Trabalho de casa" />
 
                         <CheckBox
                             android:id="@+id/checkBox33"
@@ -381,6 +393,7 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/trabalho_turnos"
                             android:gravity="center"
                             android:text="Trabalho" />
 
@@ -390,8 +403,9 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/ressaca"
                             android:gravity="center"
-                            android:text="CheckBox" />
+                            android:text="Ressaca" />
 
                         <CheckBox
                             android:id="@+id/checkBox35"
@@ -399,8 +413,9 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/alergia"
                             android:gravity="center"
-                            android:text="CheckBox" />
+                            android:text="Arlegia" />
 
                         <CheckBox
                             android:id="@+id/checkBox36"
@@ -408,8 +423,9 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/dor"
                             android:gravity="center"
-                            android:text="CheckBox" />
+                            android:text="Dor" />
 
                         <CheckBox
                             android:id="@+id/checkBox37"
@@ -417,8 +433,9 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/viajando"
                             android:gravity="center"
-                            android:text="CheckBox" />
+                            android:text="Viajando" />
 
                         <CheckBox
                             android:id="@+id/checkBox38"
@@ -426,8 +443,9 @@
                             android:layout_height="match_parent"
                             android:layout_margin="4dp"
                             android:button="@null"
+                            android:drawableTop="@drawable/agulha"
                             android:gravity="center"
-                            android:text="CheckBox" />
+                            android:text="Troca de agulha" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -502,24 +520,14 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/bg_copo"
+            android:clickable="true"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="10dp"
+            android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/roboto"
-                android:text="Selcione onde furou o dedo:"
-                android:textColor="#000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -532,11 +540,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/rdbEsquerda"
                     style="@style/rdbInsulina"
                     android:layout_width="120dp"
                     android:layout_height="40dp"
@@ -546,6 +554,7 @@
                     android:textSize="18sp" />
 
                 <RadioButton
+                    android:id="@+id/rdbDireita"
                     style="@style/rdbInsulina"
                     android:layout_width="120dp"
                     android:layout_height="40dp"
@@ -577,10 +586,10 @@
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_marginTop="20dp"
                 android:background="#00FFFFFF"
                 android:fontFamily="@font/roboto"
-                android:text="Salvar"
+                android:text="Pronto"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
