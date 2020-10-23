@@ -9,15 +9,24 @@ import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -35,14 +44,19 @@ import java.util.Calendar;
  * Use the {@link AddGlicemiaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddGlicemiaFragment extends Fragment {
+public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+
     private Button btnHorarioGli, btnGliDia;
 
     private int Hour, min, hora;
 
     private EditText edtNivelGli;
 
-    private ImageButton ibtnTerminar, ibtnProximo, ibtnDedoGlicemia;
+    private RadioButton rdbEsquerda, rdbDireita;
+
+    private Spinner spLocalGli;
+
+    private boolean[] pCat = new boolean[24];
 
     private int pDay, pMonth, pYear;
 
@@ -102,10 +116,48 @@ public class AddGlicemiaFragment extends Fragment {
         edtNivelGli = view.findViewById(R.id.edtNumGlicemia);
         btnGliDia = view.findViewById(R.id.btnGliDia);
 
-        ibtnProximo = view.findViewById(R.id.ibtnProxima);
-        ibtnTerminar = view.findViewById(R.id.ibtnTerminar);
+        rdbDireita = view.findViewById(R.id.rdbDireita);
+        rdbEsquerda = view.findViewById(R.id.rdbEsquerda);
 
-        ibtnDedoGlicemia = view.findViewById(R.id.btnDedoGlicemia);
+        spLocalGli = view.findViewById(R.id.spLocalGli);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.localAplicacaoGlicemia, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spLocalGli.setAdapter(adapter);
+
+        spLocalGli.setOnItemSelectedListener(this);
+
+        Button btnProntoGli = view.findViewById(R.id.btnProntoGli);
+
+        ImageButton ibtnProximo = view.findViewById(R.id.ibtnProxima);
+        ImageButton ibtnTerminar = view.findViewById(R.id.ibtnTerminar);
+
+        ImageButton ibtnDedoGlicemia = view.findViewById(R.id.btnDedoGlicemia);
+
+        CheckBox cbCafe = view.findViewById(R.id.checkBox39);
+        CheckBox cbAlmoco = view.findViewById(R.id.checkBox27);
+        CheckBox cbJantar = view.findViewById(R.id.checkBox24);
+        CheckBox cbBesteirinhas = view.findViewById(R.id.checkBox28);
+        CheckBox cbHiper = view.findViewById(R.id.checkBox25);
+        CheckBox cbHipo = view.findViewById(R.id.checkBox29);
+        CheckBox cbJejum = view.findViewById(R.id.checkBox26);
+        CheckBox cbEsportes = view.findViewById(R.id.checkBox30);
+        CheckBox cbdormir = view.findViewById(R.id.checkBox5);
+        CheckBox cbMadrugada = view.findViewById(R.id.checkBox31);
+        CheckBox cbEscritorio = view.findViewById(R.id.checkBox12);
+        CheckBox cbCasa = view.findViewById(R.id.checkBox32);
+        CheckBox cbManual = view.findViewById(R.id.checkBox13);
+        CheckBox cbTurno = view.findViewById(R.id.checkBox33);
+        CheckBox cbFesta = view.findViewById(R.id.checkBox17);
+        CheckBox cbRessaca = view.findViewById(R.id.checkBox34);
+        CheckBox cbDoente = view.findViewById(R.id.checkBox20);
+        CheckBox cbAlergia = view.findViewById(R.id.checkBox35);
+        CheckBox cbMentruacao = view.findViewById(R.id.checkBox21);
+        CheckBox cbdor = view.findViewById(R.id.checkBox36);
+        CheckBox cbDirigindo = view.findViewById(R.id.checkBox22);
+        CheckBox cbViajando = view.findViewById(R.id.checkBox37);
+        CheckBox cbCorrecao = view.findViewById(R.id.checkBox23);
+        CheckBox cbAgulha = view.findViewById(R.id.checkBox38);
 
         clDedoGli = view.findViewById(R.id.clGlicemiaDedo);
 
@@ -114,6 +166,17 @@ public class AddGlicemiaFragment extends Fragment {
         min = c.get(Calendar.MINUTE);
 
         database = ConfigFirebase.getFirebase();
+
+        final CheckBox[] categoria = {cbCafe, cbAlmoco, cbJantar, cbBesteirinhas, cbHiper, cbHipo, cbJejum,
+                cbEsportes, cbdormir, cbMadrugada, cbEscritorio, cbCasa, cbManual, cbTurno, cbFesta,
+                cbRessaca, cbDoente, cbAlergia, cbMentruacao, cbdor, cbDirigindo, cbViajando,
+                cbCorrecao, cbAgulha};
+
+        final String[] strCat = { "Café", "Almoço", "Jantar", "Besteirinhas", "Hiper", "Hipo", "Jejum",
+                "Esportes", "Dormir", "Madrugada", "Escritorio", "Casa", "Manual", "Turno", "Festa",
+                "Ressaca", "Doente", "Alergia", "Menstruaçao", "Dor", "Dirigindo", "Viajando",
+                "Correcao", "Agulha"};
+
 
         btnGliDia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,6 +244,19 @@ public class AddGlicemiaFragment extends Fragment {
             }
         });
 
+        btnProntoGli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
+
+                clDedoGli.startAnimation(animation);
+
+                clDedoGli.setVisibility(View.GONE);
+
+            }
+        });
+
         ibtnTerminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,6 +264,8 @@ public class AddGlicemiaFragment extends Fragment {
                 recuperarUsurario();
 
                 numGlicemia = edtNivelGli.getText().toString();
+
+                final String strSlcLocal = spLocalGli.getSelectedItem().toString();
 
                 if(!edtNivelGli.getText().toString().equals("")){
                     if(!btnHorarioGli.getText().toString().equals("")){
@@ -197,6 +275,11 @@ public class AddGlicemiaFragment extends Fragment {
                             pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
                             pYear = Calendar.getInstance().get(Calendar.YEAR);
 
+                        }
+
+                        for(int i = 0; i < categoria.length; i++) {
+                            if(categoria[i].isChecked())
+                                pCat[i] = true;
                         }
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -214,6 +297,7 @@ public class AddGlicemiaFragment extends Fragment {
                                         .child(String.valueOf(pYear))
                                         .child(String.valueOf(pMonth))
                                         .child(String.valueOf(pDay))
+                                        .child(String.valueOf(hora))
                                         .child("Nível")
                                         .setValue(numGlicemia);
 
@@ -224,8 +308,55 @@ public class AddGlicemiaFragment extends Fragment {
                                         .child(String.valueOf(pYear))
                                         .child(String.valueOf(pMonth))
                                         .child(String.valueOf(pDay))
+                                        .child(String.valueOf(hora))
                                         .child("Horário")
                                         .setValue(hora);
+
+                                if(rdbDireita.isChecked()) {
+
+                                    database.child("users")
+                                            .child(currentId)
+                                            .child("inserção")
+                                            .child("glicemia")
+                                            .child(String.valueOf(pYear))
+                                            .child(String.valueOf(pMonth))
+                                            .child(String.valueOf(pDay))
+                                            .child(String.valueOf(hora))
+                                            .child("local")
+                                            .child("Mão, braço, coxa")
+                                            .child("Direita")
+                                            .setValue(strSlcLocal);
+                                }
+
+                                if(rdbEsquerda.isChecked()) {
+
+                                    database.child("users")
+                                            .child(currentId)
+                                            .child("inserção")
+                                            .child("glicemia")
+                                            .child(String.valueOf(pYear))
+                                            .child(String.valueOf(pMonth))
+                                            .child(String.valueOf(pDay))
+                                            .child(String.valueOf(hora))
+                                            .child("local")
+                                            .child("Mão ou braço ou coxa")
+                                            .child("Esquerda")
+                                            .setValue(strSlcLocal);
+                                }
+
+                                for(int i = 0; i < strCat.length; i++) {
+                                    database.child("users")
+                                            .child(currentId)
+                                            .child("inserção")
+                                            .child("glicemia")
+                                            .child(String.valueOf(pYear))
+                                            .child(String.valueOf(pMonth))
+                                            .child(String.valueOf(pDay))
+                                            .child(String.valueOf(hora))
+                                            .child("categoria")
+                                            .child(strCat[i])
+                                            .setValue(pCat[i]);
+                                }
 
                                 Toast.makeText(getActivity(), "Pronto, já salvamos :)", Toast.LENGTH_SHORT).show();
 
@@ -254,11 +385,22 @@ public class AddGlicemiaFragment extends Fragment {
 
         return view;
     }
+
     public void recuperarUsurario() {
         FirebaseAuth auth = ConfigFirebase.getFirebaseAutenticacao();
 
         String email = auth.getCurrentUser().getEmail();
         assert email != null;
         currentId = Base64Custom.codificarBase64(email);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
