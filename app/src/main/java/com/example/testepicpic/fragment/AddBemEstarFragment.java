@@ -23,7 +23,7 @@ import java.util.Calendar;
  * create an instance of this fragment.
  */
 public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
-    private RadioButton brabo, normal, triste, feliz;
+    private RadioButton brabo, normal, triste, feliz, cansado, animado, relaxado, estressado;
 
     private int pDay, pMonth, pYear;
 
@@ -80,11 +80,20 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
         triste = view.findViewById(R.id.btnAddHumorSad);
         feliz = view.findViewById(R.id.btnAddHumorBem);
         normal = view.findViewById(R.id.btnAddHumorNormal);
+        cansado = view.findViewById(R.id.btnAddHumorCansado);
+        relaxado = view.findViewById(R.id.btnAddHumorRelax);
+        animado = view.findViewById(R.id.btnAddHumorAnim);
+        estressado = view.findViewById(R.id.btnAddHumorStress);
+
 
         brabo.setOnCheckedChangeListener(this);
         triste.setOnCheckedChangeListener(this);
         feliz.setOnCheckedChangeListener(this);
         normal.setOnCheckedChangeListener(this);
+        cansado.setOnCheckedChangeListener(this);
+        relaxado.setOnCheckedChangeListener(this);
+        animado.setOnCheckedChangeListener(this);
+        estressado.setOnCheckedChangeListener(this);
 
         btnHumorDia = view.findViewById(R.id.btnInsulinaDia);
 
@@ -122,21 +131,73 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
                 triste.setChecked(false);
                 feliz.setChecked(false);
                 normal.setChecked(false);
+                cansado.setChecked(false);
+                animado.setChecked(false);
+                relaxado.setChecked(false);
+                estressado.setChecked(false);
             }
             if(buttonView.getId() == R.id.btnAddHumorSad){
                 brabo.setChecked(false);
                 feliz.setChecked(false);
                 normal.setChecked(false);
+                cansado.setChecked(false);
+                animado.setChecked(false);
+                relaxado.setChecked(false);
+                estressado.setChecked(false);
             }
             if(buttonView.getId() == R.id.btnAddHumorBem){
                 triste.setChecked(false);
                 brabo.setChecked(false);
                 normal.setChecked(false);
+                cansado.setChecked(false);
+                animado.setChecked(false);
+                relaxado.setChecked(false);
+                estressado.setChecked(false);
             }
             if(buttonView.getId() == R.id.btnAddHumorNormal){
                 triste.setChecked(false);
                 feliz.setChecked(false);
                 brabo.setChecked(false);
+                cansado.setChecked(false);
+                animado.setChecked(false);
+                relaxado.setChecked(false);
+                estressado.setChecked(false);
+            }
+            if(buttonView.getId() == R.id.btnAddHumorCansado){
+                triste.setChecked(false);
+                feliz.setChecked(false);
+                brabo.setChecked(false);
+                normal.setChecked(false);
+                animado.setChecked(false);
+                relaxado.setChecked(false);
+                estressado.setChecked(false);
+            }
+            if(buttonView.getId() == R.id.btnAddHumorAnim){
+                triste.setChecked(false);
+                feliz.setChecked(false);
+                brabo.setChecked(false);
+                cansado.setChecked(false);
+                normal.setChecked(false);
+                relaxado.setChecked(false);
+                estressado.setChecked(false);
+            }
+            if(buttonView.getId() == R.id.btnAddHumorRelax){
+                triste.setChecked(false);
+                feliz.setChecked(false);
+                brabo.setChecked(false);
+                cansado.setChecked(false);
+                animado.setChecked(false);
+                normal.setChecked(false);
+                estressado.setChecked(false);
+            }
+            if(buttonView.getId() == R.id.btnAddHumorStress){
+                triste.setChecked(false);
+                feliz.setChecked(false);
+                brabo.setChecked(false);
+                cansado.setChecked(false);
+                animado.setChecked(false);
+                relaxado.setChecked(false);
+                normal.setChecked(false);
             }
         }
     }
