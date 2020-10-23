@@ -38,12 +38,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="30dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="@id/linearLayout5"
             app:layout_constraintStart_toStartOf="@id/linearLayout5"
             app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:paddingBottom="16dp"
+                android:text="Deslize daqui para baixo para sair."
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnGliDia"
@@ -74,7 +85,6 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="32dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp">
@@ -98,8 +108,9 @@
                 android:layout_margin="4dp"
                 android:background="@drawable/edt_geral_borda_branca"
                 android:gravity="center"
-                android:hint="ml/dl"
-                android:inputType="numberDecimal" />
+                android:hint="mg/dl"
+                android:inputType="numberDecimal"
+                android:padding="5dp" />
 
         </LinearLayout>
 
@@ -127,12 +138,13 @@
                 android:id="@+id/btnHorarioGli"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
+                android:layout_margin="4dp"
                 android:background="@drawable/edt_geral_borda_branca"
                 android:ems="10"
                 android:gravity="center"
                 android:hint="00:00"
                 android:inputType="textPersonName"
-                android:layout_margin="4dp" />
+                android:padding="5dp" />
         </LinearLayout>
 
 
@@ -140,32 +152,314 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="12dp"
             android:gravity="center"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:padding="10dp">
 
             <TextView
                 android:id="@+id/textView54"
-                android:layout_width="wrap_content"
+                android:layout_width="170dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_margin="4dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center_vertical"
-                android:text="Indique no mapa onde furou o dedo"
+                android:text="Indique onde furou o dedo"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/btnSalvarGlicemia"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:id="@+id/btnDedoGlicemia"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_margin="4dp"
                 android:background="#00FFFFFF"
                 app:srcCompat="@mipmap/ic_maoo_foreground" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:fontFamily="@font/roboto"
+                android:text="Categoria:"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkBox39"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/cafe_gli"
+                            android:gravity="center"
+                            android:text="Café da manhã" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox24"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/janta_gli"
+                            android:gravity="center"
+                            android:text="Jantar" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox25"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/hiper_gli"
+                            android:gravity="center"
+                            android:text="Sentimento de hiper" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox26"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/jejum_gli"
+                            android:gravity="center"
+                            android:text="Jejum" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox5"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/hora_dormir"
+                            android:gravity="center"
+                            android:text="Hora de dormir" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox12"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/trabalho_office"
+                            android:gravity="center"
+                            android:text="Trabalho no escritório" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox13"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/trabalho_manual"
+                            android:gravity="center"
+                            android:text="Trabalho manual" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox17"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/festa"
+                            android:gravity="center"
+                            android:text="Festa" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox20"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/doente"
+                            android:gravity="center"
+                            android:text="Doente" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox21"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/mentruation"
+                            android:gravity="center"
+                            android:text="Mentruação" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox22"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/dirigindo"
+                            android:gravity="center"
+                            android:text="Dirigindo" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox23"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/correcao"
+                            android:gravity="center"
+                            android:text="Correção" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkBox27"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/almoco_gli"
+                            android:gravity="center"
+                            android:text="Almoço" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox28"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/besteirinhas_gli"
+                            android:gravity="center"
+                            android:text="Besteirinhas" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox29"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/hipo_gli"
+                            android:gravity="center"
+                            android:text="Sentimento de hipo" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox30"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/sports_gli"
+                            android:gravity="center"
+                            android:text="Esportes" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox31"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/madrugada"
+                            android:gravity="center"
+                            android:text="Madrugada" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox32"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/trabalho_casa"
+                            android:gravity="center"
+                            android:text="Trabalho de casa" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox33"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/trabalho_turnos"
+                            android:gravity="center"
+                            android:text="Trabalho em turnos" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox34"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/ressaca"
+                            android:gravity="center"
+                            android:text="Ressaca" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox35"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/alergia"
+                            android:gravity="center"
+                            android:text="Arlegia" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox36"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/dor"
+                            android:gravity="center"
+                            android:text="Dor" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox37"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/viajando"
+                            android:gravity="center"
+                            android:text="Viajando" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox38"
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="4dp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/agulha"
+                            android:gravity="center"
+                            android:text="Troca de agulha" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </HorizontalScrollView>
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -178,7 +472,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="18dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -187,10 +481,11 @@
 
                 <ImageButton
                     android:id="@+id/ibtnTerminar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginRight="56dp"
-                    android:background="@drawable/ic_tick_1" />
+                    android:backgroundTint="#00FFFFFF"
+                    android:src="@mipmap/ic_check_foreground" />
 
                 <TextView
                     android:id="@+id/textView19"
@@ -205,15 +500,108 @@
 
                 <ImageButton
                     android:id="@+id/ibtnProxima"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="56dp"
-                    android:background="@drawable/ic_next_2_1" />
+                    android:backgroundTint="#00FFFFFF"
+                    android:src="@mipmap/ic_setalado_foreground" />
 
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clGlicemiaDedo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#BF000000"
+        android:clickable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_copo"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="(Mão, braço, coxa)" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rdbEsquerda"
+                    style="@style/rdbInsulina"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:checked="true"
+                    android:text="Esquerda"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/rdbDireita"
+                    style="@style/rdbInsulina"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:text="Direita"
+                    android:textSize="18sp" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="(Local)" />
+
+            <Spinner
+                android:id="@+id/spLocalGli"
+                style="@style/rdbInsulina"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:textAlignment="center"/>
+
+            <Button
+                android:id="@+id/btnProntoGli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#00FFFFFF"
+                android:fontFamily="@font/roboto"
+                android:text="Pronto"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
