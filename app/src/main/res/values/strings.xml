@@ -43,6 +43,20 @@
         <item>Coxa direira</item>
     </string-array>
 
+    <string-array name="localAplicacaoGlicemia">
+
+        <item> Dedo mindinho  </item>
+        <item> Dedo anelar    </item>
+        <item> Dedo do meio   </item>
+        <item> Dedo indicador </item>
+        <item> Polegar        </item>
+        <item> Parte inferior da mão </item>
+        <item> Parte lateral da mão </item>
+        <item> Braço </item>
+        <item> Coxa </item>
+
+    </string-array>
+
     <string name="title_activity_app">MainActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

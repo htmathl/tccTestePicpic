@@ -45,6 +45,18 @@
             app:layout_constraintStart_toStartOf="@id/linearLayout5"
             app:layout_constraintTop_toTopOf="parent">
 
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:paddingBottom="12dp"
+                android:text="Deslize daqui para baixo para sair."
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
             <Button
                 android:id="@+id/btnGliDia"
                 android:layout_width="wrap_content"
@@ -155,7 +167,6 @@
                 android:fontFamily="@font/roboto"
                 android:gravity="center_vertical"
                 android:text="Indique onde furou o dedo"
-                android:textAlignment="viewStart"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -395,7 +406,7 @@
                             android:button="@null"
                             android:drawableTop="@drawable/trabalho_turnos"
                             android:gravity="center"
-                            android:text="Trabalho" />
+                            android:text="Trabalho em turnos" />
 
                         <CheckBox
                             android:id="@+id/checkBox34"
@@ -534,7 +545,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="(Mão)" />
+                android:text="(Mão, braço, coxa)" />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -569,21 +580,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="(Dedo)" />
+                android:text="(Local)" />
 
             <Spinner
-                android:id="@+id/edtNumGlicemia2"
-                android:layout_width="150dp"
+                android:id="@+id/spLocalGli"
+                style="@style/rdbInsulina"
+                android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_margin="4dp"
-                android:background="@drawable/edt_geral_borda_branca"
-                android:gravity="center"
-                android:inputType="numberDecimal"
-                android:padding="5dp" />
+                android:textAlignment="center"/>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnProntoGli"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
