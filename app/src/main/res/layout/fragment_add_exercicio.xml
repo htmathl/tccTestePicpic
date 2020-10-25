@@ -21,8 +21,12 @@
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="346dp"
-        android:layout_height="715dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/bg_copo"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,6 +80,140 @@
                 android:text='Selecione o dia clicando em "hoje".' />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:text="Modalidade"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnModalidade"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/edt_geral_borda_branca"
+                android:gravity="center"
+                android:hint="Selecione"
+                android:padding="5dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:text="Duração"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtDuracao"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/edt_geral_borda_branca"
+                android:gravity="center"
+                android:hint="00:00"
+                android:inputType="time"
+                android:padding="5dp" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="end"
+            android:paddingEnd="38dp"
+            android:text="(Minutos)" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/txtHorarioInsulina"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:gravity="center_vertical"
+                android:text="Horário"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnTimeEx"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/edt_geral_borda_branca"
+                android:gravity="center"
+                android:hint="00:00"
+                android:padding="5dp" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtDescicaoAli3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/edt_geral_borda_branca"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Descreva como foi o exercício"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -86,6 +224,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="18dp"
+                android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -95,17 +234,20 @@
                     android:id="@+id/btnCheck"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="56dp"
                     android:background="#00FFFFFF"
                     app:srcCompat="@mipmap/ic_check_foreground" />
 
                 <TextView
                     android:id="@+id/txtGlicemia"
-                    android:layout_width="177dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_gravity="center"
                     android:gravity="center"
                     android:text="Exercício"
-                    android:textColor="#6247AA"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="30dp"
                     android:textStyle="bold" />
 
@@ -113,12 +255,316 @@
                     android:id="@+id/btnNext"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="56dp"
                     android:background="#00FFFFFF"
                     app:srcCompat="@mipmap/ic_setalado_foreground" />
 
             </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clEx"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#BF000000"
+        android:clickable="true"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/bg_copo"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:text="Selecione os esportes praticados:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/checkBox41"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:drawableTop="@drawable/corrida"
+                        android:text="Corrida" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox42"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Caminhada"
+                        android:drawableTop="@drawable/caminhada"/>
+
+                    <RadioButton
+                        android:id="@+id/checkBox43"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Ciclismo"
+                        android:drawableTop="@drawable/ciclismo"/>
+
+                    <RadioButton
+                        android:id="@+id/checkBox44"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Academia"
+                        android:drawableTop="@drawable/academia"/>
+
+                    <RadioButton
+                        android:id="@+id/checkBox45"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Natação"
+                        android:drawableTop="@drawable/natacao"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/checkBox46"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Musculação"
+                        android:drawableTop="@drawable/musculacao"/>
+
+                    <RadioButton
+                        android:id="@+id/checkBox47"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Artes marciais"
+                        android:drawableTop="@drawable/artes_marciais"/>
+
+                    <RadioButton
+                        android:id="@+id/checkBox48"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Yoga"
+                        android:drawableTop="@drawable/sports_gli"/>
+
+                    <RadioButton
+                        android:id="@+id/checkBox49"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Box"
+                        android:drawableTop="@drawable/box"/>
+
+                    <RadioButton
+                        android:id="@+id/checkBox50"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Pilates"
+                        android:drawableTop="@drawable/pilates"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/checkBox51"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Tênis"
+                        android:drawableTop="@drawable/tenis"/>
+
+                    <RadioButton
+                        android:id="@+id/checkBox52"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Volêi"
+                        android:drawableTop="@drawable/volei"/>
+
+                    <RadioButton
+                        android:id="@+id/checkBox53"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Futebol"
+                        android:drawableTop="@drawable/futebol"/>
+
+                    <RadioButton
+                        android:id="@+id/checkBox54"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Handbol"
+                        android:drawableTop="@drawable/handball"/>
+
+                    <RadioButton
+                        android:id="@+id/checkBox55"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Basquete"
+                        android:drawableTop="@drawable/basquete"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtOutroEsporte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:clickable="true"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/txtEx"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edtEsporte"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/edt_geral_borda_branca"
+                    android:gravity="center"
+                    android:hint="Qual?"
+                    android:padding="5dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+
+                    <Button
+                        android:id="@+id/btnCancelar2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="36dp"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:backgroundTint="#00FFFFFF"
+                        android:text="Cancelar"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btnSalvar"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnSalvar2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="36dp"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:text="Salvar"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btnCancelar" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

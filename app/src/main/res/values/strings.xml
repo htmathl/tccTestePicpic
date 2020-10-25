@@ -101,4 +101,6 @@
         <item>Funcional</item>
     </string-array>
 
+    <string name="txtEx"> <u> Pratiquei outro esporte. </u> </string>
+
 </resources>
