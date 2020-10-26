@@ -195,7 +195,7 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/edtDescicaoAli3"
+            android:id="@+id/edtDescicao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -272,7 +272,7 @@
         android:layout_height="match_parent"
         android:background="#BF000000"
         android:clickable="true"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -322,8 +322,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
-                        android:gravity="center"
                         android:drawableTop="@drawable/corrida"
+                        android:gravity="center"
                         android:text="Corrida" />
 
                     <RadioButton
@@ -332,9 +332,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/caminhada"
                         android:gravity="center"
-                        android:text="Caminhada"
-                        android:drawableTop="@drawable/caminhada"/>
+                        android:text="Caminhada" />
 
                     <RadioButton
                         android:id="@+id/checkBox43"
@@ -342,9 +342,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/ciclismo"
                         android:gravity="center"
-                        android:text="Ciclismo"
-                        android:drawableTop="@drawable/ciclismo"/>
+                        android:text="Ciclismo" />
 
                     <RadioButton
                         android:id="@+id/checkBox44"
@@ -352,9 +352,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/academia"
                         android:gravity="center"
-                        android:text="Academia"
-                        android:drawableTop="@drawable/academia"/>
+                        android:text="Academia" />
 
                     <RadioButton
                         android:id="@+id/checkBox45"
@@ -362,9 +362,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/natacao"
                         android:gravity="center"
-                        android:text="Natação"
-                        android:drawableTop="@drawable/natacao"/>
+                        android:text="Natação" />
 
 
                 </LinearLayout>
@@ -381,9 +381,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/musculacao"
                         android:gravity="center"
-                        android:text="Musculação"
-                        android:drawableTop="@drawable/musculacao"/>
+                        android:text="Musculação" />
 
                     <RadioButton
                         android:id="@+id/checkBox47"
@@ -391,9 +391,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/artes_marciais"
                         android:gravity="center"
-                        android:text="Artes marciais"
-                        android:drawableTop="@drawable/artes_marciais"/>
+                        android:text="Artes marciais" />
 
                     <RadioButton
                         android:id="@+id/checkBox48"
@@ -401,9 +401,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/sports_gli"
                         android:gravity="center"
-                        android:text="Yoga"
-                        android:drawableTop="@drawable/sports_gli"/>
+                        android:text="Yoga" />
 
                     <RadioButton
                         android:id="@+id/checkBox49"
@@ -411,9 +411,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/box"
                         android:gravity="center"
-                        android:text="Box"
-                        android:drawableTop="@drawable/box"/>
+                        android:text="Box" />
 
                     <RadioButton
                         android:id="@+id/checkBox50"
@@ -421,9 +421,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/pilates"
                         android:gravity="center"
-                        android:text="Pilates"
-                        android:drawableTop="@drawable/pilates"/>
+                        android:text="Pilates" />
 
 
                 </LinearLayout>
@@ -440,9 +440,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/tenis"
                         android:gravity="center"
-                        android:text="Tênis"
-                        android:drawableTop="@drawable/tenis"/>
+                        android:text="Tênis" />
 
                     <RadioButton
                         android:id="@+id/checkBox52"
@@ -450,9 +450,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/volei"
                         android:gravity="center"
-                        android:text="Volêi"
-                        android:drawableTop="@drawable/volei"/>
+                        android:text="Volêi" />
 
                     <RadioButton
                         android:id="@+id/checkBox53"
@@ -460,9 +460,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/futebol"
                         android:gravity="center"
-                        android:text="Futebol"
-                        android:drawableTop="@drawable/futebol"/>
+                        android:text="Futebol" />
 
                     <RadioButton
                         android:id="@+id/checkBox54"
@@ -470,9 +470,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/handball"
                         android:gravity="center"
-                        android:text="Handbol"
-                        android:drawableTop="@drawable/handball"/>
+                        android:text="Handbol" />
 
                     <RadioButton
                         android:id="@+id/checkBox55"
@@ -480,9 +480,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:button="@null"
+                        android:drawableTop="@drawable/basquete"
                         android:gravity="center"
-                        android:text="Basquete"
-                        android:drawableTop="@drawable/basquete"/>
+                        android:text="Basquete" />
 
                 </LinearLayout>
 
@@ -526,31 +526,13 @@
 
 
                     <Button
-                        android:id="@+id/btnCancelar2"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="36dp"
-                        android:layout_weight="1"
-                        android:background="#00FFFFFF"
-                        android:backgroundTint="#00FFFFFF"
-                        android:text="Cancelar"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/btnSalvar"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <Button
                         android:id="@+id/btnSalvar2"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="36dp"
                         android:layout_weight="1"
                         android:background="#00FFFFFF"
-                        android:text="Salvar"
+                        android:text="Pronto"
                         android:textAllCaps="false"
                         android:textColor="@color/colorPrimary"
                         android:textSize="20sp"
