@@ -247,7 +247,6 @@
                     android:gravity="center"
                     android:text="Exercício"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/colorPrimary"
                     android:textSize="30dp"
                     android:textStyle="bold" />
 
@@ -280,11 +279,9 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="64dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="64dp"
             android:background="@drawable/bg_copo"
             android:clickable="true"
             android:orientation="vertical"
@@ -304,7 +301,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:gravity="center"
-                    android:text="Selecione os esportes praticados:"
+                    android:text="Selecione o esporte praticado:"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -527,16 +524,16 @@
 
                     <Button
                         android:id="@+id/btnSalvar2"
-                        android:layout_width="100dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="36dp"
-                        android:layout_weight="1"
                         android:background="#00FFFFFF"
+                        android:layout_margin="10dp"
                         android:text="Pronto"
                         android:textAllCaps="false"
                         android:textColor="@color/colorPrimary"
                         android:textSize="20sp"
                         android:textStyle="bold"
+                        android:gravity="center"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
