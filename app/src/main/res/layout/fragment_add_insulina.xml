@@ -264,7 +264,6 @@
                     android:gravity="center"
                     android:text="Insulina"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/colorPrimary"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 

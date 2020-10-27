@@ -84,18 +84,18 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="550dp">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
+                    android:layout_height="wrap_content">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -106,9 +106,9 @@
                             android:id="@+id/linearLayout2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="50dp"
+                            android:layout_marginLeft="35dp"
                             android:layout_marginTop="40dp"
-                            android:layout_marginRight="50dp"
+                            android:layout_marginRight="35dp"
                             android:orientation="horizontal"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -116,32 +116,14 @@
 
 
                             <RadioButton
-                                android:id="@+id/btnAddHumorBem"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="5dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/btn_add_alimentos"
-                                android:drawableTop="@drawable/happy"
-                                android:button="@android:color/transparent"
-                                android:gravity="center"
-                                android:paddingLeft="40dp"
-                                android:paddingTop="8dp"
-                                android:paddingRight="40dp"
-                                android:paddingBottom="8dp"
-                                android:text="Feliz"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-                            <RadioButton
                                 android:id="@+id/btnAddHumorNormal"
-                                android:layout_width="wrap_content"
+                                android:layout_width="140dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
-                                android:layout_weight="1"
                                 android:background="@drawable/btn_add_alimentos"
-                                android:drawableTop="@drawable/normal"
                                 android:button="@android:color/transparent"
+                                android:checked="true"
+                                android:drawableTop="@drawable/normal"
                                 android:gravity="center"
                                 android:paddingLeft="40dp"
                                 android:paddingTop="8dp"
@@ -151,15 +133,31 @@
                                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                             <RadioButton
+                                android:id="@+id/btnAddHumorBem"
+                                android:layout_width="140dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/btn_add_alimentos"
+                                android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/happy"
+                                android:gravity="center"
+                                android:paddingLeft="40dp"
+                                android:paddingTop="8dp"
+                                android:paddingRight="40dp"
+                                android:paddingBottom="8dp"
+                                android:text="Feliz"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                            <RadioButton
                                 android:id="@+id/btnAddHumorSad"
-                                android:layout_width="wrap_content"
+                                android:layout_width="140dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="50dp"
                                 android:layout_marginRight="5dp"
-                                android:layout_weight="1"
                                 android:background="@drawable/btn_add_alimentos"
-                                android:drawableTop="@drawable/sad"
                                 android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/sad"
                                 android:gravity="center"
                                 android:paddingLeft="40dp"
                                 android:paddingTop="8dp"
@@ -170,13 +168,12 @@
 
                             <RadioButton
                                 android:id="@+id/btnAddHumorBrabo"
-                                android:layout_width="wrap_content"
+                                android:layout_width="140dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="5dp"
-                                android:layout_weight="1"
                                 android:background="@drawable/btn_add_alimentos"
-                                android:drawableTop="@drawable/bravo"
                                 android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/bravo"
                                 android:gravity="center"
                                 android:paddingLeft="40dp"
                                 android:paddingTop="8dp"
@@ -186,19 +183,17 @@
                                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 
-
-
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/linearLayout4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="50dp"
+                            android:layout_marginLeft="35dp"
                             android:layout_marginTop="16dp"
-                            android:layout_marginRight="50dp"
-                            android:paddingBottom="10dp"
+                            android:layout_marginRight="35dp"
                             android:orientation="horizontal"
+                            android:paddingBottom="10dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
@@ -206,13 +201,12 @@
 
                             <RadioButton
                                 android:id="@+id/btnAddHumorStress"
-                                android:layout_width="wrap_content"
+                                android:layout_width="140dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginRight="5dp"
-                                android:layout_weight="1"
                                 android:background="@drawable/btn_add_alimentos"
-                                android:drawableTop="@drawable/estresse"
                                 android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/estresse"
                                 android:gravity="center"
                                 android:paddingLeft="40dp"
                                 android:paddingTop="8dp"
@@ -223,14 +217,13 @@
 
                             <RadioButton
                                 android:id="@+id/btnAddHumorRelax"
-                                android:layout_width="wrap_content"
+                                android:layout_width="140dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
-                                android:layout_weight="1"
                                 android:background="@drawable/btn_add_alimentos"
-                                android:drawableTop="@drawable/relaxado"
                                 android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/relaxado"
                                 android:gravity="center"
                                 android:paddingLeft="40dp"
                                 android:paddingTop="8dp"
@@ -241,14 +234,13 @@
 
                             <RadioButton
                                 android:id="@+id/btnAddHumorAnim"
-                                android:layout_width="wrap_content"
+                                android:layout_width="140dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="50dp"
                                 android:layout_marginRight="5dp"
-                                android:layout_weight="1"
                                 android:background="@drawable/btn_add_alimentos"
-                                android:drawableTop="@drawable/animado"
                                 android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/animado"
                                 android:gravity="center"
                                 android:paddingLeft="40dp"
                                 android:paddingTop="8dp"
@@ -259,13 +251,12 @@
 
                             <RadioButton
                                 android:id="@+id/btnAddHumorCansado"
-                                android:layout_width="wrap_content"
+                                android:layout_width="140dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="5dp"
-                                android:layout_weight="1"
                                 android:background="@drawable/btn_add_alimentos"
-                                android:drawableTop="@drawable/dormindinho"
                                 android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/dormindinho"
                                 android:gravity="center"
                                 android:paddingLeft="40dp"
                                 android:paddingTop="8dp"
@@ -292,7 +283,7 @@
                     android:background="@drawable/edt_geral_borda_branca"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="Descreva como foi seu humor"
+                    android:hint="Descreva como estava se sentindo"
                     android:inputType="textMultiLine"
                     android:maxLines="3"
                     android:paddingLeft="10dp"
@@ -303,209 +294,211 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sintomas"
-                        android:gravity="center"
-                        android:textSize="28sp"
-                        android:textColor="#000"
-                        android:fontFamily="@font/roboto"
-                        android:textStyle="bold"
-                        android:layout_marginTop="16dp"
-                        />
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="20dp">
-
-
-
-                        <CheckBox android:id="@+id/checkFraqueza"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:button="@null"
-                            android:drawableTop="@drawable/fraqueza"
-                            android:text="Fraqueza"
-                            android:gravity="center"
-                            android:layout_margin="4dp"/>
-                        <CheckBox android:id="@+id/checkVomito"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:button="@null"
-                            android:drawableTop="@drawable/vomito"
-                            android:text="Náuseas"
-                            android:gravity="center"
-                            android:layout_margin="4dp"/>
-
-                        <CheckBox
-                            android:id="@+id/checkRins"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:button="@null"
-                            android:drawableTop="@drawable/rins"
-                            android:text="Dores nos\nrins"
-                            android:gravity="center"
-                            android:layout_margin="4dp"/>
-                        <CheckBox
-                            android:id="@+id/checkBipolar"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:button="@null"
-                            android:drawableTop="@drawable/bipolar"
-                            android:text="Mudança de\nhumor"
-                            android:gravity="center"
-                            android:layout_margin="4dp"/>
-                    </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:text="Sintomas"
+                    android:textColor="#000"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+
+                    <CheckBox
+                        android:id="@+id/checkFraqueza"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/fraqueza"
+                        android:gravity="center"
+                        android:text="Fraqueza" />
+
+                    <CheckBox
+                        android:id="@+id/checkVomito"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/vomito"
+                        android:gravity="center"
+                        android:text="Náuseas" />
+
+                    <CheckBox
+                        android:id="@+id/checkRins"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/rins"
+                        android:gravity="center"
+                        android:text="Dores nos\nrins" />
+
+                    <CheckBox
+                        android:id="@+id/checkBipolar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/bipolar"
+                        android:gravity="center"
+                        android:text="Mudança de\nhumor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
                     <CheckBox
                         android:id="@+id/checkPPeso"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="4dp"
                         android:button="@null"
                         android:drawableTop="@drawable/peso"
-                        android:text="Perda de\npeso"
                         android:gravity="center"
-                        android:layout_margin="4dp"
-                        />
+                        android:text="Perda de\npeso" />
+
                     <CheckBox
                         android:id="@+id/checkPezinho"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="4dp"
                         android:button="@null"
                         android:drawableTop="@drawable/pezinho"
-                        android:text="Formigamento"
                         android:gravity="center"
-                        android:layout_margin="4dp"/>
+                        android:text="Formigamento" />
+
                     <CheckBox
                         android:id="@+id/checkFome"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="4dp"
                         android:button="@null"
                         android:drawableTop="@drawable/fome"
-                        android:text="Fome"
                         android:gravity="center"
-                        android:layout_margin="4dp"/>
+                        android:text="Fome" />
+
                     <CheckBox
                         android:id="@+id/checkCoceira"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="4dp"
                         android:button="@null"
                         android:drawableTop="@drawable/handzinha"
-                        android:text="Coceira"
                         android:gravity="center"
-                        android:layout_margin="4dp"/>
-
+                        android:text="Coceira" />
 
 
                 </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
 
-                <CheckBox
-                    android:id="@+id/checkVisao"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:button="@null"
-                    android:drawableTop="@drawable/visao"
-                    android:text="Visão\nembaçada"
-                    android:gravity="center"
-                    android:layout_margin="4dp"/>
-                <CheckBox
-                    android:id="@+id/checkFadiga"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:button="@null"
-                    android:drawableTop="@drawable/fadiga"
-                    android:text="Fadiga"
-                    android:gravity="center"
-                    android:layout_margin="4dp"/>
-                <CheckBox
-                    android:id="@+id/checkUrina"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:button="@null"
-                    android:drawableTop="@drawable/xixi"
-                    android:text="Urinar\nvárias vezes"
-                    android:gravity="center"
-                    android:layout_margin="4dp"/>
-                <CheckBox
-                    android:id="@+id/checkCabeca"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:button="@null"
-                    android:drawableTop="@drawable/cabeca"
-                    android:text="Dor de\ncabeça"
-                    android:gravity="center"
-                    android:layout_margin="4dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <CheckBox
+                        android:id="@+id/checkVisao"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/visao"
+                        android:gravity="center"
+                        android:text="Visão\nembaçada" />
+
+                    <CheckBox
+                        android:id="@+id/checkFadiga"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/fadiga"
+                        android:gravity="center"
+                        android:text="Fadiga" />
+
+                    <CheckBox
+                        android:id="@+id/checkUrina"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/xixi"
+                        android:gravity="center"
+                        android:text="Urinar\nvárias vezes" />
+
+                    <CheckBox
+                        android:id="@+id/checkCabeca"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/cabeca"
+                        android:gravity="center"
+                        android:text="Dor de\ncabeça" />
+
+                </LinearLayout>
             </LinearLayout>
 
         </ScrollView>
 
 
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_copo"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/Layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageButton
+            android:id="@+id/btnTerminar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="56dp"
+            android:background="#00FFFFFF"
+            android:src="@mipmap/ic_check_foreground" />
 
+        <TextView
+            android:id="@+id/textView19"
+            style="@style/Widget.AppCompat.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Bem-estar"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@id/Layout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <ImageButton
-                    android:id="@+id/btnTerminar"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="56dp"
-                    android:background="#00FFFFFF"
-                    android:src="@mipmap/ic_check_foreground" />
-
-                <TextView
-                    android:id="@+id/textView19"
-                    style="@style/Widget.AppCompat.TextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Bem-estar"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-
-                <ImageButton
-                    android:id="@+id/btnProximo"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="56dp"
-                    android:background="#00FFFFFF"
-                    android:src="@mipmap/ic_setalado_foreground" />
-
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/btnProximo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="56dp"
+            android:background="#00FFFFFF"
+            android:src="@mipmap/ic_setalado_foreground" />
 
     </LinearLayout>
 
