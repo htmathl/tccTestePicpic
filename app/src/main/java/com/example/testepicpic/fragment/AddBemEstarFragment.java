@@ -147,7 +147,7 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
 
         final String[] strListaSintomas = {
                 "Fraqueza", "Nauseas", "DoresRins", "MudancaHumor", "PerdaPeso", "Formigamento",
-                "Fome", "Coceira", "VisaoEmbacada", "Fadiga", "UninarMuito", "DorCabeca",
+                "Fome", "Coceira", "VisaoEmbacada", "Fadiga", "UnrinarMuito", "DorCabeca",
         };
 
         btnHumorDia.setOnClickListener(new View.OnClickListener() {
@@ -218,11 +218,8 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
                                         .child(currentId)
                                         .child("inserção")
                                         .child("bem-estar")
-                                        .child("ano")
                                         .child(String.valueOf(pYear))
-                                        .child("mês")
                                         .child(String.valueOf(pMonth))
-                                        .child("dia")
                                         .child(String.valueOf(pDay))
                                         .child("húmor")
                                         .setValue(humor);
@@ -231,11 +228,8 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
                                         .child(currentId)
                                         .child("inserção")
                                         .child("bem-estar")
-                                        .child("ano")
                                         .child(String.valueOf(pYear))
-                                        .child("mês")
                                         .child(String.valueOf(pMonth))
-                                        .child("dia")
                                         .child(String.valueOf(pDay))
                                         .child("descricao")
                                         .setValue(descricao);
@@ -245,11 +239,8 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
                                             .child(currentId)
                                             .child("inserção")
                                             .child("bem-estar")
-                                            .child("ano")
                                             .child(String.valueOf(pYear))
-                                            .child("mês")
                                             .child(String.valueOf(pMonth))
-                                            .child("dia")
                                             .child(String.valueOf(pDay))
                                             .child("sintomas")
                                             .child(strListaSintomas[i])

@@ -103,7 +103,7 @@ public class CadastroEmailFragment extends Fragment {
         btnPronto2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String textoEmail = email.getText().toString();
+                String textoEmail = email.getText().toString().toLowerCase();
                 String textoSenha = senha.getText().toString();
                 String textoConfSenha = confSenha.getText().toString();
 
