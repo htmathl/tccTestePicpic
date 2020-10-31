@@ -109,11 +109,19 @@ public class OverviewFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_overview, container, false);
 
+        getActivity().startService(new Intent(getActivity(), MesmoDia.class));
+
         ref = ConfigFirebase.getFirebase();
+
+        recuperarUsuario();
 
         pYear = Calendar.getInstance().get(Calendar.YEAR);
         pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
         pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+
+        if(getActivity() != null) {
+            getActivity().registerReceiver(dayChangedBroadcastReceiver, DayChangedBroadcastReceiver.getIntentFilter());
+        }
 
         Button btnSairProv = view.findViewById(R.id.btnExames);
 
@@ -142,146 +150,171 @@ public class OverviewFragment extends Fragment {
         final CheckBox[] listaCopos = {copo1, copo2, copo3, copo4, copo5, copo6, copo7, copo8, copo9, copo10, copo11,
                 copo12, copo13, copo14, copo15, copo16};
 
-        recuperarUsuario();
-
         try {
 
-            final DatabaseReference reference = ref.child("users")
-                    .child(currentId)
-                    .child("inserção")
-                    .child("bem-estar")
-                    .child(String.valueOf(pYear))
-                    .child(String.valueOf(pMonth))
-                    .child(String.valueOf(pDay))
-                    .child("Água");
+            final DatabaseReference reference3 = ref.child("data_antiga").child("dia");
 
-            reference.addValueEventListener(new ValueEventListener() {
+            reference3.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    String agua = snapshot.getValue().toString();
+                    Log.e("miau", snapshot.toString());
 
-                    switch (agua) {
+                    if(!snapshot.getValue().toString().equals(String.valueOf(pDay))) {
 
-                        case "0":
-                            for(CheckBox copo : listaCopos)
-                                copo.setChecked(false);
-                            txtQntd.setText(0 + " ml");
-                            tbOutrosCopos.setVisibility(View.GONE);
-                            break;
-                        case "1":
-                            copo1.setChecked(true);
-                            copo2.setChecked(true);
-                            txtQntd.setText(250 + " ml");
-                            tbOutrosCopos.setVisibility(View.GONE);
-                            break;
-                        case "2":
-                            for(int i = 0; i < 2; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(500 + " ml");
-                            tbOutrosCopos.setVisibility(View.GONE);
-                            break;
-                        case "3":
-                            for(int i = 0; i < 3; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(750 + " ml");
-                            tbOutrosCopos.setVisibility(View.GONE);
-                            break;
-                        case "4":
-                            for(int i = 0; i < 4; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(1000 + " ml");
-                            tbOutrosCopos.setVisibility(View.GONE);
-                            break;
-                        case "5":
-                            for(int i = 0; i < 5; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(1250 + " ml");
-                            tbOutrosCopos.setVisibility(View.GONE);
-                            break;
-                        case "6":
-                            for(int i = 0; i < 6; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(1500 + " ml");
-                            tbOutrosCopos.setVisibility(View.GONE);
-                            break;
-                        case "7":
-                            for(int i = 0; i < 7; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(1750 + " ml");
-                            tbOutrosCopos.setVisibility(View.GONE);
-                            break;
-                        case "8":
-                            for(int i = 0; i < 8; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(2000 + " ml");
-                            tbOutrosCopos.setVisibility(View.VISIBLE);
-                            break;
-                        case "9":
-                            for(int i = 0; i < 9; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(2250 + " ml");
-                            tbOutrosCopos.setVisibility(View.VISIBLE);
-                            break;
-                        case "10":
-                            for(int i = 0; i < 10; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(2500 + " ml");
-                            tbOutrosCopos.setVisibility(View.VISIBLE);
-                            break;
-                        case "11":
-                            for(int i = 0; i < 11; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(2750 + " ml");
-                            tbOutrosCopos.setVisibility(View.VISIBLE);
-                            break;
-                        case "12":
-                            for(int i = 0; i < 12; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(3000 + " ml");
-                            tbOutrosCopos.setVisibility(View.VISIBLE);
-                            break;
-                        case "13":
-                            for(int i = 0; i < 13; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(3250 + " ml");
-                            tbOutrosCopos.setVisibility(View.VISIBLE);
-                            break;
-                        case "14":
-                            for(int i = 0; i < 14; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(3500 + " ml");
-                            tbOutrosCopos.setVisibility(View.VISIBLE);
-                            break;
-                        case "15":
-                            for(int i = 0; i < 15; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(3750 + " ml");
-                            tbOutrosCopos.setVisibility(View.VISIBLE);
-                            break;
-                        case "16":
-                            for(int i = 0; i < 16; i++)
-                                listaCopos[i].setChecked(true);
-                            txtQntd.setText(4000 + " ml");
-                            tbOutrosCopos.setVisibility(View.VISIBLE);
-                            break;
+                        ref.child("users")
+                                .child(currentId)
+                                .child("inserção")
+                                .child("bem-estar")
+                                .child(String.valueOf(pYear))
+                                .child(String.valueOf(pMonth))
+                                .child(String.valueOf(pDay))
+                                .child("Água")
+                                .setValue(0);
+                    } else {
+
+                        final DatabaseReference reference = ref.child("users")
+                                .child(currentId)
+                                .child("inserção")
+                                .child("bem-estar")
+                                .child(String.valueOf(pYear))
+                                .child(String.valueOf(pMonth))
+                                .child(String.valueOf(pDay))
+                                .child("Água");
+
+                        reference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                String agua = snapshot.getValue().toString();
+
+                                switch (agua) {
+
+                                    case "0":
+                                        for(CheckBox copo : listaCopos)
+                                            copo.setChecked(false);
+                                        txtQntd.setText(0 + " ml");
+                                        tbOutrosCopos.setVisibility(View.GONE);
+                                        break;
+                                    case "1":
+                                        copo1.setChecked(true);
+                                        copo2.setChecked(true);
+                                        txtQntd.setText(250 + " ml");
+                                        tbOutrosCopos.setVisibility(View.GONE);
+                                        break;
+                                    case "2":
+                                        for(int i = 0; i < 2; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(500 + " ml");
+                                        tbOutrosCopos.setVisibility(View.GONE);
+                                        break;
+                                    case "3":
+                                        for(int i = 0; i < 3; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(750 + " ml");
+                                        tbOutrosCopos.setVisibility(View.GONE);
+                                        break;
+                                    case "4":
+                                        for(int i = 0; i < 4; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(1000 + " ml");
+                                        tbOutrosCopos.setVisibility(View.GONE);
+                                        break;
+                                    case "5":
+                                        for(int i = 0; i < 5; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(1250 + " ml");
+                                        tbOutrosCopos.setVisibility(View.GONE);
+                                        break;
+                                    case "6":
+                                        for(int i = 0; i < 6; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(1500 + " ml");
+                                        tbOutrosCopos.setVisibility(View.GONE);
+                                        break;
+                                    case "7":
+                                        for(int i = 0; i < 7; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(1750 + " ml");
+                                        tbOutrosCopos.setVisibility(View.GONE);
+                                        break;
+                                    case "8":
+                                        for(int i = 0; i < 8; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(2000 + " ml");
+                                        tbOutrosCopos.setVisibility(View.VISIBLE);
+                                        break;
+                                    case "9":
+                                        for(int i = 0; i < 9; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(2250 + " ml");
+                                        tbOutrosCopos.setVisibility(View.VISIBLE);
+                                        break;
+                                    case "10":
+                                        for(int i = 0; i < 10; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(2500 + " ml");
+                                        tbOutrosCopos.setVisibility(View.VISIBLE);
+                                        break;
+                                    case "11":
+                                        for(int i = 0; i < 11; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(2750 + " ml");
+                                        tbOutrosCopos.setVisibility(View.VISIBLE);
+                                        break;
+                                    case "12":
+                                        for(int i = 0; i < 12; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(3000 + " ml");
+                                        tbOutrosCopos.setVisibility(View.VISIBLE);
+                                        break;
+                                    case "13":
+                                        for(int i = 0; i < 13; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(3250 + " ml");
+                                        tbOutrosCopos.setVisibility(View.VISIBLE);
+                                        break;
+                                    case "14":
+                                        for(int i = 0; i < 14; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(3500 + " ml");
+                                        tbOutrosCopos.setVisibility(View.VISIBLE);
+                                        break;
+                                    case "15":
+                                        for(int i = 0; i < 15; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(3750 + " ml");
+                                        tbOutrosCopos.setVisibility(View.VISIBLE);
+                                        break;
+                                    case "16":
+                                        for(int i = 0; i < 16; i++)
+                                            listaCopos[i].setChecked(true);
+                                        txtQntd.setText(4000 + " ml");
+                                        tbOutrosCopos.setVisibility(View.VISIBLE);
+                                        break;
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }});
+
                     }
+
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
-                }});
+                }
+            });
 
         } catch (Exception e) {
 
             Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
 
-        }
-
-        if(getActivity() != null) {
-            getActivity().startService(new Intent(getActivity(), MesmoDia.class));
-            getActivity().registerReceiver(dayChangedBroadcastReceiver, DayChangedBroadcastReceiver.getIntentFilter());
         }
 
         copo1.setOnClickListener(new View.OnClickListener() {
@@ -1118,6 +1151,24 @@ public class OverviewFragment extends Fragment {
         public void onDayChanged() {
 
             declarar();
+
+            recuperarUsuario();
+
+            ref = ConfigFirebase.getFirebase();
+
+            pYear = Calendar.getInstance().get(Calendar.YEAR);
+            pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
+            pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+
+            ref.child("users")
+                    .child(currentId)
+                    .child("inserção")
+                    .child("bem-estar")
+                    .child(String.valueOf(pYear))
+                    .child(String.valueOf(pMonth))
+                    .child(String.valueOf(pDay))
+                    .child("Água")
+                    .setValue(0);
 
             final CheckBox[] listaCopos = {copo1, copo2, copo3, copo4, copo5, copo6, copo7, copo8, copo9, copo10, copo11,
                     copo12, copo13, copo14, copo15, copo16};
