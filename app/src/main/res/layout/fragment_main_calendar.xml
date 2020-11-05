@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.CalendarFragment">
 
-    <CalendarView
-        android:id="@+id/calendarView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+
+        <com.applandeo.materialcalendarview.CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:eventsEnabled="true"
+            app:headerColor="@color/branco"
+            app:todayLabelColor="@color/colorPrimary"
+            app:headerLabelColor="#000"
+            app:previousButtonSrc="@drawable/ic_aocontrario"
+            app:forwardButtonSrc="@drawable/ic_baseline_arrow_forward_ios_24"
+            app:selectionColor="@color/colorPrimary"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>

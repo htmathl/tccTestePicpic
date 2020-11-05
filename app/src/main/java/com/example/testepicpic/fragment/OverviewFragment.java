@@ -162,9 +162,8 @@ public class OverviewFragment extends Fragment {
 
                     if(!snapshot.getValue().toString().equals(String.valueOf(pDay))) {
 
-                        ref.child("users")
+                        ref.child("inserção")
                                 .child(currentId)
-                                .child("inserção")
                                 .child("bem-estar")
                                 .child(String.valueOf(pYear))
                                 .child(String.valueOf(pMonth))
@@ -173,9 +172,8 @@ public class OverviewFragment extends Fragment {
                                 .setValue(0);
                     } else {
 
-                        final DatabaseReference reference = ref.child("users")
+                        final DatabaseReference reference = ref.child("inserção")
                                 .child(currentId)
-                                .child("inserção")
                                 .child("bem-estar")
                                 .child(String.valueOf(pYear))
                                 .child(String.valueOf(pMonth))
@@ -332,9 +330,8 @@ public class OverviewFragment extends Fragment {
 
                     txtQntd.setText(0 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -348,9 +345,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 250;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -377,9 +373,8 @@ public class OverviewFragment extends Fragment {
 
                     txtQntd.setText(250 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -393,9 +388,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 500;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -421,9 +415,8 @@ public class OverviewFragment extends Fragment {
 
                     txtQntd.setText(500 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -438,9 +431,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 750;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -467,9 +459,8 @@ public class OverviewFragment extends Fragment {
 
                     txtQntd.setText(750 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -484,9 +475,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 1000;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -513,9 +503,8 @@ public class OverviewFragment extends Fragment {
                     tbOutrosCopos.setVisibility(View.GONE);
                     txtQntd.setText(1000 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -530,9 +519,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 1250;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -559,9 +547,8 @@ public class OverviewFragment extends Fragment {
                     tbOutrosCopos.setVisibility(View.GONE);
                     txtQntd.setText(1250 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -576,9 +563,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 1500;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -605,9 +591,8 @@ public class OverviewFragment extends Fragment {
                     tbOutrosCopos.setVisibility(View.GONE);
                     txtQntd.setText(1500 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -622,9 +607,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 1750;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -650,9 +634,8 @@ public class OverviewFragment extends Fragment {
                     tbOutrosCopos.setVisibility(View.GONE);
                     txtQntd.setText(1750 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -669,9 +652,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 2000;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -697,9 +679,8 @@ public class OverviewFragment extends Fragment {
                         listaCopos[i].setChecked(false);
                     txtQntd.setText(2000 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -714,9 +695,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 2250;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -739,9 +719,8 @@ public class OverviewFragment extends Fragment {
                         listaCopos[i].setChecked(false);
                     txtQntd.setText(2250 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -756,9 +735,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 2500;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -783,9 +761,8 @@ public class OverviewFragment extends Fragment {
                         listaCopos[i].setChecked(false);
                     txtQntd.setText(2500 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -800,9 +777,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 2750;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -827,9 +803,8 @@ public class OverviewFragment extends Fragment {
                         listaCopos[i].setChecked(false);
                     txtQntd.setText(2750 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -844,9 +819,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 3000;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -871,9 +845,8 @@ public class OverviewFragment extends Fragment {
                         listaCopos[i].setChecked(false);
                     txtQntd.setText(3000 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -888,9 +861,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 3250;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -915,9 +887,8 @@ public class OverviewFragment extends Fragment {
                         listaCopos[i].setChecked(false);
                     txtQntd.setText(3250 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -932,9 +903,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 3500;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -959,9 +929,8 @@ public class OverviewFragment extends Fragment {
                         listaCopos[i].setChecked(false);
                     txtQntd.setText(3500 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -976,9 +945,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 3750;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -1003,9 +971,8 @@ public class OverviewFragment extends Fragment {
                         listaCopos[i].setChecked(false);
                     txtQntd.setText(3750 + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -1020,9 +987,8 @@ public class OverviewFragment extends Fragment {
                     qntd = qntd + 4000;
                     txtQntd.setText(qntd + " ml");
 
-                    ref.child("users")
+                    ref.child("inserção")
                             .child(currentId)
-                            .child("inserção")
                             .child("bem-estar")
                             .child(String.valueOf(pYear))
                             .child(String.valueOf(pMonth))
@@ -1160,9 +1126,8 @@ public class OverviewFragment extends Fragment {
             pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
             pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 
-            ref.child("users")
+            ref.child("inserção")
                     .child(currentId)
-                    .child("inserção")
                     .child("bem-estar")
                     .child(String.valueOf(pYear))
                     .child(String.valueOf(pMonth))
