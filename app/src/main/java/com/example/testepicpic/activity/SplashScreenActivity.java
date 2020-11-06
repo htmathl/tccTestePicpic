@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import com.example.testepicpic.R;
 import com.example.testepicpic.activity.PrincipalActivity;
 import com.example.testepicpic.config.ConfigFirebase;
+import com.example.testepicpic.service.MesmoDia;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreenActivity extends AppCompatActivity {
