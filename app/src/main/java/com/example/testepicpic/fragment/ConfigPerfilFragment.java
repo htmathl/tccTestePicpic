@@ -1,7 +1,5 @@
 package com.example.testepicpic.fragment;
 
-import android.Manifest;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,15 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.testepicpic.R;
-import com.example.testepicpic.helper.Permissao;
-import com.example.testepicpic.model.Usuario;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -34,9 +27,6 @@ public class ConfigPerfilFragment extends Fragment {
     private TextView txtAlterarFoto;
     private EditText edtNomeUser;
     private CircleImageView circleImageViewPerfil;
-
-
-
 
    // private StorageReference storageReference;
    // private String identificadorUsuario;
@@ -91,8 +81,9 @@ public class ConfigPerfilFragment extends Fragment {
         txtAlterarFoto = view.findViewById(R.id.txtAlterarFoto);
         edtNomeUser= view.findViewById(R.id.edtNomeUser);
 
-        return inflater.inflate(R.layout.fragment_config_perfil, container, false);
 
 
+
+        return view;
     }
 }

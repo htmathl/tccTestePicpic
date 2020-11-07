@@ -62,6 +62,8 @@ public class OverviewFragment extends Fragment {
 
     private int pYear, pMonth, pDay;
 
+    private String data;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -119,6 +121,8 @@ public class OverviewFragment extends Fragment {
         pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
         pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 
+        data = String.valueOf(pYear) + String.valueOf(pMonth) + String.valueOf(pDay);
+
         if(getActivity() != null) {
             getActivity().registerReceiver(dayChangedBroadcastReceiver, DayChangedBroadcastReceiver.getIntentFilter());
         }
@@ -158,16 +162,12 @@ public class OverviewFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    Log.e("miau", snapshot.toString());
-
                     if(!snapshot.getValue().toString().equals(String.valueOf(pDay))) {
 
                         ref.child("inserção")
                                 .child(currentId)
                                 .child("bem-estar")
-                                .child(String.valueOf(pYear))
-                                .child(String.valueOf(pMonth))
-                                .child(String.valueOf(pDay))
+                                .child(data)
                                 .child("Água")
                                 .setValue(0);
                     } else {
@@ -175,9 +175,7 @@ public class OverviewFragment extends Fragment {
                         final DatabaseReference reference = ref.child("inserção")
                                 .child(currentId)
                                 .child("bem-estar")
-                                .child(String.valueOf(pYear))
-                                .child(String.valueOf(pMonth))
-                                .child(String.valueOf(pDay))
+                                .child(data)
                                 .child("Água");
 
                         reference.addValueEventListener(new ValueEventListener() {
@@ -333,9 +331,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(0);
 
@@ -348,9 +344,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(1);
 
@@ -376,9 +370,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(1);
 
@@ -391,9 +383,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(2);
                 }
@@ -418,9 +408,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(2);
 
@@ -434,9 +422,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(3);
                 }
@@ -462,9 +448,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(3);
 
@@ -478,9 +462,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(4);
                 }
@@ -506,9 +488,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(4);
 
@@ -522,9 +502,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(5);
                 }
@@ -550,9 +528,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(5);
 
@@ -566,9 +542,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(6);
                 }
@@ -594,9 +568,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(6);
 
@@ -610,9 +582,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(7);
                 }
@@ -637,9 +607,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(7);
 
@@ -655,9 +623,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(8);
 
@@ -682,9 +648,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(8);
 
@@ -698,9 +662,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(9);
                 }
@@ -722,9 +684,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(9);
 
@@ -738,9 +698,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(10);
                 }
@@ -764,9 +722,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(10);
 
@@ -780,9 +736,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(11);
                 }
@@ -806,9 +760,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(11);
 
@@ -822,9 +774,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(12);
                 }
@@ -848,9 +798,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(12);
 
@@ -864,9 +812,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(13);
                 }
@@ -890,9 +836,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(13);
 
@@ -906,9 +850,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(14);
                 }
@@ -932,9 +874,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(14);
 
@@ -948,9 +888,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(15);
                 }
@@ -974,9 +912,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(15);
 
@@ -990,9 +926,7 @@ public class OverviewFragment extends Fragment {
                     ref.child("inserção")
                             .child(currentId)
                             .child("bem-estar")
-                            .child(String.valueOf(pYear))
-                            .child(String.valueOf(pMonth))
-                            .child(String.valueOf(pDay))
+                            .child(data)
                             .child("Água")
                             .setValue(16);
                 }
@@ -1009,8 +943,6 @@ public class OverviewFragment extends Fragment {
                 autenticacao.signOut();
                 startActivity(new Intent(getActivity(), SliderActivity.class));
                 getActivity().finish();
-
-
             }
         });
 
@@ -1032,81 +964,110 @@ public class OverviewFragment extends Fragment {
         if (copo1.isChecked()) {
             txtQntd.setText(250 + " ml");
 
-            if (copo2.isChecked())
+            if (copo2.isChecked()) {
                 txtQntd.setText(500 + " ml");
-            else
+
+                if (copo3.isChecked()) {
+                    txtQntd.setText(750 + " ml");
+
+                    if (copo4.isChecked()) {
+                        txtQntd.setText(1000 + " ml");
+
+                        if (copo5.isChecked()) {
+                            txtQntd.setText(1250 + " ml");
+
+                            if (copo6.isChecked()) {
+                                txtQntd.setText(1500 + " ml");
+
+                                if (copo7.isChecked()) {
+                                    txtQntd.setText(1750 + " ml");
+
+                                    if (copo8.isChecked()) {
+                                        txtQntd.setText(2000 + " ml");
+
+                                        if (copo9.isChecked()) {
+                                            txtQntd.setText(2250 + " ml");
+
+                                            if (copo10.isChecked()) {
+                                                txtQntd.setText(2500 + " ml");
+
+                                                if (copo11.isChecked()) {
+                                                    txtQntd.setText(2750 + " ml");
+
+                                                    if (copo12.isChecked()) {
+                                                        txtQntd.setText(3000 + " ml");
+
+                                                        if (copo13.isChecked()) {
+                                                            txtQntd.setText(3250 + " ml");
+
+                                                            if (copo14.isChecked()) {
+                                                                txtQntd.setText(3500 + " ml");
+
+                                                                if (copo15.isChecked()) {
+                                                                    txtQntd.setText(3750 + " ml");
+
+                                                                    if (copo16.isChecked()) {
+                                                                        txtQntd.setText(4000 + " ml");
+
+                                                                    }
+                                                                    else {
+                                                                        txtQntd.setText(3750 + " ml");
+                                                                    }
+                                                                }
+                                                                else {
+                                                                    txtQntd.setText(3500 + " ml");
+                                                                }
+                                                            }
+                                                            else {
+                                                                txtQntd.setText(3250 + " ml");
+                                                            }
+                                                        }
+                                                        else {
+                                                            txtQntd.setText(3000 + " ml");
+                                                        }
+                                                    }
+                                                    else {
+                                                        txtQntd.setText(2750 + " ml");
+                                                    }
+                                                }
+                                                else {
+                                                    txtQntd.setText(2500 + " ml");
+                                                }
+                                            }
+                                            else {
+                                                txtQntd.setText(2250 + " ml");
+                                            }
+                                        }
+                                        else {
+                                            txtQntd.setText(2000 + " ml");
+                                        }
+                                    }
+                                    else {
+                                        txtQntd.setText(1750 + " ml");
+                                    }
+                                }
+                                else {
+                                    txtQntd.setText(1500 + " ml");
+                                }
+                            }
+                            else {
+                                txtQntd.setText(1250 + " ml");
+                            }
+                        }
+                        else {
+                            txtQntd.setText(1000 + " ml");
+                        }
+                    }
+                    else {
+                        txtQntd.setText(750 + " ml");
+                    }
+                }
+                else {
+                    txtQntd.setText(500 + " ml");
+                }
+            } else {
                 txtQntd.setText(250 + " ml");
-
-            if (copo3.isChecked())
-                txtQntd.setText(750 + " ml");
-            else
-                txtQntd.setText(500 + " ml");
-
-            if (copo4.isChecked())
-                txtQntd.setText(1000 + " ml");
-            else
-                txtQntd.setText(750 + " ml");
-
-            if (copo5.isChecked())
-                txtQntd.setText(1250 + " ml");
-            else
-                txtQntd.setText(1000 + " ml");
-
-            if (copo6.isChecked())
-                txtQntd.setText(1500 + " ml");
-            else
-                txtQntd.setText(1250 + " ml");
-
-            if (copo7.isChecked())
-                txtQntd.setText(1750 + " ml");
-            else
-                txtQntd.setText(1500 + " ml");
-
-            if (copo8.isChecked())
-                txtQntd.setText(2000 + " ml");
-            else
-                txtQntd.setText(1750 + " ml");
-
-            if (copo9.isChecked())
-                txtQntd.setText(2250 + " ml");
-            else
-                txtQntd.setText(2000 + " ml");
-
-            if (copo10.isChecked())
-                txtQntd.setText(2500 + " ml");
-            else
-                txtQntd.setText(2250 + " ml");
-
-            if (copo11.isChecked())
-                txtQntd.setText(2750 + " ml");
-            else
-                txtQntd.setText(2500 + " ml");
-
-            if (copo12.isChecked())
-                txtQntd.setText(3000 + " ml");
-            else
-                txtQntd.setText(2750 + " ml");
-
-            if (copo13.isChecked())
-                txtQntd.setText(3250 + " ml");
-            else
-                txtQntd.setText(3000 + " ml");
-
-            if (copo14.isChecked())
-                txtQntd.setText(3500 + " ml");
-            else
-                txtQntd.setText(3250 + " ml");
-
-            if (copo15.isChecked())
-                txtQntd.setText(3750 + " ml");
-            else
-                txtQntd.setText(3500 + " ml");
-
-            if (copo16.isChecked())
-                txtQntd.setText(4000 + " ml");
-            else
-                txtQntd.setText(3750 + " ml");
-
+            }
         } else
             txtQntd.setText(0 + " ml");
 
@@ -1126,12 +1087,12 @@ public class OverviewFragment extends Fragment {
             pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
             pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 
+            data = String.valueOf(pYear) + String.valueOf(pMonth) + String.valueOf(pDay);
+
             ref.child("inserção")
                     .child(currentId)
                     .child("bem-estar")
-                    .child(String.valueOf(pYear))
-                    .child(String.valueOf(pMonth))
-                    .child(String.valueOf(pDay))
+                    .child(data)
                     .child("Água")
                     .setValue(0);
 

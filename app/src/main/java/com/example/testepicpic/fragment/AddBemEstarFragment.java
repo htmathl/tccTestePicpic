@@ -22,9 +22,11 @@ import android.widget.Toast;
 import com.example.testepicpic.R;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.helper.Base64Custom;
+import com.example.testepicpic.model.BemEstar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -47,11 +49,13 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
 
     private ImageButton ibtnSalvar, ibtnProximo;
 
-    private boolean[] pSintomas = new boolean[12];
+    private ArrayList<String> pSintomas = new ArrayList<>();
 
     private String currentId, humor;
 
     private DatabaseReference ref;
+
+    private BemEstar bemEstar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -146,8 +150,8 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
         };
 
         final String[] strListaSintomas = {
-                "Fraqueza", "Nauseas", "DoresRins", "MudancaHumor", "PerdaPeso", "Formigamento",
-                "Fome", "Coceira", "VisaoEmbacada", "Fadiga", "UnrinarMuito", "DorCabeca",
+                "Fraqueza", "Náuseas", "Dores Rins", "Mudanças de Húmor", "Perda de Peso", "Formigamento",
+                "Fome", "Coceira", "Visão Embacada", "Fadiga", "Unrinar Muito", "Dor Cabeça",
         };
 
         btnHumorDia.setOnClickListener(new View.OnClickListener() {
@@ -192,7 +196,7 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
 
                 for(int i = 0; i < 12; i++) {
                     if(listaSintomas[i].isChecked())
-                        pSintomas[i] = true;
+                        pSintomas.add(strListaSintomas[i]);
                 }
 
                 if(btnHumorDia.getText().toString().equals("Hoje")) {
@@ -207,45 +211,22 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
 
                     builder.setTitle("Deseja mesmo salvar?");
 
-
                     builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
                             try {
 
-                                ref.child("users")
-                                        .child(currentId)
-                                        .child("inserção")
-                                        .child("bem-estar")
-                                        .child(String.valueOf(pYear))
-                                        .child(String.valueOf(pMonth))
-                                        .child(String.valueOf(pDay))
-                                        .child("húmor")
-                                        .setValue(humor);
+                                bemEstar = new BemEstar();
 
-                                ref.child("users")
-                                        .child(currentId)
-                                        .child("inserção")
-                                        .child("bem-estar")
-                                        .child(String.valueOf(pYear))
-                                        .child(String.valueOf(pMonth))
-                                        .child(String.valueOf(pDay))
-                                        .child("descricao")
-                                        .setValue(descricao);
+                                bemEstar.setSintomas(humor);
+                                bemEstar.setDescicao(descricao);
+                                bemEstar.setSintomas(pSintomas.toString());
+                                bemEstar.setDia(pDay);
+                                bemEstar.setMes(pMonth);
+                                bemEstar.setAno(pYear);
 
-                                for(int i = 0; i < 12; i++) {
-                                    ref.child("users")
-                                            .child(currentId)
-                                            .child("inserção")
-                                            .child("bem-estar")
-                                            .child(String.valueOf(pYear))
-                                            .child(String.valueOf(pMonth))
-                                            .child(String.valueOf(pDay))
-                                            .child("sintomas")
-                                            .child(strListaSintomas[i])
-                                            .setValue(pSintomas[i]);
-                                }
+                                bemEstar.salvar(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
                                 Toast.makeText(getActivity(), "Pronto, já salvamos sua anotação :)", Toast.LENGTH_SHORT).show();
                                 getActivity().finish();

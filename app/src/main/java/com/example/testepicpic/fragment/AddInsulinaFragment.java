@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.testepicpic.R;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.helper.Base64Custom;
+import com.example.testepicpic.model.Insulina;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -59,6 +60,8 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
     private String numInsulina;
 
     private String local, categoria;
+
+    private Insulina insulina;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -194,6 +197,11 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
 
                         }
 
+                        if(rdbDevagar.isChecked())
+                            categoria = "Devagar";
+                        if(rdbRapida.isChecked())
+                            categoria = "Rápida";
+
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
                         builder.setTitle("Deseja mesmo salvar?");
@@ -202,79 +210,17 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                if(rdbDevagar.isChecked()) {
-                                    categoria = "Devagar";
+                                insulina = new Insulina();
 
-                                    database.child("users")
-                                            .child(currentId)
-                                            .child("inserção")
-                                            .child("insulina")
-                                            .child(categoria)
-                                            .child(String.valueOf(pYear))
-                                            .child(String.valueOf(pMonth))
-                                            .child(String.valueOf(pDay))
-                                            .child("nível")
-                                            .setValue(numInsulina);
+                                insulina.setNivel( Double.parseDouble(numInsulina) );
+                                insulina.setHora(hora);
+                                insulina.setLocal(local);
+                                insulina.setCategoria(categoria);
+                                insulina.setAno(pYear);
+                                insulina.setDia(pDay);
+                                insulina.setMes(pMonth);
 
-                                    database.child("users")
-                                            .child(currentId)
-                                            .child("inserção")
-                                            .child("insulina")
-                                            .child(categoria)
-                                            .child(String.valueOf(pYear))
-                                            .child(String.valueOf(pMonth))
-                                            .child(String.valueOf(pDay))
-                                            .child("horário")
-                                            .setValue(hora);
-
-                                    database.child("users")
-                                            .child(currentId)
-                                            .child("inserção")
-                                            .child("insulina")
-                                            .child(categoria)
-                                            .child(String.valueOf(pYear))
-                                            .child(String.valueOf(pMonth))
-                                            .child(String.valueOf(pDay))
-                                            .child("local da aplicação")
-                                            .setValue(local);
-                                }
-                                if(rdbRapida.isChecked()) {
-
-                                    categoria = "Rápida";
-
-                                    database.child("users")
-                                            .child(currentId)
-                                            .child("inserção")
-                                            .child("insulina")
-                                            .child(categoria)
-                                            .child(String.valueOf(pYear))
-                                            .child(String.valueOf(pMonth))
-                                            .child(String.valueOf(pDay))
-                                            .child("nível")
-                                            .setValue(numInsulina);
-
-                                    database.child("users")
-                                            .child(currentId)
-                                            .child("inserção")
-                                            .child("insulina")
-                                            .child(categoria)
-                                            .child(String.valueOf(pYear))
-                                            .child(String.valueOf(pMonth))
-                                            .child(String.valueOf(pDay))
-                                            .child("horário")
-                                            .setValue(hora);
-
-                                    database.child("users")
-                                            .child(currentId)
-                                            .child("inserção")
-                                            .child("insulina")
-                                            .child(categoria)
-                                            .child(String.valueOf(pYear))
-                                            .child(String.valueOf(pMonth))
-                                            .child(String.valueOf(pDay))
-                                            .child("local da aplicação")
-                                            .setValue(local);
-                                }
+                                insulina.salvar(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
                                 Toast.makeText(getActivity(), "Pronto, já salvamos :)", Toast.LENGTH_SHORT).show();
 
