@@ -179,12 +179,16 @@ public class CadastroEmailFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     Toast.makeText(getActivity(), "Bem vindo,  " + user.getNome(), Toast.LENGTH_SHORT).show();
+                    Usuario.atualizarNomeUsuario(user.getNome());
                     startActivity(new Intent(getActivity(), MainActivity.class));
                     LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(new Intent("fecharTelaPrincipal"));
+
 
                     String idUser = Base64Custom.codificarBase64(user.getEmail());
                     user.setIdUser(idUser);
                     user.salvar();
+
+
 
                     salvarLembretesMedicacoes();
 

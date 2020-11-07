@@ -57,7 +57,6 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.4.0'
     implementation 'com.google.firebase:firebase-auth:20.0.0'
     implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
-    // arredondamento de imagem//
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'joda-time:joda-time:2.10.8'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.10'
@@ -66,4 +65,5 @@ dependencies {
 }
 repositories {
     mavenCentral()
+
 }
