@@ -3,9 +3,11 @@ package com.example.testepicpic.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
 import com.example.testepicpic.fragment.AddAlimentacaoFragment;
@@ -123,4 +125,5 @@ public class AddInfosActivity extends AppCompatActivity implements GestureDetect
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
         return false;
     }
+
 }

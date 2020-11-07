@@ -3,12 +3,15 @@ package com.example.testepicpic.fragment;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -31,13 +34,20 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.testepicpic.R;
+import com.example.testepicpic.activity.AddInfosActivity;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.helper.Base64Custom;
+import com.example.testepicpic.model.Glicemia;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+
+import javax.crypto.BadPaddingException;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,7 +66,7 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
 
     private Spinner spLocalGli;
 
-    private boolean[] pCat = new boolean[24];
+    private ArrayList<String> pCat = new ArrayList<String>();
 
     private int pDay, pMonth, pYear;
 
@@ -65,6 +75,14 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
     private String currentId, numGlicemia;
 
     private ConstraintLayout clDedoGli;
+
+    private Glicemia glicemia;
+
+    private CalendarFragment calendarFragment;
+
+    public static final String PREFS_NAME = "shareData";
+
+    SharedPreferences preferences;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -267,6 +285,8 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
 
                 final String strSlcLocal = spLocalGli.getSelectedItem().toString();
 
+                String lado;
+
                 if(!edtNivelGli.getText().toString().equals("")){
                     if(!btnHorarioGli.getText().toString().equals("")){
                         if(btnGliDia.getText().equals("Hoje")){
@@ -279,8 +299,14 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
 
                         for(int i = 0; i < categoria.length; i++) {
                             if(categoria[i].isChecked())
-                                pCat[i] = true;
+                                pCat.add(strCat[i]);
                         }
+
+                        if(rdbDireita.isChecked())
+                            lado = "direito";
+                        else
+                            lado = "esquerdo";
+
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -290,7 +316,28 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                database.child("users")
+                                glicemia = new Glicemia();
+
+                                calendarFragment = new CalendarFragment();
+
+                                glicemia.setNivel(Double.parseDouble(numGlicemia));
+                                glicemia.setLado(lado);
+                                glicemia.setLocal(strSlcLocal);
+                                glicemia.setCategoria(pCat.toString());
+
+                                glicemia.salvar(pDay, pMonth, pYear, hora);
+
+                                SharedPreferences.Editor preferences1 = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
+                                preferences1.clear();
+                                preferences1.apply();
+
+                                preferences = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                                preferences.edit().putInt("dia", pDay).apply();
+                                preferences.edit().putInt("mes", pMonth).apply();
+                                preferences.edit().putInt("ano", pYear).apply();
+                                preferences.edit().putInt("hora", hora).apply();
+
+                                /*database.child("users")
                                         .child(currentId)
                                         .child("inserção")
                                         .child("glicemia")
@@ -356,7 +403,7 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
                                             .child("categoria")
                                             .child(strCat[i])
                                             .setValue(pCat[i]);
-                                }
+                                }*/
 
                                 Toast.makeText(getActivity(), "Pronto, já salvamos :)", Toast.LENGTH_SHORT).show();
 

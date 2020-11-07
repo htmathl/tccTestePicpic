@@ -1,6 +1,8 @@
 package com.example.testepicpic.fragment;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,11 +11,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
+import com.example.testepicpic.config.ConfigFirebase;
+import com.example.testepicpic.helper.Base64Custom;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.Calendar;
 
@@ -23,13 +33,25 @@ import java.util.Calendar;
  * create an instance of this fragment.
  */
 public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
-    private RadioButton brabo, normal, triste, feliz;
+
+    private RadioButton brabo, normal, triste, feliz, cansado, animado, relaxado, estressado;
+
+    private CheckBox cbFraqueza, cbNauseas, cbDoresRins, cbMudancaHumor, cbPerdaPeso, cbFormigamento,
+            cbFome, cbCoceira, cbVisaoEmbacada, cbFadiga, cbUninarMuito, cbDorCabeca;
 
     private int pDay, pMonth, pYear;
 
+    private EditText edtDecricao;
+
     private Button btnHumorDia;
 
-    private int indice;
+    private ImageButton ibtnSalvar, ibtnProximo;
+
+    private boolean[] pSintomas = new boolean[12];
+
+    private String currentId, humor;
+
+    private DatabaseReference ref;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,13 +102,53 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
         triste = view.findViewById(R.id.btnAddHumorSad);
         feliz = view.findViewById(R.id.btnAddHumorBem);
         normal = view.findViewById(R.id.btnAddHumorNormal);
+        cansado = view.findViewById(R.id.btnAddHumorCansado);
+        relaxado = view.findViewById(R.id.btnAddHumorRelax);
+        animado = view.findViewById(R.id.btnAddHumorAnim);
+        estressado = view.findViewById(R.id.btnAddHumorStress);
 
         brabo.setOnCheckedChangeListener(this);
         triste.setOnCheckedChangeListener(this);
         feliz.setOnCheckedChangeListener(this);
         normal.setOnCheckedChangeListener(this);
+        cansado.setOnCheckedChangeListener(this);
+        relaxado.setOnCheckedChangeListener(this);
+        animado.setOnCheckedChangeListener(this);
+        estressado.setOnCheckedChangeListener(this);
 
         btnHumorDia = view.findViewById(R.id.btnInsulinaDia);
+
+        edtDecricao = view.findViewById(R.id.editTextDescriçãoHumor);
+
+        cbFraqueza =  view.findViewById(R.id.checkFraqueza);
+        cbNauseas =  view.findViewById(R.id.checkVomito);
+        cbDoresRins =  view.findViewById(R.id.checkRins);
+        cbMudancaHumor =  view.findViewById(R.id.checkBipolar);
+        cbPerdaPeso =  view.findViewById(R.id.checkPPeso);
+        cbFormigamento =  view.findViewById(R.id.checkPezinho);
+        cbFome =  view.findViewById(R.id.checkFome);
+        cbCoceira =  view.findViewById(R.id.checkCoceira);
+        cbVisaoEmbacada =  view.findViewById(R.id.checkVisao);
+        cbFadiga =  view.findViewById(R.id.checkFadiga);
+        cbUninarMuito =  view.findViewById(R.id.checkUrina);
+        cbDorCabeca =  view.findViewById(R.id.checkCabeca);
+
+        ibtnSalvar = view.findViewById(R.id.btnTerminar);
+        ibtnProximo = view.findViewById(R.id.btnProximo);
+
+        final CheckBox[] listaSintomas = {
+                cbFraqueza, cbNauseas, cbDoresRins, cbMudancaHumor, cbPerdaPeso, cbFormigamento,
+                cbFome, cbCoceira, cbVisaoEmbacada, cbFadiga, cbUninarMuito, cbDorCabeca,
+        };
+
+        final RadioButton[] listaHumor = {
+                brabo, normal, triste, feliz, cansado, animado, relaxado, estressado,
+        };
+
+        final String[] strListaSintomas = {
+                "Fraqueza", "Nauseas", "DoresRins", "MudancaHumor", "PerdaPeso", "Formigamento",
+                "Fome", "Coceira", "VisaoEmbacada", "Fadiga", "UnrinarMuito", "DorCabeca",
+        };
 
         btnHumorDia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +174,102 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
             }
         });
 
+
+        ibtnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                recuperarUsuario();
+
+                ref = ConfigFirebase.getFirebase();
+
+                for(RadioButton pHumor : listaHumor) {
+                    if(pHumor.isChecked())
+                        humor = pHumor.getText().toString();
+                }
+
+                final String descricao = edtDecricao.getText().toString();
+
+                for(int i = 0; i < 12; i++) {
+                    if(listaSintomas[i].isChecked())
+                        pSintomas[i] = true;
+                }
+
+                if(btnHumorDia.getText().toString().equals("Hoje")) {
+                    pYear = Calendar.getInstance().get(Calendar.YEAR);
+                    pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
+                    pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+                }
+
+                if(!edtDecricao.getText().toString().equals("")) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                    builder.setTitle("Deseja mesmo salvar?");
+
+
+                    builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            try {
+
+                                ref.child("users")
+                                        .child(currentId)
+                                        .child("inserção")
+                                        .child("bem-estar")
+                                        .child(String.valueOf(pYear))
+                                        .child(String.valueOf(pMonth))
+                                        .child(String.valueOf(pDay))
+                                        .child("húmor")
+                                        .setValue(humor);
+
+                                ref.child("users")
+                                        .child(currentId)
+                                        .child("inserção")
+                                        .child("bem-estar")
+                                        .child(String.valueOf(pYear))
+                                        .child(String.valueOf(pMonth))
+                                        .child(String.valueOf(pDay))
+                                        .child("descricao")
+                                        .setValue(descricao);
+
+                                for(int i = 0; i < 12; i++) {
+                                    ref.child("users")
+                                            .child(currentId)
+                                            .child("inserção")
+                                            .child("bem-estar")
+                                            .child(String.valueOf(pYear))
+                                            .child(String.valueOf(pMonth))
+                                            .child(String.valueOf(pDay))
+                                            .child("sintomas")
+                                            .child(strListaSintomas[i])
+                                            .setValue(pSintomas[i]);
+                                }
+
+                                Toast.makeText(getActivity(), "Pronto, já salvamos sua anotação :)", Toast.LENGTH_SHORT).show();
+                                getActivity().finish();
+
+                            } catch (Exception e) {
+                                Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+                    builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {}});
+
+                    builder.create();
+                    builder.show();
+
+                } else {
+                    Toast.makeText(getActivity(), "Por favor, preencha o campo descrição", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
         return view;
     }
 
@@ -122,22 +280,89 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
                 triste.setChecked(false);
                 feliz.setChecked(false);
                 normal.setChecked(false);
+                cansado.setChecked(false);
+                animado.setChecked(false);
+                relaxado.setChecked(false);
+                estressado.setChecked(false);
             }
             if(buttonView.getId() == R.id.btnAddHumorSad){
                 brabo.setChecked(false);
                 feliz.setChecked(false);
                 normal.setChecked(false);
+                cansado.setChecked(false);
+                animado.setChecked(false);
+                relaxado.setChecked(false);
+                estressado.setChecked(false);
             }
             if(buttonView.getId() == R.id.btnAddHumorBem){
                 triste.setChecked(false);
                 brabo.setChecked(false);
                 normal.setChecked(false);
+                cansado.setChecked(false);
+                animado.setChecked(false);
+                relaxado.setChecked(false);
+                estressado.setChecked(false);
             }
             if(buttonView.getId() == R.id.btnAddHumorNormal){
                 triste.setChecked(false);
                 feliz.setChecked(false);
                 brabo.setChecked(false);
+                cansado.setChecked(false);
+                animado.setChecked(false);
+                relaxado.setChecked(false);
+                estressado.setChecked(false);
+            }
+            if(buttonView.getId() == R.id.btnAddHumorCansado){
+                triste.setChecked(false);
+                feliz.setChecked(false);
+                brabo.setChecked(false);
+                normal.setChecked(false);
+                animado.setChecked(false);
+                relaxado.setChecked(false);
+                estressado.setChecked(false);
+            }
+            if(buttonView.getId() == R.id.btnAddHumorAnim){
+                triste.setChecked(false);
+                feliz.setChecked(false);
+                brabo.setChecked(false);
+                cansado.setChecked(false);
+                normal.setChecked(false);
+                relaxado.setChecked(false);
+                estressado.setChecked(false);
+            }
+            if(buttonView.getId() == R.id.btnAddHumorRelax){
+                triste.setChecked(false);
+                feliz.setChecked(false);
+                brabo.setChecked(false);
+                cansado.setChecked(false);
+                animado.setChecked(false);
+                normal.setChecked(false);
+                estressado.setChecked(false);
+            }
+            if(buttonView.getId() == R.id.btnAddHumorStress){
+                triste.setChecked(false);
+                feliz.setChecked(false);
+                brabo.setChecked(false);
+                cansado.setChecked(false);
+                animado.setChecked(false);
+                relaxado.setChecked(false);
+                normal.setChecked(false);
             }
         }
     }
+
+    public void recuperarUsuario() {
+
+        FirebaseAuth auth = ConfigFirebase.getFirebaseAutenticacao();
+
+        if(auth.getCurrentUser() != null) {
+
+            String email = auth.getCurrentUser().getEmail();
+            assert email != null;
+            currentId = Base64Custom.codificarBase64(email);
+
+        }
+
+    }
+
 }

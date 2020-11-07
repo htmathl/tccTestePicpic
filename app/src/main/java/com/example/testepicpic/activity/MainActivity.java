@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -14,6 +15,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
 import com.example.testepicpic.fragment.AddAlimentacaoFragment;
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private AddBemEstarFragment addBemEstarFragment = new AddBemEstarFragment();
     private AddAlimentacaoFragment addAlimentacaoFragment = new AddAlimentacaoFragment();
     private AddExercicioFragment addExercicioFragment = new AddExercicioFragment();
-    private AddGlicemiaFragment addGlicemiaFragment = new AddGlicemiaFragment();
+    //private AddGlicemiaFragment addGlicemiaFragment = new AddGlicemiaFragment();
     private AddInsulinaFragment addInsulinaFragment = new AddInsulinaFragment();
 
     private LineChart graficoGlicemia;
