@@ -371,31 +371,13 @@ public class CadastroEmailFragment extends Fragment {
         int pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
         int pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 
+        String data = String.valueOf(pYear) + String.valueOf(pMonth) + String.valueOf(pDay);
+
         ref.child("inserção")
                 .child(user.getIdUser())
                 .child("bem-estar")
-                .child(String.valueOf(pYear))
-                .child(String.valueOf(pMonth))
-                .child(String.valueOf(pDay))
+                .child(data)
                 .child("Água")
-                .setValue(0);
-
-        ref.child("inserção")
-                .child(user.getIdUser())
-                .child("insulina")
-                .child(String.valueOf(pYear))
-                .child(String.valueOf(pMonth))
-                .child(String.valueOf(pDay))
-                .child("nivel")
-                .setValue(0);
-
-        ref.child("inserção")
-                .child(user.getIdUser())
-                .child("glicemia")
-                .child(String.valueOf(pYear))
-                .child(String.valueOf(pMonth))
-                .child(String.valueOf(pDay))
-                .child("nivel")
                 .setValue(0);
 
     }

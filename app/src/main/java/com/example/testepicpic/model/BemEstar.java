@@ -1,54 +1,41 @@
 package com.example.testepicpic.model;
 
-import android.content.SharedPreferences;
-
 import com.example.testepicpic.config.ConfigFirebase;
-import com.example.testepicpic.fragment.CalendarFragment;
 import com.example.testepicpic.helper.Base64Custom;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
-import java.util.Calendar;
+public class BemEstar {
 
+    private String humor, descicao, sintomas, currentId;
+    private int ano, mes, dia;
 
-public class Glicemia {
+    public void BemEstar() {
 
-    private double nivel;
-    private String lado, local, categoria, currentId;
-    private int ano, mes, dia, hora;
-
-    public Glicemia() {}
-
-    public double getNivel() {
-        return nivel;
     }
 
-    public void setNivel(double nivel) {
-        this.nivel = nivel;
+    public String getHumor() {
+        return humor;
     }
 
-    public String getLado() {
-        return lado;
+    public void setHumor(String humor) {
+        this.humor = humor;
     }
 
-    public void setLado(String lado) {
-        this.lado = lado;
+    public String getDescicao() {
+        return descicao;
     }
 
-    public String getLocal() {
-        return local;
+    public void setDescicao(String descicao) {
+        this.descicao = descicao;
     }
 
-    public void setLocal(String local) {
-        this.local = local;
+    public String getSintomas() {
+        return sintomas;
     }
 
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setSintomas(String sintomas) {
+        this.sintomas = sintomas;
     }
 
     public int getAno() {
@@ -75,14 +62,6 @@ public class Glicemia {
         this.dia = dia;
     }
 
-    public int getHora() {
-        return hora;
-    }
-
-    public void setHora(int hora) {
-        this.hora = hora;
-    }
-
     public void salvar(String dia, String mes, String ano) {
 
         recuperarUsuario();
@@ -93,8 +72,9 @@ public class Glicemia {
 
         reference.child("inserção")
                 .child(currentId)
-                .child("glicemia")
+                .child("bem-estar")
                 .child(data)
+                .child("geral")
                 .push()
                 .setValue(this);
 

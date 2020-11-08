@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.example.testepicpic.R;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.helper.Base64Custom;
+import com.example.testepicpic.model.Exercicio;
 import com.example.testepicpic.utils.MaskEditUtil;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -58,6 +59,8 @@ public class AddExercicioFragment extends Fragment implements CompoundButton.OnC
     private ConstraintLayout clEx;
 
     private DatabaseReference ref;
+
+    private Exercicio exercicio;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -298,7 +301,19 @@ public class AddExercicioFragment extends Fragment implements CompoundButton.OnC
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
 
-                                        ref.child("users")
+                                        exercicio = new Exercicio();
+
+                                        exercicio.setModalidade(strModal);
+                                        exercicio.setDuracao(txtDuracao);
+                                        exercicio.setHora(hora);
+                                        exercicio.setDescricao(txtDescricao);
+                                        exercicio.setDia(pDay);
+                                        exercicio.setMes(pMonth);
+                                        exercicio.setAno(pYear);
+
+                                        exercicio.salvar(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
+
+                                        /*ref.child("users")
                                                 .child(currentId)
                                                 .child("inserção")
                                                 .child("exercicio")
@@ -344,7 +359,7 @@ public class AddExercicioFragment extends Fragment implements CompoundButton.OnC
                                                 .child("horário")
                                                 .child(String.valueOf(hora))
                                                 .child("Descrição")
-                                                .setValue(txtDescricao);
+                                                .setValue(txtDescricao);*/
 
                                         Toast.makeText(getActivity(), "Pronto, anotação salva :)", Toast.LENGTH_SHORT).show();
 

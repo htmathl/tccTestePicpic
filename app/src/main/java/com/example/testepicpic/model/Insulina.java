@@ -1,23 +1,43 @@
 package com.example.testepicpic.model;
 
-import android.content.SharedPreferences;
-
 import com.example.testepicpic.config.ConfigFirebase;
-import com.example.testepicpic.fragment.CalendarFragment;
 import com.example.testepicpic.helper.Base64Custom;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
-import java.util.Calendar;
-
-
-public class Glicemia {
+public class Insulina {
 
     private double nivel;
-    private String lado, local, categoria, currentId;
-    private int ano, mes, dia, hora;
+    private int hora, dia, mes, ano;
+    private String local, categoria, currentId;
 
-    public Glicemia() {}
+    public Insulina() {
+
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
 
     public double getNivel() {
         return nivel;
@@ -27,12 +47,12 @@ public class Glicemia {
         this.nivel = nivel;
     }
 
-    public String getLado() {
-        return lado;
+    public int getHora() {
+        return hora;
     }
 
-    public void setLado(String lado) {
-        this.lado = lado;
+    public void setHora(int hora) {
+        this.hora = hora;
     }
 
     public String getLocal() {
@@ -51,38 +71,6 @@ public class Glicemia {
         this.categoria = categoria;
     }
 
-    public int getAno() {
-        return ano;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
-
-    public int getMes() {
-        return mes;
-    }
-
-    public void setMes(int mes) {
-        this.mes = mes;
-    }
-
-    public int getDia() {
-        return dia;
-    }
-
-    public void setDia(int dia) {
-        this.dia = dia;
-    }
-
-    public int getHora() {
-        return hora;
-    }
-
-    public void setHora(int hora) {
-        this.hora = hora;
-    }
-
     public void salvar(String dia, String mes, String ano) {
 
         recuperarUsuario();
@@ -93,7 +81,7 @@ public class Glicemia {
 
         reference.child("inserção")
                 .child(currentId)
-                .child("glicemia")
+                .child("insulina")
                 .child(data)
                 .push()
                 .setValue(this);

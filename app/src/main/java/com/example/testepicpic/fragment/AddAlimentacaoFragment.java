@@ -31,6 +31,7 @@ import com.example.testepicpic.activity.AddInfosActivity;
 import com.example.testepicpic.activity.MainActivity;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.helper.Base64Custom;
+import com.example.testepicpic.model.Alimentacao;
 import com.example.testepicpic.model.Usuario;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -42,6 +43,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Locale;
@@ -58,10 +60,10 @@ public class AddAlimentacaoFragment extends Fragment {
     private ConstraintLayout clAddAli;
     private EditText edtDescricaoAli;
 
-    private boolean[] pComidasCafe = new boolean[19];
-    private boolean[] pComidasAlmoco = new boolean[19];
-    private boolean[] pComidasJanta = new boolean[19];
-    private boolean[] pComidasLanches = new boolean[19];
+    private ArrayList<String> pComidasCafe = new ArrayList<>();
+    private ArrayList<String> pComidasAlmoco = new ArrayList<>();
+    private ArrayList<String> pComidasJanta = new ArrayList<>();
+    private ArrayList<String> pComidasLanches = new ArrayList<>();
 
     private DatabaseReference ref;
 
@@ -72,6 +74,8 @@ public class AddAlimentacaoFragment extends Fragment {
     private int indice;
 
     private String currentId;
+
+    private Alimentacao alimentacao = new Alimentacao();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -275,36 +279,22 @@ public class AddAlimentacaoFragment extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
 
+                                    pComidasCafe.clear();
+
                                     try {
 
                                         for(int i = 0; i < comidas.length; i++) {
                                             if(comidas[i].isChecked())
-                                                pComidasCafe[i] = true;
+                                                pComidasCafe.add(listaComidas[i]);
                                         }
 
-                                        for(int i = 0; i < pComidasCafe.length; i++) {
-                                            ref.child("users")
-                                                    .child(currentId)
-                                                    .child("inserção")
-                                                    .child("alimentação")
-                                                    .child("café")
-                                                    .child(String.valueOf(pYear))
-                                                    .child(String.valueOf(pMonth))
-                                                    .child(String.valueOf(pDay))
-                                                    .child(listaComidas[i])
-                                                    .setValue(pComidasCafe[i]);
-                                        }
+                                        alimentacao.setAlimentos(pComidasCafe.toString());
+                                        alimentacao.setDescricao(strPComidasCafe);
+                                        alimentacao.setAno(pYear);
+                                        alimentacao.setMes(pMonth);
+                                        alimentacao.setDia(pDay);
 
-                                        ref.child("users")
-                                                .child(currentId)
-                                                .child("inserção")
-                                                .child("alimentação")
-                                                .child("café")
-                                                .child(String.valueOf(pYear))
-                                                .child(String.valueOf(pMonth))
-                                                .child(String.valueOf(pDay))
-                                                .child("descrição")
-                                                .setValue(strPComidasCafe);
+                                        alimentacao.salvarCafe(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
@@ -353,34 +343,20 @@ public class AddAlimentacaoFragment extends Fragment {
 
                                     try {
 
+                                        pComidasAlmoco.clear();
+
                                         for(int i = 0; i < comidas.length; i++) {
                                             if(comidas[i].isChecked())
-                                                pComidasAlmoco[i] = true;
+                                                pComidasAlmoco.add(listaComidas[i]);
                                         }
 
-                                        for(int i = 0; i < pComidasAlmoco.length; i++) {
-                                            ref.child("users")
-                                                    .child(currentId)
-                                                    .child("inserção")
-                                                    .child("alimentação")
-                                                    .child("Almoço")
-                                                    .child(String.valueOf(pYear))
-                                                    .child(String.valueOf(pMonth))
-                                                    .child(String.valueOf(pDay))
-                                                    .child(listaComidas[i])
-                                                    .setValue(pComidasAlmoco[i]);
-                                        }
+                                        alimentacao.setAlimentos(pComidasAlmoco.toString());
+                                        alimentacao.setDescricao(strPComidasCafe);
+                                        alimentacao.setDia(pDay);
+                                        alimentacao.setMes(pMonth);
+                                        alimentacao.setAno(pYear);
 
-                                        ref.child("users")
-                                                .child(currentId)
-                                                .child("inserção")
-                                                .child("alimentação")
-                                                .child("Almoço")
-                                                .child(String.valueOf(pYear))
-                                                .child(String.valueOf(pMonth))
-                                                .child(String.valueOf(pDay))
-                                                .child("descrição")
-                                                .setValue(strPComidasCafe);
+                                        alimentacao.salvarAlmoco(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
@@ -428,34 +404,20 @@ public class AddAlimentacaoFragment extends Fragment {
                                 public void onClick(DialogInterface dialog, int which) {
                                     try {
 
+                                        pComidasJanta.clear();
+
                                         for(int i = 0; i < comidas.length; i++) {
                                             if(comidas[i].isChecked())
-                                                pComidasJanta[i] = true;
+                                                pComidasJanta.add(listaComidas[i]);
                                         }
 
-                                        for(int i = 0; i < pComidasJanta.length; i++) {
-                                            ref.child("users")
-                                                    .child(currentId)
-                                                    .child("inserção")
-                                                    .child("alimentação")
-                                                    .child("Janta")
-                                                    .child(String.valueOf(pYear))
-                                                    .child(String.valueOf(pMonth))
-                                                    .child(String.valueOf(pDay))
-                                                    .child(listaComidas[i])
-                                                    .setValue(pComidasJanta[i]);
-                                        }
+                                        alimentacao.setAlimentos(pComidasJanta.toString());
+                                        alimentacao.setDescricao(strPComidasCafe);
+                                        alimentacao.setDia(pDay);
+                                        alimentacao.setMes(pMonth);
+                                        alimentacao.setAno(pYear);
 
-                                        ref.child("users")
-                                                .child(currentId)
-                                                .child("inserção")
-                                                .child("alimentação")
-                                                .child("Janta")
-                                                .child(String.valueOf(pYear))
-                                                .child(String.valueOf(pMonth))
-                                                .child(String.valueOf(pDay))
-                                                .child("descrição")
-                                                .setValue(strPComidasCafe);
+                                        alimentacao.salvarJanta(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
@@ -501,36 +463,22 @@ public class AddAlimentacaoFragment extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
 
+                                    pComidasLanches.clear();
+
                                     try {
 
                                         for(int i = 0; i < comidas.length; i++) {
                                             if(comidas[i].isChecked())
-                                                pComidasLanches[i] = true;
+                                                pComidasLanches.add(listaComidas[i]);
                                         }
 
-                                        for(int i = 0; i < pComidasLanches.length; i++) {
-                                            ref.child("users")
-                                                    .child(currentId)
-                                                    .child("inserção")
-                                                    .child("alimentação")
-                                                    .child("Lanches")
-                                                    .child(String.valueOf(pYear))
-                                                    .child(String.valueOf(pMonth))
-                                                    .child(String.valueOf(pDay))
-                                                    .child(listaComidas[i])
-                                                    .setValue(pComidasLanches[i]);
-                                        }
+                                        alimentacao.setAlimentos(pComidasLanches.toString());
+                                        alimentacao.setDescricao(strPComidasCafe);
+                                        alimentacao.setDia(pDay);
+                                        alimentacao.setMes(pMonth);
+                                        alimentacao.setAno(pYear);
 
-                                        ref.child("users")
-                                                .child(currentId)
-                                                .child("inserção")
-                                                .child("alimentação")
-                                                .child("Lanches")
-                                                .child(String.valueOf(pYear))
-                                                .child(String.valueOf(pMonth))
-                                                .child(String.valueOf(pDay))
-                                                .child("descrição")
-                                                .setValue(strPComidasCafe);
+                                        alimentacao.salvarLanches(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 

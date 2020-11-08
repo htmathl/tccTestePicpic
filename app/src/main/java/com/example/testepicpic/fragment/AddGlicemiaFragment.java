@@ -324,8 +324,12 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
                                 glicemia.setLado(lado);
                                 glicemia.setLocal(strSlcLocal);
                                 glicemia.setCategoria(pCat.toString());
+                                glicemia.setAno(pYear);
+                                glicemia.setMes(pMonth);
+                                glicemia.setDia(pDay);
+                                glicemia.setHora(hora);
 
-                                glicemia.salvar(pDay, pMonth, pYear, hora);
+                                glicemia.salvar(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
                                 SharedPreferences.Editor preferences1 = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
                                 preferences1.clear();

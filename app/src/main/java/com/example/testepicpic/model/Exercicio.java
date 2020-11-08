@@ -1,62 +1,25 @@
 package com.example.testepicpic.model;
 
-import android.content.SharedPreferences;
-
 import com.example.testepicpic.config.ConfigFirebase;
-import com.example.testepicpic.fragment.CalendarFragment;
 import com.example.testepicpic.helper.Base64Custom;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
-import java.util.Calendar;
+public class Exercicio {
 
+    private String modalidade, descricao, currentId, duracao;
+    private int hora, dia, mes, ano;
 
-public class Glicemia {
+    public Exercicio() {
 
-    private double nivel;
-    private String lado, local, categoria, currentId;
-    private int ano, mes, dia, hora;
-
-    public Glicemia() {}
-
-    public double getNivel() {
-        return nivel;
     }
 
-    public void setNivel(double nivel) {
-        this.nivel = nivel;
+    public int getDia() {
+        return dia;
     }
 
-    public String getLado() {
-        return lado;
-    }
-
-    public void setLado(String lado) {
-        this.lado = lado;
-    }
-
-    public String getLocal() {
-        return local;
-    }
-
-    public void setLocal(String local) {
-        this.local = local;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public int getAno() {
-        return ano;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
+    public void setDia(int dia) {
+        this.dia = dia;
     }
 
     public int getMes() {
@@ -67,12 +30,36 @@ public class Glicemia {
         this.mes = mes;
     }
 
-    public int getDia() {
-        return dia;
+    public int getAno() {
+        return ano;
     }
 
-    public void setDia(int dia) {
-        this.dia = dia;
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public String getModalidade() {
+        return modalidade;
+    }
+
+    public void setModalidade(String modalidade) {
+        this.modalidade = modalidade;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getDuracao() {
+        return duracao;
+    }
+
+    public void setDuracao(String duracao) {
+        this.duracao = duracao;
     }
 
     public int getHora() {
@@ -93,7 +80,7 @@ public class Glicemia {
 
         reference.child("inserção")
                 .child(currentId)
-                .child("glicemia")
+                .child("exercicio")
                 .child(data)
                 .push()
                 .setValue(this);
@@ -112,5 +99,4 @@ public class Glicemia {
         }
 
     }
-
 }
