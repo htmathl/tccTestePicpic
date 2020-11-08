@@ -1,6 +1,7 @@
     package com.example.testepicpic.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -17,7 +18,9 @@ import android.widget.Toast;
 import com.airbnb.lottie.L;
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
+import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 import com.example.testepicpic.R;
+import com.example.testepicpic.activity.DiaSelecionadoActivity;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.helper.Base64Custom;
 import com.example.testepicpic.model.Glicemia;
@@ -28,6 +31,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.time.DayOfWeek;
 import java.time.YearMonth;
@@ -457,7 +462,27 @@ public class CalendarFragment extends Fragment {
             }
         });
 
+        calendarView.setOnDayClickListener(new OnDayClickListener() {
+            @Override
+            public void onDayClick(@NotNull EventDay eventDay) {
 
+                Calendar date = eventDay.getCalendar();
+
+                int today = date.get(Calendar.DAY_OF_MONTH);
+                int month = (date.get(Calendar.MONTH)+1);
+                int year  = date.get(Calendar.YEAR);
+
+                SharedPreferences.Editor preferences = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
+                preferences.clear();
+                preferences.putInt("today", today);
+                preferences.putInt("month", month);
+                preferences.putInt("year", year);
+                preferences.apply();
+
+                startActivity(new Intent(getActivity(),DiaSelecionadoActivity.class));
+
+            }
+        });
 
     }
 

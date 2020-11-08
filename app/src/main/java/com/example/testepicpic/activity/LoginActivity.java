@@ -93,27 +93,6 @@ public class LoginActivity extends AppCompatActivity {
                             LocalBroadcastManager.getInstance(LoginActivity.this).sendBroadcast(new Intent("fecharTelaPrincipal"));
                             verificarUserLogado();
 
-                            DatabaseReference ref = ConfigFirebase.getFirebase();
-
-                            int pYear = Calendar.getInstance().get(Calendar.YEAR);
-                            int pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
-                            int pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-
-                            String data = String.valueOf(pYear) + String.valueOf(pMonth) + String.valueOf(pDay);
-
-                            FirebaseAuth auth = ConfigFirebase.getFirebaseAutenticacao();
-
-                            String email = auth.getCurrentUser().getEmail();
-                            assert email != null;
-                            String currentId = Base64Custom.codificarBase64(email);
-
-                            ref.child("inserção")
-                                    .child(currentId)
-                                    .child("bem-estar")
-                                    .child(data)
-                                    .child("Água")
-                                    .setValue(0);
-
                         } else {
 
                             String excessao = "";
