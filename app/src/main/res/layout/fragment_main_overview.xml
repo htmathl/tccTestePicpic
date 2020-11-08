@@ -3,21 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="60dp"
     tools:context=".fragment.OverviewFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <!-- TODO: Update blank fragment layout -->
 
         <LinearLayout
             android:id="@+id/linearLayout3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp"
             android:background="#ffffff"
             android:orientation="vertical">
 
@@ -27,9 +24,9 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_weight="1"
                 android:background="@drawable/bg_copo"
                 android:elevation="5dp"
+                android:gravity="center"
                 android:padding="11dp">
 
                 <TableRow
@@ -72,9 +69,9 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_weight="1"
                 android:background="@drawable/bg_copo"
                 android:elevation="5dp"
+                android:gravity="center"
                 android:padding="11dp"
                 android:orientation="vertical">
 
@@ -273,9 +270,9 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_weight="1"
                 android:background="@drawable/bg_copo"
                 android:elevation="5dp"
+                android:gravity="center"
                 android:padding="11dp">
 
                 <TableRow
