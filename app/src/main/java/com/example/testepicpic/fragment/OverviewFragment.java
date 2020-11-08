@@ -123,9 +123,8 @@ public class OverviewFragment extends Fragment {
 
         data = String.valueOf(pYear) + String.valueOf(pMonth) + String.valueOf(pDay);
 
-        if(getActivity() != null) {
+        if(getActivity() != null)
             getActivity().registerReceiver(dayChangedBroadcastReceiver, DayChangedBroadcastReceiver.getIntentFilter());
-        }
 
         Button btnSairProv = view.findViewById(R.id.btnExames);
 

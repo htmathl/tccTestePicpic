@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.testepicpic.R;
 
-public class DiaSelecionado extends AppCompatActivity {
+public class DiaSelecionadoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
