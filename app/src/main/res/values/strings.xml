@@ -18,6 +18,7 @@
     <string name="relatorio">Relatório</string>
     <string name="perfil">Perfil</string>
     <string name="fab">.</string>
+    <string name="default_notification_channel_id">fcm_default_channel</string>
 
     <string-array name="tipos_diabetes">
         <item>Pré-Diabetes</item>
