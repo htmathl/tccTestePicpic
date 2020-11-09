@@ -4,7 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -18,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.testepicpic.R;
+import com.example.testepicpic.ReminderBroadcast;
 import com.example.testepicpic.fragment.AddAlimentacaoFragment;
 import com.example.testepicpic.fragment.AddBemEstarFragment;
 import com.example.testepicpic.fragment.AddExercicioFragment;
@@ -30,6 +36,7 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -56,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private LineChart graficoGlicemia;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +84,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         btnExercicio = findViewById(R.id.btnExercicio);
         btnGlicemia = findViewById(R.id.btnGlicemia);
         btnInsulina = findViewById(R.id.bntInsulina);
+
+        createNotificationChannel();
+
+        Intent intentN = new Intent(MainActivity.this, ReminderBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0,intentN,0);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        long timeAtButtonClick = System.currentTimeMillis();
+
+        long tenSecondsInMillis = 1000 * 10;
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP,timeAtButtonClick + tenSecondsInMillis, pendingIntent);
 
 
         fabButton.setOnClickListener(new View.OnClickListener() {
@@ -205,5 +226,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
 
         return false;
+    }
+
+    private void createNotificationChannel(){
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            NotificationChannel channel = new NotificationChannel("fcm_default_channel", "canal", NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }
