@@ -37,7 +37,6 @@ public class AjustesActivity extends AppCompatActivity {
         btnConfigPerfil = findViewById(R.id.btnConfigPerfil);
         btnConfigTratamento = findViewById(R.id.btnConfigTratamento);
         btnConfigNotificacaos = findViewById(R.id.btnConfigNotificacaos);
-        btnConfigBackup = findViewById(R.id.btnConfigBackup);
         btnConfigAjuda = findViewById(R.id.btnConfigAjuda);
         sla = findViewById(R.id.sla);
         miaumiau = findViewById(R.id.miaumiua);
@@ -81,15 +80,7 @@ public class AjustesActivity extends AppCompatActivity {
                 transaction.commit();
             }
         });
-        btnConfigBackup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                constraintLayout.setVisibility(View.VISIBLE);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.add(R.id.frameConteudoConfigs, backupFragment);
-                transaction.commit();
-            }
-        });
+
         btnConfigAjuda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

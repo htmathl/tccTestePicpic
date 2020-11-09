@@ -118,20 +118,6 @@
             app:layout_constraintTop_toBottomOf="@+id/btnConfigTratamento" />
 
         <Button
-            android:id="@+id/btnConfigBackup"
-            android:layout_width="254dp"
-            android:layout_height="58dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/bg_configs"
-            android:text="Backup"
-            android:textColor="#6247AA"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnConfigNotificacaos" />
-
-        <Button
             android:id="@+id/btnConfigAjuda"
             android:layout_width="254dp"
             android:layout_height="58dp"
@@ -143,7 +129,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnConfigBackup" />
+            app:layout_constraintTop_toBottomOf="@+id/btnConfigNotificacaos" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
