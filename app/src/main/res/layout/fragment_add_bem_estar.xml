@@ -9,22 +9,9 @@
 
     <FrameLayout
         android:id="@+id/frameLayout2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/waves"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout4">
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/frameLayout4"
-        android:layout_width="0dp"
-        android:layout_height="500dp"
-        android:background="@drawable/ic_plano_de_fundo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -40,11 +27,480 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/bg_copo"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@id/linearLayout5"
+            app:layout_constraintStart_toStartOf="@id/linearLayout5"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:paddingBottom="12dp"
+                android:text="Deslize daqui para baixo para sair."
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnInsulinaDia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:fontFamily="@font/roboto"
+                android:text="Hoje"
+                android:textAllCaps="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text='Selecione o dia clicando em "hoje".' />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="35dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginRight="35dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+
+                            <RadioButton
+                                android:id="@+id/btnAddHumorNormal"
+                                android:layout_width="140dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/btn_add_alimentos"
+                                android:button="@android:color/transparent"
+                                android:checked="true"
+                                android:drawableTop="@drawable/normal"
+                                android:gravity="center"
+                                android:paddingLeft="40dp"
+                                android:paddingTop="8dp"
+                                android:paddingRight="40dp"
+                                android:paddingBottom="8dp"
+                                android:text="Normal"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                            <RadioButton
+                                android:id="@+id/btnAddHumorBem"
+                                android:layout_width="140dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/btn_add_alimentos"
+                                android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/happy"
+                                android:gravity="center"
+                                android:paddingLeft="40dp"
+                                android:paddingTop="8dp"
+                                android:paddingRight="40dp"
+                                android:paddingBottom="8dp"
+                                android:text="Feliz"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                            <RadioButton
+                                android:id="@+id/btnAddHumorSad"
+                                android:layout_width="140dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/btn_add_alimentos"
+                                android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/sad"
+                                android:gravity="center"
+                                android:paddingLeft="40dp"
+                                android:paddingTop="8dp"
+                                android:paddingRight="40dp"
+                                android:paddingBottom="8dp"
+                                android:text="Triste"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                            <RadioButton
+                                android:id="@+id/btnAddHumorBrabo"
+                                android:layout_width="140dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/btn_add_alimentos"
+                                android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/bravo"
+                                android:gravity="center"
+                                android:paddingLeft="40dp"
+                                android:paddingTop="8dp"
+                                android:paddingRight="40dp"
+                                android:paddingBottom="8dp"
+                                android:text="Bravo"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="35dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="35dp"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+
+                            <RadioButton
+                                android:id="@+id/btnAddHumorStress"
+                                android:layout_width="140dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/btn_add_alimentos"
+                                android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/estresse"
+                                android:gravity="center"
+                                android:paddingLeft="40dp"
+                                android:paddingTop="8dp"
+                                android:paddingRight="40dp"
+                                android:paddingBottom="8dp"
+                                android:text="Estresse"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                            <RadioButton
+                                android:id="@+id/btnAddHumorRelax"
+                                android:layout_width="140dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/btn_add_alimentos"
+                                android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/relaxado"
+                                android:gravity="center"
+                                android:paddingLeft="40dp"
+                                android:paddingTop="8dp"
+                                android:paddingRight="40dp"
+                                android:paddingBottom="8dp"
+                                android:text="Relaxado"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                            <RadioButton
+                                android:id="@+id/btnAddHumorAnim"
+                                android:layout_width="140dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="50dp"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/btn_add_alimentos"
+                                android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/animado"
+                                android:gravity="center"
+                                android:paddingLeft="40dp"
+                                android:paddingTop="8dp"
+                                android:paddingRight="39dp"
+                                android:paddingBottom="8dp"
+                                android:text="Animado"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                            <RadioButton
+                                android:id="@+id/btnAddHumorCansado"
+                                android:layout_width="140dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/btn_add_alimentos"
+                                android:button="@android:color/transparent"
+                                android:drawableTop="@drawable/dormindinho"
+                                android:gravity="center"
+                                android:paddingLeft="40dp"
+                                android:paddingTop="8dp"
+                                android:paddingRight="40dp"
+                                android:paddingBottom="8dp"
+                                android:text="Cansado"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </HorizontalScrollView>
+
+
+                <EditText
+                    android:id="@+id/editTextDescriçãoHumor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/edt_geral_borda_branca"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="Descreva como estava se sentindo"
+                    android:inputType="textMultiLine"
+                    android:maxLines="3"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:text="Sintomas"
+                    android:textColor="#000"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+
+                    <CheckBox
+                        android:id="@+id/checkFraqueza"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/fraqueza"
+                        android:gravity="center"
+                        android:text="Fraqueza" />
+
+                    <CheckBox
+                        android:id="@+id/checkVomito"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/vomito"
+                        android:gravity="center"
+                        android:text="Náuseas" />
+
+                    <CheckBox
+                        android:id="@+id/checkRins"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/rins"
+                        android:gravity="center"
+                        android:text="Dores nos\nrins" />
+
+                    <CheckBox
+                        android:id="@+id/checkBipolar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/bipolar"
+                        android:gravity="center"
+                        android:text="Mudança de\nhumor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkPPeso"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/peso"
+                        android:gravity="center"
+                        android:text="Perda de\npeso" />
+
+                    <CheckBox
+                        android:id="@+id/checkPezinho"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/pezinho"
+                        android:gravity="center"
+                        android:text="Formigamento" />
+
+                    <CheckBox
+                        android:id="@+id/checkFome"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/fome"
+                        android:gravity="center"
+                        android:text="Fome" />
+
+                    <CheckBox
+                        android:id="@+id/checkCoceira"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/handzinha"
+                        android:gravity="center"
+                        android:text="Coceira" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkVisao"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/visao"
+                        android:gravity="center"
+                        android:text="Visão\nembaçada" />
+
+                    <CheckBox
+                        android:id="@+id/checkFadiga"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/fadiga"
+                        android:gravity="center"
+                        android:text="Fadiga" />
+
+                    <CheckBox
+                        android:id="@+id/checkUrina"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/xixi"
+                        android:gravity="center"
+                        android:text="Urinar\nvárias vezes" />
+
+                    <CheckBox
+                        android:id="@+id/checkCabeca"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/cabeca"
+                        android:gravity="center"
+                        android:text="Dor de\ncabeça" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_copo"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnTerminar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="56dp"
+            android:background="#00FFFFFF"
+            android:src="@mipmap/ic_check_foreground" />
+
+        <TextView
+            android:id="@+id/textView19"
+            style="@style/Widget.AppCompat.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Bem-estar"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnProximo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="56dp"
+            android:background="#00FFFFFF"
+            android:src="@mipmap/ic_setalado_foreground" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

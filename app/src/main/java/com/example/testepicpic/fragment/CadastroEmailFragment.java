@@ -7,10 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.testepicpic.R;
@@ -27,10 +29,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -48,6 +54,8 @@ public class CadastroEmailFragment extends Fragment {
     FirebaseAuth autenticacao;
 
     private Usuario user = new Usuario();
+
+    private String currentId;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -103,7 +111,7 @@ public class CadastroEmailFragment extends Fragment {
         btnPronto2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String textoEmail = email.getText().toString();
+                String textoEmail = email.getText().toString().toLowerCase();
                 String textoSenha = senha.getText().toString();
                 String textoConfSenha = confSenha.getText().toString();
 
@@ -171,14 +179,20 @@ public class CadastroEmailFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     Toast.makeText(getActivity(), "Bem vindo,  " + user.getNome(), Toast.LENGTH_SHORT).show();
+                    Usuario.atualizarNomeUsuario(user.getNome());
                     startActivity(new Intent(getActivity(), MainActivity.class));
                     LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(new Intent("fecharTelaPrincipal"));
+
 
                     String idUser = Base64Custom.codificarBase64(user.getEmail());
                     user.setIdUser(idUser);
                     user.salvar();
 
+
+
                     salvarLembretesMedicacoes();
+
+                    insercao();
 
                     getActivity().finish();
                 } else {
@@ -252,9 +266,8 @@ public class CadastroEmailFragment extends Fragment {
                             for(int j = 0; j < diasGli.length; j++){
                                 for(int k = 0; k < ArrayGlicemia.length; k++) {
                                     if(diasGli[j]){
-                                        firebase.child("users")
+                                        firebase.child("lembretes")
                                                 .child(user.getIdUser())
-                                                .child("lembretes")
                                                 .child("Glicemia")
                                                 .child("dias")
                                                 .child(diass[j])
@@ -265,9 +278,8 @@ public class CadastroEmailFragment extends Fragment {
                             }
 
                         } else {
-                            firebase.child("users")
+                            firebase.child("lembretes")
                                     .child(user.getIdUser())
-                                    .child("lembretes")
                                     .child("Glicemia")
                                     .setValue(lembretes[i]);
                         }
@@ -278,9 +290,8 @@ public class CadastroEmailFragment extends Fragment {
                             for(int j = 0; j < diasInsu.length; j++){
                                 for(int k = 0; k < ArrayInsulina.length; k++) {
                                     if(diasInsu[j]){
-                                        firebase.child("users")
+                                        firebase.child("lembretes")
                                                 .child(user.getIdUser())
-                                                .child("lembretes")
                                                 .child("Insulina")
                                                 .child("dias")
                                                 .child(diass[j])
@@ -291,9 +302,8 @@ public class CadastroEmailFragment extends Fragment {
                             }
 
                         } else {
-                            firebase.child("users")
+                            firebase.child("lembretes")
                                     .child(user.getIdUser())
-                                    .child("lembretes")
                                     .child("Insulina")
                                     .setValue(lembretes[i]);
                         }
@@ -304,9 +314,8 @@ public class CadastroEmailFragment extends Fragment {
                             for(int j = 0; j < diasAgu.length; j++){
                                 for(int k = 0; k < ArrayAgua.length; k++) {
                                     if(diasAgu[j]){
-                                        firebase.child("users")
+                                        firebase.child("lembretes")
                                                 .child(user.getIdUser())
-                                                .child("lembretes")
                                                 .child("Água")
                                                 .child("dias")
                                                 .child(diass[j])
@@ -317,9 +326,8 @@ public class CadastroEmailFragment extends Fragment {
                             }
 
                         } else {
-                            firebase.child("users")
+                            firebase.child("lembretes")
                                     .child(user.getIdUser())
-                                    .child("lembretes")
                                     .child("Água")
                                     .setValue(lembretes[i]);
                         }
@@ -330,9 +338,8 @@ public class CadastroEmailFragment extends Fragment {
                             for(int j = 0; j < diasReme.length; j++){
                                 for(int k = 0; k < ArrayRemedios.length; k++) {
                                     if(diasReme[j]){
-                                        firebase.child("users")
+                                        firebase.child("lembretes")
                                                 .child(user.getIdUser())
-                                                .child("lembretes")
                                                 .child("Remédios")
                                                 .child("dias")
                                                 .child(diass[j])
@@ -343,9 +350,8 @@ public class CadastroEmailFragment extends Fragment {
                             }
 
                         } else {
-                            firebase.child("users")
+                            firebase.child("lembretes")
                                     .child(user.getIdUser())
-                                    .child("lembretes")
                                     .child("Remédios")
                                     .setValue(lembretes[i]);
                         }
@@ -356,4 +362,24 @@ public class CadastroEmailFragment extends Fragment {
         }
 
     }
+
+    public void insercao() {
+
+        DatabaseReference ref = ConfigFirebase.getFirebase();
+
+        int pYear = Calendar.getInstance().get(Calendar.YEAR);
+        int pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
+        int pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+
+        String data = String.valueOf(pYear) + String.valueOf(pMonth) + String.valueOf(pDay);
+
+        ref.child("inserção")
+                .child(user.getIdUser())
+                .child("bem-estar")
+                .child(data)
+                .child("Água")
+                .setValue(0);
+
+    }
+
 }

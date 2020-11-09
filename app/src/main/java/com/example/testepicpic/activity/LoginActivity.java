@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.testepicpic.R;
+import com.example.testepicpic.helper.Base64Custom;
 import com.example.testepicpic.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,6 +23,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.database.DatabaseReference;
+
+import java.util.Calendar;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -83,10 +87,12 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
+
                             autenticacao = ConfigFirebase.getFirebaseAutenticacao();
                             Toast.makeText(LoginActivity.this, "Bem vindo, " + user.getEmail(), Toast.LENGTH_SHORT).show();
                             LocalBroadcastManager.getInstance(LoginActivity.this).sendBroadcast(new Intent("fecharTelaPrincipal"));
                             verificarUserLogado();
+
                         } else {
 
                             String excessao = "";

@@ -168,6 +168,7 @@ public class CadastroNomeFragment extends Fragment implements AdapterView.OnItem
         return view;
     }
 
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         parent.getItemAtPosition(position);

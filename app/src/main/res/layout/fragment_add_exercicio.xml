@@ -9,24 +9,24 @@
 
     <FrameLayout
         android:id="@+id/frameLayout2"
-        android:layout_width="408dp"
-        android:layout_height="331dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginBottom="37dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/waves"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="346dp"
-        android:layout_height="715dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/bg_copo"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,316 +34,516 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtDeslize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Deslize para baixo para sair "
-            android:textColor="#6247AA"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="29dp"
-            android:clickable="true" />
-
-        <TextView
-            android:id="@+id/txtMes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:text="Agosto "
-            android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textSize="46dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txtAno"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="2020"
-            android:textColor="#000000"
-            android:textSize="46dp"
-            android:textStyle="bold" />
-
         <LinearLayout
+            android:id="@+id/linearLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@id/linearLayout5"
+            app:layout_constraintStart_toStartOf="@id/linearLayout5"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/txtDom"
-                android:layout_width="wrap_content"
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
                 android:gravity="center"
-                android:text="Dom"
-                android:textColor="#000000"
+                android:paddingBottom="16dp"
+                android:text="Deslize daqui para baixo para sair."
+                android:textColor="@color/colorPrimary"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txtSeg"
+            <Button
+                android:id="@+id/btnExDia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:fontFamily="@font/roboto"
+                android:text="Hoje"
+                android:textAllCaps="false"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
                 android:gravity="center"
-                android:text="Seg"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtTer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Ter"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtQua"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Qua"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtQui"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Qui"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtSex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Sex"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtSab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Sáb"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
+                android:text='Selecione o dia clicando em "hoje".' />
         </LinearLayout>
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="59dp"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <RadioButton
-                    android:id="@+id/rdbDom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@drawable/quadradinho_dia"
-                    android:gravity="center"
-                    android:paddingLeft="6dp"
-                    android:paddingRight="12dp" />
-
-                <RadioButton
-                    android:id="@+id/rdbSeg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@drawable/quadradinho_dia"
-                    android:gravity="center"
-                    android:paddingLeft="6dp"
-                    android:paddingRight="11dp" />
-
-                <RadioButton
-                    android:id="@+id/rdbTer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@drawable/quadradinho_dia"
-                    android:gravity="center"
-                    android:paddingLeft="6dp"
-                    android:paddingRight="11dp" />
-
-                <RadioButton
-                    android:id="@+id/rdbQua"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@drawable/quadradinho_dia"
-                    android:gravity="center"
-                    android:paddingLeft="6dp"
-                    android:paddingRight="11dp" />
-
-                <RadioButton
-                    android:id="@+id/rdbQui"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@drawable/quadradinho_dia"
-                    android:gravity="center"
-                    android:paddingLeft="6dp"
-                    android:paddingRight="11dp" />
-
-                <RadioButton
-                    android:id="@+id/rdbSex"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@drawable/quadradinho_dia"
-                    android:gravity="center"
-                    android:paddingLeft="6dp"
-                    android:paddingRight="11dp" />
-
-                <RadioButton
-                    android:id="@+id/rdbSab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@drawable/quadradinho_dia"
-                    android:gravity="center"
-                    android:paddingLeft="6dp"
-                    android:paddingRight="11dp" />
-            </LinearLayout>
-
-        </RadioGroup>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="81dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <TextView
                 android:id="@+id/textView52"
-                android:layout_width="214dp"
-                android:layout_height="53dp"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif"
-                android:text=" Exercício "
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:text="Modalidade"
                 android:textColor="#000000"
-                android:textSize="30dp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/listExercicios"
-                android:layout_width="201dp"
-                android:layout_height="53dp"
-                android:layout_weight="1"
-                android:spinnerMode="dropdown" />
+            <Button
+                android:id="@+id/btnModalidade"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/edt_geral_borda_branca"
+                android:gravity="center"
+                android:hint="Selecione"
+                android:padding="5dp" />
+
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/textView13"
-                android:layout_width="214dp"
-                android:layout_height="53dp"
-                android:layout_weight="1"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
                 android:text="Duração"
                 android:textColor="#000000"
-                android:textSize="30dp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/edtTempoExer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
+                android:id="@+id/edtDuracao"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/edt_geral_borda_branca"
                 android:gravity="center"
-                android:hint="tempo de prática"
-                android:inputType="textPersonName" />
+                android:hint="00:00"
+                android:inputType="time"
+                android:padding="5dp" />
+
+
         </LinearLayout>
 
-        <Space
+        <TextView
+            android:id="@+id/textView29"
             android:layout_width="match_parent"
-            android:layout_height="104dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="end"
+            android:paddingEnd="38dp"
+            android:text="(Minutos)" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btnCheck"
-                android:layout_width="89dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:srcCompat="@mipmap/ic_check_foreground" />
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <TextView
-                android:id="@+id/txtGlicemia"
-                android:layout_width="177dp"
+                android:id="@+id/txtHorarioInsulina"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Exercício"
-                android:textColor="#6247AA"
-                android:textSize="30dp"
+                android:layout_margin="4dp"
+                android:gravity="center_vertical"
+                android:text="Horário"
+                android:textColor="#000000"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <ImageButton
-                android:id="@+id/btnNext"
-                android:layout_width="65dp"
-                android:layout_height="55dp"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:srcCompat="@mipmap/ic_setalado_foreground" />
+            <Button
+                android:id="@+id/btnTimeEx"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/edt_geral_borda_branca"
+                android:gravity="center"
+                android:hint="00:00"
+                android:padding="5dp" />
 
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
-
-        <ImageButton
-            android:id="@+id/btnBolinhasPassar"
+        <EditText
+            android:id="@+id/edtDescicao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            app:srcCompat="@drawable/ic_elipsestelaintro3" />
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/edt_geral_borda_branca"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Descreva como foi o exercício"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="18dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageButton
+                    android:id="@+id/btnCheck"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="56dp"
+                    android:background="#00FFFFFF"
+                    app:srcCompat="@mipmap/ic_check_foreground" />
+
+                <TextView
+                    android:id="@+id/txtGlicemia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Exercício"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnNext"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="56dp"
+                    android:background="#00FFFFFF"
+                    app:srcCompat="@mipmap/ic_setalado_foreground" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clEx"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#BF000000"
+        android:clickable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_copo"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:text="Selecione o esporte praticado:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/checkBox41"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/corrida"
+                        android:gravity="center"
+                        android:text="Corrida" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox42"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/caminhada"
+                        android:gravity="center"
+                        android:text="Caminhada" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox43"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/ciclismo"
+                        android:gravity="center"
+                        android:text="Ciclismo" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox44"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/academia"
+                        android:gravity="center"
+                        android:text="Academia" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox45"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/natacao"
+                        android:gravity="center"
+                        android:text="Natação" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/checkBox46"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/musculacao"
+                        android:gravity="center"
+                        android:text="Musculação" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox47"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/artes_marciais"
+                        android:gravity="center"
+                        android:text="Artes marciais" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox48"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/sports_gli"
+                        android:gravity="center"
+                        android:text="Yoga" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox49"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/box"
+                        android:gravity="center"
+                        android:text="Box" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox50"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/pilates"
+                        android:gravity="center"
+                        android:text="Pilates" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/checkBox51"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/tenis"
+                        android:gravity="center"
+                        android:text="Tênis" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox52"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/volei"
+                        android:gravity="center"
+                        android:text="Volêi" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox53"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/futebol"
+                        android:gravity="center"
+                        android:text="Futebol" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox54"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/handball"
+                        android:gravity="center"
+                        android:text="Handbol" />
+
+                    <RadioButton
+                        android:id="@+id/checkBox55"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:button="@null"
+                        android:drawableTop="@drawable/basquete"
+                        android:gravity="center"
+                        android:text="Basquete" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtOutroEsporte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:clickable="true"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/txtEx"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edtEsporte"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/edt_geral_borda_branca"
+                    android:gravity="center"
+                    android:hint="Qual?"
+                    android:padding="5dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+
+                    <Button
+                        android:id="@+id/btnSalvar2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00FFFFFF"
+                        android:layout_margin="10dp"
+                        android:text="Pronto"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btnCancelar" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
