@@ -3,15 +3,19 @@ package com.example.testepicpic.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -27,15 +31,22 @@ import com.example.testepicpic.ReminderBroadcast;
 import com.example.testepicpic.fragment.AddAlimentacaoFragment;
 import com.example.testepicpic.fragment.AddBemEstarFragment;
 import com.example.testepicpic.fragment.AddExercicioFragment;
-import com.example.testepicpic.fragment.AddGlicemiaFragment;
 import com.example.testepicpic.fragment.AddInsulinaFragment;
 import com.example.testepicpic.fragment.CalendarFragment;
 import com.example.testepicpic.fragment.OverviewFragment;
 import com.example.testepicpic.fragment.RelatorioFragment;
+import com.example.testepicpic.helper.Base64Custom;
 import com.github.mikephil.charting.charts.LineChart;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -63,13 +74,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private LineChart graficoGlicemia;
 
+    private DatabaseReference ref;
+    private String currentUser;
+    private ArrayList<Integer> horas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        miau();
+
+        Toast.makeText(this, horas.toString(), Toast.LENGTH_SHORT).show();
+
         graficoGlicemia = (LineChart) findViewById(R.id.grafico_glicemia);
+
 
         fabButton = findViewById(R.id.fab_button);
         buttonPerfil = findViewById(R.id.btnPerfil);
@@ -85,18 +104,29 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         btnGlicemia = findViewById(R.id.btnGlicemia);
         btnInsulina = findViewById(R.id.bntInsulina);
 
-        createNotificationChannel();
+        /*notificação
+        Calendar calendario = Calendar.getInstance();
+        calendario.set(Calendar.DAY_OF_WEEK,2);
 
-        Intent intentN = new Intent(MainActivity.this, ReminderBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0,intentN,0);
+        int now = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
 
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        if(calendario.get(Calendar.DAY_OF_WEEK) == now){
+            enviarNotificacao();
+        }
 
-        long timeAtButtonClick = System.currentTimeMillis();
+        //setAlarm(this, calendario);
 
-        long tenSecondsInMillis = 1000 * 10;
 
-        alarmManager.set(AlarmManager.RTC_WAKEUP,timeAtButtonClick + tenSecondsInMillis, pendingIntent);
+       NotifyMe.Builder notifyme = new NotifyMe.Builder(MainActivity.this);
+        Intent intent2 = new Intent (this, MainActivity.class);
+
+        notifyme.title("Pelo amor de deus")
+                .content("n acaba nunca saporra")
+                .color(107, 82, 175, 255)
+                .large_icon(R.drawable.ic_stress)
+                .time(calendario)
+                .build();*/
+
 
 
         fabButton.setOnClickListener(new View.OnClickListener() {
@@ -190,6 +220,93 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     }
 
+    public void miau() {
+
+        recuperarUser();
+
+        DatabaseReference reference = ref.child("lembretes")
+                .child(currentUser);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                    DatabaseReference reference = ref.child("lembretes")
+                            .child(currentUser)
+                            .child(dataSnapshot.getKey())
+                            .child("dias");
+
+                    String tipo = dataSnapshot.getKey();
+
+                    reference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
+
+                            for( DataSnapshot dataSnapshot1 : snapshot1.getChildren() ) {
+
+                                DatabaseReference reference = ref.child("lembretes")
+                                        .child(currentUser)
+                                        .child(dataSnapshot.getKey())
+                                        .child("dias")
+                                        .child(dataSnapshot1.getKey());
+
+                                reference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot2) {
+
+                                        for ( DataSnapshot dataSnapshot2 : snapshot2.getChildren() ) {
+
+                                            horas.add(Integer.parseInt(dataSnapshot2.getValue().toString()));
+
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+    }
+
+    public void recuperarUser() {
+
+        ref = ConfigFirebase.getFirebase();
+
+        FirebaseAuth auth = ConfigFirebase.getFirebaseAutenticacao();
+
+        String email = auth.getCurrentUser().getEmail();
+
+        currentUser = Base64Custom.codificarBase64(email);
+
+    }
+
     public void sair(View view){
         autenticacao = ConfigFirebase.getFirebaseAutenticacao();
         autenticacao.signOut();
@@ -227,7 +344,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         return false;
     }
-
     private void createNotificationChannel(){
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -235,5 +351,36 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             NotificationChannel channel = new NotificationChannel("fcm_default_channel", "canal", NotificationManager.IMPORTANCE_DEFAULT);
             notificationManager.createNotificationChannel(channel);
         }
+    }
+
+
+    private void setAlarm(Context context, Calendar targetCall){
+        Intent intentN = new Intent(context, ReminderBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0,intentN,0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,targetCall.getTimeInMillis(),AlarmManager.INTERVAL_DAY, pendingIntent);
+    }
+
+    private void enviarNotificacao(){
+
+        createNotificationChannel();
+
+        Uri uriSom = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        Intent intent2 = new Intent (this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0, intent2, PendingIntent.FLAG_ONE_SHOT);
+
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(this, "fcm_default_channel")
+                .setContentTitle("miau?")
+                .setContentText("miau!")
+                .setSmallIcon(R.drawable.ic_agua)
+                .setSound(uriSom)
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent);
+
+
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(0, notification.build());
+
+
     }
 }
