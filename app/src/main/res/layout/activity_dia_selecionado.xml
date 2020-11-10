@@ -79,59 +79,112 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="left">
 
                 <TextView
+                    android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Glicemia"/>
+                    android:text="Glicemia"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:paddingTop="4dp"
+                    android:fontFamily="@font/roboto"
+                    android:paddingBottom="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/branco"
+                    android:background="@drawable/bg_tipo_dia"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcv_conteudo"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/nivel_item" />
 
                 <TextView
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/branco"
+                    android:background="@drawable/bg_tipo_dia"
                     android:text="Exercício"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcv_conteudo"
+                    android:id="@+id/rcv_conteudo2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
                 <TextView
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/branco"
+                    android:background="@drawable/bg_tipo_dia"
                     android:text="Alimentação"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcv_conteudo"
+                    android:id="@+id/rcv_conteudo3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
                 <TextView
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/branco"
+                    android:background="@drawable/bg_tipo_dia"
                     android:text="Insulina"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcv_conteudo"
+                    android:id="@+id/rcv_conteudo4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
                 <TextView
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/branco"
+                    android:background="@drawable/bg_tipo_dia"
                     android:text="Bem-estar"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcv_conteudo"
+                    android:id="@+id/rcv_conteudo5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
