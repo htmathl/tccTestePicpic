@@ -34,9 +34,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -1138,6 +1141,7 @@ public class OverviewFragment extends Fragment {
         copo15 = getView().findViewById(R.id.copo15);
         copo16 = getView().findViewById(R.id.copo16);
         tbOutrosCopos = getView().findViewById(R.id.tbrOutrosCopos);
+
 
     }
 
