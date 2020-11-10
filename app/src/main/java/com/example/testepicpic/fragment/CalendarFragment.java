@@ -8,10 +8,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.print.PrintAttributes;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +26,11 @@ import com.example.testepicpic.R;
 import com.example.testepicpic.activity.DiaSelecionadoActivity;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.helper.Base64Custom;
+import com.example.testepicpic.model.Alimentacao;
+import com.example.testepicpic.model.BemEstar;
+import com.example.testepicpic.model.Exercicio;
 import com.example.testepicpic.model.Glicemia;
+import com.example.testepicpic.model.Insulina;
 import com.example.testepicpic.model.Usuario;
 import com.google.android.gms.common.internal.service.Common;
 import com.google.firebase.auth.FirebaseAuth;
@@ -248,12 +255,12 @@ public class CalendarFragment extends Fragment {
 
                             for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
 
-                                Glicemia glicemia = dataSnapshot1.getValue(Glicemia.class);
+                                Insulina insulina = dataSnapshot1.getValue(Insulina.class);
 
                                 for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-                                    dias[i] = glicemia.getDia();
-                                    meses[i] = (glicemia.getMes() - 1);
-                                    anos[i] = glicemia.getAno();
+                                    dias[i] = insulina.getDia();
+                                    meses[i] = (insulina.getMes() - 1);
+                                    anos[i] = insulina.getAno();
                                     calendar.set(anos[i],meses[i],dias[i]);
                                 }
 
@@ -308,12 +315,12 @@ public class CalendarFragment extends Fragment {
 
                             for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
 
-                                Glicemia glicemia = dataSnapshot1.getValue(Glicemia.class);
+                                Exercicio exercicio = dataSnapshot1.getValue(Exercicio.class);
 
                                 for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-                                    dias[i] = glicemia.getDia();
-                                    meses[i] = (glicemia.getMes() - 1);
-                                    anos[i] = glicemia.getAno();
+                                    dias[i] = exercicio.getDia();
+                                    meses[i] = (exercicio.getMes() - 1);
+                                    anos[i] = exercicio.getAno();
                                     calendar.set(anos[i],meses[i],dias[i]);
                                 }
 
@@ -368,12 +375,12 @@ public class CalendarFragment extends Fragment {
 
                             for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
 
-                                Glicemia glicemia = dataSnapshot1.getValue(Glicemia.class);
+                                Alimentacao alimentacao = dataSnapshot1.getValue(Alimentacao.class);
 
                                 for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-                                    dias[i] = glicemia.getDia();
-                                    meses[i] = (glicemia.getMes() - 1);
-                                    anos[i] = glicemia.getAno();
+                                    dias[i] = alimentacao.getDia();
+                                    meses[i] = (alimentacao.getMes() - 1);
+                                    anos[i] = alimentacao.getAno();
                                     calendar.set(anos[i],meses[i],dias[i]);
                                 }
 
@@ -429,12 +436,12 @@ public class CalendarFragment extends Fragment {
 
                             for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
 
-                                Glicemia glicemia = dataSnapshot1.getValue(Glicemia.class);
+                                BemEstar bemEstar = dataSnapshot1.getValue(BemEstar.class);
 
                                 for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-                                    dias[i] = glicemia.getDia();
-                                    meses[i] = (glicemia.getMes() - 1);
-                                    anos[i] = glicemia.getAno();
+                                    dias[i] = bemEstar.getDia();
+                                    meses[i] = (bemEstar.getMes() - 1);
+                                    anos[i] = bemEstar.getAno();
                                     calendar.set(anos[i],meses[i],dias[i]);
                                 }
 
