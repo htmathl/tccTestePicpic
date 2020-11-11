@@ -223,7 +223,7 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
 
                                 bemEstar = new BemEstar();
 
-                                bemEstar.setSintomas(humor);
+                                bemEstar.setHumor(humor);
                                 bemEstar.setDescicao(descricao);
                                 bemEstar.setSintomas(pSintomas.toString());
                                 bemEstar.setDia(pDay);
