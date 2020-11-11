@@ -168,91 +168,6 @@ public class AddAlimentacaoFragment extends Fragment {
                 "Batata", "Ovo", "Laticínios", "Nozes", "Peixe", "Carne", "Doce", "Aperitivos",
                 "Lanches", "Alcool", "Adoçante", "Suplementos", "Refri Diet", "Refri"};
 
-        btnAliDia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Calendar calendar = Calendar.getInstance();
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-                int month = calendar.get(Calendar.MONTH);
-                int year = calendar.get(Calendar.YEAR);
-
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        btnAliDia.setText(dayOfMonth + "/" + (month+1) + "/" + year);
-                        pDay = dayOfMonth;
-                        pMonth = (month+1);
-                        pYear = year;
-                    }
-                }, year, month, day);
-
-                datePickerDialog.show();
-
-            }
-        });
-
-        btnAddAliCafe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                indice = 0;
-
-                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
-
-                clAddAli.startAnimation(animation);
-
-                clAddAli.setVisibility(View.VISIBLE);
-
-            }
-        });
-
-        btnAddAliAlmoco.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                indice = 1;
-
-                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
-
-                clAddAli.startAnimation(animation);
-
-                clAddAli.setVisibility(View.VISIBLE);
-
-            }
-        });
-
-        btnAddAliJanta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                indice = 2;
-
-                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
-
-                clAddAli.startAnimation(animation);
-
-                clAddAli.setVisibility(View.VISIBLE);
-
-
-            }
-        });
-
-        btnAddAliLanches.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                indice = 3;
-
-                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
-
-                clAddAli.startAnimation(animation);
-
-                clAddAli.setVisibility(View.VISIBLE);
-
-            }
-        });
-
         //verificar se ja add
         recuperarUsurario();
         ref = ConfigFirebase.getFirebase();
@@ -329,6 +244,190 @@ public class AddAlimentacaoFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        btnAliDia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Calendar calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        btnAliDia.setText(dayOfMonth + "/" + (month+1) + "/" + year);
+                        pDay = dayOfMonth;
+                        pMonth = (month+1);
+                        pYear = year;
+
+                        //verificar se ja add, trocar dia
+                        recuperarUsurario();
+                        ref = ConfigFirebase.getFirebase();
+
+                        if(btnAliDia.getText().toString().equals("Hoje")) {
+                            pYear = Calendar.getInstance().get(Calendar.YEAR);
+                            pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
+                            pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+                        }
+
+                        String data = String.valueOf(pYear) + String.valueOf(pMonth) + String.valueOf(pDay);
+                        DatabaseReference reference = ref.child("inserção")
+                                .child(currentId)
+                                .child("alimentação");
+
+                        reference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                                    if(dataSnapshot.getKey().equals(data)) {
+
+                                        DatabaseReference reference1 = ref.child("inserção").child(currentId).child("alimentação").child(data);
+
+                                        reference1.addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot1) {
+
+                                                for( DataSnapshot dataSnapshot1 : snapshot1.getChildren() ) {
+
+                                                    switch (dataSnapshot1.getKey()) {
+
+                                                        case "café":
+                                                            btnAddAliCafe.setEnabled(false);
+                                                            btnAddAliCafe.setText("Adicionado");
+                                                            btnAddAliCafe.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                                            break;
+                                                        case "almoço":
+                                                            btnAddAliAlmoco.setEnabled(false);
+                                                            btnAddAliAlmoco.setText("Adicionado");
+                                                            btnAddAliAlmoco.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                                            break;
+                                                        case "janta":
+                                                            btnAddAliJanta.setEnabled(false);
+                                                            btnAddAliJanta.setText("Adicionado");
+                                                            btnAddAliJanta.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                                            break;
+                                                        case "lanches":
+                                                            btnAddAliLanches.setEnabled(false);
+                                                            btnAddAliLanches.setText("Adicionado");
+                                                            btnAddAliLanches.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                                            break;
+                                                    }
+
+                                                }
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+
+
+
+
+                                    } else {
+
+                                        btnAddAliCafe.setEnabled(true);
+                                        btnAddAliCafe.setText("Adicionar");
+                                        btnAddAliCafe.setTextColor(getResources().getColor(R.color.preto));
+
+                                        btnAddAliAlmoco.setEnabled(true);
+                                        btnAddAliAlmoco.setText("Adicionar");
+                                        btnAddAliAlmoco.setTextColor(getResources().getColor(R.color.preto));
+
+                                        btnAddAliJanta.setEnabled(true);
+                                        btnAddAliJanta.setText("Adicionar");
+                                        btnAddAliJanta.setTextColor(getResources().getColor(R.color.preto));
+
+                                        btnAddAliLanches.setEnabled(true);
+                                        btnAddAliLanches.setText("Adicionar");
+                                        btnAddAliLanches.setTextColor(getResources().getColor(R.color.preto));
+
+                                    }
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                    }
+                }, year, month, day);
+
+                datePickerDialog.show();
+
+            }
+        });
+
+        btnAddAliCafe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                indice = 0;
+
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
+
+                clAddAli.startAnimation(animation);
+
+                clAddAli.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        btnAddAliAlmoco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                indice = 1;
+
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
+
+                clAddAli.startAnimation(animation);
+
+                clAddAli.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        btnAddAliJanta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                indice = 2;
+
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
+
+                clAddAli.startAnimation(animation);
+
+                clAddAli.setVisibility(View.VISIBLE);
+
+
+            }
+        });
+
+        btnAddAliLanches.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                indice = 3;
+
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.to_down);
+
+                clAddAli.startAnimation(animation);
+
+                clAddAli.setVisibility(View.VISIBLE);
 
             }
         });

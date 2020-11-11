@@ -10,18 +10,22 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.testepicpic.R;
+import com.example.testepicpic.adapter.ExerciciosAdapter;
 import com.example.testepicpic.adapter.GlicemiasAdapter;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.helper.Base64Custom;
+import com.example.testepicpic.model.Exercicio;
 import com.example.testepicpic.model.Glicemia;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.rockerhieu.rvadapter.states.StatesRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -35,7 +39,7 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
     private static int minDistance = 150;
     private GestureDetector gestureDetector;
 
-    private DatabaseReference ref, referenceGli;
+    private DatabaseReference ref, referenceGli, referenceEx;
     private String currentId;
 
     private ArrayList<Double>  nivelGli     = new ArrayList<>();
@@ -44,18 +48,26 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
     private ArrayList<String>  ladoGli      = new ArrayList<>();
     private ArrayList<Integer> horaGli      = new ArrayList<>();
 
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView, recyclerView2;
     private ArrayList<Glicemia> listaGlicemia = new ArrayList<>();
+    private ArrayList<Exercicio> listaExercicio = new ArrayList<>();
 
     private int today, month, year;
 
     private GlicemiasAdapter adapter;
-    private ValueEventListener valueEventListenerGli;
+    private ExerciciosAdapter adapter2;
+    private ValueEventListener valueEventListenerGli, valueEventListenerEx;
+
+    private TextView txtNoDataGli, txtNoDataEx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dia_selecionado);
+
+        //declarar textviews
+        txtNoDataGli = findViewById(R.id.txtNoDataGli);
+        txtNoDataEx = findViewById(R.id.txtNoDataEx);
 
         //recuperar valores da data
         recuperarUsuario();
@@ -67,11 +79,17 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
         nivelGli.clear(); categoriaGli.clear(); ladoGli.clear();
         localGli.clear(); horaGli.clear();
 
-        //definir referencia da glicemia
+        //definir referencias
         String data = String.valueOf(year) + String.valueOf(month) + String.valueOf(today);
+
         referenceGli = ref.child("inserção")
                 .child(currentId)
                 .child("glicemia")
+                .child(data);
+
+        referenceEx = ref.child("inserção")
+                .child(currentId)
+                .child("exercicio")
                 .child(data);
 
         //recuperar todos os valores.
@@ -82,16 +100,23 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
         String strData = String.valueOf(year) + "\n" + String.valueOf(today) + " " + strMonth;
         txtData.setText(strData);
 
-        recyclerView = findViewById(R.id.rcv_conteudo);
+        recyclerView = findViewById(R.id.rcv_conteudoGli);
+        recyclerView2 = findViewById(R.id.rcv_conteudoEx);
 
         //declarar adapter
         adapter = new GlicemiasAdapter(listaGlicemia, DiaSelecionadoActivity.this);
-
-        //config recycler
+        adapter2 = new ExerciciosAdapter(listaExercicio, DiaSelecionadoActivity.this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DiaSelecionadoActivity.this);
+
+        //config recyclerGli
         recyclerView.setLayoutManager( layoutManager );
         recyclerView.setHasFixedSize( true );
         recyclerView.setAdapter(adapter);
+
+        //config recyclerEx
+        recyclerView2.setLayoutManager( layoutManager );
+        recyclerView2.setHasFixedSize( true );
+        recyclerView2.setAdapter(adapter2);
 
     }
 
@@ -119,6 +144,9 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
 
                 }
 
+                if(adapter.getItemCount() == 0)
+                    txtNoDataGli.setVisibility(View.VISIBLE);
+
                 adapter.notifyDataSetChanged();
 
             }
@@ -129,7 +157,31 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
             }
         });
 
+        //add exercicio
+        valueEventListenerEx = referenceEx.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                    Exercicio exercicio = dataSnapshot.getValue(Exercicio.class);
+
+                    listaExercicio.add(exercicio);
+
+                }
+
+                if(adapter.getItemCount() == 0)
+                    txtNoDataEx.setVisibility(View.VISIBLE);
+
+                adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
