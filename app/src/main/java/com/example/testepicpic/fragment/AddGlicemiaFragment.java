@@ -10,6 +10,8 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.GestureDetector;
@@ -57,6 +59,8 @@ import static android.content.Context.MODE_PRIVATE;
 public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private Button btnHorarioGli, btnGliDia;
+
+    private AddBemEstarFragment addBemEstarFragment = new AddBemEstarFragment();
 
     private int Hour, min, hora;
 
@@ -233,6 +237,18 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
                     }
                 }, Hour, min, true);
                 timepicker.show();
+            }
+        });
+
+        ibtnProximo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
+                transaction.replace(R.id.frameAddInfos, addBemEstarFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
