@@ -60,8 +60,6 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
 
     private Button btnHorarioGli, btnGliDia;
 
-    private ImageButton btnProxima;
-
     private int Hour, min, hora;
 
     private EditText edtNivelGli;
@@ -151,7 +149,6 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
 
         Button btnProntoGli = view.findViewById(R.id.btnProntoGli);
 
-        ImageButton ibtnProximo = view.findViewById(R.id.ibtnProxima);
 
         ImageButton ibtnTerminar = view.findViewById(R.id.ibtnTerminar);
 
@@ -438,6 +435,7 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
 
             }
         });
+
 
         return view;
     }
