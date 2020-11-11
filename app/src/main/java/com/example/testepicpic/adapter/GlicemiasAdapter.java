@@ -25,7 +25,6 @@ import com.example.testepicpic.R;
         this.context = c;
     }
 
-
     @Override
     public GlicemiasAdapter.viewHolder onCreateViewHolder(ViewGroup parent, int type) {
 

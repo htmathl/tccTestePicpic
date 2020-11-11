@@ -5,4 +5,5 @@
     <color name="corPrincipal">#6b52af</color>
     <color name="corTextoCadastro">#FFFFFF</color>
     <color name="colorSlider">#81000000</color>
+    <color name="preto">#000</color>
 </resources>
