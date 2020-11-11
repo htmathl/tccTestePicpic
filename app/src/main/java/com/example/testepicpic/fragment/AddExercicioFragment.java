@@ -8,8 +8,6 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,11 +42,7 @@ import java.util.Calendar;
  */
 public class AddExercicioFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
 
-    private AddGlicemiaFragment addGlicemiaFragment = new AddGlicemiaFragment();
-
     private EditText edtEsporte, edtDescricao;
-
-    private ImageButton btnNext;
 
     private Button btnHojeEx;
     private Button btnHora;
@@ -133,7 +127,6 @@ public class AddExercicioFragment extends Fragment implements CompoundButton.OnC
         rdbHandBol = view.findViewById(R.id.checkBox54);
         rdbBasquete = view.findViewById(R.id.checkBox55);
 
-
         rdbCorrida.setOnCheckedChangeListener(this);
         rdbCaminhada.setOnCheckedChangeListener(this);
         rdbCiclismo.setOnCheckedChangeListener(this);
@@ -159,8 +152,6 @@ public class AddExercicioFragment extends Fragment implements CompoundButton.OnC
         edtEsporte = view.findViewById(R.id.edtEsporte);
 
         edtDescricao = view.findViewById(R.id.edtDescicao);
-
-        btnNext = view.findViewById(R.id.btnNext);
 
         Calendar c = Calendar.getInstance();
         Hour = c.get(Calendar.HOUR_OF_DAY);
@@ -205,18 +196,6 @@ public class AddExercicioFragment extends Fragment implements CompoundButton.OnC
 
                 clEx.setVisibility(View.VISIBLE);
 
-            }
-        });
-
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
-                transaction.replace(R.id.frameAddInfos, addGlicemiaFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
             }
         });
 

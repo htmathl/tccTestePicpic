@@ -6,8 +6,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,8 +40,6 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
 
     private CheckBox cbFraqueza, cbNauseas, cbDoresRins, cbMudancaHumor, cbPerdaPeso, cbFormigamento,
             cbFome, cbCoceira, cbVisaoEmbacada, cbFadiga, cbUninarMuito, cbDorCabeca;
-
-    private AddInsulinaFragment addInsulinaFragment = new AddInsulinaFragment();
 
     private int pDay, pMonth, pYear;
 
@@ -124,8 +120,6 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
         animado.setOnCheckedChangeListener(this);
         estressado.setOnCheckedChangeListener(this);
 
-        ibtnProximo = view.findViewById(R.id.btnProximo);
-
         btnHumorDia = view.findViewById(R.id.btnInsulinaDia);
 
         edtDecricao = view.findViewById(R.id.editTextDescriçãoHumor);
@@ -184,17 +178,6 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
             }
         });
 
-        ibtnProximo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
-                transaction.replace(R.id.frameAddInfos, addInsulinaFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
 
         ibtnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override

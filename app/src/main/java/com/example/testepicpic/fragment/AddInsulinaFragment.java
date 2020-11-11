@@ -7,8 +7,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,9 +47,7 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
 
     private RadioButton rdbRapida, rdbDevagar;
 
-    private ImageButton ibtnTermiar, ibtnProximo;
-
-    private AddAlimentacaoFragment addAlimentacaoFragment = new AddAlimentacaoFragment();
+    private ImageButton ibtnTermiar;
 
     private int pDay, pMonth, pYear;
 
@@ -127,8 +123,6 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
 
         ibtnTermiar = view.findViewById(R.id.ibtnTerminar);
 
-        ibtnProximo = view.findViewById(R.id.ibtnProximo);
-
         rdbDevagar = view.findViewById(R.id.rdbDevagar);
         rdbRapida = view.findViewById(R.id.rdbRapida);
 
@@ -176,17 +170,6 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
                 }, Hour, min, true);
 
                 timePickerDialog.show();
-            }
-        });
-
-        ibtnProximo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
-                transaction.replace(R.id.frameAddInfos, addAlimentacaoFragment);
-                transaction.commit();
             }
         });
 
