@@ -674,7 +674,7 @@ public class AddAlimentacaoFragment extends Fragment {
 
                                         alimentacao.setAlimentos(pComidasLanches.toString());
                                         alimentacao.setDescricao(strPComidasCafe);
-                                        alimentacao.setTipo( "Janta" );
+                                        alimentacao.setTipo( "Lanches" );
                                         alimentacao.setDia(pDay);
                                         alimentacao.setMes(pMonth);
                                         alimentacao.setAno(pYear);
