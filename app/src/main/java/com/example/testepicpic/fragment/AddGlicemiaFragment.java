@@ -10,6 +10,8 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.GestureDetector;
@@ -57,6 +59,8 @@ import static android.content.Context.MODE_PRIVATE;
 public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private Button btnHorarioGli, btnGliDia;
+
+    private ImageButton btnProxima;
 
     private int Hour, min, hora;
 
@@ -148,6 +152,7 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
         Button btnProntoGli = view.findViewById(R.id.btnProntoGli);
 
         ImageButton ibtnProximo = view.findViewById(R.id.ibtnProxima);
+
         ImageButton ibtnTerminar = view.findViewById(R.id.ibtnTerminar);
 
         ImageButton ibtnDedoGlicemia = view.findViewById(R.id.btnDedoGlicemia);

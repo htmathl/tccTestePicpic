@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,13 +43,15 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
 
     private Button btnInsulinaDia, btnTimeInsulina;
 
+    private AddAlimentacaoFragment addAlimentacaoFragment = new AddAlimentacaoFragment();
+
     private EditText edtNumInsulina;
 
     private Spinner spLocal;
 
     private RadioButton rdbRapida, rdbDevagar;
 
-    private ImageButton ibtnTermiar;
+    private ImageButton ibtnTermiar, imgbtnProximo;
 
     private int pDay, pMonth, pYear;
 
@@ -111,6 +115,8 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
 
         btnInsulinaDia = view.findViewById(R.id.btnInsulinaDia);
         btnTimeInsulina = view.findViewById(R.id.btnTimeInsulina);
+
+        imgbtnProximo = view.findViewById(R.id.ibtnProximo2);
 
         edtNumInsulina = view.findViewById(R.id.edtNumInsulina);
 
@@ -246,6 +252,18 @@ public class AddInsulinaFragment extends Fragment implements AdapterView.OnItemS
                     Toast.makeText(getActivity(), "Por favor, preencha o campo Nível", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        imgbtnProximo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
+                transaction.replace(R.id.frameAddInfos, addAlimentacaoFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 

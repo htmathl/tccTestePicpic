@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +39,8 @@ import java.util.Calendar;
 public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
 
     private RadioButton brabo, normal, triste, feliz, cansado, animado, relaxado, estressado;
+
+    private AddInsulinaFragment addInsulinaFragment = new AddInsulinaFragment();
 
     private CheckBox cbFraqueza, cbNauseas, cbDoresRins, cbMudancaHumor, cbPerdaPeso, cbFormigamento,
             cbFome, cbCoceira, cbVisaoEmbacada, cbFadiga, cbUninarMuito, cbDorCabeca;
@@ -138,7 +142,7 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
         cbDorCabeca =  view.findViewById(R.id.checkCabeca);
 
         ibtnSalvar = view.findViewById(R.id.btnTerminar);
-        ibtnProximo = view.findViewById(R.id.btnProximo);
+        ibtnProximo = view.findViewById(R.id.btnProximo1);
 
         final CheckBox[] listaSintomas = {
                 cbFraqueza, cbNauseas, cbDoresRins, cbMudancaHumor, cbPerdaPeso, cbFormigamento,
@@ -248,6 +252,18 @@ public class AddBemEstarFragment extends Fragment implements CompoundButton.OnCh
                     Toast.makeText(getActivity(), "Por favor, preencha o campo descrição", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        ibtnProximo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
+                transaction.replace(R.id.frameAddInfos, addInsulinaFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 

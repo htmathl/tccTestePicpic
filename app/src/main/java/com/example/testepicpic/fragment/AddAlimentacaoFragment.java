@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.CountDownTimer;
 import android.util.Base64;
@@ -59,6 +61,8 @@ public class AddAlimentacaoFragment extends Fragment {
     private ImageButton ibtnProximo;
     private ConstraintLayout clAddAli;
     private EditText edtDescricaoAli;
+
+    private AddExercicioFragment addExercicioFragment = new AddExercicioFragment();
 
     private ArrayList<String> pComidasCafe = new ArrayList<>();
     private ArrayList<String> pComidasAlmoco = new ArrayList<>();
@@ -460,9 +464,9 @@ public class AddAlimentacaoFragment extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
 
-                                    pComidasCafe.clear();
-
                                     try {
+
+                                        pComidasCafe.clear();
 
                                         for(int i = 0; i < comidas.length; i++) {
                                             if(comidas[i].isChecked())
@@ -471,6 +475,7 @@ public class AddAlimentacaoFragment extends Fragment {
 
                                         alimentacao.setAlimentos(pComidasCafe.toString());
                                         alimentacao.setDescricao(strPComidasCafe);
+                                        alimentacao.setTipo( "Café" );
                                         alimentacao.setAno(pYear);
                                         alimentacao.setMes(pMonth);
                                         alimentacao.setDia(pDay);
@@ -537,6 +542,7 @@ public class AddAlimentacaoFragment extends Fragment {
 
                                         alimentacao.setAlimentos(pComidasAlmoco.toString());
                                         alimentacao.setDescricao(strPComidasCafe);
+                                        alimentacao.setTipo( "Almoço" );
                                         alimentacao.setDia(pDay);
                                         alimentacao.setMes(pMonth);
                                         alimentacao.setAno(pYear);
@@ -602,6 +608,7 @@ public class AddAlimentacaoFragment extends Fragment {
 
                                         alimentacao.setAlimentos(pComidasJanta.toString());
                                         alimentacao.setDescricao(strPComidasCafe);
+                                        alimentacao.setTipo( "Janta" );
                                         alimentacao.setDia(pDay);
                                         alimentacao.setMes(pMonth);
                                         alimentacao.setAno(pYear);
@@ -656,9 +663,9 @@ public class AddAlimentacaoFragment extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
 
-                                    pComidasLanches.clear();
-
                                     try {
+
+                                        pComidasLanches.clear();
 
                                         for(int i = 0; i < comidas.length; i++) {
                                             if(comidas[i].isChecked())
@@ -667,6 +674,7 @@ public class AddAlimentacaoFragment extends Fragment {
 
                                         alimentacao.setAlimentos(pComidasLanches.toString());
                                         alimentacao.setDescricao(strPComidasCafe);
+                                        alimentacao.setTipo( "Janta" );
                                         alimentacao.setDia(pDay);
                                         alimentacao.setMes(pMonth);
                                         alimentacao.setAno(pYear);
@@ -764,7 +772,12 @@ public class AddAlimentacaoFragment extends Fragment {
         ibtnProximo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
+                transaction.replace(R.id.frameAddInfos, addExercicioFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
 
 
             }

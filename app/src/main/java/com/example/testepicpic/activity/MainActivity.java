@@ -85,8 +85,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         miau();
 
-        Toast.makeText(this, horas.toString(), Toast.LENGTH_SHORT).show();
-
         graficoGlicemia = (LineChart) findViewById(R.id.grafico_glicemia);
 
 

@@ -500,7 +500,7 @@
             android:textStyle="bold" />
 
         <ImageButton
-            android:id="@+id/btnProximo"
+            android:id="@+id/btnProximo1"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="56dp"

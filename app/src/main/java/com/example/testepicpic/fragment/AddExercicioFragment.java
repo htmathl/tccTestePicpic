@@ -8,6 +8,8 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +49,9 @@ public class AddExercicioFragment extends Fragment implements CompoundButton.OnC
     private Button btnHojeEx;
     private Button btnHora;
 
-    private ImageButton imgbSalvar;
+    private ImageButton imgbSalvar, imgbProximo;
+
+    private AddGlicemiaFragment addGlicemiaFragment = new AddGlicemiaFragment();
 
     private RadioButton rdbCorrida, rdbCaminhada, rdbCiclismo, rdbAcademia, rdbNatacao, rdbMusculacao, rdbArtesMarciais,
             rdbYoga, rdbBox, rdbPilates, rdbTenis, rdbVolei, rdbFut, rdbHandBol, rdbBasquete;
@@ -142,6 +146,8 @@ public class AddExercicioFragment extends Fragment implements CompoundButton.OnC
         rdbFut.setOnCheckedChangeListener(this);
         rdbHandBol.setOnCheckedChangeListener(this);
         rdbBasquete.setOnCheckedChangeListener(this);
+
+        imgbProximo = view.findViewById(R.id.btnNext);
 
         Button btnSalvar = view.findViewById(R.id.btnSalvar2);
 
@@ -388,6 +394,18 @@ public class AddExercicioFragment extends Fragment implements CompoundButton.OnC
                 } else {
                     Toast.makeText(getActivity(), "Por favor, selecione um horário", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        imgbProximo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.setCustomAnimations( R.anim.to_left, R.anim.from_right, R.anim.to_left, R.anim.from_right);
+                transaction.replace(R.id.frameAddInfos, addGlicemiaFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
