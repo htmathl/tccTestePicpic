@@ -7,11 +7,19 @@ import com.google.firebase.database.DatabaseReference;
 
 public class Alimentacao {
 
-    private String alimentos, descricao, currentId;
+    private String alimentos, descricao, tipo , currentId;
     private int dia, mes, ano;
 
     public Alimentacao() {
 
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getAlimentos() {

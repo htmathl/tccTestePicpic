@@ -107,6 +107,7 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
         adapter = new GlicemiasAdapter(listaGlicemia, DiaSelecionadoActivity.this);
         adapter2 = new ExerciciosAdapter(listaExercicio, DiaSelecionadoActivity.this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DiaSelecionadoActivity.this);
+        RecyclerView.LayoutManager layoutManager2 = new LinearLayoutManager(DiaSelecionadoActivity.this);
 
         //config recyclerGli
         recyclerView.setLayoutManager( layoutManager );
@@ -114,7 +115,7 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
         recyclerView.setAdapter(adapter);
 
         //config recyclerEx
-        recyclerView2.setLayoutManager( layoutManager );
+        recyclerView2.setLayoutManager( layoutManager2 );
         recyclerView2.setHasFixedSize( true );
         recyclerView2.setAdapter(adapter2);
 
@@ -170,10 +171,10 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
 
                 }
 
-                if(adapter.getItemCount() == 0)
+                if(adapter2.getItemCount() == 0)
                     txtNoDataEx.setVisibility(View.VISIBLE);
 
-                adapter.notifyDataSetChanged();
+                adapter2.notifyDataSetChanged();
 
             }
 
