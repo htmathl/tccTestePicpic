@@ -53,11 +53,18 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
-                android:paddingBottom="12dp"
+                android:paddingTop="4dp"
                 android:text="Deslize daqui para baixo para sair."
                 android:textColor="@color/colorPrimary"
                 android:textSize="14sp"
                 android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:rotation="90"
+                app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
 
             <Button
                 android:id="@+id/btnInsulinaDia"
@@ -479,7 +486,7 @@
             android:layout_height="50dp"
             android:layout_marginRight="56dp"
             android:background="#00FFFFFF"
-            android:src="@mipmap/ic_check_foreground" />
+            android:src="@drawable/ic_check" />
 
         <TextView
             android:id="@+id/textView19"
@@ -498,7 +505,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="56dp"
             android:background="#00FFFFFF"
-            android:src="@mipmap/ic_setalado_foreground" />
+            android:src="@drawable/ic_seta" />
 
     </LinearLayout>
 

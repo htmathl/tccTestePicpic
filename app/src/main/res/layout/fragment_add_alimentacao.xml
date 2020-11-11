@@ -35,8 +35,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
-
     <LinearLayout
         android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
@@ -52,15 +50,21 @@
             android:id="@+id/textView22"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:fontFamily="@font/roboto"
             android:gravity="center"
-            android:paddingBottom="12dp"
+            android:paddingTop="4dp"
             android:text="Deslize daqui para baixo para sair."
             android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:rotation="90"
+            app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
 
         <Button
             android:id="@+id/btnAliDia"
@@ -85,182 +89,204 @@
             android:text='Selecione o dia clicando em "hoje".' />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
-
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="167dp"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="Café"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="Almoço"
-            android:textColor="#FFFFFF"
-            android:textColorLink="#FFFFFF"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
-
-        <Button
-            android:id="@+id/btnAddAliCafe"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_add_alimentos"
-            android:text="Adicionar "
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnAddAliAlmoco"
-            android:layout_width="wrap_content"
-            android:layout_height="163dp"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_add_alimentos"
-            android:text="Adicionar"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout11"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.25">
 
-    <LinearLayout
-        android:id="@+id/linearLayout9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/frameLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+                <LinearLayout
+                    android:id="@+id/linearLayout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="Janta"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_tipo_dia2"
+                        android:gravity="center"
+                        android:text="Café"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="Lanches"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
-    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_tipo_dia"
+                        android:gravity="center"
+                        android:text="Almoço"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp" />
+                </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnAddAliJanta"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_add_alimentos"
-            android:text="Adicionar "
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                    <Button
+                        android:id="@+id/btnAddAliCafe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_add_alimentos"
+                        android:drawableBottom="@drawable/ic_cafe"
+                        android:paddingTop="30dp"
+                        android:paddingBottom="30dp"
+                        android:text="Adicionar "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/btnAddAliLanches"
-            android:layout_width="wrap_content"
-            android:layout_height="160dp"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_add_alimentos"
-            android:text="Adicionar"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-    </LinearLayout>
+                    <Button
+                        android:id="@+id/btnAddAliAlmoco"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_add_alimentos"
+                        android:drawableBottom="@drawable/ic_almocolas"
+                        android:paddingTop="30dp"
+                        android:paddingBottom="30dp"
+                        android:text="Adicionar"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout11"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="16dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout5"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout5">
+                <LinearLayout
+                    android:id="@+id/linearLayout9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="56dp"
+                    android:layout_marginRight="8dp"
+                    android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/btnTerminar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="50dp"
-            android:backgroundTint="#00FFFFFF"
-            android:src="@mipmap/ic_check_foreground" />
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_tipo_dia2"
+                        android:gravity="center"
+                        android:text="Janta"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/textView19"
-            style="@style/Widget.AppCompat.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Alimentação"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_tipo_dia"
+                        android:gravity="center"
+                        android:text="Lanches"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp" />
+                </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/btnProximo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
-            android:backgroundTint="#00FFFFFF"
-            android:src="@mipmap/ic_setalado_foreground" />
+                <LinearLayout
+                    android:id="@+id/linearLayout10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:orientation="horizontal">
 
+                    <Button
+                        android:id="@+id/btnAddAliJanta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_add_alimentos"
+                        android:drawableBottom="@drawable/ic_janta"
+                        android:paddingTop="30dp"
+                        android:paddingBottom="30dp"
+                        android:text="Adicionar "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/btnAddAliLanches"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_add_alimentos"
+                        android:drawableBottom="@drawable/ic_lanchinho"
+                        android:paddingTop="30dp"
+                        android:paddingBottom="30dp"
+                        android:text="Adicionar"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageButton
+                    android:id="@+id/btnTerminar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="50dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:src="@drawable/ic_check" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    style="@style/Widget.AppCompat.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Alimentação"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnProximo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:src="@drawable/ic_seta" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -296,6 +296,8 @@ public class AddAlimentacaoFragment extends Fragment {
 
                                         alimentacao.salvarCafe(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
+                                        btnAddAliCafe.setEnabled(false);
+
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
                                         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
@@ -357,6 +359,7 @@ public class AddAlimentacaoFragment extends Fragment {
                                         alimentacao.setAno(pYear);
 
                                         alimentacao.salvarAlmoco(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
+                                        btnAddAliAlmoco.setEnabled(false);
 
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
@@ -419,6 +422,8 @@ public class AddAlimentacaoFragment extends Fragment {
 
                                         alimentacao.salvarJanta(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
+                                        btnAddAliJanta.setEnabled(false);
+
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
                                         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
@@ -479,6 +484,8 @@ public class AddAlimentacaoFragment extends Fragment {
                                         alimentacao.setAno(pYear);
 
                                         alimentacao.salvarLanches(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
+
+                                        btnAddAliLanches.setEnabled(false);
 
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
