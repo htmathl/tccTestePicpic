@@ -40,7 +40,11 @@ public class AlimentacoesAdapter extends RecyclerView.Adapter<AlimentacoesAdapte
 
         Alimentacao alimentacao = alimentacaos.get( position );
 
+        String alimento = alimentacao.getAlimentos().substring(1, alimentacao.getAlimentos().length()-1);
 
+        holder.tipo.setText( alimentacao.getTipo() );
+        holder.comidas.setText( alimento );
+        holder.verMais.setText( "ver mais" );
 
     }
 
@@ -51,13 +55,13 @@ public class AlimentacoesAdapter extends RecyclerView.Adapter<AlimentacoesAdapte
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView comidas, tipo, verMais;
+        TextView tipo, comidas, verMais;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tipo = itemView.findViewById(R.id.txtNivel);
-            comidas = itemView.findViewById(R.id.txtHora);
+            comidas = itemView.findViewById(R.id.txtNivel);
+            tipo = itemView.findViewById(R.id.txtHora);
             verMais = itemView.findViewById(R.id.txtverMais);
 
         }
