@@ -10,18 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testepicpic.R;
-import com.example.testepicpic.model.Exercicio;
+import com.example.testepicpic.model.Alimentacao;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ExerciciosAdapter extends RecyclerView.Adapter<ExerciciosAdapter.ViewHolder> {
+public class AlimentacoesAdapter extends RecyclerView.Adapter<AlimentacoesAdapter.ViewHolder> {
 
-    public List<Exercicio> exercicios;
-    public Context context;
+    private List<Alimentacao> alimentacaos;
+    private Context context;
 
-    public ExerciciosAdapter(List<Exercicio> exercicios, Context c) {
-        this.exercicios = exercicios;
+    public AlimentacoesAdapter(List<Alimentacao> alimentacaos, Context c) {
+        this.alimentacaos = alimentacaos;
         this.context = c;
     }
 
@@ -39,35 +38,26 @@ public class ExerciciosAdapter extends RecyclerView.Adapter<ExerciciosAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Exercicio exercicio = exercicios.get( position );
+        Alimentacao alimentacao = alimentacaos.get( position );
 
-        int hora = exercicio.getHora();
 
-        int min = hora % 60;
-        hora /= 60;
-
-        String horario = String.format("%02d:%02d", hora, min);
-
-        holder.hora.setText( horario );
-        holder.modal.setText( exercicio.getModalidade() );
-        holder.verMais.setText( "ver mais" );
 
     }
 
     @Override
     public int getItemCount() {
-        return exercicios.size();
+        return alimentacaos.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView modal, hora, verMais;
+        TextView comidas, tipo, verMais;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            modal = itemView.findViewById(R.id.txtNivel);
-            hora = itemView.findViewById(R.id.txtHora);
+            tipo = itemView.findViewById(R.id.txtNivel);
+            comidas = itemView.findViewById(R.id.txtHora);
             verMais = itemView.findViewById(R.id.txtverMais);
 
         }
