@@ -262,7 +262,7 @@
                     android:layout_height="50dp"
                     android:layout_marginRight="56dp"
                     android:backgroundTint="#00FFFFFF"
-                    android:src="@mipmap/ic_check_foreground" />
+                    android:src="@drawable/ic_check"/>
 
                 <TextView
                     android:id="@+id/textView19"
@@ -281,7 +281,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="56dp"
                     android:backgroundTint="#00FFFFFF"
-                    android:src="@mipmap/ic_setalado_foreground" />
+                    android:src="@drawable/ic_seta" />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

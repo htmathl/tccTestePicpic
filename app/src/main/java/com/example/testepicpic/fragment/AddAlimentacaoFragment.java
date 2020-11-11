@@ -123,6 +123,8 @@ public class AddAlimentacaoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_alimentacao, container, false);
 
+        ref = ConfigFirebase.getFirebase();
+
         btnAliDia = view.findViewById(R.id.btnAliDia);
 
         Button btnAddAliAlmoco = view.findViewById(R.id.btnAddAliAlmoco);
@@ -251,6 +253,86 @@ public class AddAlimentacaoFragment extends Fragment {
             }
         });
 
+        //verificar se ja add
+        recuperarUsurario();
+        ref = ConfigFirebase.getFirebase();
+
+        if(btnAliDia.getText().toString().equals("Hoje")) {
+            pYear = Calendar.getInstance().get(Calendar.YEAR);
+            pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
+            pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        }
+
+        String data = String.valueOf(pYear) + String.valueOf(pMonth) + String.valueOf(pDay);
+        DatabaseReference reference = ref.child("inserção")
+                .child(currentId)
+                .child("alimentação");
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                    if(dataSnapshot.getKey().equals(data)) {
+
+                        DatabaseReference reference1 = ref.child("inserção").child(currentId).child("alimentação").child(data);
+
+                        reference1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot1) {
+
+                                for( DataSnapshot dataSnapshot1 : snapshot1.getChildren() ) {
+
+                                    switch (dataSnapshot1.getKey()) {
+
+                                        case "café":
+                                            btnAddAliCafe.setEnabled(false);
+                                            btnAddAliCafe.setText("Adicionado");
+                                            btnAddAliCafe.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                            break;
+                                        case "almoço":
+                                            btnAddAliAlmoco.setEnabled(false);
+                                            btnAddAliAlmoco.setText("Adicionado");
+                                            btnAddAliAlmoco.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                            break;
+                                        case "janta":
+                                            btnAddAliJanta.setEnabled(false);
+                                            btnAddAliJanta.setText("Adicionado");
+                                            btnAddAliJanta.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                            break;
+                                        case "lanches":
+                                            btnAddAliLanches.setEnabled(false);
+                                            btnAddAliLanches.setText("Adicionado");
+                                            btnAddAliLanches.setTextColor(getResources().getColor(R.color.colorPrimary));
+                                            break;
+                                    }
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+
+
+
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -297,6 +379,8 @@ public class AddAlimentacaoFragment extends Fragment {
                                         alimentacao.salvarCafe(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
                                         btnAddAliCafe.setEnabled(false);
+                                        btnAddAliCafe.setText("Adicionado");
+                                        btnAddAliCafe.setTextColor(getResources().getColor(R.color.colorPrimary));
 
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
@@ -359,7 +443,10 @@ public class AddAlimentacaoFragment extends Fragment {
                                         alimentacao.setAno(pYear);
 
                                         alimentacao.salvarAlmoco(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
+
                                         btnAddAliAlmoco.setEnabled(false);
+                                        btnAddAliAlmoco.setText("Adicionado");
+                                        btnAddAliAlmoco.setTextColor(getResources().getColor(R.color.colorPrimary));
 
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
@@ -423,6 +510,8 @@ public class AddAlimentacaoFragment extends Fragment {
                                         alimentacao.salvarJanta(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
                                         btnAddAliJanta.setEnabled(false);
+                                        btnAddAliJanta.setText("Adicionado");
+                                        btnAddAliJanta.setTextColor(getResources().getColor(R.color.colorPrimary));
 
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
@@ -486,6 +575,8 @@ public class AddAlimentacaoFragment extends Fragment {
                                         alimentacao.salvarLanches(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
                                         btnAddAliLanches.setEnabled(false);
+                                        btnAddAliLanches.setText("Adicionado");
+                                        btnAddAliLanches.setTextColor(getResources().getColor(R.color.colorPrimary));
 
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
