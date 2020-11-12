@@ -26,8 +26,14 @@ import com.example.testepicpic.activity.*;
 import com.example.testepicpic.broadcast.DayChangedBroadcastReceiver;
 import com.example.testepicpic.config.*;
 import com.example.testepicpic.helper.Base64Custom;
+import com.example.testepicpic.model.Glicemia;
+import com.example.testepicpic.model.Insulina;
 import com.example.testepicpic.model.Usuario;
 import com.example.testepicpic.service.MesmoDia;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -957,6 +963,9 @@ public class OverviewFragment extends Fragment {
 
         declarar();
 
+        ref = ConfigFirebase.getFirebase();
+        recuperarUsuario();
+
         if (copo8.isChecked())
             tbOutrosCopos.setVisibility(View.VISIBLE);
 
@@ -1072,6 +1081,111 @@ public class OverviewFragment extends Fragment {
             }
         } else
             txtQntd.setText(0 + " ml");
+
+        LineChart chartGli = getView().findViewById(R.id.grafico_glicemia);
+        LineChart chartInsu = getView().findViewById(R.id.grafico_insulina);
+
+        pYear = Calendar.getInstance().get(Calendar.YEAR);
+        pMonth = (Calendar.getInstance().get(Calendar.MONTH)+1);
+        pDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        data = String.valueOf(pYear) + String.valueOf(pMonth) + String.valueOf(pDay);
+
+        DatabaseReference reference = ref.child("inserção")
+                .child(currentId)
+                .child("glicemia")
+                .child(data);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                List<Entry> entries = new ArrayList<>();
+
+                int i = 1;
+
+                for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                    Glicemia glicemia = dataSnapshot.getValue(Glicemia.class);
+
+                    entries.add(new Entry(i, (float) glicemia.getNivel()));
+
+                    LineDataSet lineDataSet = new LineDataSet(entries, "Nível");
+                    lineDataSet.setColor(getResources().getColor(R.color.colorPrimary));
+                    lineDataSet.setValueTextColor(getResources().getColor(R.color.colorPrimary));
+                    lineDataSet.setLineWidth(2f);
+                    lineDataSet.setValueTextSize(14f);
+
+                    LineData lineData = new LineData(lineDataSet);
+                    chartGli.setData(lineData);
+                    chartGli.invalidate();
+
+                    i++;
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        DatabaseReference reference1 = ref.child("inserção")
+                .child(currentId)
+                .child("insulina");
+
+        reference1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                List<Entry> entries = new ArrayList<>();
+
+                for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                    DatabaseReference reference2  = ref.child("inserção")
+                            .child(currentId)
+                            .child("insulina")
+                            .child(dataSnapshot.getKey());
+
+                    reference2.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
+
+                            for ( DataSnapshot dataSnapshot1 : snapshot1.getChildren() ) {
+
+                                Insulina insulina = dataSnapshot1.getValue(Insulina.class);
+
+                                entries.add(new Entry( insulina.getDia(), (float) insulina.getNivel()));
+
+                                LineDataSet lineDataSet = new LineDataSet(entries, "Nível");
+                                lineDataSet.setColor(getResources().getColor(R.color.colorPrimary));
+                                lineDataSet.setValueTextColor(getResources().getColor(R.color.colorPrimary));
+                                lineDataSet.setLineWidth(2f);
+                                lineDataSet.setValueTextSize(14f);
+
+                                LineData lineData = new LineData(lineDataSet);
+                                chartInsu.setData(lineData);
+                                chartInsu.invalidate();
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
