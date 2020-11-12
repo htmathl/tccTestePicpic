@@ -1,15 +1,33 @@
 package com.example.testepicpic.fragment;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +38,11 @@ import com.example.testepicpic.R;
 public class RelatorioFragment extends Fragment {
 
     private Button btnGerarRelatorio;
+    private Bitmap onda, escala;
+    private PdfDocument pdfTeste;
+    private PdfDocument.PageInfo info;
+    private PdfDocument.Page pagina1;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -69,9 +92,14 @@ public class RelatorioFragment extends Fragment {
 
         btnGerarRelatorio = view.findViewById(R.id.btnGerarRelatorio);
 
+        //onda = BitmapFactory.decodeResource(getResources(), R.drawable.ic_waves);
+        //escala = Bitmap.createScaledBitmap(onda,1200,500, false);
+
+
         btnGerarRelatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 AlertDialog.Builder certezaGerar = new AlertDialog.Builder(getActivity());
 
@@ -80,6 +108,28 @@ public class RelatorioFragment extends Fragment {
                 certezaGerar.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //Paint pinta = new Paint();
+
+                        pdfTeste = new PdfDocument();
+                        info  = new PdfDocument.PageInfo.Builder(1200, 2010, 1).create();
+                        pagina1 = pdfTeste.startPage(info);
+                        //Canvas canvas = pagina1.getCanvas();
+
+                        //canvas.drawBitmap(escala, 0, 0, pinta);
+
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+
+                        pdfTeste.finishPage(pagina1);
+
+                        String myFilePath = Environment.getExternalStorageDirectory().getPath() + "/Relatorio.pdf";
+
+                        File file = new File(myFilePath);
+                        try{
+                            pdfTeste.writeTo(new FileOutputStream(file));
+                        } catch (Exception e) {
+                            Toast.makeText(getActivity(), "é n salvou :/", Toast.LENGTH_SHORT).show();
+                        }
+                        pdfTeste.close();
 
                     }
                 });
@@ -92,6 +142,7 @@ public class RelatorioFragment extends Fragment {
                 });
                 certezaGerar.create();
                 certezaGerar.show();
+
 
             }
         });
