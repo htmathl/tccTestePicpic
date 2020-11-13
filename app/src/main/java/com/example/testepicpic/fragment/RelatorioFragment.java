@@ -92,8 +92,8 @@ public class RelatorioFragment extends Fragment {
 
         btnGerarRelatorio = view.findViewById(R.id.btnGerarRelatorio);
 
-        //onda = BitmapFactory.decodeResource(getResources(), R.drawable.ic_waves);
-        //escala = Bitmap.createScaledBitmap(onda,1200,500, false);
+        onda = BitmapFactory.decodeResource(getResources(), R.drawable.waves1);
+        escala = Bitmap.createScaledBitmap(onda,1200,500, false);
 
 
         btnGerarRelatorio.setOnClickListener(new View.OnClickListener() {
@@ -108,11 +108,14 @@ public class RelatorioFragment extends Fragment {
                 certezaGerar.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //Paint pinta = new Paint();
+                        Paint pinta = new Paint();
 
                         pdfTeste = new PdfDocument();
                         info  = new PdfDocument.PageInfo.Builder(1200, 2010, 1).create();
                         pagina1 = pdfTeste.startPage(info);
+                        Canvas canvinhas = pagina1.getCanvas();
+
+                        canvinhas.drawBitmap(escala,0,0,pinta);
                         //Canvas canvas = pagina1.getCanvas();
 
                         //canvas.drawBitmap(escala, 0, 0, pinta);
@@ -121,9 +124,7 @@ public class RelatorioFragment extends Fragment {
 
                         pdfTeste.finishPage(pagina1);
 
-                        String myFilePath = Environment.getExternalStorageDirectory().getPath() + "/Relatorio.pdf";
-
-                        File file = new File(myFilePath);
+                        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "/Relatório.pdf");
                         try{
                             pdfTeste.writeTo(new FileOutputStream(file));
                         } catch (Exception e) {
