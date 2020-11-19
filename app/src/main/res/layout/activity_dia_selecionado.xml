@@ -132,7 +132,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcv_conteudoEx"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     tools:listitem="@layout/nivel_item"/>
 
                 <TextView
@@ -218,7 +218,7 @@
                     android:textStyle="bold"
                     android:paddingTop="50dp"
                     android:paddingBottom="50dp"
-                    android:visibility="visible"/>
+                    android:visibility="gone"/>
 
                 <TextView
                     android:textSize="18sp"

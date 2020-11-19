@@ -434,22 +434,18 @@ public class CalendarFragment extends Fragment {
 
                             calendar = Calendar.getInstance();
 
-                            for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
+                            BemEstar bemEstar = snapshot.getValue(BemEstar.class);
 
-                                BemEstar bemEstar = dataSnapshot1.getValue(BemEstar.class);
-
-                                for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-                                    dias[i] = bemEstar.getDia();
-                                    meses[i] = (bemEstar.getMes() - 1);
-                                    anos[i] = bemEstar.getAno();
-                                    calendar.set(anos[i],meses[i],dias[i]);
-                                }
-
-                                eventDays.add(new EventDay(calendar, R.drawable.ic_emoticons));
-
-                                calendarView.setEvents(eventDays);
-
+                            for (int i = 0; i < snapshot.getChildrenCount(); i++) {
+                                dias[i] = bemEstar.getDia();
+                                meses[i] = (bemEstar.getMes() - 1);
+                                anos[i] = bemEstar.getAno();
+                                calendar.set(anos[i],meses[i],dias[i]);
                             }
+
+                            eventDays.add(new EventDay(calendar, R.drawable.ic_emoticons));
+
+                            calendarView.setEvents(eventDays);
 
                         }
 

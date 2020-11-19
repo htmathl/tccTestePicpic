@@ -12,16 +12,21 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.testepicpic.R;
 import com.example.testepicpic.adapter.AlimentacoesAdapter;
+import com.example.testepicpic.adapter.BemEstarAdapter;
 import com.example.testepicpic.adapter.ExerciciosAdapter;
 import com.example.testepicpic.adapter.GlicemiasAdapter;
+import com.example.testepicpic.adapter.InsulinaAdapter;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.helper.Base64Custom;
 import com.example.testepicpic.model.Alimentacao;
+import com.example.testepicpic.model.BemEstar;
 import com.example.testepicpic.model.Exercicio;
 import com.example.testepicpic.model.Glicemia;
+import com.example.testepicpic.model.Insulina;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +46,7 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
     private static int minDistance = 150;
     private GestureDetector gestureDetector;
 
-    private DatabaseReference ref, referenceGli, referenceEx, referenceAli;
+    private DatabaseReference ref, referenceGli, referenceEx, referenceAli, referenceInsu, referenceBem;
     private String currentId;
 
     private ArrayList<Double>  nivelGli     = new ArrayList<>();
@@ -50,21 +55,26 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
     private ArrayList<String>  ladoGli      = new ArrayList<>();
     private ArrayList<Integer> horaGli      = new ArrayList<>();
 
-    private RecyclerView recyclerView, recyclerView2, recyclerView3;
+    private RecyclerView recyclerView, recyclerView2, recyclerView3, recyclerView4, recyclerView5;
 
     private ArrayList<Glicemia> listaGlicemia = new ArrayList<>();
     private ArrayList<Exercicio> listaExercicio = new ArrayList<>();
     private ArrayList<Alimentacao> listaAlimentacao = new ArrayList<>();
+    private ArrayList<Insulina> listaInsulina = new ArrayList<>();
+    private ArrayList<BemEstar> listaBemEstar = new ArrayList<>();
 
     private int today, month, year;
 
     private GlicemiasAdapter adapter;
     private ExerciciosAdapter adapter2;
     private AlimentacoesAdapter adapter3;
+    private InsulinaAdapter adapter4;
+    private BemEstarAdapter adapter5;
 
-    private ValueEventListener valueEventListenerGli, valueEventListenerEx, valueEventListenerAli;
+    private ValueEventListener valueEventListenerGli, valueEventListenerEx, valueEventListenerAli,
+            valueEventListenerInsu, valueEventListenerBem;
 
-    private TextView txtNoDataGli, txtNoDataEx, txtNoDataAli;
+    private TextView txtNoDataGli, txtNoDataEx, txtNoDataAli, txtNoDataInsu, txtNoDataBem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +85,8 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
         txtNoDataGli = findViewById(R.id.txtNoDataGli);
         txtNoDataEx = findViewById(R.id.txtNoDataEx);
         txtNoDataAli = findViewById(R.id.txtNoDataAli);
+        txtNoDataInsu = findViewById(R.id.txtNoDataInsu);
+        txtNoDataBem = findViewById(R.id.txtNoDataBem);
 
         //recuperar valores da data
         recuperarUsuario();
@@ -104,6 +116,15 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
                 .child("alimentação")
                 .child(data);
 
+        referenceInsu = ref.child("inserção")
+                .child(currentId)
+                .child("insulina")
+                .child(data);
+
+        referenceBem = ref.child("inserção")
+                .child(currentId)
+                .child("bem-estar");
+
         //recuperar todos os valores.
         recuperarAll();
 
@@ -112,14 +133,18 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
         String strData = String.valueOf(year) + "\n" + String.valueOf(today) + " " + strMonth;
         txtData.setText(strData);
 
-        recyclerView = findViewById(R.id.rcv_conteudoGli);
+        recyclerView  = findViewById(R.id.rcv_conteudoGli);
         recyclerView2 = findViewById(R.id.rcv_conteudoEx);
         recyclerView3 = findViewById(R.id.rcv_conteudoAli);
+        recyclerView4 = findViewById(R.id.rcv_conteudoInsu);
+        recyclerView5 = findViewById(R.id.rcv_conteudoBem);
 
         //declarar adapter
         adapter = new GlicemiasAdapter(listaGlicemia, DiaSelecionadoActivity.this);
         adapter2 = new ExerciciosAdapter(listaExercicio, DiaSelecionadoActivity.this);
         adapter3 = new AlimentacoesAdapter(listaAlimentacao, DiaSelecionadoActivity.this);
+        adapter4 = new InsulinaAdapter(listaInsulina, DiaSelecionadoActivity.this);
+        adapter5 = new BemEstarAdapter(listaBemEstar, DiaSelecionadoActivity.this);
 
         //config recyclerGli
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DiaSelecionadoActivity.this);
@@ -139,6 +164,18 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
         recyclerView3.setHasFixedSize( true );
         recyclerView3.setAdapter(adapter3);
 
+        //config recyclerInsu
+        RecyclerView.LayoutManager layoutManager4 = new LinearLayoutManager(DiaSelecionadoActivity.this);
+        recyclerView4.setLayoutManager( layoutManager4 );
+        recyclerView4.setHasFixedSize( true );
+        recyclerView4.setAdapter(adapter4);
+
+        //config recyclerBem
+        RecyclerView.LayoutManager layoutManager5 = new LinearLayoutManager(DiaSelecionadoActivity.this);
+        recyclerView5.setLayoutManager( layoutManager5 );
+        recyclerView5.setHasFixedSize( true );
+        recyclerView5.setAdapter(adapter5);
+
     }
 
     @Override
@@ -146,11 +183,17 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
         super.onStop();
         //limpar recycler
         referenceGli.removeEventListener( valueEventListenerGli );
+        referenceEx.removeEventListener( valueEventListenerEx );
+        referenceAli.removeEventListener( valueEventListenerAli );
+        referenceInsu.removeEventListener( valueEventListenerInsu );
+        referenceBem.removeEventListener( valueEventListenerBem );
     }
 
     public void recuperarAll() {
 
         recuperarUsuario();
+
+        String data = String.valueOf(year) + String.valueOf(month) + String.valueOf(today);
 
         //add glicemia
         valueEventListenerGli = referenceGli.addValueEventListener(new ValueEventListener() {
@@ -221,6 +264,81 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
                     txtNoDataAli.setVisibility(View.VISIBLE);
 
                 adapter3.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        //add insulina
+        valueEventListenerInsu = referenceInsu.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                    Insulina insulina = dataSnapshot.getValue(Insulina.class);
+
+                    listaInsulina.add(insulina);
+
+                }
+
+                if(adapter4.getItemCount() == 0)
+                    txtNoDataInsu.setVisibility(View.VISIBLE);
+
+                adapter4.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        //add bem-estar
+        valueEventListenerBem = referenceBem.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+                    if(data.equals(dataSnapshot.getKey())) {
+                        if(dataSnapshot.hasChild("geral")) {
+
+                            DatabaseReference reference = ref.child("inserção")
+                                    .child(currentId)
+                                    .child("bem-estar")
+                                    .child(data)
+                                    .child("geral");
+
+                            reference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot1) {
+
+                                    BemEstar bemEstar = snapshot1.getValue(BemEstar.class);
+
+                                    listaBemEstar.add(bemEstar);
+
+                                    adapter5.notifyDataSetChanged();
+
+                                    if(adapter5.getItemCount() != 0)
+                                        txtNoDataBem.setVisibility(View.GONE);
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+                        }
+
+                    }
+                }
 
             }
 

@@ -75,7 +75,6 @@ public class BemEstar {
                 .child("bem-estar")
                 .child(data)
                 .child("geral")
-                .push()
                 .setValue(this);
 
     }
