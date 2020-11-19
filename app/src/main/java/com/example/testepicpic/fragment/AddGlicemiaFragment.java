@@ -332,10 +332,6 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
 
                                 glicemia.salvar(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
-                                SharedPreferences.Editor preferences1 = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
-                                preferences1.clear();
-                                preferences1.apply();
-
                                 preferences = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                                 preferences.edit().putInt("dia", pDay).apply();
                                 preferences.edit().putInt("mes", pMonth).apply();

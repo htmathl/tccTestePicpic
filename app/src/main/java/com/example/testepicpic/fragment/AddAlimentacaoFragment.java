@@ -201,31 +201,59 @@ public class AddAlimentacaoFragment extends Fragment {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot1) {
 
-                                for( DataSnapshot dataSnapshot1 : snapshot1.getChildren() ) {
+                                if( snapshot1.hasChild("café") ) {
 
-                                    switch (dataSnapshot1.getKey()) {
+                                    btnAddAliCafe.setEnabled(false);
+                                    btnAddAliCafe.setText("Adicionado");
+                                    btnAddAliCafe.setTextColor(getResources().getColor(R.color.colorPrimary));
 
-                                        case "café":
-                                            btnAddAliCafe.setEnabled(false);
-                                            btnAddAliCafe.setText("Adicionado");
-                                            btnAddAliCafe.setTextColor(getResources().getColor(R.color.colorPrimary));
-                                            break;
-                                        case "almoço":
-                                            btnAddAliAlmoco.setEnabled(false);
-                                            btnAddAliAlmoco.setText("Adicionado");
-                                            btnAddAliAlmoco.setTextColor(getResources().getColor(R.color.colorPrimary));
-                                            break;
-                                        case "janta":
-                                            btnAddAliJanta.setEnabled(false);
-                                            btnAddAliJanta.setText("Adicionado");
-                                            btnAddAliJanta.setTextColor(getResources().getColor(R.color.colorPrimary));
-                                            break;
-                                        case "lanches":
-                                            btnAddAliLanches.setEnabled(false);
-                                            btnAddAliLanches.setText("Adicionado");
-                                            btnAddAliLanches.setTextColor(getResources().getColor(R.color.colorPrimary));
-                                            break;
-                                    }
+                                } else {
+
+                                    btnAddAliCafe.setEnabled(true);
+                                    btnAddAliCafe.setText("Adicionar");
+                                    btnAddAliCafe.setTextColor(getResources().getColor(R.color.preto));
+
+                                }
+
+                                if( snapshot1.hasChild("almoço") ) {
+
+                                    btnAddAliAlmoco.setEnabled(false);
+                                    btnAddAliAlmoco.setText("Adicionado");
+                                    btnAddAliAlmoco.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                                } else {
+
+                                    btnAddAliAlmoco.setEnabled(true);
+                                    btnAddAliAlmoco.setText("Adicionar");
+                                    btnAddAliAlmoco.setTextColor(getResources().getColor(R.color.preto));
+
+                                }
+
+                                if( snapshot1.hasChild("janta") ) {
+
+                                    btnAddAliJanta.setEnabled(false);
+                                    btnAddAliJanta.setText("Adicionado");
+                                    btnAddAliJanta.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                                } else {
+
+                                    btnAddAliJanta.setEnabled(true);
+                                    btnAddAliJanta.setText("Adicionar");
+                                    btnAddAliJanta.setTextColor(getResources().getColor(R.color.preto));
+
+                                }
+
+                                if( snapshot1.hasChild("lanches") ) {
+
+                                    btnAddAliLanches.setEnabled(false);
+                                    btnAddAliLanches.setText("Adicionado");
+                                    btnAddAliLanches.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                                } else {
+
+                                    btnAddAliLanches.setEnabled(true);
+                                    btnAddAliLanches.setText("Adicionar");
+                                    btnAddAliLanches.setTextColor(getResources().getColor(R.color.preto));
 
                                 }
 
@@ -298,31 +326,59 @@ public class AddAlimentacaoFragment extends Fragment {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot1) {
 
-                                                for( DataSnapshot dataSnapshot1 : snapshot1.getChildren() ) {
+                                                if( snapshot1.hasChild("café") ) {
 
-                                                    switch (dataSnapshot1.getKey()) {
+                                                    btnAddAliCafe.setEnabled(false);
+                                                    btnAddAliCafe.setText("Adicionado");
+                                                    btnAddAliCafe.setTextColor(getResources().getColor(R.color.colorPrimary));
 
-                                                        case "café":
-                                                            btnAddAliCafe.setEnabled(false);
-                                                            btnAddAliCafe.setText("Adicionado");
-                                                            btnAddAliCafe.setTextColor(getResources().getColor(R.color.colorPrimary));
-                                                            break;
-                                                        case "almoço":
-                                                            btnAddAliAlmoco.setEnabled(false);
-                                                            btnAddAliAlmoco.setText("Adicionado");
-                                                            btnAddAliAlmoco.setTextColor(getResources().getColor(R.color.colorPrimary));
-                                                            break;
-                                                        case "janta":
-                                                            btnAddAliJanta.setEnabled(false);
-                                                            btnAddAliJanta.setText("Adicionado");
-                                                            btnAddAliJanta.setTextColor(getResources().getColor(R.color.colorPrimary));
-                                                            break;
-                                                        case "lanches":
-                                                            btnAddAliLanches.setEnabled(false);
-                                                            btnAddAliLanches.setText("Adicionado");
-                                                            btnAddAliLanches.setTextColor(getResources().getColor(R.color.colorPrimary));
-                                                            break;
-                                                    }
+                                                } else {
+
+                                                    btnAddAliCafe.setEnabled(true);
+                                                    btnAddAliCafe.setText("Adicionar");
+                                                    btnAddAliCafe.setTextColor(getResources().getColor(R.color.preto));
+
+                                                }
+
+                                                if( snapshot1.hasChild("almoço") ) {
+
+                                                    btnAddAliAlmoco.setEnabled(false);
+                                                    btnAddAliAlmoco.setText("Adicionado");
+                                                    btnAddAliAlmoco.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                                                } else {
+
+                                                    btnAddAliAlmoco.setEnabled(true);
+                                                    btnAddAliAlmoco.setText("Adicionar");
+                                                    btnAddAliAlmoco.setTextColor(getResources().getColor(R.color.preto));
+
+                                                }
+
+                                                if( snapshot1.hasChild("janta") ) {
+
+                                                    btnAddAliJanta.setEnabled(false);
+                                                    btnAddAliJanta.setText("Adicionado");
+                                                    btnAddAliJanta.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                                                } else {
+
+                                                    btnAddAliJanta.setEnabled(true);
+                                                    btnAddAliJanta.setText("Adicionar");
+                                                    btnAddAliJanta.setTextColor(getResources().getColor(R.color.preto));
+
+                                                }
+
+                                                if( snapshot1.hasChild("lanches") ) {
+
+                                                    btnAddAliLanches.setEnabled(false);
+                                                    btnAddAliLanches.setText("Adicionado");
+                                                    btnAddAliLanches.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                                                } else {
+
+                                                    btnAddAliLanches.setEnabled(true);
+                                                    btnAddAliLanches.setText("Adicionar");
+                                                    btnAddAliLanches.setTextColor(getResources().getColor(R.color.preto));
 
                                                 }
 
@@ -333,10 +389,6 @@ public class AddAlimentacaoFragment extends Fragment {
 
                                             }
                                         });
-
-
-
-
                                     } else {
 
                                         btnAddAliCafe.setEnabled(true);
@@ -482,10 +534,6 @@ public class AddAlimentacaoFragment extends Fragment {
 
                                         alimentacao.salvarCafe(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
-                                        btnAddAliCafe.setEnabled(false);
-                                        btnAddAliCafe.setText("Adicionado");
-                                        btnAddAliCafe.setTextColor(getResources().getColor(R.color.colorPrimary));
-
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
                                         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
@@ -549,10 +597,6 @@ public class AddAlimentacaoFragment extends Fragment {
 
                                         alimentacao.salvarAlmoco(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
-                                        btnAddAliAlmoco.setEnabled(false);
-                                        btnAddAliAlmoco.setText("Adicionado");
-                                        btnAddAliAlmoco.setTextColor(getResources().getColor(R.color.colorPrimary));
-
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
                                         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
@@ -615,10 +659,6 @@ public class AddAlimentacaoFragment extends Fragment {
 
                                         alimentacao.salvarJanta(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
-                                        btnAddAliJanta.setEnabled(false);
-                                        btnAddAliJanta.setText("Adicionado");
-                                        btnAddAliJanta.setTextColor(getResources().getColor(R.color.colorPrimary));
-
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
                                         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.from_top);
@@ -680,10 +720,6 @@ public class AddAlimentacaoFragment extends Fragment {
                                         alimentacao.setAno(pYear);
 
                                         alimentacao.salvarLanches(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
-
-                                        btnAddAliLanches.setEnabled(false);
-                                        btnAddAliLanches.setText("Adicionado");
-                                        btnAddAliLanches.setTextColor(getResources().getColor(R.color.colorPrimary));
 
                                         Toast.makeText(getActivity(), "Já salvamos :)", Toast.LENGTH_SHORT).show();
 
