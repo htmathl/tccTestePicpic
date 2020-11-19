@@ -73,6 +73,9 @@ public class OverviewFragment extends Fragment {
 
     private String data;
 
+    private List<Double> listInsuValor = new ArrayList<>();
+    private List<Double> listInsuDia = new ArrayList<>();
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -164,146 +167,149 @@ public class OverviewFragment extends Fragment {
 
         try {
 
-            final DatabaseReference reference3 = ref.child("data_antiga").child("dia");
+            final DatabaseReference reference = ref.child("inserção")
+                    .child(currentId)
+                    .child("bem-estar");
 
-            reference3.addListenerForSingleValueEvent(new ValueEventListener() {
+            reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    if(!snapshot.getValue().toString().equals(String.valueOf(pDay))) {
+                    for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
 
-                        ref.child("inserção")
-                                .child(currentId)
-                                .child("bem-estar")
-                                .child(data)
-                                .child("Água")
-                                .setValue(0);
-                    } else {
+                        if(data.equals(dataSnapshot.getKey())) {
 
-                        final DatabaseReference reference = ref.child("inserção")
-                                .child(currentId)
-                                .child("bem-estar")
-                                .child(data)
-                                .child("Água");
+                            if( dataSnapshot.hasChild("Água") ) {
 
-                        reference.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                DatabaseReference reference1 = ref.child("inserção")
+                                        .child(currentId)
+                                        .child("bem-estar")
+                                        .child(data)
+                                        .child("Água");
 
-                                String agua = snapshot.getValue().toString();
+                                reference1.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
 
-                                switch (agua) {
+                                        String agua = snapshot1.getValue().toString();
 
-                                    case "0":
-                                        for(CheckBox copo : listaCopos)
-                                            copo.setChecked(false);
-                                        txtQntd.setText(0 + " ml");
-                                        tbOutrosCopos.setVisibility(View.GONE);
-                                        break;
-                                    case "1":
-                                        copo1.setChecked(true);
-                                        copo2.setChecked(true);
-                                        txtQntd.setText(250 + " ml");
-                                        tbOutrosCopos.setVisibility(View.GONE);
-                                        break;
-                                    case "2":
-                                        for(int i = 0; i < 2; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(500 + " ml");
-                                        tbOutrosCopos.setVisibility(View.GONE);
-                                        break;
-                                    case "3":
-                                        for(int i = 0; i < 3; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(750 + " ml");
-                                        tbOutrosCopos.setVisibility(View.GONE);
-                                        break;
-                                    case "4":
-                                        for(int i = 0; i < 4; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(1000 + " ml");
-                                        tbOutrosCopos.setVisibility(View.GONE);
-                                        break;
-                                    case "5":
-                                        for(int i = 0; i < 5; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(1250 + " ml");
-                                        tbOutrosCopos.setVisibility(View.GONE);
-                                        break;
-                                    case "6":
-                                        for(int i = 0; i < 6; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(1500 + " ml");
-                                        tbOutrosCopos.setVisibility(View.GONE);
-                                        break;
-                                    case "7":
-                                        for(int i = 0; i < 7; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(1750 + " ml");
-                                        tbOutrosCopos.setVisibility(View.GONE);
-                                        break;
-                                    case "8":
-                                        for(int i = 0; i < 8; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(2000 + " ml");
-                                        tbOutrosCopos.setVisibility(View.VISIBLE);
-                                        break;
-                                    case "9":
-                                        for(int i = 0; i < 9; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(2250 + " ml");
-                                        tbOutrosCopos.setVisibility(View.VISIBLE);
-                                        break;
-                                    case "10":
-                                        for(int i = 0; i < 10; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(2500 + " ml");
-                                        tbOutrosCopos.setVisibility(View.VISIBLE);
-                                        break;
-                                    case "11":
-                                        for(int i = 0; i < 11; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(2750 + " ml");
-                                        tbOutrosCopos.setVisibility(View.VISIBLE);
-                                        break;
-                                    case "12":
-                                        for(int i = 0; i < 12; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(3000 + " ml");
-                                        tbOutrosCopos.setVisibility(View.VISIBLE);
-                                        break;
-                                    case "13":
-                                        for(int i = 0; i < 13; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(3250 + " ml");
-                                        tbOutrosCopos.setVisibility(View.VISIBLE);
-                                        break;
-                                    case "14":
-                                        for(int i = 0; i < 14; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(3500 + " ml");
-                                        tbOutrosCopos.setVisibility(View.VISIBLE);
-                                        break;
-                                    case "15":
-                                        for(int i = 0; i < 15; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(3750 + " ml");
-                                        tbOutrosCopos.setVisibility(View.VISIBLE);
-                                        break;
-                                    case "16":
-                                        for(int i = 0; i < 16; i++)
-                                            listaCopos[i].setChecked(true);
-                                        txtQntd.setText(4000 + " ml");
-                                        tbOutrosCopos.setVisibility(View.VISIBLE);
-                                        break;
-                                }
+                                        switch (agua) {
+
+                                            case "0":
+                                                for(CheckBox copo : listaCopos)
+                                                    copo.setChecked(false);
+                                                txtQntd.setText(0 + " ml");
+                                                tbOutrosCopos.setVisibility(View.GONE);
+                                                break;
+                                            case "1":
+                                                copo1.setChecked(true);
+                                                copo2.setChecked(true);
+                                                txtQntd.setText(250 + " ml");
+                                                tbOutrosCopos.setVisibility(View.GONE);
+                                                break;
+                                            case "2":
+                                                for(int i = 0; i < 2; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(500 + " ml");
+                                                tbOutrosCopos.setVisibility(View.GONE);
+                                                break;
+                                            case "3":
+                                                for(int i = 0; i < 3; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(750 + " ml");
+                                                tbOutrosCopos.setVisibility(View.GONE);
+                                                break;
+                                            case "4":
+                                                for(int i = 0; i < 4; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(1000 + " ml");
+                                                tbOutrosCopos.setVisibility(View.GONE);
+                                                break;
+                                            case "5":
+                                                for(int i = 0; i < 5; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(1250 + " ml");
+                                                tbOutrosCopos.setVisibility(View.GONE);
+                                                break;
+                                            case "6":
+                                                for(int i = 0; i < 6; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(1500 + " ml");
+                                                tbOutrosCopos.setVisibility(View.GONE);
+                                                break;
+                                            case "7":
+                                                for(int i = 0; i < 7; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(1750 + " ml");
+                                                tbOutrosCopos.setVisibility(View.GONE);
+                                                break;
+                                            case "8":
+                                                for(int i = 0; i < 8; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(2000 + " ml");
+                                                tbOutrosCopos.setVisibility(View.VISIBLE);
+                                                break;
+                                            case "9":
+                                                for(int i = 0; i < 9; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(2250 + " ml");
+                                                tbOutrosCopos.setVisibility(View.VISIBLE);
+                                                break;
+                                            case "10":
+                                                for(int i = 0; i < 10; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(2500 + " ml");
+                                                tbOutrosCopos.setVisibility(View.VISIBLE);
+                                                break;
+                                            case "11":
+                                                for(int i = 0; i < 11; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(2750 + " ml");
+                                                tbOutrosCopos.setVisibility(View.VISIBLE);
+                                                break;
+                                            case "12":
+                                                for(int i = 0; i < 12; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(3000 + " ml");
+                                                tbOutrosCopos.setVisibility(View.VISIBLE);
+                                                break;
+                                            case "13":
+                                                for(int i = 0; i < 13; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(3250 + " ml");
+                                                tbOutrosCopos.setVisibility(View.VISIBLE);
+                                                break;
+                                            case "14":
+                                                for(int i = 0; i < 14; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(3500 + " ml");
+                                                tbOutrosCopos.setVisibility(View.VISIBLE);
+                                                break;
+                                            case "15":
+                                                for(int i = 0; i < 15; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(3750 + " ml");
+                                                tbOutrosCopos.setVisibility(View.VISIBLE);
+                                                break;
+                                            case "16":
+                                                for(int i = 0; i < 16; i++)
+                                                    listaCopos[i].setChecked(true);
+                                                txtQntd.setText(4000 + " ml");
+                                                tbOutrosCopos.setVisibility(View.VISIBLE);
+                                                break;
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
 
                             }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }});
+                        }
 
                     }
 
@@ -312,8 +318,8 @@ public class OverviewFragment extends Fragment {
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            });
+                }});
+
 
         } catch (Exception e) {
 
@@ -1092,34 +1098,51 @@ public class OverviewFragment extends Fragment {
 
         DatabaseReference reference = ref.child("inserção")
                 .child(currentId)
-                .child("glicemia")
-                .child(data);
+                .child("glicemia");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot1) {
 
                 List<Entry> entries = new ArrayList<>();
 
-                int i = 1;
+                for( DataSnapshot dataSnapshot1 : snapshot1.getChildren() ) {
 
-                for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+                    DatabaseReference reference1 = ref.child("inserção")
+                            .child(currentId)
+                            .child("glicemia")
+                            .child(dataSnapshot1.getKey());
 
-                    Glicemia glicemia = dataSnapshot.getValue(Glicemia.class);
+                    reference1.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    entries.add(new Entry(i, (float) glicemia.getNivel()));
+                            for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
 
-                    LineDataSet lineDataSet = new LineDataSet(entries, "Nível");
-                    lineDataSet.setColor(getResources().getColor(R.color.colorPrimary));
-                    lineDataSet.setValueTextColor(getResources().getColor(R.color.colorPrimary));
-                    lineDataSet.setLineWidth(2f);
-                    lineDataSet.setValueTextSize(14f);
+                                Glicemia glicemia = dataSnapshot.getValue(Glicemia.class);
 
-                    LineData lineData = new LineData(lineDataSet);
-                    chartGli.setData(lineData);
-                    chartGli.invalidate();
+                                entries.add(new Entry(glicemia.getDia(), (float) glicemia.getNivel()));
 
-                    i++;
+                                LineDataSet lineDataSet = new LineDataSet(entries, "Nível");
+                                lineDataSet.setColor(getResources().getColor(R.color.colorPrimary));
+                                lineDataSet.setValueTextColor(getResources().getColor(R.color.colorPrimary));
+                                lineDataSet.setLineWidth(2f);
+                                lineDataSet.setValueTextSize(14f);
+
+                                LineData lineData = new LineData(lineDataSet);
+                                chartGli.setData(lineData);
+                                chartGli.invalidate();
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
                 }
 
             }
