@@ -109,18 +109,19 @@ public class RelatorioFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Paint pinta = new Paint();
+                        Paint titulo = new Paint();
 
                         pdfTeste = new PdfDocument();
                         info  = new PdfDocument.PageInfo.Builder(1200, 2010, 1).create();
                         pagina1 = pdfTeste.startPage(info);
                         Canvas canvinhas = pagina1.getCanvas();
-
                         canvinhas.drawBitmap(escala,0,0,pinta);
-                        //Canvas canvas = pagina1.getCanvas();
 
-                        //canvas.drawBitmap(escala, 0, 0, pinta);
+                        titulo.setTextSize(70);
+                        titulo.setTextAlign(Paint.Align.CENTER);
 
-                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+                        canvinhas.drawText("Relatório", 600, 550, titulo);
+
 
                         pdfTeste.finishPage(pagina1);
 

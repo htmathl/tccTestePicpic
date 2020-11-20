@@ -3,7 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ConfigNotificacaoFragment">
+    tools:context=".fragment.ConfigNotificacaoFragment"
+    android:background="@drawable/bg_configs"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

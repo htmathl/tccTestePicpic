@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ConfigBackupFragment">
+    tools:context=".fragment.ConfigBackupFragment"
+    android:background="@drawable/bg_configs"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp">
 
     <ScrollView
         android:layout_width="match_parent"
