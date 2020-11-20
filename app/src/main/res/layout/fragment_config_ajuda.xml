@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ConfigBackupFragment"
+    tools:context=".fragment.ConfigAjudaFragment"
     android:background="@drawable/bg_configs"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="8dp"
+    android:padding="16dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,11 +19,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            >
 
             <ImageView
                 android:id="@+id/imageView10"
-                android:layout_width="50dp"
+                android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="20dp"
                 android:rotation="180"
@@ -36,10 +38,10 @@
                 android:layout_marginTop="10dp"
                 android:text="O que é diabetes?"
                 android:textColor="@color/ic_launcher_logo_branca_background"
-                android:textSize="22dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editTextTextMultiLine12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,21 +50,22 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:text="Diabetes é uma doença crônica (ou seja, possui longa duração) que tem como origem a falta ou insuficiência de insulina, hormônio produzido pelo pâncreas que tem como função quebrar moléculas de glicose para a produção de energia."
-                android:textSize="22sp"
+                android:textColor="#000"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
-                android:layout_height="68dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="20dp"
                 android:text="Como acontece esse mal funcionamento do pâncreas?"
                 android:textColor="@color/ic_launcher_logo_branca_background"
-                android:textSize="22dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editTextTextMultiLine4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,7 +74,8 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:text="Existem diversos fatores relacionados ao estilo de vida (alimentação, sedentarismo, obesidade, idade etc.) e até mesmo predisposição genética.  "
-                android:textSize="22sp"
+                android:textColor="#000"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -82,7 +86,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Tipos:"
                 android:textColor="@color/ic_launcher_logo_branca_background"
-                android:textSize="22dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -93,10 +97,10 @@
                 android:layout_marginTop="10dp"
                 android:text="Tipo 1"
                 android:textColor="@color/ic_launcher_logo_branca_background"
-                android:textSize="22dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editTextTextMultiLine6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -105,7 +109,8 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:text="Pouca ou nenhuma insulina é produzida e por isso, a glicose permanece no sangue sem ser transformada em energia. Aparecendo normalmente na infância, os pacientes são insulino dependente, ou seja, o tratamento é feito necessariamente como reposição do hormônio. "
-                android:textSize="22sp"
+                android:textColor="#000"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -116,10 +121,10 @@
                 android:layout_marginTop="10dp"
                 android:text="Tipo 2"
                 android:textColor="@color/ic_launcher_logo_branca_background"
-                android:textSize="22dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editTextTextMultiLine7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -128,7 +133,8 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:text="Diretamente ligado a maus hábitos, o corpo não consegue utilizar corretamente a insulina ou até mesmo, não produz o suficiente. Neste caso, o uso do hormonio varia de acordo com o metabolismo e adoença pode ser combatida com uma nova rotina. "
-                android:textSize="22sp"
+                android:textColor="#000"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -139,10 +145,10 @@
                 android:layout_marginTop="10dp"
                 android:text="Gestacional"
                 android:textColor="@color/ic_launcher_logo_branca_background"
-                android:textSize="22dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editTextTextMultiLine8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -151,7 +157,8 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:text="Caracteriza-se pela insuficiencias de insulina durante a gravidez, assim como no tipo 2 é imprescidevel uma mudança de hábitos e o uso de insulina varia de acordo com o paciente. "
-                android:textSize="22sp"
+                android:textColor="#000"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -162,10 +169,10 @@
                 android:layout_marginTop="10dp"
                 android:text="Pré-diabéticos"
                 android:textColor="@color/ic_launcher_logo_branca_background"
-                android:textSize="22dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editTextTextMultiLine9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -174,7 +181,8 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:text="Possuem os niveis de glicose (quantidade de açucar no sangue) etsão altos mas podem ser facilmente revertidos com uma reedução alimentar."
-                android:textSize="22sp"
+                android:textColor="#000"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -185,10 +193,10 @@
                 android:layout_marginTop="20dp"
                 android:text="Tratamento e cura:"
                 android:textColor="@color/ic_launcher_logo_branca_background"
-                android:textSize="22dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editTextTextMultiLine10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -197,20 +205,22 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:text="Diabetes não tem cura, mas, pode ser estabilizada levando em conta quatro pilares: reeducação alimentar, atividades físicas, medicações e conhecimento (sobre a doença e sobre os próprios dados). "
-                android:textSize="22sp"
+                android:textColor="#000"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editTextTextMultiLine11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="10dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:text="A vida de diabético consiste em medir o nível da glicose diariamente, anotando qual o tipo de insulina utilizado, horário, dose, índice glicêmico. Tais registros auxiliam o médico a notar variações, possível alterações na frequência do medicamento etc. Além disso, é necessária uma reeducação alimentar, priorizando alimentos naturais e evitando doces e gorduras, de forma conjunta, os exercícios físicos regulares não só auxiliam no controle das taxas glicêmicas como também favorecem a saúde no geral. "
-                android:textSize="22sp"
+                android:textColor="#000"
+                android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
