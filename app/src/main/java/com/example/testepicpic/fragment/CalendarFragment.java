@@ -60,8 +60,6 @@ public class CalendarFragment extends Fragment {
     private DatabaseReference ref;
     private String currentId;
 
-    private int ano, mes, dia, hora;
-
     public static final String PREFS_NAME = "shareData";
 
     private String miau = "";
@@ -120,23 +118,6 @@ public class CalendarFragment extends Fragment {
 
         ref = ConfigFirebase.getFirebase();
 
-        DatabaseReference reference = ref.child("users")
-                .child(currentId)
-                .child("inserção")
-                .child("exercicio");
-
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.e("miauuu", snapshot.getKey().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
         return view;
     }
 
@@ -167,303 +148,309 @@ public class CalendarFragment extends Fragment {
         calendarView.setMinimumDate(min);
         calendarView.setMaximumDate(max);
 
-        //add glicemia
-        DatabaseReference referenceGli = ref.child("inserção")
-                .child(currentId)
-                .child("glicemia");
+        try {
 
-        referenceGli.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            //add glicemia
+            DatabaseReference referenceGli = ref.child("inserção")
+                    .child(currentId)
+                    .child("glicemia");
 
-                for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+            referenceGli.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    DatabaseReference reference1 = ref.child("inserção")
-                            .child(currentId)
-                            .child("glicemia")
-                            .child(dataSnapshot.getKey());
+                    int[] dias  =  new int[(int) snapshot.getChildrenCount()];
+                    int[] meses =  new int[(int) snapshot.getChildrenCount()];
+                    int[] anos  =  new int[(int) snapshot.getChildrenCount()];
 
-                    reference1.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
 
-                            int[] dias  =  new int[(int) snapshot.getChildrenCount()];
-                            int[] meses =  new int[(int) snapshot.getChildrenCount()];
-                            int[] anos  =  new int[(int) snapshot.getChildrenCount()];
+                        DatabaseReference reference1 = ref.child("inserção")
+                                .child(currentId)
+                                .child("glicemia")
+                                .child(dataSnapshot.getKey());
 
-                            calendar = Calendar.getInstance();
+                        reference1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                            for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
+                                calendar = Calendar.getInstance();
 
-                                Glicemia glicemia = dataSnapshot1.getValue(Glicemia.class);
+                                for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
+
+                                    Glicemia glicemia = dataSnapshot1.getValue(Glicemia.class);
+
+                                    for (int i = 0; i < snapshot.getChildrenCount(); i++) {
+                                        dias[i] = glicemia.getDia();
+                                        meses[i] = (glicemia.getMes() - 1);
+                                        anos[i] = glicemia.getAno();
+                                        calendar.set(anos[i],meses[i],dias[i]);
+                                    }
+
+                                    eventDays.add(new EventDay(calendar, R.drawable.ic_glucose_meter));
+                                    calendarView.setEvents(eventDays);
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            //add insulina
+            DatabaseReference referenceInsu = ref.child("inserção")
+                    .child(currentId)
+                    .child("insulina");
+
+            referenceInsu.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    int[] dias  =  new int[(int) snapshot.getChildrenCount()];
+                    int[] meses =  new int[(int) snapshot.getChildrenCount()];
+                    int[] anos  =  new int[(int) snapshot.getChildrenCount()];
+
+                    for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                        DatabaseReference reference1 = ref.child("inserção")
+                                .child(currentId)
+                                .child("insulina")
+                                .child(dataSnapshot.getKey());
+
+                        reference1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                calendar = Calendar.getInstance();
+
+                                for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
+
+                                    Insulina insulina = dataSnapshot1.getValue(Insulina.class);
+
+                                    for (int i = 0; i < snapshot.getChildrenCount(); i++) {
+                                        dias[i] = insulina.getDia();
+                                        meses[i] = (insulina.getMes() - 1);
+                                        anos[i] = insulina.getAno();
+                                        calendar.set(anos[i],meses[i],dias[i]);
+                                    }
+
+                                    eventDays.add(new EventDay(calendar, R.drawable.ic_insulin));
+                                    calendarView.setEvents(eventDays);
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            //add exercicio
+            DatabaseReference referenceEx = ref.child("inserção")
+                    .child(currentId)
+                    .child("exercicio");
+
+            referenceEx.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    int[] dias  =  new int[(int) snapshot.getChildrenCount()];
+                    int[] meses =  new int[(int) snapshot.getChildrenCount()];
+                    int[] anos  =  new int[(int) snapshot.getChildrenCount()];
+
+                    for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                        DatabaseReference reference1 = ref.child("inserção")
+                                .child(currentId)
+                                .child("exercicio")
+                                .child(dataSnapshot.getKey());
+
+                        reference1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                calendar = Calendar.getInstance();
+
+                                for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
+
+                                    Exercicio exercicio = dataSnapshot1.getValue(Exercicio.class);
+
+                                    for (int i = 0; i < snapshot.getChildrenCount(); i++) {
+                                        dias[i] = exercicio.getDia();
+                                        meses[i] = (exercicio.getMes() - 1);
+                                        anos[i] = exercicio.getAno();
+                                        calendar.set(anos[i],meses[i],dias[i]);
+                                    }
+
+                                    eventDays.add(new EventDay(calendar, R.drawable.academia));
+                                    calendarView.setEvents(eventDays);
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            //add alimentacao
+            DatabaseReference referenceAli = ref.child("inserção")
+                    .child(currentId)
+                    .child("alimentação");
+
+            referenceAli.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    int[] dias  =  new int[(int) snapshot.getChildrenCount()];
+                    int[] meses =  new int[(int) snapshot.getChildrenCount()];
+                    int[] anos  =  new int[(int) snapshot.getChildrenCount()];
+
+                    for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                        DatabaseReference reference1 = ref.child("inserção")
+                                .child(currentId)
+                                .child("alimentação")
+                                .child(dataSnapshot.getKey());
+
+                        reference1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                calendar = Calendar.getInstance();
+
+                                for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
+
+                                    Alimentacao alimentacao = dataSnapshot1.getValue(Alimentacao.class);
+
+                                    for (int i = 0; i < snapshot.getChildrenCount(); i++) {
+                                        dias[i] = alimentacao.getDia();
+                                        meses[i] = (alimentacao.getMes() - 1);
+                                        anos[i] = alimentacao.getAno();
+                                        calendar.set(anos[i],meses[i],dias[i]);
+                                    }
+
+                                    eventDays.add(new EventDay(calendar, R.drawable.ic_restaurant));
+                                    calendarView.setEvents(eventDays);
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            //add bem-estar
+            DatabaseReference referenceBem = ref.child("inserção")
+                    .child(currentId)
+                    .child("bem-estar");
+
+            referenceBem.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    int[] dias  =  new int[(int) snapshot.getChildrenCount()];
+                    int[] meses =  new int[(int) snapshot.getChildrenCount()];
+                    int[] anos  =  new int[(int) snapshot.getChildrenCount()];
+
+                    for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                        DatabaseReference reference1 = ref.child("inserção")
+                                .child(currentId)
+                                .child("bem-estar")
+                                .child(dataSnapshot.getKey())
+                                .child("geral");
+
+                        reference1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                calendar = Calendar.getInstance();
+
+                                BemEstar bemEstar = snapshot.getValue(BemEstar.class);
 
                                 for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-                                    dias[i] = glicemia.getDia();
-                                    meses[i] = (glicemia.getMes() - 1);
-                                    anos[i] = glicemia.getAno();
+                                    dias[i] = bemEstar.getDia();
+                                    meses[i] = (bemEstar.getMes() - 1);
+                                    anos[i] = bemEstar.getAno();
                                     calendar.set(anos[i],meses[i],dias[i]);
                                 }
 
-                                eventDays.add(new EventDay(calendar, R.drawable.ic_glucose_meter));
+                                eventDays.add(new EventDay(calendar, R.drawable.ic_emoticons));
+
                                 calendarView.setEvents(eventDays);
 
                             }
 
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        //add insulina
-        DatabaseReference referenceInsu = ref.child("inserção")
-                .child(currentId)
-                .child("insulina");
-
-        referenceInsu.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
-
-                    DatabaseReference reference1 = ref.child("inserção")
-                            .child(currentId)
-                            .child("insulina")
-                            .child(dataSnapshot.getKey());
-
-                    reference1.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                            int[] dias  =  new int[(int) snapshot.getChildrenCount()];
-                            int[] meses =  new int[(int) snapshot.getChildrenCount()];
-                            int[] anos  =  new int[(int) snapshot.getChildrenCount()];
-
-                            calendar = Calendar.getInstance();
-
-                            for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
-
-                                Insulina insulina = dataSnapshot1.getValue(Insulina.class);
-
-                                for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-                                    dias[i] = insulina.getDia();
-                                    meses[i] = (insulina.getMes() - 1);
-                                    anos[i] = insulina.getAno();
-                                    calendar.set(anos[i],meses[i],dias[i]);
-                                }
-
-                                eventDays.add(new EventDay(calendar, R.drawable.ic_insulin));
-                                calendarView.setEvents(eventDays);
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
                             }
+                        });
 
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                    }
 
                 }
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        //add exercicio
-        DatabaseReference referenceEx = ref.child("inserção")
-                .child(currentId)
-                .child("exercicio");
-
-        referenceEx.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
-
-                    DatabaseReference reference1 = ref.child("inserção")
-                            .child(currentId)
-                            .child("exercicio")
-                            .child(dataSnapshot.getKey());
-
-                    reference1.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                            int[] dias  =  new int[(int) snapshot.getChildrenCount()];
-                            int[] meses =  new int[(int) snapshot.getChildrenCount()];
-                            int[] anos  =  new int[(int) snapshot.getChildrenCount()];
-
-                            calendar = Calendar.getInstance();
-
-                            for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
-
-                                Exercicio exercicio = dataSnapshot1.getValue(Exercicio.class);
-
-                                for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-                                    dias[i] = exercicio.getDia();
-                                    meses[i] = (exercicio.getMes() - 1);
-                                    anos[i] = exercicio.getAno();
-                                    calendar.set(anos[i],meses[i],dias[i]);
-                                }
-
-                                eventDays.add(new EventDay(calendar, R.drawable.academia));
-                                calendarView.setEvents(eventDays);
-
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
                 }
+            });
 
-            }
+        } catch (Exception e) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        //add alimentacao
-        DatabaseReference referenceAli = ref.child("inserção")
-                .child(currentId)
-                .child("alimentação");
-
-        referenceAli.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
-
-                    DatabaseReference reference1 = ref.child("inserção")
-                            .child(currentId)
-                            .child("alimentação")
-                            .child(dataSnapshot.getKey());
-
-                    reference1.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                            int[] dias  =  new int[(int) snapshot.getChildrenCount()];
-                            int[] meses =  new int[(int) snapshot.getChildrenCount()];
-                            int[] anos  =  new int[(int) snapshot.getChildrenCount()];
-
-                            calendar = Calendar.getInstance();
-
-                            for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
-
-                                Alimentacao alimentacao = dataSnapshot1.getValue(Alimentacao.class);
-
-                                for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-                                    dias[i] = alimentacao.getDia();
-                                    meses[i] = (alimentacao.getMes() - 1);
-                                    anos[i] = alimentacao.getAno();
-                                    calendar.set(anos[i],meses[i],dias[i]);
-                                }
-
-                                eventDays.add(new EventDay(calendar, R.drawable.ic_restaurant));
-                                calendarView.setEvents(eventDays);
-
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        //add bem-estar
-        DatabaseReference referenceBem = ref.child("inserção")
-                .child(currentId)
-                .child("bem-estar");
-
-        referenceBem.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
-
-                    DatabaseReference reference1 = ref.child("inserção")
-                            .child(currentId)
-                            .child("bem-estar")
-                            .child(dataSnapshot.getKey())
-                            .child("geral");
-
-                    reference1.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                            int[] dias  =  new int[(int) snapshot.getChildrenCount()];
-                            int[] meses =  new int[(int) snapshot.getChildrenCount()];
-                            int[] anos  =  new int[(int) snapshot.getChildrenCount()];
-
-                            calendar = Calendar.getInstance();
-
-                            BemEstar bemEstar = snapshot.getValue(BemEstar.class);
-
-                            for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-                                dias[i] = bemEstar.getDia();
-                                meses[i] = (bemEstar.getMes() - 1);
-                                anos[i] = bemEstar.getAno();
-                                calendar.set(anos[i],meses[i],dias[i]);
-                            }
-
-                            eventDays.add(new EventDay(calendar, R.drawable.ic_emoticons));
-
-                            calendarView.setEvents(eventDays);
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        }
 
         calendarView.setOnDayClickListener(new OnDayClickListener() {
             @Override
@@ -476,7 +463,6 @@ public class CalendarFragment extends Fragment {
                 int year  = date.get(Calendar.YEAR);
 
                 SharedPreferences.Editor preferences = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
-                preferences.clear();
                 preferences.putInt("today", today);
                 preferences.putInt("month", month);
                 preferences.putInt("year", year);

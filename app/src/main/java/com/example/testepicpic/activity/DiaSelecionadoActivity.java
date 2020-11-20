@@ -1,16 +1,19 @@
 package com.example.testepicpic.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +25,7 @@ import com.example.testepicpic.adapter.GlicemiasAdapter;
 import com.example.testepicpic.adapter.InsulinaAdapter;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.helper.Base64Custom;
+import com.example.testepicpic.helper.RecyclerItemClickListener;
 import com.example.testepicpic.model.Alimentacao;
 import com.example.testepicpic.model.BemEstar;
 import com.example.testepicpic.model.Exercicio;
@@ -63,7 +67,7 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
     private ArrayList<Insulina> listaInsulina = new ArrayList<>();
     private ArrayList<BemEstar> listaBemEstar = new ArrayList<>();
 
-    private int today, month, year;
+    private int today, month, year, i1 = 0, i2 = 0, i3 = 0, i4 = 0, i5 = 0;
 
     private GlicemiasAdapter adapter;
     private ExerciciosAdapter adapter2;
@@ -75,6 +79,8 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
             valueEventListenerInsu, valueEventListenerBem;
 
     private TextView txtNoDataGli, txtNoDataEx, txtNoDataAli, txtNoDataInsu, txtNoDataBem;
+
+    private String data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,31 +105,37 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
         localGli.clear(); horaGli.clear();
 
         //definir referencias
-        String data = String.valueOf(year) + String.valueOf(month) + String.valueOf(today);
+        data = String.valueOf(year) + String.valueOf(month) + String.valueOf(today);
 
-        referenceGli = ref.child("inserção")
-                .child(currentId)
-                .child("glicemia")
-                .child(data);
+        try {
 
-        referenceEx = ref.child("inserção")
-                .child(currentId)
-                .child("exercicio")
-                .child(data);
+            referenceGli = ref.child("inserção")
+                    .child(currentId)
+                    .child("glicemia")
+                    .child(data);
 
-        referenceAli = ref.child("inserção")
-                .child(currentId)
-                .child("alimentação")
-                .child(data);
+            referenceEx = ref.child("inserção")
+                    .child(currentId)
+                    .child("exercicio")
+                    .child(data);
 
-        referenceInsu = ref.child("inserção")
-                .child(currentId)
-                .child("insulina")
-                .child(data);
+            referenceAli = ref.child("inserção")
+                    .child(currentId)
+                    .child("alimentação")
+                    .child(data);
 
-        referenceBem = ref.child("inserção")
-                .child(currentId)
-                .child("bem-estar");
+            referenceInsu = ref.child("inserção")
+                    .child(currentId)
+                    .child("insulina")
+                    .child(data);
+
+            referenceBem = ref.child("inserção")
+                    .child(currentId)
+                    .child("bem-estar");
+
+        } catch (Exception e) {
+
+        }
 
         //recuperar todos os valores.
         recuperarAll();
@@ -195,158 +207,442 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
 
         String data = String.valueOf(year) + String.valueOf(month) + String.valueOf(today);
 
-        //add glicemia
-        valueEventListenerGli = referenceGli.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+        try {
 
-                for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+            //add glicemia
+            valueEventListenerGli = referenceGli.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    Glicemia glicemia = dataSnapshot.getValue(Glicemia.class);
+                    for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
 
-                    listaGlicemia.add(glicemia);
+                        Glicemia glicemia = dataSnapshot.getValue(Glicemia.class);
 
-                }
+                        listaGlicemia.add(glicemia);
 
-                if(adapter.getItemCount() == 0)
-                    txtNoDataGli.setVisibility(View.VISIBLE);
+                        //editar e remover itens
+                        recyclerView.addOnItemTouchListener(
+                                new RecyclerItemClickListener(
+                                        DiaSelecionadoActivity.this,
+                                        recyclerView,
+                                        new RecyclerItemClickListener.OnItemClickListener() {
+                                            @Override
+                                            public void onItemClick(View view, int position) {
 
-                adapter.notifyDataSetChanged();
+                                            }
 
-            }
+                                            @Override
+                                            public void onLongItemClick(View view, int position) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(DiaSelecionadoActivity.this);
 
-            }
-        });
+                                                builder.setTitle("Deseja excluir este item?");
 
-        //add exercicio
-        valueEventListenerEx = referenceEx.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+                                                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
 
-                    Exercicio exercicio = dataSnapshot.getValue(Exercicio.class);
+                                                        if( position == i1 )
+                                                            dataSnapshot.getRef().removeValue();
 
-                    listaExercicio.add(exercicio);
+                                                        i1++;
 
-                }
+                                                        listaGlicemia.remove(position);
+                                                        recyclerView.removeViewAt(position);
+                                                        adapter.notifyItemRemoved(position);
+                                                        adapter.notifyItemRangeChanged(position, listaGlicemia.size());
 
-                if(adapter2.getItemCount() == 0)
-                    txtNoDataEx.setVisibility(View.VISIBLE);
+                                                    }
+                                                });
 
-                adapter2.notifyDataSetChanged();
+                                                builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
 
-            }
+                                                    }
+                                                });
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                                                builder.create();
+                                                builder.show();
 
-            }
-        });
+                                            }
 
-        //add alimento
-        valueEventListenerAli = referenceAli.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            @Override
+                                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
-
-                    Alimentacao alimentacao = dataSnapshot.getValue(Alimentacao.class);
-
-                    listaAlimentacao.add(alimentacao);
-
-                }
-
-                if(adapter3.getItemCount() == 0)
-                    txtNoDataAli.setVisibility(View.VISIBLE);
-
-                adapter3.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        //add insulina
-        valueEventListenerInsu = referenceInsu.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
-
-                    Insulina insulina = dataSnapshot.getValue(Insulina.class);
-
-                    listaInsulina.add(insulina);
-
-                }
-
-                if(adapter4.getItemCount() == 0)
-                    txtNoDataInsu.setVisibility(View.VISIBLE);
-
-                adapter4.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        //add bem-estar
-        valueEventListenerBem = referenceBem.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
-                    if(data.equals(dataSnapshot.getKey())) {
-                        if(dataSnapshot.hasChild("geral")) {
-
-                            DatabaseReference reference = ref.child("inserção")
-                                    .child(currentId)
-                                    .child("bem-estar")
-                                    .child(data)
-                                    .child("geral");
-
-                            reference.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot1) {
-
-                                    BemEstar bemEstar = snapshot1.getValue(BemEstar.class);
-
-                                    listaBemEstar.add(bemEstar);
-
-                                    adapter5.notifyDataSetChanged();
-
-                                    if(adapter5.getItemCount() != 0)
-                                        txtNoDataBem.setVisibility(View.GONE);
-
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-
-                        }
+                                            }
+                                        })
+                        );
 
                     }
+
+                    if(adapter.getItemCount() == 0)
+                        txtNoDataGli.setVisibility(View.VISIBLE);
+
+                    adapter.notifyDataSetChanged();
+
                 }
 
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
 
-            }
-        });
+            //add exercicio
+            valueEventListenerEx = referenceEx.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                        Exercicio exercicio = dataSnapshot.getValue(Exercicio.class);
+
+                        listaExercicio.add(exercicio);
+
+                        //editar e remover itens
+                        recyclerView2.addOnItemTouchListener(
+                                new RecyclerItemClickListener(
+                                        DiaSelecionadoActivity.this,
+                                        recyclerView2,
+                                        new RecyclerItemClickListener.OnItemClickListener() {
+                                            @Override
+                                            public void onItemClick(View view, int position) {
+
+                                            }
+
+                                            @Override
+                                            public void onLongItemClick(View view, int position) {
+
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(DiaSelecionadoActivity.this);
+
+                                                builder.setTitle("Deseja excluir este item?");
+
+
+                                                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+
+                                                        if( position == i2 )
+                                                            dataSnapshot.getRef().removeValue();
+
+                                                        i2++;
+
+                                                        listaExercicio.remove(position);
+                                                        recyclerView2.removeViewAt(position);
+                                                        adapter2.notifyItemRemoved(position);
+                                                        adapter2.notifyItemRangeChanged(position, listaExercicio.size());
+
+                                                    }
+                                                });
+
+                                                builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+
+                                                    }
+                                                });
+
+                                                builder.create();
+                                                builder.show();
+
+                                            }
+
+                                            @Override
+                                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                            }
+                                        })
+                        );
+
+                    }
+
+                    if(adapter2.getItemCount() == 0)
+                        txtNoDataEx.setVisibility(View.VISIBLE);
+
+                    adapter2.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            //add alimento
+            valueEventListenerAli = referenceAli.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                        Alimentacao alimentacao = dataSnapshot.getValue(Alimentacao.class);
+
+                        listaAlimentacao.add(alimentacao);
+
+                        //editar e remover itens
+                        recyclerView3.addOnItemTouchListener(
+                                new RecyclerItemClickListener(
+                                        DiaSelecionadoActivity.this,
+                                        recyclerView3,
+                                        new RecyclerItemClickListener.OnItemClickListener() {
+                                            @Override
+                                            public void onItemClick(View view, int position) {
+
+                                            }
+
+                                            @Override
+                                            public void onLongItemClick(View view, int position) {
+
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(DiaSelecionadoActivity.this);
+
+                                                builder.setTitle("Deseja excluir este item?");
+
+
+                                                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+
+                                                        if( position == i3 )
+                                                            dataSnapshot.getRef().removeValue();
+
+                                                        i3++;
+
+                                                        listaAlimentacao.remove(position);
+                                                        recyclerView3.removeViewAt(position);
+                                                        adapter3.notifyItemRemoved(position);
+                                                        adapter3.notifyItemRangeChanged(position, listaAlimentacao.size());
+
+                                                    }
+                                                });
+
+                                                builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+
+                                                    }
+                                                });
+
+                                                builder.create();
+                                                builder.show();
+
+                                            }
+
+                                            @Override
+                                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                            }
+                                        })
+                        );
+
+                    }
+
+                    if(adapter3.getItemCount() == 0)
+                        txtNoDataAli.setVisibility(View.VISIBLE);
+
+                    adapter3.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            //add insulina
+            valueEventListenerInsu = referenceInsu.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                        Insulina insulina = dataSnapshot.getValue(Insulina.class);
+
+                        listaInsulina.add(insulina);
+
+                        //editar e remover itens
+                        recyclerView4.addOnItemTouchListener(
+                                new RecyclerItemClickListener(
+                                        DiaSelecionadoActivity.this,
+                                        recyclerView4,
+                                        new RecyclerItemClickListener.OnItemClickListener() {
+                                            @Override
+                                            public void onItemClick(View view, int position) {
+
+                                            }
+
+                                            @Override
+                                            public void onLongItemClick(View view, int position) {
+
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(DiaSelecionadoActivity.this);
+
+                                                builder.setTitle("Deseja excluir este item?");
+
+
+                                                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+
+                                                        if( position == i4 )
+                                                            dataSnapshot.getRef().removeValue();
+
+                                                        i4++;
+
+                                                        listaInsulina.remove(position);
+                                                        recyclerView4.removeViewAt(position);
+                                                        adapter4.notifyItemRemoved(position);
+                                                        adapter4.notifyItemRangeChanged(position, listaInsulina.size());
+
+                                                    }
+                                                });
+
+                                                builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+
+                                                    }
+                                                });
+
+                                                builder.create();
+                                                builder.show();
+
+                                            }
+
+                                            @Override
+                                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                            }
+                                        })
+                        );
+
+                    }
+
+                    if(adapter4.getItemCount() == 0)
+                        txtNoDataInsu.setVisibility(View.VISIBLE);
+
+                    adapter4.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            //add bem-estar
+            valueEventListenerBem = referenceBem.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+                        if(data.equals(dataSnapshot.getKey())) {
+                            if(dataSnapshot.hasChild("geral")) {
+
+                                DatabaseReference reference = ref.child("inserção")
+                                        .child(currentId)
+                                        .child("bem-estar")
+                                        .child(data)
+                                        .child("geral");
+
+                                reference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
+
+                                        BemEstar bemEstar = snapshot1.getValue(BemEstar.class);
+
+                                        listaBemEstar.add(bemEstar);
+
+                                        try {
+
+                                            //editar e remover itens
+                                            recyclerView5.addOnItemTouchListener(
+                                                    new RecyclerItemClickListener(
+                                                            DiaSelecionadoActivity.this,
+                                                            recyclerView5,
+                                                            new RecyclerItemClickListener.OnItemClickListener() {
+                                                                @Override
+                                                                public void onItemClick(View view, int position) {
+
+                                                                }
+
+                                                                @Override
+                                                                public void onLongItemClick(View view, int position) {
+
+                                                                    AlertDialog.Builder builder = new AlertDialog.Builder(DiaSelecionadoActivity.this);
+
+                                                                    builder.setTitle("Deseja excluir este item?");
+
+
+                                                                    builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                                                        @Override
+                                                                        public void onClick(DialogInterface dialog, int which) {
+
+                                                                            snapshot1.getRef().removeValue();
+
+                                                                            listaBemEstar.remove(position);
+                                                                            recyclerView5.removeViewAt(position);
+                                                                            adapter5.notifyItemRemoved(position);
+                                                                            adapter5.notifyItemRangeChanged(position, listaBemEstar.size());
+
+                                                                        }
+                                                                    });
+
+                                                                    builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                                                        @Override
+                                                                        public void onClick(DialogInterface dialog, int which) {
+
+                                                                        }
+                                                                    });
+
+                                                                    builder.create();
+                                                                    builder.show();
+
+                                                                }
+
+                                                                @Override
+                                                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                                                }
+                                                            })
+                                            );
+
+                                        }catch (Exception e) {
+
+                                        }
+
+                                        adapter5.notifyDataSetChanged();
+
+                                        if(adapter5.getItemCount() != 0)
+                                            txtNoDataBem.setVisibility(View.GONE);
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+                            }
+
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+        } catch (Exception e) {
+
+        }
 
     }
 

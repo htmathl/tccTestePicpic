@@ -332,13 +332,15 @@ public class AddGlicemiaFragment extends Fragment implements AdapterView.OnItemS
 
                                 glicemia.salvar(String.valueOf(pDay), String.valueOf(pMonth), String.valueOf(pYear));
 
+                                Toast.makeText(getActivity(), "Pronto, já salvamos :)", Toast.LENGTH_SHORT).show();
+
                                 preferences = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                                 preferences.edit().putInt("dia", pDay).apply();
                                 preferences.edit().putInt("mes", pMonth).apply();
                                 preferences.edit().putInt("ano", pYear).apply();
                                 preferences.edit().putInt("hora", hora).apply();
 
-                                Toast.makeText(getActivity(), "Pronto, já salvamos :)", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getActivity(), "Pronto, já salvamos :)", Toast.LENGTH_SHORT).show();
 
                                 getActivity().finish();
 
