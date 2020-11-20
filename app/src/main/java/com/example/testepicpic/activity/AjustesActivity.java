@@ -3,6 +3,7 @@ package com.example.testepicpic.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -110,6 +111,7 @@ public class AjustesActivity extends AppCompatActivity {
                 autenticacao.signOut();
                 startActivity(new Intent(AjustesActivity.this, SliderActivity.class));
                 finish();
+                LocalBroadcastManager.getInstance(AjustesActivity.this).sendBroadcast(new Intent("fecharTelaMain"));
 
             }
         });
