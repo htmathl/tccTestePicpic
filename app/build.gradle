@@ -66,6 +66,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:25.12.0')
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.rockerhieu:rv-adapter-states:1.2'
+    implementation 'com.firebaseui:firebase-ui-storage:6.4.0'
 
 }
 repositories {

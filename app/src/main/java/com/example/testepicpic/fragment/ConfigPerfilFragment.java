@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,15 +24,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.testepicpic.R;
 import com.example.testepicpic.config.ConfigFirebase;
+import com.example.testepicpic.helper.Base64Custom;
 import com.example.testepicpic.helper.Permissao;
 import com.example.testepicpic.model.Usuario;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.util.jar.Pack200;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -50,6 +61,7 @@ public class ConfigPerfilFragment extends Fragment {
     private EditText edtNomeUser;
     private CircleImageView circleImageViewPerfil;
     private StorageReference storageReference;
+    private String currentId;
     private String IdentificadorUsuario;
 
 
@@ -115,12 +127,22 @@ public class ConfigPerfilFragment extends Fragment {
         edtNomeUser= view.findViewById(R.id.edtNomeUser);*/
 
         storageReference= ConfigFirebase.getFirebaseStorage();
+        recuperarUsurario();
 
         Permissao.validarpermisoes(permissoesNecessarias, getActivity(),1);
 
         imgbtnCamera = view.findViewById(R.id.imgBtnCamera);
         imgbtnGaleria = view.findViewById(R.id.imgBtnGaleria);
         circleImageViewPerfil = view.findViewById(R.id.circleImageViewFotoPerfil);
+
+        FirebaseUser usuario = getUsuarioAtual();
+        Uri url = usuario.getPhotoUrl();
+
+        if(url !=null){
+            Glide.with(getActivity()).load(url).into(circleImageViewPerfil);
+        }else{
+            circleImageViewPerfil.setImageResource(R.drawable.perfil);
+        }
 
         imgbtnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,10 +186,36 @@ public class ConfigPerfilFragment extends Fragment {
                 }
                 if(imagem != null){
                     circleImageViewPerfil.setImageBitmap(imagem);
-                    StorageReference imagemRef = storageReference
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    imagem.compress(Bitmap.CompressFormat.JPEG, 70, baos);
+                    byte[] dadosImagem = baos.toByteArray();
+
+                    final StorageReference imagemRef = storageReference
                             .child("imagens")
                             .child("perfil")
-                            .child("");
+                            .child(currentId + ".jpeg");
+
+                    UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
+                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(), "deu bosta", Toast.LENGTH_LONG).show();
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                            Toast.makeText(getActivity(),"não deu bosta", Toast.LENGTH_LONG).show();
+                            imagemRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                   Uri url =  task.getResult();
+                                   atualizaFotoUsuario(url);
+                                }
+                            });
+
+                        }
+                    });
                 }
 
             }catch (Exception e){
@@ -201,6 +249,46 @@ public class ConfigPerfilFragment extends Fragment {
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+
+    }
+    public void recuperarUsurario() {
+        FirebaseAuth auth = ConfigFirebase.getFirebaseAutenticacao();
+
+        if(auth.getCurrentUser() != null) {
+
+            String email = auth.getCurrentUser().getEmail();
+            assert email != null;
+            currentId = Base64Custom.codificarBase64(email);
+        }
+    }
+    public static FirebaseUser getUsuarioAtual(){
+        FirebaseAuth usuario = ConfigFirebase.getFirebaseAutenticacao();
+        return usuario.getCurrentUser();
+    }
+    public void atualizaFotoUsuario(Uri url){
+        atualizarFotoUsuario(url);
+
+    }
+    public static boolean atualizarFotoUsuario(Uri url){
+
+        try{
+            FirebaseUser user = getUsuarioAtual();
+
+            UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder().setPhotoUri(url).build();
+            user.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(!task.isSuccessful()){
+                        Log.d("Perfil", "Erro ao atualizar a foto");
+                    }
+                }
+            });
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
 
     }
 }
