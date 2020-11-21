@@ -265,8 +265,8 @@ public class RelatorioFragment extends Fragment {
                                     canvinhas.drawText(listaDiaGli.get(i) + " de " + strMonth + " de " + listaAnoGli.get(i), x, y, pintu);
                                     canvinhas.drawText("Nível: " + listaNivelGli.get(i), x, y2, pintu);
 
-                                    y += 300;
-                                    y2 += 300;
+                                    y += 150;
+                                    y2 += 150;
                                 }
 
 
