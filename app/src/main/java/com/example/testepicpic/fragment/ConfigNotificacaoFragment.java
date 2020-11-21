@@ -64,8 +64,6 @@ public class ConfigNotificacaoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_config_notificacao, container, false);
 
-        Toast.makeText(getActivity(), "NOTIFICAÇÃO", Toast.LENGTH_LONG).show();
-
         return view;
     }
 }

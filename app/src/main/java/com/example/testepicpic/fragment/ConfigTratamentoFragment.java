@@ -64,8 +64,6 @@ public class ConfigTratamentoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_config_tratamento, container, false);
 
-        Toast.makeText(getActivity(), "TRATAMENTO", Toast.LENGTH_LONG).show();
-
         return view;
     }
 }

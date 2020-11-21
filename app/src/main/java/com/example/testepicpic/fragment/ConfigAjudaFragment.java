@@ -77,18 +77,31 @@ public class ConfigAjudaFragment extends Fragment {
         txtTrata = view.findViewById(R.id.textTrata);
         txtCura = view.findViewById(R.id.textCura);
 
+        //pf ignorem isso :(
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            txtComo.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             txtDiabetes.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
-            txtComo.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             txtTipo1.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             txtTipo2.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             txtGesticional.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             txtPre.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             txtTrata.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             txtCura.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
         }
-
-        Toast.makeText(getActivity(), "AJUDA", Toast.LENGTH_LONG).show();
 
         return view;
     }

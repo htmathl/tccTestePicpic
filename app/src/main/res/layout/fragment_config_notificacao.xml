@@ -12,7 +12,15 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/textView37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="95dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Deslize daqui para baixo para sair "
+        android:textColor="#6247AA"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="bold" />
 
 </FrameLayout>
