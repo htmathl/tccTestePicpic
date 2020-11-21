@@ -42,13 +42,12 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/editTextTextMultiLine12"
+                android:id="@+id/textDiabetes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:inputType="textMultiLine"
                 android:text="Diabetes é uma doença crônica (ou seja, possui longa duração) que tem como origem a falta ou insuficiência de insulina, hormônio produzido pelo pâncreas que tem como função quebrar moléculas de glicose para a produção de energia."
                 android:textColor="#000"
                 android:textSize="20sp"
@@ -66,13 +65,12 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/editTextTextMultiLine4"
+                android:id="@+id/textComo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:inputType="textMultiLine"
                 android:text="Existem diversos fatores relacionados ao estilo de vida (alimentação, sedentarismo, obesidade, idade etc.) e até mesmo predisposição genética.  "
                 android:textColor="#000"
                 android:textSize="20sp"
@@ -101,7 +99,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/editTextTextMultiLine6"
+                android:id="@+id/textTipo1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
@@ -125,7 +123,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/editTextTextMultiLine7"
+                android:id="@+id/textTipo2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
@@ -149,7 +147,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/editTextTextMultiLine8"
+                android:id="@+id/textGesticional"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
@@ -173,7 +171,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/editTextTextMultiLine9"
+                android:id="@+id/textPre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
@@ -197,7 +195,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/editTextTextMultiLine10"
+                android:id="@+id/textTrata"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
@@ -210,7 +208,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/editTextTextMultiLine11"
+                android:id="@+id/textCura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"

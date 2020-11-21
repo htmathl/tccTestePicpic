@@ -21,16 +21,17 @@
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
+        android:id="@+id/linearLayout8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAlterarFoto"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@+id/circleImageViewFotoPerfil">
 
         <ImageButton
             android:id="@+id/imgBtnCamera"
-            android:layout_width="wrap_content"
+            android:layout_width="56dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/btn_dias"
@@ -38,28 +39,13 @@
 
         <ImageButton
             android:id="@+id/imgBtnGaleria"
-            android:layout_width="wrap_content"
+            android:layout_width="56dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/btn_dias"
             app:srcCompat="@drawable/ic_image" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/txtAlterarFoto"
-        android:layout_width="245dp"
-        android:layout_height="35dp"
-        android:background="@drawable/btn_dias"
-        android:gravity="center"
-        android:text="Alterar Foto"
-        android:textColor="#673AB7"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageViewFotoPerfil"
-        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:layout_width="379dp"
@@ -68,13 +54,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAlterarFoto">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
         <EditText
             android:id="@+id/edtNomeUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/perfil"
             android:ems="10"
             android:gravity="center"
             android:hint="Nome Usuário"

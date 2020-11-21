@@ -1,5 +1,6 @@
 package com.example.testepicpic.fragment;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,9 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.testepicpic.R;
+
+import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +21,7 @@ import com.example.testepicpic.R;
  * create an instance of this fragment.
  */
 public class ConfigAjudaFragment extends Fragment {
+    private TextView txtDiabetes, txtComo, txtTipo1, txtTipo2, txtGesticional, txtPre, txtTrata,txtCura;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,6 +68,25 @@ public class ConfigAjudaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_config_ajuda, container, false);
+        txtDiabetes = view.findViewById(R.id.textDiabetes);
+        txtComo = view.findViewById(R.id.textComo);
+        txtTipo1 = view.findViewById(R.id.textTipo1);
+        txtTipo2 = view.findViewById(R.id.textTipo2);
+        txtGesticional = view.findViewById(R.id.textGesticional);
+        txtPre = view.findViewById(R.id.textPre);
+        txtTrata = view.findViewById(R.id.textTrata);
+        txtCura = view.findViewById(R.id.textCura);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            txtDiabetes.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+            txtComo.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+            txtTipo1.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+            txtTipo2.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+            txtGesticional.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+            txtPre.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+            txtTrata.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+            txtCura.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
 
         Toast.makeText(getActivity(), "AJUDA", Toast.LENGTH_LONG).show();
 
