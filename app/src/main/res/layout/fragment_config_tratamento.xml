@@ -9,7 +9,8 @@
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="8dp"
+    android:paddingBottom="8dp">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -67,7 +68,7 @@
         android:layout_marginTop="55dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="10dp"
-        android:background="@android:drawable/picture_frame"
+        android:background="@drawable/bg_copo"
         android:divider="@color/corPrincipal"
         android:paddingBottom="10dp"
         android:showDividers="beginning">
@@ -76,7 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
-            android:gravity="center">
+            android:gravity="center"
+            >
 
             <TextView
                 android:id="@+id/textView48"
@@ -182,7 +184,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="350dp"
         android:layout_marginRight="16dp"
-        android:background="@android:drawable/picture_frame">
+        android:background="@drawable/bg_copo">
 
         <TableRow
             android:layout_width="match_parent"
@@ -306,7 +308,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="650dp"
         android:layout_marginRight="16dp"
-        android:background="@android:drawable/picture_frame">
+        android:background="@drawable/bg_copo">
 
         <TableRow
             android:layout_width="match_parent"

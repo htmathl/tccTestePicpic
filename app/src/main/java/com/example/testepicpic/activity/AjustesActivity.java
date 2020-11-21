@@ -7,6 +7,8 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -19,7 +21,7 @@ import com.example.testepicpic.fragment.ConfigPerfilFragment;
 import com.example.testepicpic.fragment.ConfigTratamentoFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class AjustesActivity extends AppCompatActivity {
+public class AjustesActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
     private ConfigPerfilFragment perfilFragment = new ConfigPerfilFragment();
     private ConfigTratamentoFragment tratamentoFragment = new ConfigTratamentoFragment();
@@ -31,6 +33,10 @@ public class AjustesActivity extends AppCompatActivity {
     private ConstraintLayout constraintLayout, constraintPerfil;
 
     private FirebaseAuth autenticacao;
+
+    private float x1, y1, x2, y2;
+    private static int minDistance = 150;
+    private GestureDetector gestureDetector;
 
 
     @Override
@@ -115,6 +121,66 @@ public class AjustesActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        return false;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        gestureDetector.onTouchEvent(event);
+
+        switch (event.getAction()) {
+
+            case MotionEvent.ACTION_DOWN:
+                x1 = event.getX();
+                y1 = event.getY();
+                break;
+
+            case MotionEvent.ACTION_UP:
+                x2 = event.getX();
+                y2 = event.getY();
+
+                float valueY = y2 - y1;
+
+                if(Math.abs(valueY) > minDistance) {
+                    if (y2 > y1) {
+                        constraintLayout.setVisibility(View.GONE);
+                        constraintPerfil.setVisibility(View.VISIBLE);
+                    }
+                }
+        }
+
+        return super.onTouchEvent(event);
 
     }
 }
