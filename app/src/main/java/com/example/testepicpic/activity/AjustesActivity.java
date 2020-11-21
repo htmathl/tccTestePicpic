@@ -174,7 +174,8 @@ public class AjustesActivity extends AppCompatActivity implements GestureDetecto
 
                 if(Math.abs(valueY) > minDistance) {
                     if (y2 > y1) {
-                        finish();
+                        constraintLayout.setVisibility(View.GONE);
+                        constraintPerfil.setVisibility(View.VISIBLE);
                     }
                 }
         }
