@@ -13,6 +13,7 @@ import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
@@ -25,6 +26,9 @@ import android.widget.Toast;
 import com.example.testepicpic.R;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.example.testepicpic.helper.Base64Custom;
+import com.example.testepicpic.model.Alimentacao;
+import com.example.testepicpic.model.BemEstar;
+import com.example.testepicpic.model.Exercicio;
 import com.example.testepicpic.model.Glicemia;
 import com.example.testepicpic.model.Insulina;
 import com.example.testepicpic.model.Usuario;
@@ -79,6 +83,31 @@ public class RelatorioFragment extends Fragment {
     private List<String> listaLocalInsu = new ArrayList<>();
     private List<String> listaHoraInsu = new ArrayList<>();
 
+    private List<String> listaModalidadeEx = new ArrayList<>();
+    private List<Integer> listaDiaEx = new ArrayList<>();
+    private List<Integer> listaMesEx = new ArrayList<>();
+    private List<Integer> listaAnoEx = new ArrayList<>();
+    private List<String> listaHoraEx = new ArrayList<>();
+    private List<String> listaDescriEx = new ArrayList<>();
+    private List<String> listaDuracaoEx = new ArrayList<>();
+
+    private List<String> listaTipoAli   = new ArrayList<>();
+    private List<String> listaAlimentos = new ArrayList<>();
+    private List<String> listaDescriAli = new ArrayList<>();
+    private List<Integer> listaDiaAli = new ArrayList<>();
+    private List<Integer> listaMesAli = new ArrayList<>();
+    private List<Integer> listaAnoAli = new ArrayList<>();
+
+    private List<String> listaHumor = new ArrayList<>();
+    private List<String> listaDescriBem = new ArrayList<>();
+    private List<String> listaSintomas = new ArrayList<>();
+    private List<Integer> listaDiaBem = new ArrayList<>();
+    private List<Integer> listaMesBem = new ArrayList<>();
+    private List<Integer> listaAnoBem = new ArrayList<>();
+
+    private Glicemia glicemia;
+
+    private int j = 0;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -126,7 +155,11 @@ public class RelatorioFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_main_relatorio, container, false);
 
-        recuperarUser();
+        recuperarAll();
+
+        ActivityCompat.requestPermissions(getActivity(), new String[]{
+                Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE
+        }, PackageManager.PERMISSION_GRANTED);
 
         btnGerarRelatorio = view.findViewById(R.id.btnGerarRelatorio);
 
@@ -138,7 +171,6 @@ public class RelatorioFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
                 AlertDialog.Builder certezaGerar = new AlertDialog.Builder(getActivity());
 
                 certezaGerar.setTitle("Deseja gerar o relatório?");
@@ -146,44 +178,115 @@ public class RelatorioFragment extends Fragment {
                 certezaGerar.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Paint pinta = new Paint();
-                        Paint titulo = new Paint();
-                        Paint pinto = new Paint();
 
-                        pdfTeste = new PdfDocument();
-                        info  = new PdfDocument.PageInfo.Builder(1200, 2010, 1).create();
-                        pagina1 = pdfTeste.startPage(info);
-                        Canvas canvinhas = pagina1.getCanvas();
-                        canvinhas.drawBitmap(escala,0,0,pinta);
+                        if( nome != null && idade != null && altura != null && peso != null ) {
 
-                        titulo.setTextSize(70);
-                        titulo.setTextAlign(Paint.Align.CENTER);
+                            if( !listaNivelInsu.isEmpty() && !listaNivelGli.isEmpty() && !listaModalidadeEx.isEmpty() && !listaTipoAli.isEmpty() && !listaHumor.isEmpty() ) {
 
-                        pinto.setTextSize(70);
-                        pinto.setTextAlign(Paint.Align.CENTER);
+                                Paint pinta = new Paint();
+                                Paint titulo = new Paint();
+                                Paint pinto = new Paint();
+                                Paint pintu = new Paint();
+                                Paint pintao = new Paint();
 
-                        canvinhas.drawText("Relatório", 600, 550, titulo);
+                                pdfTeste = new PdfDocument();
+                                info  = new PdfDocument.PageInfo.Builder(1200, 2010, 1).create();
+                                pagina1 = pdfTeste.startPage(info);
+                                Canvas canvinhas = pagina1.getCanvas();
+                                canvinhas.drawBitmap(escala,0,0,pinta);
 
-                        Toast.makeText(getActivity(), listaHoraGli.toString(), Toast.LENGTH_LONG).show();
+                                titulo.setTextSize(70);
+                                titulo.setTextAlign(Paint.Align.CENTER);
+                                titulo.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
 
-                        Toast.makeText(getActivity(), listaCategoriaGli.toString(), Toast.LENGTH_LONG).show();
+                                pinto.setTextSize(35);
+                                pinto.setTextAlign(Paint.Align.CENTER);
 
-                        Toast.makeText(getActivity(), listaHoraInsu.toString(), Toast.LENGTH_LONG).show();
+                                pintu.setTextSize(50);
+                                pintu.setTextAlign(Paint.Align.CENTER);
+                                pintu.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
 
-                        //canvinhas.drawText(nome, 600, 600, pinto);
+                                pintao.setTextSize(60);
+                                pintao.setTextAlign(Paint.Align.CENTER);
+                                pintao.setColor( getResources().getColor( R.color.colorPrimary ) );
+                                pintao.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
 
-                        pdfTeste.finishPage(pagina1);
+                                canvinhas.drawText(nome, 600, 550, titulo);
+                                canvinhas.drawText(idade + " anos", 600, 650, pinto);
+                                canvinhas.drawText(altura + " metros", 300, 650, pinto);
+                                canvinhas.drawText(peso + " Kg", 900, 650, pinto);
 
-                        UUID uuid = UUID.randomUUID();
-                        String struuid = uuid.toString();
+                                canvinhas.drawText("Glicemia:", 600, 850, pintao);
 
-                        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "/" + struuid + ".pdf");
-                        try{
-                            pdfTeste.writeTo(new FileOutputStream(file));
-                        } catch (Exception e) {
-                            Toast.makeText(getActivity(), "é n salvou :/", Toast.LENGTH_SHORT).show();
+                                String strMonth = "ERRO 0-0977a254";
+                                int x = 300, y = 950, y2 = 1150;
+                                for ( int i = 0; i < j; i++ ) {
+
+                                    switch (listaMesGli.get(i)) {
+
+                                        case 1:
+                                            strMonth = "jan";
+                                            break;
+                                        case 2:
+                                            strMonth = "fev";
+                                            break;
+                                        case 3:
+                                            strMonth = "mar";
+                                            break;
+                                        case 4:
+                                            strMonth = "abr";
+                                            break;
+                                        case 5:
+                                            strMonth = "mai";
+                                            break;
+                                        case 6:
+                                            strMonth = "jun";
+                                            break;
+                                        case 7:
+                                            strMonth = "jul";
+                                            break;
+                                        case 8:
+                                            strMonth = "ago";
+                                            break;
+                                        case 9:
+                                            strMonth = "set";
+                                            break;
+                                        case 10:
+                                            strMonth = "out";
+                                            break;
+                                        case 11:
+                                            strMonth = "nov";
+                                            break;
+                                        case 12:
+                                            strMonth = "dez";
+                                            break;
+                                    }
+
+                                    canvinhas.drawText(listaDiaGli.get(i) + " de " + strMonth + " de " + listaAnoGli.get(i), x, y, pintu);
+                                    canvinhas.drawText("Nível: " + listaNivelGli.get(i), x, y2, pintu);
+
+                                    y += 300;
+                                    y2 += 300;
+                                }
+
+
+
+                                pdfTeste.finishPage(pagina1);
+
+                                UUID uuid = UUID.randomUUID();
+                                String struuid = uuid.toString();
+
+                                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "/" + struuid + ".pdf");
+                                try{
+                                    pdfTeste.writeTo(new FileOutputStream(file));
+                                } catch (Exception e) {
+                                    Toast.makeText(getActivity(), "é n salvou :/", Toast.LENGTH_SHORT).show();
+                                }
+                                pdfTeste.close();
+
+                            }
+
                         }
-                        pdfTeste.close();
 
                     }
                 });
@@ -219,7 +322,7 @@ public class RelatorioFragment extends Fragment {
 
     }
 
-    public void recuperarUser() {
+    public void recuperarAll() {
 
         recuperarUsurario();
 
@@ -249,6 +352,45 @@ public class RelatorioFragment extends Fragment {
 
             int mesAtual = (Calendar.getInstance().get(Calendar.MONTH)+1);
 
+            listaAnoGli.clear();
+            listaMesGli.clear();
+            listaDiaGli.clear();
+            listaHoraGli.clear();
+            listaCategoriaGli.clear();
+            listaLadoGli.clear();
+            listaLocalGli.clear();
+            listaNivelGli.clear();
+
+            listaNivelInsu.clear();
+            listaDiaInsu.clear();
+            listaMesInsu.clear();
+            listaAnoInsu.clear();
+            listaLocalGli.clear();
+            listaCategoriaInsu.clear();
+            listaHoraInsu.clear();
+
+            listaModalidadeEx.clear();
+            listaDuracaoEx.clear();
+            listaDescriEx.clear();
+            listaDiaEx.clear();
+            listaMesEx.clear();
+            listaAnoEx.clear();
+            listaHoraEx.clear();
+
+            listaAlimentos.clear();
+            listaTipoAli.clear();
+            listaAnoAli.clear();
+            listaMesAli.clear();
+            listaDiaAli.clear();
+            listaDescriAli.clear();
+
+            listaHumor.clear();
+            listaDescriBem.clear();
+            listaSintomas.clear();
+            listaAnoBem.clear();
+            listaMesBem.clear();
+            listaDiaBem.clear();
+
             DatabaseReference referenceGli = ref.child("inserção")
                     .child(currentId)
                     .child("glicemia");
@@ -268,9 +410,11 @@ public class RelatorioFragment extends Fragment {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot1) {
 
+                                int i = 0;
+
                                 for( DataSnapshot dataSnapshot1 : snapshot1.getChildren() ) {
 
-                                    Glicemia glicemia = dataSnapshot1.getValue( Glicemia.class );
+                                    glicemia = dataSnapshot1.getValue( Glicemia.class );
 
                                     assert glicemia != null;
 
@@ -283,22 +427,18 @@ public class RelatorioFragment extends Fragment {
 
                                     if ( glicemia.getMes() == mesAtual ) {
 
-                                        listaNivelGli.add( glicemia.getNivel() );
-                                        listaDiaGli.add( glicemia.getDia() );
-                                        listaMesGli.add( glicemia.getMes() );
-                                        listaAnoGli.add( glicemia.getAno() );
-                                        listaCategoriaGli.add( categoria );
-                                        listaLadoGli.add( glicemia.getLado() );
-                                        listaLocalGli.add( glicemia.getLocal() );
-                                        listaHoraGli.add( horario );
-
-                                        Toast.makeText(getActivity(), listaCategoriaGli.toString(), Toast.LENGTH_SHORT).show();
+                                        listaNivelGli.add( i, glicemia.getNivel() );
+                                        listaDiaGli.add( i, glicemia.getDia() );
+                                        listaMesGli.add( i, glicemia.getMes() );
+                                        listaAnoGli.add( i, glicemia.getAno() );
+                                        listaCategoriaGli.add( i, categoria );
+                                        listaLadoGli.add( i, glicemia.getLado() );
+                                        listaLocalGli.add( i, glicemia.getLocal() );
+                                        listaHoraGli.add( i, horario );
 
                                     }
-
+                                    i++;
                                 }
-
-                                Toast.makeText(getActivity(), listaCategoriaGli.toString(), Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -306,10 +446,12 @@ public class RelatorioFragment extends Fragment {
                             public void onCancelled(@NonNull DatabaseError error) {
 
                             }
+
                         });
 
-                    }
+                        j++;
 
+                    }
                 }
 
                 @Override
@@ -337,27 +479,29 @@ public class RelatorioFragment extends Fragment {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot1) {
 
-                                Insulina insulina = snapshot1.getValue( Insulina.class );
+                                for( DataSnapshot dataSnapshot1 : snapshot1.getChildren() ) {
 
-                                assert insulina != null;
+                                    Insulina insulina = dataSnapshot1.getValue( Insulina.class );
 
-                                int hora = insulina.getHora();
-                                int min = hora % 60;
-                                hora /= 60;
+                                    assert insulina != null;
 
-                                String horario = String.format("%02d:%02d", hora, min);
+                                    int hora = insulina.getHora();
+                                    int min = hora % 60;
+                                    hora /= 60;
 
-                                if( insulina.getMes() == mesAtual ) {
+                                    String horario = String.format("%02d:%02d", hora, min);
 
-                                    listaNivelInsu.add( insulina.getNivel() );
+                                    if( insulina.getMes() == mesAtual ) {
 
-                                    listaDiaInsu.add( insulina.getDia() );
-                                    listaMesInsu.add( insulina.getMes() );
-                                    listaAnoInsu.add( insulina.getAno() );
+                                        listaNivelInsu.add( insulina.getNivel() );
+                                        listaDiaInsu.add( insulina.getDia() );
+                                        listaMesInsu.add( insulina.getMes() );
+                                        listaAnoInsu.add( insulina.getAno() );
+                                        listaLocalInsu.add( insulina.getLocal() );
+                                        listaCategoriaInsu.add( insulina.getCategoria() );
+                                        listaHoraInsu.add( horario );
 
-                                    listaLocalGli.add( insulina.getLocal() );
-                                    listaCategoriaInsu.add( insulina.getCategoria() );
-                                    listaHoraInsu.add( horario );
+                                    }
 
                                 }
 
@@ -379,6 +523,179 @@ public class RelatorioFragment extends Fragment {
                 }
             });
 
+            DatabaseReference referenceEx = ref.child("inserção")
+                    .child(currentId)
+                    .child("exercicio");
+
+            referenceEx.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                        DatabaseReference reference1 = ref.child("inserção")
+                                .child(currentId)
+                                .child("insulina")
+                                .child(dataSnapshot.getKey());
+
+                        reference1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot1) {
+
+                                for( DataSnapshot dataSnapshot1 : snapshot1.getChildren() ) {
+
+                                    Exercicio exercicio = dataSnapshot1.getValue( Exercicio.class );
+
+                                    assert exercicio != null;
+                                    int hora = exercicio.getHora();
+                                    int min = hora % 60;
+                                    hora /= 60;
+
+                                    String horario = String.format("%02d:%02d", hora, min);
+
+                                    if( exercicio.getMes() == mesAtual ) {
+
+                                        listaModalidadeEx.add( exercicio.getModalidade() );
+                                        listaDuracaoEx.add( exercicio.getDuracao() );
+                                        listaDescriEx.add( exercicio.getDescricao() );
+                                        listaDiaEx.add( exercicio.getDia() );
+                                        listaMesEx.add( exercicio.getMes() );
+                                        listaAnoEx.add( exercicio.getAno() );
+                                        listaHoraEx.add( horario );
+
+                                    }
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            DatabaseReference referenceAli = ref.child("inserção")
+                    .child(currentId)
+                    .child("alimentação");
+
+            referenceAli.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                        DatabaseReference reference1 = ref.child("inserção")
+                                .child(currentId)
+                                .child("alimentação")
+                                .child(dataSnapshot.getKey());
+
+                        reference1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot1) {
+
+                                for( DataSnapshot dataSnapshot1 : snapshot1.getChildren() ) {
+
+                                    Alimentacao alimentacao = dataSnapshot1.getValue( Alimentacao.class );
+
+                                    String alimento = alimentacao.getAlimentos().substring(1, alimentacao.getAlimentos().length()-1);
+
+                                    if( alimentacao.getMes() == mesAtual ) {
+
+                                        listaAlimentos.add( alimento );
+                                        listaTipoAli.add( alimentacao.getTipo() );
+                                        listaAnoAli.add( alimentacao.getAno() );
+                                        listaMesAli.add( alimentacao.getMes() );
+                                        listaDiaAli.add( alimentacao.getDia() );
+                                        listaDescriAli.add( alimentacao.getDescricao() );
+
+                                    }
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            DatabaseReference referenceBem = ref.child("inserção")
+                    .child(currentId)
+                    .child("bem-estar");
+
+            referenceBem.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+
+                        if( dataSnapshot.hasChild("geral") ) {
+
+                            DatabaseReference reference1 = ref.child("inserção")
+                                    .child(currentId)
+                                    .child("bem-estar")
+                                    .child(dataSnapshot.getKey())
+                                    .child("geral");
+
+                            reference1.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot1) {
+
+                                    BemEstar bemEstar = snapshot1.getValue( BemEstar.class );
+
+                                    assert bemEstar != null;
+                                    if( bemEstar.getMes() == mesAtual ) {
+
+                                        listaHumor.add( bemEstar.getHumor() );
+                                        listaDescriBem.add( bemEstar.getDescicao() );
+                                        listaSintomas.add( bemEstar.getSintomas() );
+                                        listaAnoBem.add( bemEstar.getAno() );
+                                        listaMesBem.add( bemEstar.getMes() );
+                                        listaDiaBem.add( bemEstar.getDia() );
+
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+                        }
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
 
         } catch (Exception e) {
             Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();

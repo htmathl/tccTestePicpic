@@ -210,7 +210,7 @@ public class CalendarFragment extends Fragment {
                 }
             });
 
-            //add insulina
+            /*add insulina
             DatabaseReference referenceInsu = ref.child("inserção")
                     .child(currentId)
                     .child("insulina");
@@ -446,7 +446,7 @@ public class CalendarFragment extends Fragment {
                 public void onCancelled(@NonNull DatabaseError error) {
 
                 }
-            });
+            });*/
 
         } catch (Exception e) {
 
