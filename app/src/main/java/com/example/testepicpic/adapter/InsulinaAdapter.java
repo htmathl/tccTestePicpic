@@ -50,7 +50,7 @@ public class InsulinaAdapter extends RecyclerView.Adapter<InsulinaAdapter.ViewHo
 
         holder.hora.setText( horario );
         holder.nivel.setText( strNivel );
-        holder.verMais.setText( "ver mais" );
+        //holder.verMais.setText( "ver mais" );
 
     }
 

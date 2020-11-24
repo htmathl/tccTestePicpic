@@ -44,7 +44,7 @@ public class AlimentacoesAdapter extends RecyclerView.Adapter<AlimentacoesAdapte
 
         holder.tipo.setText( alimentacao.getTipo() );
         holder.comidas.setText( alimento );
-        holder.verMais.setText( "ver mais" );
+        //holder.verMais.setText( "ver mais" );
 
     }
 

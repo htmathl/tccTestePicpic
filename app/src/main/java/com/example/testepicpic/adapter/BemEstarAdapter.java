@@ -40,7 +40,7 @@ public class BemEstarAdapter extends RecyclerView.Adapter<BemEstarAdapter.ViewHo
 
         holder.humor.setText( bemEstar.getHumor() );
         holder.hora.setText( "Humor" );
-        holder.verMais.setText( "ver mais" );
+        //holder.verMais.setText( "ver mais" );
 
     }
 
