@@ -205,7 +205,7 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
 
         recuperarUsuario();
 
-        String data = String.valueOf(year) + String.valueOf(month) + String.valueOf(today);
+        String data = String.valueOf(year) + month + today;
 
         try {
 
@@ -214,66 +214,70 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
+                    if( data.equals( snapshot.getKey() ) ) {
 
-                        Glicemia glicemia = dataSnapshot.getValue(Glicemia.class);
+                        for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
 
-                        listaGlicemia.add(glicemia);
+                            Glicemia glicemia = dataSnapshot.getValue(Glicemia.class);
 
-                        //editar e remover itens
-                        recyclerView.addOnItemTouchListener(
-                                new RecyclerItemClickListener(
-                                        DiaSelecionadoActivity.this,
-                                        recyclerView,
-                                        new RecyclerItemClickListener.OnItemClickListener() {
-                                            @Override
-                                            public void onItemClick(View view, int position) {
+                            listaGlicemia.add(glicemia);
 
-                                            }
+                            //editar e remover itens
+                            recyclerView.addOnItemTouchListener(
+                                    new RecyclerItemClickListener(
+                                            DiaSelecionadoActivity.this,
+                                            recyclerView,
+                                            new RecyclerItemClickListener.OnItemClickListener() {
+                                                @Override
+                                                public void onItemClick(View view, int position) {
 
-                                            @Override
-                                            public void onLongItemClick(View view, int position) {
+                                                }
 
-                                                AlertDialog.Builder builder = new AlertDialog.Builder(DiaSelecionadoActivity.this);
+                                                @Override
+                                                public void onLongItemClick(View view, int position) {
 
-                                                builder.setTitle("Deseja excluir este item?");
+                                                    AlertDialog.Builder builder = new AlertDialog.Builder(DiaSelecionadoActivity.this);
+
+                                                    builder.setTitle("Deseja excluir este item?");
 
 
-                                                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
+                                                    builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
 
-                                                        if( position == i1 )
-                                                            dataSnapshot.getRef().removeValue();
+                                                            if( position == i1 )
+                                                                dataSnapshot.getRef().removeValue();
 
-                                                        i1++;
+                                                            i1++;
 
-                                                        listaGlicemia.remove(position);
-                                                        recyclerView.removeViewAt(position);
-                                                        adapter.notifyItemRemoved(position);
-                                                        adapter.notifyItemRangeChanged(position, listaGlicemia.size());
+                                                            listaGlicemia.remove(position);
+                                                            recyclerView.removeViewAt(position);
+                                                            adapter.notifyItemRemoved(position);
+                                                            adapter.notifyItemRangeChanged(position, listaGlicemia.size());
 
-                                                    }
-                                                });
+                                                        }
+                                                    });
 
-                                                builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
+                                                    builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
 
-                                                    }
-                                                });
+                                                        }
+                                                    });
 
-                                                builder.create();
-                                                builder.show();
+                                                    builder.create();
+                                                    builder.show();
 
-                                            }
+                                                }
 
-                                            @Override
-                                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                                @Override
+                                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                                            }
-                                        })
-                        );
+                                                }
+                                            })
+                            );
+
+                        }
 
                     }
 
@@ -538,98 +542,108 @@ public class DiaSelecionadoActivity extends AppCompatActivity implements Gesture
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
-                        if(data.equals(dataSnapshot.getKey())) {
-                            if(dataSnapshot.hasChild("geral")) {
+                    try {
 
-                                DatabaseReference reference = ref.child("inserção")
-                                        .child(currentId)
-                                        .child("bem-estar")
-                                        .child(data)
-                                        .child("geral");
+                        for( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
 
-                                reference.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                            if(data.equals(dataSnapshot.getKey())) {
 
-                                        BemEstar bemEstar = snapshot1.getValue(BemEstar.class);
+                                if(dataSnapshot.hasChild("geral")) {
 
-                                        listaBemEstar.add(bemEstar);
+                                    DatabaseReference reference = ref.child("inserção")
+                                            .child(currentId)
+                                            .child("bem-estar")
+                                            .child(data)
+                                            .child("geral");
 
-                                        try {
+                                    reference.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
 
-                                            //editar e remover itens
-                                            recyclerView5.addOnItemTouchListener(
-                                                    new RecyclerItemClickListener(
-                                                            DiaSelecionadoActivity.this,
-                                                            recyclerView5,
-                                                            new RecyclerItemClickListener.OnItemClickListener() {
-                                                                @Override
-                                                                public void onItemClick(View view, int position) {
+                                            BemEstar bemEstar = snapshot1.getValue(BemEstar.class);
 
-                                                                }
+                                            listaBemEstar.add(bemEstar);
 
-                                                                @Override
-                                                                public void onLongItemClick(View view, int position) {
+                                            try {
 
-                                                                    AlertDialog.Builder builder = new AlertDialog.Builder(DiaSelecionadoActivity.this);
+                                                //editar e remover itens
+                                                recyclerView5.addOnItemTouchListener(
+                                                        new RecyclerItemClickListener(
+                                                                DiaSelecionadoActivity.this,
+                                                                recyclerView5,
+                                                                new RecyclerItemClickListener.OnItemClickListener() {
+                                                                    @Override
+                                                                    public void onItemClick(View view, int position) {
 
-                                                                    builder.setTitle("Deseja excluir este item?");
+                                                                    }
+
+                                                                    @Override
+                                                                    public void onLongItemClick(View view, int position) {
+
+                                                                        AlertDialog.Builder builder = new AlertDialog.Builder(DiaSelecionadoActivity.this);
+
+                                                                        builder.setTitle("Deseja excluir este item?");
 
 
-                                                                    builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                                                                        @Override
-                                                                        public void onClick(DialogInterface dialog, int which) {
+                                                                        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                                                            @Override
+                                                                            public void onClick(DialogInterface dialog, int which) {
 
-                                                                            snapshot1.getRef().removeValue();
+                                                                                snapshot1.getRef().removeValue();
 
-                                                                            listaBemEstar.remove(position);
-                                                                            recyclerView5.removeViewAt(position);
-                                                                            adapter5.notifyItemRemoved(position);
-                                                                            adapter5.notifyItemRangeChanged(position, listaBemEstar.size());
+                                                                                listaBemEstar.remove(position);
+                                                                                recyclerView5.removeViewAt(position);
+                                                                                adapter5.notifyItemRemoved(position);
+                                                                                adapter5.notifyItemRangeChanged(position, listaBemEstar.size());
 
-                                                                        }
-                                                                    });
+                                                                            }
+                                                                        });
 
-                                                                    builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-                                                                        @Override
-                                                                        public void onClick(DialogInterface dialog, int which) {
+                                                                        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                                                                            @Override
+                                                                            public void onClick(DialogInterface dialog, int which) {
 
-                                                                        }
-                                                                    });
+                                                                            }
+                                                                        });
 
-                                                                    builder.create();
-                                                                    builder.show();
+                                                                        builder.create();
+                                                                        builder.show();
 
-                                                                }
+                                                                    }
 
-                                                                @Override
-                                                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                                                    @Override
+                                                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                                                                }
-                                                            })
-                                            );
+                                                                    }
+                                                                })
+                                                );
 
-                                        }catch (Exception e) {
+                                            }catch (Exception e) {
+
+                                            }
+
+                                            adapter5.notifyDataSetChanged();
+
+                                            if(adapter5.getItemCount() != 0)
+                                                txtNoDataBem.setVisibility(View.GONE);
 
                                         }
 
-                                        adapter5.notifyDataSetChanged();
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
 
-                                        if(adapter5.getItemCount() != 0)
-                                            txtNoDataBem.setVisibility(View.GONE);
+                                        }
+                                    });
 
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
+                                }
 
                             }
 
+
                         }
+
+                    } catch (Exception e) {
+
                     }
 
                 }
