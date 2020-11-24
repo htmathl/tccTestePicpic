@@ -50,7 +50,7 @@ public class ExerciciosAdapter extends RecyclerView.Adapter<ExerciciosAdapter.Vi
 
         holder.hora.setText( horario );
         holder.modal.setText( exercicio.getModalidade() );
-        holder.verMais.setText( "ver mais" );
+        //holder.verMais.setText( "ver mais" );
 
     }
 
