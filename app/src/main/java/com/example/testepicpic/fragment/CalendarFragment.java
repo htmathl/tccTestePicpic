@@ -1,4 +1,4 @@
-    package com.example.testepicpic.fragment;
+package com.example.testepicpic.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -159,10 +159,6 @@ public class CalendarFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    int[] dias  =  new int[(int) snapshot.getChildrenCount()];
-                    int[] meses =  new int[(int) snapshot.getChildrenCount()];
-                    int[] anos  =  new int[(int) snapshot.getChildrenCount()];
-
                     for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
 
                         DatabaseReference reference1 = ref.child("inserção")
@@ -175,6 +171,10 @@ public class CalendarFragment extends Fragment {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                                 calendar = Calendar.getInstance();
+
+                                int[] dias  =  new int[(int) snapshot.getChildrenCount()];
+                                int[] meses =  new int[(int) snapshot.getChildrenCount()];
+                                int[] anos  =  new int[(int) snapshot.getChildrenCount()];
 
                                 for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
 
@@ -210,7 +210,7 @@ public class CalendarFragment extends Fragment {
                 }
             });
 
-            /*add insulina
+            //add insulina
             DatabaseReference referenceInsu = ref.child("inserção")
                     .child(currentId)
                     .child("insulina");
@@ -218,10 +218,6 @@ public class CalendarFragment extends Fragment {
             referenceInsu.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                    int[] dias  =  new int[(int) snapshot.getChildrenCount()];
-                    int[] meses =  new int[(int) snapshot.getChildrenCount()];
-                    int[] anos  =  new int[(int) snapshot.getChildrenCount()];
 
                     for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
 
@@ -235,6 +231,10 @@ public class CalendarFragment extends Fragment {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                                 calendar = Calendar.getInstance();
+
+                                int[] dias  =  new int[(int) snapshot.getChildrenCount()];
+                                int[] meses =  new int[(int) snapshot.getChildrenCount()];
+                                int[] anos  =  new int[(int) snapshot.getChildrenCount()];
 
                                 for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
 
@@ -279,10 +279,6 @@ public class CalendarFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    int[] dias  =  new int[(int) snapshot.getChildrenCount()];
-                    int[] meses =  new int[(int) snapshot.getChildrenCount()];
-                    int[] anos  =  new int[(int) snapshot.getChildrenCount()];
-
                     for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
 
                         DatabaseReference reference1 = ref.child("inserção")
@@ -295,6 +291,10 @@ public class CalendarFragment extends Fragment {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                                 calendar = Calendar.getInstance();
+
+                                int[] dias  =  new int[(int) snapshot.getChildrenCount()];
+                                int[] meses =  new int[(int) snapshot.getChildrenCount()];
+                                int[] anos  =  new int[(int) snapshot.getChildrenCount()];
 
                                 for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
 
@@ -339,10 +339,6 @@ public class CalendarFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    int[] dias  =  new int[(int) snapshot.getChildrenCount()];
-                    int[] meses =  new int[(int) snapshot.getChildrenCount()];
-                    int[] anos  =  new int[(int) snapshot.getChildrenCount()];
-
                     for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
 
                         DatabaseReference reference1 = ref.child("inserção")
@@ -355,6 +351,10 @@ public class CalendarFragment extends Fragment {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                                 calendar = Calendar.getInstance();
+
+                                int[] dias  =  new int[(int) snapshot.getChildrenCount()];
+                                int[] meses =  new int[(int) snapshot.getChildrenCount()];
+                                int[] anos  =  new int[(int) snapshot.getChildrenCount()];
 
                                 for( DataSnapshot dataSnapshot1 : snapshot.getChildren() ) {
 
@@ -399,10 +399,6 @@ public class CalendarFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    int[] dias  =  new int[(int) snapshot.getChildrenCount()];
-                    int[] meses =  new int[(int) snapshot.getChildrenCount()];
-                    int[] anos  =  new int[(int) snapshot.getChildrenCount()];
-
                     for ( DataSnapshot dataSnapshot : snapshot.getChildren() ) {
 
                         DatabaseReference reference1 = ref.child("inserção")
@@ -416,6 +412,10 @@ public class CalendarFragment extends Fragment {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                                 calendar = Calendar.getInstance();
+
+                                int[] dias  =  new int[(int) snapshot.getChildrenCount()];
+                                int[] meses =  new int[(int) snapshot.getChildrenCount()];
+                                int[] anos  =  new int[(int) snapshot.getChildrenCount()];
 
                                 BemEstar bemEstar = snapshot.getValue(BemEstar.class);
 
@@ -446,7 +446,7 @@ public class CalendarFragment extends Fragment {
                 public void onCancelled(@NonNull DatabaseError error) {
 
                 }
-            });*/
+            });
 
         } catch (Exception e) {
 

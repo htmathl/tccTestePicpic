@@ -335,8 +335,8 @@ public class OverviewFragment extends Fragment {
 
                 if(!copo1.isChecked()) {
 
-                   for(CheckBox copo : listaCopos)
-                       copo.setChecked(false);
+                    for(CheckBox copo : listaCopos)
+                        copo.setChecked(false);
 
                     tbOutrosCopos.setVisibility(View.GONE);
 
@@ -481,7 +481,7 @@ public class OverviewFragment extends Fragment {
                             .setValue(4);
                 }
 
-                }
+            }
 
 
         });
@@ -521,7 +521,7 @@ public class OverviewFragment extends Fragment {
                             .setValue(5);
                 }
 
-                }
+            }
 
 
         });
@@ -561,7 +561,7 @@ public class OverviewFragment extends Fragment {
                             .setValue(6);
                 }
 
-                }
+            }
 
         });
 
@@ -601,7 +601,7 @@ public class OverviewFragment extends Fragment {
                             .setValue(7);
                 }
 
-                }
+            }
 
         });
 
