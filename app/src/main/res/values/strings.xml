@@ -19,7 +19,7 @@
     <string name="perfil">Perfil</string>
     <string name="fab">.</string>
     <string name="oque">Diabetes é uma doença crônica (ou seja, possui longa duração) que tem como origem a falta ou insuficiência de insulina, hormônio produzido pelo pâncreas que tem como função quebrar moléculas de glicose para a produção de energia.</string>
-  
+
     <string name="default_notification_channel_id">fcm_default_channel</string>
 
     <string-array name="tipos_diabetes">

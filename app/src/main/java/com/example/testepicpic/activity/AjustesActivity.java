@@ -21,22 +21,18 @@ import com.example.testepicpic.fragment.ConfigPerfilFragment;
 import com.example.testepicpic.fragment.ConfigTratamentoFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class AjustesActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
-
-    private ConfigPerfilFragment perfilFragment = new ConfigPerfilFragment();
-    private ConfigTratamentoFragment tratamentoFragment = new ConfigTratamentoFragment();
-    private ConfigNotificacaoFragment notificacaoFragment = new ConfigNotificacaoFragment();
-    private ConfigAjudaFragment ajudaFragment = new ConfigAjudaFragment();
+public class AjustesActivity extends AppCompatActivity{
 
     private Button btnConfigPerfil, btnConfigTratamento, btnConfigNotificacaos, btnConfigAjuda, btnConfigSair;
     private ImageButton miaumiau;
-    private ConstraintLayout constraintLayout, constraintPerfil;
 
     private FirebaseAuth autenticacao;
 
     private float x1, y1, x2, y2;
     private static int minDistance = 150;
     private GestureDetector gestureDetector;
+
+    private int position;
 
 
     @Override
@@ -51,9 +47,7 @@ public class AjustesActivity extends AppCompatActivity implements GestureDetecto
         btnConfigSair = findViewById(R.id.btnConfigSair);
         miaumiau = findViewById(R.id.miaumiua);
 
-
-        constraintLayout = findViewById(R.id.conteudoConfig);
-        constraintPerfil = findViewById(R.id.perfil);
+        Intent intent = new Intent(AjustesActivity.this, TransPerfilActivity.class);
 
 
         miaumiau.setOnClickListener(new View.OnClickListener() {
@@ -67,46 +61,37 @@ public class AjustesActivity extends AppCompatActivity implements GestureDetecto
         btnConfigPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                constraintLayout.setVisibility(View.VISIBLE);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.setCustomAnimations(R.anim.to_down, R.anim.from_top,R.anim.to_down, R.anim.from_top);
-                transaction.add(R.id.frameConteudoConfigs, perfilFragment);
-                constraintPerfil.setVisibility(View.GONE);
-                transaction.commit();
+                position = 0;
+                intent.putExtra("position", position);
+                startActivity(intent);
+
             }
         });
         btnConfigTratamento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                constraintLayout.setVisibility(View.VISIBLE);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.setCustomAnimations(R.anim.to_down, R.anim.from_top,R.anim.to_down, R.anim.from_top);
-                transaction.add(R.id.frameConteudoConfigs, tratamentoFragment);
-                constraintPerfil.setVisibility(View.GONE);
-                transaction.commit();
+                position = 1;
+                intent.putExtra("position", position);
+                startActivity(intent);
+
             }
         });
         btnConfigNotificacaos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                constraintLayout.setVisibility(View.VISIBLE);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.setCustomAnimations(R.anim.to_down, R.anim.from_top,R.anim.to_down, R.anim.from_top);
-                transaction.add(R.id.frameConteudoConfigs, notificacaoFragment);
-                constraintPerfil.setVisibility(View.GONE);
-                transaction.commit();
+                position = 2;
+                intent.putExtra("position", position);
+                startActivity(intent);
             }
         });
 
         btnConfigAjuda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                constraintLayout.setVisibility(View.VISIBLE);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.setCustomAnimations(R.anim.to_down, R.anim.from_top,R.anim.to_down, R.anim.from_top);
-                transaction.add(R.id.frameConteudoConfigs, ajudaFragment);
-                constraintPerfil.setVisibility(View.GONE);
-                transaction.commit();
+                position = 3;
+                intent.putExtra("position", position);
+                startActivity(intent);
+
             }
         });
 
@@ -124,63 +109,4 @@ public class AjustesActivity extends AppCompatActivity implements GestureDetecto
 
     }
 
-    @Override
-    public boolean onDown(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        return false;
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-
-        gestureDetector.onTouchEvent(event);
-
-        switch (event.getAction()) {
-
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                y1 = event.getY();
-                break;
-
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-                y2 = event.getY();
-
-                float valueY = y2 - y1;
-
-                if(Math.abs(valueY) > minDistance) {
-                    if (y2 > y1) {
-                        constraintLayout.setVisibility(View.GONE);
-                        constraintPerfil.setVisibility(View.VISIBLE);
-                    }
-                }
-        }
-
-        return super.onTouchEvent(event);
-
-    }
 }
