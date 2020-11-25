@@ -36,9 +36,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -58,11 +63,12 @@ public class ConfigPerfilFragment extends Fragment {
 
     private Button btnSalvarPerfil;
     private TextView txtAlterarFoto;
-    private EditText edtNomeUser;
+    private TextInputEditText edtNomeUser;
     private CircleImageView circleImageViewPerfil;
     private StorageReference storageReference;
-    private String currentId;
+    private String currentId, nomeVelho, nomeNovo;
     private String IdentificadorUsuario;
+    private DatabaseReference ref;
 
 
     private ImageButton imgbtnCamera, imgbtnGaleria;
@@ -73,8 +79,6 @@ public class ConfigPerfilFragment extends Fragment {
     private static int SELECAO_CAMERA = 100;
     private static int SELECAO_GALERIA = 200;
 
-    // private StorageReference storageReference;
-   // private String identificadorUsuario;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -122,10 +126,6 @@ public class ConfigPerfilFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_config_perfil,container,false);
 
-        /*btnSalvarPerfil= view.findViewById(R.id.btnSalvarPerfil);
-        txtAlterarFoto = view.findViewById(R.id.txtAlterarFoto);
-        edtNomeUser= view.findViewById(R.id.edtNomeUser);*/
-
         storageReference= ConfigFirebase.getFirebaseStorage();
         recuperarUsurario();
 
@@ -134,6 +134,9 @@ public class ConfigPerfilFragment extends Fragment {
         imgbtnCamera = view.findViewById(R.id.imgBtnCamera);
         imgbtnGaleria = view.findViewById(R.id.imgBtnGaleria);
         circleImageViewPerfil = view.findViewById(R.id.circleImageViewFotoPerfil);
+        edtNomeUser = view.findViewById(R.id.edtNomeUser);
+        btnSalvarPerfil =  view.findViewById(R.id.btnSalvarPerfil);
+
 
         FirebaseUser usuario = getUsuarioAtual();
         Uri url = usuario.getPhotoUrl();
@@ -143,6 +146,27 @@ public class ConfigPerfilFragment extends Fragment {
         }else{
             circleImageViewPerfil.setImageResource(R.drawable.perfil);
         }
+
+        DatabaseReference reference = ref.child("users")
+                .child(currentId);
+
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                Usuario usuario = snapshot.getValue( Usuario.class );
+                edtNomeUser.setText(usuario.getNome());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
         imgbtnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,6 +188,18 @@ public class ConfigPerfilFragment extends Fragment {
                 }
             }
         });
+
+        btnSalvarPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nomeNovo = edtNomeUser.getText().toString().trim();
+                reference.child("nome").setValue(nomeNovo);
+                Toast.makeText(getActivity(),"Nome alterado com sucesso", Toast.LENGTH_LONG).show();
+
+
+            }
+        });
+
 
         return view;
     }
@@ -252,6 +288,8 @@ public class ConfigPerfilFragment extends Fragment {
 
     }
     public void recuperarUsurario() {
+        ref = ConfigFirebase.getFirebase();
+
         FirebaseAuth auth = ConfigFirebase.getFirebaseAutenticacao();
 
         if(auth.getCurrentUser() != null) {
@@ -291,4 +329,5 @@ public class ConfigPerfilFragment extends Fragment {
         }
 
     }
+
 }

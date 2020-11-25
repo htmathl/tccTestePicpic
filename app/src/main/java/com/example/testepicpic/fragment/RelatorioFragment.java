@@ -187,6 +187,7 @@ public class RelatorioFragment extends Fragment {
                             Paint pintu = new Paint();
                             Paint pintao = new Paint();
                             Paint pintinho = new Paint();
+                            Paint pipoca = new Paint();
 
                             pdfTeste = new PdfDocument();
                             info  = new PdfDocument.PageInfo.Builder(1200, 2010, 1).create();
@@ -203,7 +204,7 @@ public class RelatorioFragment extends Fragment {
 
                             pintu.setTextSize(50);
                             pintu.setTextAlign(Paint.Align.CENTER);
-                            pintu.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
+                            pintu.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ));
 
                             pintao.setTextSize(60);
                             pintao.setTextAlign(Paint.Align.CENTER);
@@ -212,6 +213,9 @@ public class RelatorioFragment extends Fragment {
 
                             pintinho.setTextSize(40);
                             pintinho.setTextAlign(Paint.Align.CENTER);
+
+                            pipoca.setTextSize(25);
+                            pipoca.setTextAlign(Paint.Align.LEFT);
 
                             canvinhas.drawText(nome, 600, 550, titulo);
                             canvinhas.drawText(idade + " anos", 600, 650, pinto);
@@ -229,14 +233,14 @@ public class RelatorioFragment extends Fragment {
                             int x = 300, x1 = 600, y0 = 850, y = 950, y2 = 1050, y3 = 1150;
                             for( int i = 0; i < listaMiau.size(); i++ ) {
 
-                                canvinhas.drawText( listaMiau.get(i), x1, y0, pintao );
+                                canvinhas.drawText( listaMiau.get(i), x1, y0, pipoca);
 
-                                y0 += 250;
+                                y0 += 50;
 
                             }
 
                             String strMonth = "ERRO 0-0977a254";
-                            for ( int i = 0; i < j; i++ ) {
+                            /*for ( int i = 0; i < j; i++ ) {
 
                                 switch (listaMesGli.get(i)) {
 
@@ -293,7 +297,7 @@ public class RelatorioFragment extends Fragment {
                                 y += 300;
                                 y2 += 250;
                                 y3 += 250;
-                            }
+                            }*/
 
                             pdfTeste.finishPage(pagina1);
 

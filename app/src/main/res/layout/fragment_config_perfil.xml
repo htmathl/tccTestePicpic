@@ -58,15 +58,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
-        <EditText
-            android:id="@+id/edtNomeUser"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Nome Usuário"
-            android:inputType="textPersonName"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNomeUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome Usuário"
+                android:textSize="18sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Space
             android:layout_width="match_parent"
