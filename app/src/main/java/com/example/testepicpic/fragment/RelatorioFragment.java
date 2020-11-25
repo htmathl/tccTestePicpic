@@ -64,46 +64,46 @@ public class RelatorioFragment extends Fragment {
     private DatabaseReference ref;
     private String currentId;
 
-    private String nome, altura, peso, idade;
+    private String nome, altura, peso, idade, tipoDiabetes;
 
-    private List<Double> listaNivelGli = new ArrayList<>();
-    private List<Integer> listaDiaGli = new ArrayList<>();
-    private List<Integer> listaMesGli = new ArrayList<>();
-    private List<Integer> listaAnoGli = new ArrayList<>();
-    private List<String> listaCategoriaGli = new ArrayList<>();
-    private List<String> listaLadoGli = new ArrayList<>();
-    private List<String> listaLocalGli = new ArrayList<>();
-    private List<String> listaHoraGli = new ArrayList<>();
+    private final List<Double> listaNivelGli = new ArrayList<>();
+    private final List<Integer> listaDiaGli = new ArrayList<>();
+    private final List<Integer> listaMesGli = new ArrayList<>();
+    private final List<Integer> listaAnoGli = new ArrayList<>();
+    private final List<String> listaCategoriaGli = new ArrayList<>();
+    private final List<String> listaLadoGli = new ArrayList<>();
+    private final List<String> listaLocalGli = new ArrayList<>();
+    private final List<String> listaHoraGli = new ArrayList<>();
 
-    private List<Double> listaNivelInsu = new ArrayList<>();
-    private List<Integer> listaDiaInsu = new ArrayList<>();
-    private List<Integer> listaMesInsu = new ArrayList<>();
-    private List<Integer> listaAnoInsu = new ArrayList<>();
-    private List<String> listaCategoriaInsu = new ArrayList<>();
-    private List<String> listaLocalInsu = new ArrayList<>();
-    private List<String> listaHoraInsu = new ArrayList<>();
+    private final List<Double> listaNivelInsu = new ArrayList<>();
+    private final List<Integer> listaDiaInsu = new ArrayList<>();
+    private final List<Integer> listaMesInsu = new ArrayList<>();
+    private final List<Integer> listaAnoInsu = new ArrayList<>();
+    private final List<String> listaCategoriaInsu = new ArrayList<>();
+    private final List<String> listaLocalInsu = new ArrayList<>();
+    private final List<String> listaHoraInsu = new ArrayList<>();
 
-    private List<String> listaModalidadeEx = new ArrayList<>();
-    private List<Integer> listaDiaEx = new ArrayList<>();
-    private List<Integer> listaMesEx = new ArrayList<>();
-    private List<Integer> listaAnoEx = new ArrayList<>();
-    private List<String> listaHoraEx = new ArrayList<>();
-    private List<String> listaDescriEx = new ArrayList<>();
-    private List<String> listaDuracaoEx = new ArrayList<>();
+    private final List<String> listaModalidadeEx = new ArrayList<>();
+    private final List<Integer> listaDiaEx = new ArrayList<>();
+    private final List<Integer> listaMesEx = new ArrayList<>();
+    private final List<Integer> listaAnoEx = new ArrayList<>();
+    private final List<String> listaHoraEx = new ArrayList<>();
+    private final List<String> listaDescriEx = new ArrayList<>();
+    private final List<String> listaDuracaoEx = new ArrayList<>();
 
-    private List<String> listaTipoAli   = new ArrayList<>();
-    private List<String> listaAlimentos = new ArrayList<>();
-    private List<String> listaDescriAli = new ArrayList<>();
-    private List<Integer> listaDiaAli = new ArrayList<>();
-    private List<Integer> listaMesAli = new ArrayList<>();
-    private List<Integer> listaAnoAli = new ArrayList<>();
+    private final List<String> listaTipoAli   = new ArrayList<>();
+    private final List<String> listaAlimentos = new ArrayList<>();
+    private final List<String> listaDescriAli = new ArrayList<>();
+    private final List<Integer> listaDiaAli = new ArrayList<>();
+    private final List<Integer> listaMesAli = new ArrayList<>();
+    private final List<Integer> listaAnoAli = new ArrayList<>();
 
-    private List<String> listaHumor = new ArrayList<>();
-    private List<String> listaDescriBem = new ArrayList<>();
-    private List<String> listaSintomas = new ArrayList<>();
-    private List<Integer> listaDiaBem = new ArrayList<>();
-    private List<Integer> listaMesBem = new ArrayList<>();
-    private List<Integer> listaAnoBem = new ArrayList<>();
+    private final List<String> listaHumor = new ArrayList<>();
+    private final List<String> listaDescriBem = new ArrayList<>();
+    private final List<String> listaSintomas = new ArrayList<>();
+    private final List<Integer> listaDiaBem = new ArrayList<>();
+    private final List<Integer> listaMesBem = new ArrayList<>();
+    private final List<Integer> listaAnoBem = new ArrayList<>();
 
     private Glicemia glicemia;
 
@@ -167,141 +167,164 @@ public class RelatorioFragment extends Fragment {
         escala = Bitmap.createScaledBitmap(onda,1200,500, false);
 
 
-        btnGerarRelatorio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnGerarRelatorio.setOnClickListener(v -> {
 
-                AlertDialog.Builder certezaGerar = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder certezaGerar = new AlertDialog.Builder(getActivity());
 
-                certezaGerar.setTitle("Deseja gerar o relatório?");
+            certezaGerar.setTitle("Deseja gerar o relatório?");
 
-                certezaGerar.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+            certezaGerar.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-                        if( nome != null && idade != null && altura != null && peso != null ) {
+                    if( nome != null && idade != null && altura != null && peso != null ) {
 
-                            if( !listaNivelInsu.isEmpty() && !listaNivelGli.isEmpty() && !listaModalidadeEx.isEmpty() && !listaTipoAli.isEmpty() && !listaHumor.isEmpty() ) {
+                        if( !listaNivelInsu.isEmpty() && !listaNivelGli.isEmpty() && !listaModalidadeEx.isEmpty() && !listaTipoAli.isEmpty() && !listaHumor.isEmpty() ) {
 
-                                Paint pinta = new Paint();
-                                Paint titulo = new Paint();
-                                Paint pinto = new Paint();
-                                Paint pintu = new Paint();
-                                Paint pintao = new Paint();
+                            Paint pinta = new Paint();
+                            Paint titulo = new Paint();
+                            Paint pinto = new Paint();
+                            Paint pintu = new Paint();
+                            Paint pintao = new Paint();
+                            Paint pintinho = new Paint();
 
-                                pdfTeste = new PdfDocument();
-                                info  = new PdfDocument.PageInfo.Builder(1200, 2010, 1).create();
-                                pagina1 = pdfTeste.startPage(info);
-                                Canvas canvinhas = pagina1.getCanvas();
-                                canvinhas.drawBitmap(escala,0,0,pinta);
+                            pdfTeste = new PdfDocument();
+                            info  = new PdfDocument.PageInfo.Builder(1200, 2010, 1).create();
+                            pagina1 = pdfTeste.startPage(info);
+                            Canvas canvinhas = pagina1.getCanvas();
+                            canvinhas.drawBitmap(escala,0,0,pinta);
 
-                                titulo.setTextSize(70);
-                                titulo.setTextAlign(Paint.Align.CENTER);
-                                titulo.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
+                            titulo.setTextSize(70);
+                            titulo.setTextAlign(Paint.Align.CENTER);
+                            titulo.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
 
-                                pinto.setTextSize(35);
-                                pinto.setTextAlign(Paint.Align.CENTER);
+                            pinto.setTextSize(35);
+                            pinto.setTextAlign(Paint.Align.CENTER);
 
-                                pintu.setTextSize(50);
-                                pintu.setTextAlign(Paint.Align.CENTER);
-                                pintu.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
+                            pintu.setTextSize(50);
+                            pintu.setTextAlign(Paint.Align.CENTER);
+                            pintu.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
 
-                                pintao.setTextSize(60);
-                                pintao.setTextAlign(Paint.Align.CENTER);
-                                pintao.setColor( getResources().getColor( R.color.colorPrimary ) );
-                                pintao.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
+                            pintao.setTextSize(60);
+                            pintao.setTextAlign(Paint.Align.CENTER);
+                            pintao.setColor( getResources().getColor( R.color.colorPrimary ) );
+                            pintao.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
 
-                                canvinhas.drawText(nome, 600, 550, titulo);
-                                canvinhas.drawText(idade + " anos", 600, 650, pinto);
-                                canvinhas.drawText(altura + " metros", 300, 650, pinto);
-                                canvinhas.drawText(peso + " Kg", 900, 650, pinto);
+                            pintinho.setTextSize(40);
+                            pintinho.setTextAlign(Paint.Align.CENTER);
 
-                                canvinhas.drawText("Glicemia:", 600, 850, pintao);
+                            canvinhas.drawText(nome, 600, 550, titulo);
+                            canvinhas.drawText(idade + " anos", 600, 650, pinto);
+                            canvinhas.drawText(altura + " metros", 300, 650, pinto);
+                            canvinhas.drawText(peso + " Kg", 900, 650, pinto);
+                            canvinhas.drawText("Diabetes " + tipoDiabetes.toLowerCase(), 600, 750, pinto);
 
-                                String strMonth = "ERRO 0-0977a254";
-                                int x = 300, y = 950, y2 = 1150;
-                                for ( int i = 0; i < j; i++ ) {
+                            List<String> listaMiau = new ArrayList<>();
+                            listaMiau.add( "Glicemia" );
+                            listaMiau.add( "Insulina" );
+                            listaMiau.add( "Exercício" );
+                            listaMiau.add( "Alimentação" );
+                            listaMiau.add( "Bem estar" );
 
-                                    switch (listaMesGli.get(i)) {
+                            int x = 300, x1 = 600, y0 = 850, y = 950, y2 = 1050, y3 = 1150;
+                            for( int i = 0; i < listaMiau.size(); i++ ) {
 
-                                        case 1:
-                                            strMonth = "jan";
-                                            break;
-                                        case 2:
-                                            strMonth = "fev";
-                                            break;
-                                        case 3:
-                                            strMonth = "mar";
-                                            break;
-                                        case 4:
-                                            strMonth = "abr";
-                                            break;
-                                        case 5:
-                                            strMonth = "mai";
-                                            break;
-                                        case 6:
-                                            strMonth = "jun";
-                                            break;
-                                        case 7:
-                                            strMonth = "jul";
-                                            break;
-                                        case 8:
-                                            strMonth = "ago";
-                                            break;
-                                        case 9:
-                                            strMonth = "set";
-                                            break;
-                                        case 10:
-                                            strMonth = "out";
-                                            break;
-                                        case 11:
-                                            strMonth = "nov";
-                                            break;
-                                        case 12:
-                                            strMonth = "dez";
-                                            break;
-                                    }
+                                canvinhas.drawText( listaMiau.get(i), x1, y0, pintao );
 
-                                    canvinhas.drawText(listaDiaGli.get(i) + " de " + strMonth + " de " + listaAnoGli.get(i), x, y, pintu);
-                                    canvinhas.drawText("Nível: " + listaNivelGli.get(i), x, y2, pintu);
-
-                                    y += 150;
-                                    y2 += 150;
-                                }
-
-
-
-                                pdfTeste.finishPage(pagina1);
-
-                                UUID uuid = UUID.randomUUID();
-                                String struuid = uuid.toString();
-
-                                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "/" + struuid + ".pdf");
-                                try{
-                                    pdfTeste.writeTo(new FileOutputStream(file));
-                                } catch (Exception e) {
-                                    Toast.makeText(getActivity(), "é n salvou :/", Toast.LENGTH_SHORT).show();
-                                }
-                                pdfTeste.close();
+                                y0 += 250;
 
                             }
+
+                            String strMonth = "ERRO 0-0977a254";
+                            for ( int i = 0; i < j; i++ ) {
+
+                                switch (listaMesGli.get(i)) {
+
+                                    case 1:
+                                        strMonth = "jan";
+                                        break;
+                                    case 2:
+                                        strMonth = "fev";
+                                        break;
+                                    case 3:
+                                        strMonth = "mar";
+                                        break;
+                                    case 4:
+                                        strMonth = "abr";
+                                        break;
+                                    case 5:
+                                        strMonth = "mai";
+                                        break;
+                                    case 6:
+                                        strMonth = "jun";
+                                        break;
+                                    case 7:
+                                        strMonth = "jul";
+                                        break;
+                                    case 8:
+                                        strMonth = "ago";
+                                        break;
+                                    case 9:
+                                        strMonth = "set";
+                                        break;
+                                    case 10:
+                                        strMonth = "out";
+                                        break;
+                                    case 11:
+                                        strMonth = "nov";
+                                        break;
+                                    case 12:
+                                        strMonth = "dez";
+                                        break;
+                                }
+
+                                if( y >= 2010 ) {
+
+                                    pdfTeste.finishPage(pagina1);
+
+                                } else {
+
+                                    canvinhas.drawText(listaDiaGli.get(i) + " de " + strMonth + " de " + listaAnoGli.get(i), x, y, pintu);
+                                    canvinhas.drawText("Sua glicemia media " + listaNivelGli.get(i) + " mg/dL, às " + listaHoraGli.get(i) + " horas,", x1, y2, pintinho);
+                                    canvinhas.drawText("furou " + listaLocalGli.get(i) + " " + listaLadoGli.get(i), x1, y3, pintinho);
+
+                                }
+
+                                y += 300;
+                                y2 += 250;
+                                y3 += 250;
+                            }
+
+                            pdfTeste.finishPage(pagina1);
+
+                            UUID uuid = UUID.randomUUID();
+                            String struuid = uuid.toString();
+
+                            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "/" + struuid + ".pdf");
+                            try{
+                                pdfTeste.writeTo(new FileOutputStream(file));
+                            } catch (Exception e) {
+                                Toast.makeText(getActivity(), "é n salvou :/", Toast.LENGTH_SHORT).show();
+                            }
+                            pdfTeste.close();
 
                         }
 
                     }
-                });
 
-                certezaGerar.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                }
+            });
 
-                    }
-                });
-                certezaGerar.create();
-                certezaGerar.show();
+            certezaGerar.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            certezaGerar.create();
+            certezaGerar.show();
 
 
-            }
         });
 
         return view;
@@ -335,10 +358,12 @@ public class RelatorioFragment extends Fragment {
 
                 Usuario usuario = snapshot.getValue( Usuario.class );
 
+                assert usuario != null;
                 nome = usuario.getNome();
                 idade = String.valueOf( usuario.getIdade() );
                 peso = String.valueOf( usuario.getPeso() );
                 altura = String.valueOf( usuario.getAltura() );
+                tipoDiabetes = usuario.getTipoDiabetes();
 
             }
 
@@ -608,6 +633,7 @@ public class RelatorioFragment extends Fragment {
 
                                     Alimentacao alimentacao = dataSnapshot1.getValue( Alimentacao.class );
 
+                                    assert alimentacao != null;
                                     String alimento = alimentacao.getAlimentos().substring(1, alimentacao.getAlimentos().length()-1);
 
                                     if( alimentacao.getMes() == mesAtual ) {
