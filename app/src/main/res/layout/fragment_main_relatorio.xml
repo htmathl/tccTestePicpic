@@ -65,6 +65,8 @@
                     android:padding="10dp"
                     />
             </LinearLayout>
+            <!--1
+
 
     <TableLayout
         android:layout_width="match_parent"
@@ -159,7 +161,7 @@
 
         </TableRow>
 
-    </TableLayout>
+    </TableLayout>-->
 <!--
     <TableLayout
         android:layout_width="match_parent"
