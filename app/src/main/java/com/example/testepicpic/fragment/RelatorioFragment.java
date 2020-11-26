@@ -214,8 +214,9 @@ public class RelatorioFragment extends Fragment {
                             pintinho.setTextSize(40);
                             pintinho.setTextAlign(Paint.Align.CENTER);
 
-                            pipoca.setTextSize(25);
+                            pipoca.setTextSize(30);
                             pipoca.setTextAlign(Paint.Align.LEFT);
+                            pintao.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
 
                             canvinhas.drawText(nome, 600, 550, titulo);
                             canvinhas.drawText(idade + " anos", 600, 650, pinto);
@@ -224,23 +225,22 @@ public class RelatorioFragment extends Fragment {
                             canvinhas.drawText("Diabetes " + tipoDiabetes.toLowerCase(), 600, 750, pinto);
 
                             List<String> listaMiau = new ArrayList<>();
-                            listaMiau.add( "Glicemia" );
-                            listaMiau.add( "Insulina" );
-                            listaMiau.add( "Exercício" );
-                            listaMiau.add( "Alimentação" );
-                            listaMiau.add( "Bem estar" );
+                            listaMiau.add( "Glicemia: ");
+                            listaMiau.add( "Insulina: ");
+                            listaMiau.add( "Exercício: ");
+                            listaMiau.add( "Alimentação: ");
+                            listaMiau.add( "Bem-estar: " );
 
-                            int x = 300, x1 = 600, y0 = 850, y = 950, y2 = 1050, y3 = 1150;
+                            int x = 300, x1 = 100, y0 = 850, y = 950, y2 = 1050, y3 = 1150, y4 = 100;
                             for( int i = 0; i < listaMiau.size(); i++ ) {
 
                                 canvinhas.drawText( listaMiau.get(i), x1, y0, pipoca);
-
-                                y0 += 50;
+                                y0 += 35;
 
                             }
 
                             String strMonth = "ERRO 0-0977a254";
-                            /*for ( int i = 0; i < j; i++ ) {
+                            for ( int i = 0; i < j; i++ ) {
 
                                 switch (listaMesGli.get(i)) {
 
@@ -285,6 +285,16 @@ public class RelatorioFragment extends Fragment {
                                 if( y >= 2010 ) {
 
                                     pdfTeste.finishPage(pagina1);
+                                    PdfDocument.Page pagina2 = pdfTeste.startPage(info);
+                                    Canvas canvinhas2 = pagina2.getCanvas();
+
+                                    canvinhas2.drawText(listaDiaGli.get(i) + " de " + strMonth + " de " + listaAnoGli.get(i), x, y4, pintu);
+                                    canvinhas2.drawText("Sua glicemia media " + listaNivelGli.get(i) + " mg/dL, às " + listaHoraGli.get(i) + " horas,", x1, y2, pintinho);
+                                    canvinhas2.drawText("furou " + listaLocalGli.get(i) + " " + listaLadoGli.get(i), x1, y3, pintinho);
+
+                                    y4 += 250;
+
+                                    pdfTeste.finishPage(pagina2);
 
                                 } else {
 
@@ -297,7 +307,7 @@ public class RelatorioFragment extends Fragment {
                                 y += 300;
                                 y2 += 250;
                                 y3 += 250;
-                            }*/
+                            }
 
                             pdfTeste.finishPage(pagina1);
 
