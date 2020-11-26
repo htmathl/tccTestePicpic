@@ -6,7 +6,7 @@
             <!-- cor do sólido -->
             <solid android:color="#fff"/>
             <!-- arredondando a borda -->
-            <corners android:topLeftRadius="30dp" android:bottomRightRadius="30dp"/>
+            <corners android:topLeftRadius="30dp" android:bottomRightRadius="30dp" android:bottomLeftRadius="5dp" android:topRightRadius="5dp"/>
             <!-- cor da borda e tamanho -->
             <stroke android:color="#6247AA" android:width="2dp"/>
             <size
