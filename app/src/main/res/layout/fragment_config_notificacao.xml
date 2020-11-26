@@ -5,25 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.ConfigNotificacaoFragment"
-    android:background="@drawable/bg_configs"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp">
 
     <!-- TODO: Update blank fragment layout -->
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/textView37"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="95dp"
-        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="Deslize daqui para baixo para sair "
         android:textColor="#6247AA"
         android:textColorLink="#FFFFFF"
         android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rotation="90"
+        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+    </LinearLayout>
 
     <TableLayout
     android:id="@+id/tableLayout1"
@@ -157,6 +165,7 @@
 
             <TextView
                 android:id="@+id/txtmiau"
+                android:text="Mudar horário"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -178,7 +187,7 @@
             android:id="@+id/btnAddHora"
             android:layout_height="match_parent"
             android:layout_marginTop="0dp"
-            android:background="@drawable/edt_cadastro1"
+            android:background="#fff"
             android:text="Salvar"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/corPrincipal"
@@ -228,7 +237,8 @@
                 android:id="@+id/switch22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="25dp" />
+                android:layout_marginRight="25dp"
+                />
 
         </TableRow>
 
@@ -327,6 +337,7 @@
 
                 <TextView
                     android:id="@+id/txtmiau2"
+                    android:text="Mudar horário"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -348,7 +359,7 @@
                 android:id="@+id/btnAddHora2"
                 android:layout_height="match_parent"
                 android:layout_marginTop="0dp"
-                android:background="@drawable/edt_cadastro1"
+                android:background="#fff"
                 android:text="Salvar"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/corPrincipal"
@@ -497,6 +508,7 @@
 
                 <TextView
                     android:id="@+id/txtmiau3"
+                    android:text="Mudar horário"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -518,7 +530,7 @@
                 android:id="@+id/btnAddHora3"
                 android:layout_height="match_parent"
                 android:layout_marginTop="0dp"
-                android:background="@drawable/edt_cadastro1"
+                android:background="#fff"
                 android:text="Salvar"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/corPrincipal"
