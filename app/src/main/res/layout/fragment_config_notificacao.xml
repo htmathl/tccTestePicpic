@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,6 +12,7 @@
     android:layout_marginBottom="8dp">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:id="@+id/textView37"
         android:layout_width="wrap_content"
@@ -22,5 +24,679 @@
         android:textColor="#6247AA"
         android:textColorLink="#FFFFFF"
         android:textStyle="bold" />
+
+    <TableLayout
+    android:id="@+id/tableLayout1"
+    android:layout_width="367dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="64dp"
+    android:layout_marginEnd="32dp"
+    android:background="@drawable/bg_copo"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/linha_roxa2"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txtSelecione"
+            android:layout_width="333dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="Glicemia"
+            android:textColor="@color/corPrincipal"
+            android:textSize="16sp" />
+
+        <Switch
+            android:id="@+id/switch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/linha_roxa3"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cbDom"
+                style="@style/rdbInsulina"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:checked="false"
+                android:text="Dom" />
+
+            <CheckBox
+                android:id="@+id/cbSeg"
+                style="@style/rdbInsulina"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="Seg" />
+
+            <CheckBox
+                android:id="@+id/cbTer"
+                style="@style/rdbInsulina"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="Ter" />
+
+            <CheckBox
+                android:id="@+id/cbQua"
+                style="@style/rdbInsulina"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:text="Qua" />
+
+            <CheckBox
+                android:id="@+id/cbQui"
+                style="@style/rdbInsulina"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:text="Qui" />
+
+            <CheckBox
+                android:id="@+id/cbSex"
+                style="@style/rdbInsulina"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:text="Sex" />
+
+            <CheckBox
+                android:id="@+id/cbSab"
+                style="@style/rdbInsulina"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:text="Sab" />
+
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/linearGlicemia"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/txtmiau"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:textColor="#000"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/btnAddHora"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/edt_cadastro1"
+            android:text="Salvar"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/corPrincipal"
+            android:textSize="16sp" />
+
+    </TableRow>
+
+</TableLayout>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="290dp"
+        android:background="@drawable/linha_roxa" />
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/bg_copo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/linha_roxa2"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/txtSelecione2"
+                android:layout_width="333dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="Água"
+                android:textColor="@color/corPrincipal"
+                android:textSize="16sp" />
+
+            <Switch
+                android:id="@+id/switch22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/linha_roxa3"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cbDom2"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:checked="false"
+                    android:text="Dom" />
+
+                <CheckBox
+                    android:id="@+id/cbSeg2"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:text="Seg" />
+
+                <CheckBox
+                    android:id="@+id/cbTer2"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:text="Ter" />
+
+                <CheckBox
+                    android:id="@+id/cbQua2"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:text="Qua" />
+
+                <CheckBox
+                    android:id="@+id/cbQui2"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="Qui" />
+
+                <CheckBox
+                    android:id="@+id/cbSex2"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="Sex" />
+
+                <CheckBox
+                    android:id="@+id/cbSab2"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="Sab" />
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/linearGlicemia2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/txtmiau2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/btnAddHora2"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/edt_cadastro1"
+                android:text="Salvar"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/corPrincipal"
+                android:textSize="16sp" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="530dp"
+        android:background="@drawable/linha_roxa" />
+
+    <TableLayout
+        android:id="@+id/tableLayout3"
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="536dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/bg_copo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/linha_roxa2"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/txtSelecione3"
+                android:layout_width="333dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="Insulina"
+                android:textColor="@color/corPrincipal"
+                android:textSize="16sp" />
+
+            <Switch
+                android:id="@+id/switch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/linha_roxa3"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cbDom3"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:checked="false"
+                    android:text="Dom" />
+
+                <CheckBox
+                    android:id="@+id/cbSeg3"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:text="Seg" />
+
+                <CheckBox
+                    android:id="@+id/cbTer3"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:text="Ter" />
+
+                <CheckBox
+                    android:id="@+id/cbQua3"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:text="Qua" />
+
+                <CheckBox
+                    android:id="@+id/cbQui3"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="Qui" />
+
+                <CheckBox
+                    android:id="@+id/cbSex3"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="Sex" />
+
+                <CheckBox
+                    android:id="@+id/cbSab3"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="Sab" />
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/linearGlicemia3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/txtmiau3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/btnAddHora3"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/edt_cadastro1"
+                android:text="Salvar"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/corPrincipal"
+                android:textSize="16sp" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="760dp"
+        android:background="@drawable/linha_roxa" />
+
+    <TableLayout
+        android:id="@+id/tableLayout4"
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="772dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/bg_copo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/linha_roxa2"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/txtSelecione4"
+                android:layout_width="333dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="Medicamentos"
+                android:textColor="@color/corPrincipal"
+                android:textSize="16sp" />
+
+            <Switch
+                android:id="@+id/switch4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/linha_roxa3"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cbDom4"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:checked="false"
+                    android:text="Dom" />
+
+                <CheckBox
+                    android:id="@+id/cbSeg4"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:text="Seg" />
+
+                <CheckBox
+                    android:id="@+id/cbTer4"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:text="Ter" />
+
+                <CheckBox
+                    android:id="@+id/cbQua4"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:text="Qua" />
+
+                <CheckBox
+                    android:id="@+id/cbQui4"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="Qui" />
+
+                <CheckBox
+                    android:id="@+id/cbSex4"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="Sex" />
+
+                <CheckBox
+                    android:id="@+id/cbSab4"
+                    style="@style/rdbInsulina"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="Sab" />
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/linearGlicemia4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/txtmiau4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/btnAddHora4"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/edt_cadastro1"
+                android:text="Salvar"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/corPrincipal"
+                android:textSize="16sp" />
+
+        </TableRow>
+
+    </TableLayout>
+
 
 </FrameLayout>

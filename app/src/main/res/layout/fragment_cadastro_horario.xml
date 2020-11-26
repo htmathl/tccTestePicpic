@@ -22,7 +22,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TableLayout
-            android:id="@+id/tableLayout"
+            android:id="@+id/tableLayout1"
             android:layout_width="367dp"
             android:layout_height="0dp"
             android:layout_marginStart="32dp"
@@ -244,7 +244,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
