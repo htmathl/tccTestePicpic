@@ -60,9 +60,11 @@
         <Button
             android:id="@+id/btnConfigPerfil"
             android:layout_width="200dp"
-            android:layout_height="58dp"
+            android:layout_height="64dp"
             android:background="@drawable/configs_roxo"
-            android:text="Nome "
+            android:text="Nome"
+            android:textAlignment="center"
+            android:drawableEnd="@drawable/ic_seta_branca"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -93,87 +95,74 @@
             app:layout_constraintTop_toBottomOf="@+id/profile_image"
             app:layout_constraintVertical_bias="0.06999999" />
 
-        <Button
-            android:id="@+id/btnConfigTratamento"
-            android:layout_width="254dp"
-            android:layout_height="58dp"
-            android:background="@drawable/bg_configs"
-            android:text="Tratamento "
-            android:textColor="#6247AA"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.47000003" />
-
-        <Button
-            android:id="@+id/btnConfigNotificacaos"
-            android:layout_width="254dp"
-            android:layout_height="58dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/bg_configs"
-            android:text="Notificações"
-            android:textColor="#6247AA"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.507"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnConfigTratamento" />
-
-        <Button
-            android:id="@+id/btnConfigAjuda"
-            android:layout_width="254dp"
-            android:layout_height="58dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/bg_configs"
-            android:text="Ajuda"
-            android:textColor="#6247AA"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnConfigNotificacaos" />
-
-        <Button
-            android:id="@+id/btnConfigSair"
-            android:layout_width="254dp"
-            android:layout_height="58dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/bg_configs"
-            android:text="Sair"
-            android:textColor="#6247AA"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.50"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnConfigAjuda" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/conteudoConfig"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <FrameLayout
-            android:id="@+id/frameConteudoConfigs"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/textView35">
 
+            <Button
+                android:id="@+id/btnConfigTratamento"
+                android:layout_width="280dp"
+                android:layout_height="64dp"
+                android:background="@drawable/bg_configs"
+                android:text="Tratamento "
+                android:textColor="#6247AA"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.47000003" />
 
-        </FrameLayout>
+            <Button
+                android:id="@+id/btnConfigNotificacaos"
+                android:layout_width="280dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/bg_configs"
+                android:text="Notificações"
+                android:textColor="#6247AA"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.507"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnConfigTratamento" />
+
+            <Button
+                android:id="@+id/btnConfigAjuda"
+                android:layout_width="280dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/bg_configs"
+                android:text="Ajuda"
+                android:textColor="#6247AA"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnConfigNotificacaos" />
+
+            <Button
+                android:id="@+id/btnConfigSair"
+                android:layout_width="280dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/bg_configs"
+                android:text="Sair"
+                android:textColor="#6247AA"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnConfigAjuda" />
+
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

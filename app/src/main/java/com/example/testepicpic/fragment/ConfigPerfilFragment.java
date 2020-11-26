@@ -61,9 +61,7 @@ import static android.app.Activity.RESULT_OK;
  */
 public class ConfigPerfilFragment extends Fragment {
 
-    private Button btnSalvarPerfil;
-    private TextView txtAlterarFoto;
-    private TextInputEditText edtNomeUser;
+
     private CircleImageView circleImageViewPerfil;
     private StorageReference storageReference;
     private String currentId, nomeVelho, nomeNovo;
@@ -134,8 +132,6 @@ public class ConfigPerfilFragment extends Fragment {
         imgbtnCamera = view.findViewById(R.id.imgBtnCamera);
         imgbtnGaleria = view.findViewById(R.id.imgBtnGaleria);
         circleImageViewPerfil = view.findViewById(R.id.circleImageViewFotoPerfil);
-        edtNomeUser = view.findViewById(R.id.edtNomeUser);
-        btnSalvarPerfil =  view.findViewById(R.id.btnSalvarPerfil);
 
 
         FirebaseUser usuario = getUsuarioAtual();
@@ -147,59 +143,20 @@ public class ConfigPerfilFragment extends Fragment {
             circleImageViewPerfil.setImageResource(R.drawable.perfil);
         }
 
-        DatabaseReference reference = ref.child("users")
-                .child(currentId);
+        imgbtnCamera.setOnClickListener(v -> {
 
-
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                Usuario usuario = snapshot.getValue( Usuario.class );
-                edtNomeUser.setText(usuario.getNome());
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if(intent.resolveActivity(getActivity().getPackageManager())!=null){
+            startActivityForResult(intent, SELECAO_CAMERA);}
         });
 
+        imgbtnGaleria.setOnClickListener(v -> {
 
-
-        imgbtnCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if(intent.resolveActivity(getActivity().getPackageManager())!=null){
-                startActivityForResult(intent, SELECAO_CAMERA);}
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            if(intent.resolveActivity(getActivity().getPackageManager())!=null){
+                startActivityForResult(intent,SELECAO_GALERIA);
             }
         });
-
-        imgbtnGaleria.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                if(intent.resolveActivity(getActivity().getPackageManager())!=null){
-                    startActivityForResult(intent,SELECAO_GALERIA);
-                }
-            }
-        });
-
-        btnSalvarPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nomeNovo = edtNomeUser.getText().toString().trim();
-                reference.child("nome").setValue(nomeNovo);
-                Toast.makeText(getActivity(),"Nome alterado com sucesso", Toast.LENGTH_LONG).show();
-
-
-            }
-        });
-
 
         return view;
     }
