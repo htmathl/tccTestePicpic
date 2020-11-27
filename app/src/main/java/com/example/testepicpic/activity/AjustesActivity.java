@@ -45,6 +45,8 @@ public class AjustesActivity extends AppCompatActivity{
     private DatabaseReference ref;
     private String currentId;
 
+    private Button btnConfigPerfil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,50 +54,14 @@ public class AjustesActivity extends AppCompatActivity{
 
         recuperarUser();
 
-        Button btnConfigPerfil = findViewById(R.id.btnConfigPerfil);
+        btnConfigPerfil = findViewById(R.id.btnConfigPerfil);
         Button btnConfigTratamento = findViewById(R.id.btnConfigTratamento);
         Button btnConfigNotificacaos = findViewById(R.id.btnConfigNotificacaos);
         Button btnConfigAjuda = findViewById(R.id.btnConfigAjuda);
         Button btnConfigSair = findViewById(R.id.btnConfigSair);
         ImageButton miaumiau = findViewById(R.id.miaumiua);
-        CircleImageView imageView = findViewById(R.id.profile_image);
 
         Intent intent = new Intent(AjustesActivity.this, TransPerfilActivity.class);
-
-        StorageReference storage = ConfigFirebase.getFirebaseStorage();
-        final StorageReference imagemRef = storage
-                .child("imagens")
-                .child("perfil")
-                .child(currentId + ".jpeg");
-
-        imagemRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-
-                Glide.with( AjustesActivity.this ).load( uri ).into( imageView );
-
-            }
-        });
-
-        DatabaseReference reference = ref.child("users")
-                .child(currentId);
-
-
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                Usuario usuario = snapshot.getValue( Usuario.class );
-
-                btnConfigPerfil.setText( usuario.getNome() );
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         miaumiau.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,6 +121,55 @@ public class AjustesActivity extends AppCompatActivity{
         });
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        recuperarUser();
+
+        btnConfigPerfil = findViewById(R.id.btnConfigPerfil);
+
+        CircleImageView imageView = findViewById(R.id.profile_image);
+
+        StorageReference storage = ConfigFirebase.getFirebaseStorage();
+        final StorageReference imagemRef = storage
+                .child("imagens")
+                .child("perfil")
+                .child(currentId + ".jpeg");
+
+        imagemRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+
+                Glide.with( AjustesActivity.this ).load( uri ).into( imageView );
+
+            }
+        });
+
+        DatabaseReference reference = ref.child("users")
+                .child(currentId);
+
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                Usuario usuario = snapshot.getValue( Usuario.class );
+
+                assert usuario != null;
+                btnConfigPerfil.setText( usuario.getNome() );
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
     public void recuperarUser() {
 
         ref = ConfigFirebase.getFirebase();
