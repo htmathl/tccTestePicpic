@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -53,79 +54,6 @@ public class ConfigTratamentoFragment extends Fragment implements AdapterView.On
         }
 
         ref = ConfigFirebase.getFirebase();
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        recuperarUsurario();
-
-        ta = getView().findViewById(R.id.spntra);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.tratamento_insulina, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ta.setAdapter(adapter);
-        ta.setOnItemSelectedListener(this);
-
-        epeso = getView().findViewById(R.id.edtPesoo);
-        ealtura = getView().findViewById(R.id.edtAlt);
-        tipo = getView().findViewById(R.id.spntipo);
-        ano = getView().findViewById(R.id.edtano);
-        hiper = getView().findViewById(R.id.eftHiper);
-        hipo = getView().findViewById(R.id.edtHipo);
-        normal = getView().findViewById(R.id.edtNormal);
-        tipoi = getView().findViewById(R.id.edtTipo);
-
-
-        int anoi = Integer.parseInt(ano.getText().toString());
-
-        double hiperd, hipod, normald;
-
-        String tratamento = ta.getSelectedItem().toString();
-
-        hiperd = Double.parseDouble(hiper.getText().toString());
-        hipod = Double.parseDouble(hipo.getText().toString());
-        normald = Double.parseDouble(normal.getText().toString());
-
-
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Deseja salvar as novas informações?");
-        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Ajustes ajustes = new Ajustes();
-                ajustes.setAno(anoi);
-                ajustes.setHiper(hiperd);
-                ajustes.setHipo(hipod);
-                ajustes.setNormal(normald);
-                ajustes.setTipo(tipoi.getText().toString());
-                ajustes.setTratamento(tratamento);
-                ajustes.salvar();
-
-                DatabaseReference reference = ref.child("users")
-                        .child(currentId);
-
-                reference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        Usuario usuario = snapshot.getValue( Usuario.class );
-
-                       usuario.setAltura(Integer.parseInt(ealtura.getText().toString()));
-                        usuario.setPeso(Integer.parseInt(epeso.getText().toString()));
-                        usuario.setTipoDiabetes(tipo.getSelectedItem().toString());
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
-
-        });
 
     }
 
@@ -172,9 +100,35 @@ public class ConfigTratamentoFragment extends Fragment implements AdapterView.On
 
     }
 
-    public void recuperarAll() {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_config_tratamento, container, false);
 
         recuperarUsurario();
+
+        epeso = view.findViewById(R.id.edtPesoo);
+        ealtura = view.findViewById(R.id.edtAlt);
+        tipo = view.findViewById(R.id.spntipo);
+        ano = view.findViewById(R.id.edtano);
+        hiper = view.findViewById(R.id.eftHiper);
+        hipo = view.findViewById(R.id.edtHipo);
+        normal = view.findViewById(R.id.edtNormal);
+        tipoi = view.findViewById(R.id.edtTipo);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.tipos_diabetes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        tipo.setAdapter(adapter);
+        tipo.setOnItemSelectedListener(this);
+
+        ta = view.findViewById(R.id.spntra);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(),R.array.tratamento_insulina, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ta.setAdapter(adapter1);
+        ta.setOnItemSelectedListener(this);
 
         DatabaseReference reference = ref.child("users")
                 .child(currentId);
@@ -191,6 +145,24 @@ public class ConfigTratamentoFragment extends Fragment implements AdapterView.On
                 altura = String.valueOf(usuario.getAltura());
                 tipoDiabetes = usuario.getTipoDiabetes();
 
+                epeso.setText(peso);
+                ealtura.setText(altura);
+                switch (tipoDiabetes){
+                        case "Pré-diabetes":
+                            tipo.setSelection(0);
+                            break;
+                        case "Tipo 1":
+                            tipo.setSelection(1);
+                            break;
+                        case "Tipo 2":
+                            tipo.setSelection(2);
+                            break;
+                        case "Gestacional":
+                            tipo.setSelection(3);
+                            break;
+
+                    }
+
             }
 
             @Override
@@ -198,52 +170,66 @@ public class ConfigTratamentoFragment extends Fragment implements AdapterView.On
 
             }
         });
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+        Button btnSalvarConfig = view.findViewById(R.id.btnSalvarConfig);
 
+        btnSalvarConfig.setOnClickListener(v -> {
 
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_config_tratamento, container, false);
+            String tratamento = ta.getSelectedItem().toString();
 
-        recuperarAll();
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Deseja salvar as novas informações?");
+            builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Ajustes ajustes = new Ajustes();
+                    ajustes.setAno( Integer.parseInt(ano.getText().toString()));
+                    ajustes.setHiper(Double.parseDouble(hiper.getText().toString()));
+                    ajustes.setHipo(Double.parseDouble(hipo.getText().toString()));
+                    ajustes.setNormal(Double.parseDouble(normal.getText().toString()));
+                    ajustes.setTipo(tipoi.getText().toString());
+                    ajustes.setTratamento(tratamento);
+                    ajustes.salvar();
 
-        epeso = view.findViewById(R.id.edtPesoo);
-        ealtura = view.findViewById(R.id.edtAlt);
-        tipo = view.findViewById(R.id.spntipo);
+                    DatabaseReference reference = ref.child("users")
+                            .child(currentId);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.tipos_diabetes, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        tipo.setAdapter(adapter);
-        tipo.setOnItemSelectedListener(this);
+                    reference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-        if (peso !=null){
-            epeso.setText(peso);
-            ealtura.setText(altura);
-            switch (tipoDiabetes){
-                case "Pré-diabetes":
-                    tipo.setSelection(0);
-                break;
-                case "Tipo 1":
-                    tipo.setSelection(1);
-                    break;
-                case "Tipo 2":
-                    tipo.setSelection(2);
-                    break;
-                case "Gestacional":
-                    tipo.setSelection(3);
-                    break;
+                            Usuario usuario = snapshot.getValue( Usuario.class );
 
-            }
-        }
+                            assert usuario != null;
+                            usuario.setAltura(Integer.parseInt(ealtura.getText().toString()));
+                            usuario.setPeso(Integer.parseInt(epeso.getText().toString()));
+                            usuario.setTipoDiabetes(tipo.getSelectedItem().toString());
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
+                        }
+                    });
+                }
+
+            });
+
+            builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    Toast.makeText(getActivity(), "Deu errado :(", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+            builder.create();
+            builder.show();
+
+        });
 
         return view;
-
-
     }
 
     @Override
