@@ -164,7 +164,7 @@ public class RelatorioFragment extends Fragment {
         btnGerarRelatorio = view.findViewById(R.id.btnGerarRelatorio);
 
         onda = BitmapFactory.decodeResource(getResources(), R.drawable.waves1);
-        escala = Bitmap.createScaledBitmap(onda,1200,500, false);
+        escala = Bitmap.createScaledBitmap(onda,1200,400, false);
 
 
         btnGerarRelatorio.setOnClickListener(v -> {
@@ -211,18 +211,18 @@ public class RelatorioFragment extends Fragment {
                             pintao.setColor( getResources().getColor( R.color.colorPrimary ) );
                             pintao.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
 
-                            pintinho.setTextSize(40);
-                            pintinho.setTextAlign(Paint.Align.CENTER);
+                            pintinho.setTextSize(30);
+                            pintinho.setTextAlign(Paint.Align.LEFT);
 
                             pipoca.setTextSize(30);
                             pipoca.setTextAlign(Paint.Align.LEFT);
-                            pintao.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
+                            pipoca.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ) );
 
-                            canvinhas.drawText(nome, 600, 550, titulo);
-                            canvinhas.drawText(idade + " anos", 600, 650, pinto);
-                            canvinhas.drawText(altura + " metros", 300, 650, pinto);
-                            canvinhas.drawText(peso + " Kg", 900, 650, pinto);
-                            canvinhas.drawText("Diabetes " + tipoDiabetes.toLowerCase(), 600, 750, pinto);
+                            canvinhas.drawText(nome, 600, 450, titulo);
+                            canvinhas.drawText(idade + " anos", 600, 550, pinto);
+                            canvinhas.drawText(altura + " metros", 300, 550, pinto);
+                            canvinhas.drawText(peso + " Kg", 900, 550, pinto);
+                            canvinhas.drawText("Diabetes " + tipoDiabetes.toLowerCase(), 600, 650, pinto);
 
                             List<String> listaMiau = new ArrayList<>();
                             listaMiau.add( "Glicemia: ");
@@ -231,12 +231,19 @@ public class RelatorioFragment extends Fragment {
                             listaMiau.add( "Alimentação: ");
                             listaMiau.add( "Bem-estar: " );
 
-                            int x = 300, x1 = 100, y0 = 850, y = 950, y2 = 1050, y3 = 1150, y4 = 100;
-                            for( int i = 0; i < listaMiau.size(); i++ ) {
+                            int x = 300, x1 = 100, y0 = 850, y = 750, y2 = 850, y3 = 1150, y4 = 100;
 
-                                canvinhas.drawText( listaMiau.get(i), x1, y0, pipoca);
-                                y0 += 35;
+                            while(y0 < 1810){
 
+                                for( int i = 0; i < listaMiau.size(); i++ ) {
+
+                                    canvinhas.drawText( listaMiau.get(i), x1, y0, pipoca);
+                                    y0 += 35;
+
+                                }
+                                int nha = y0 + 10 ;
+                                canvinhas.drawText(String.valueOf(y0),600, nha,pinto);
+                                y0+=100;
                             }
 
                             String strMonth = "ERRO 0-0977a254";
@@ -299,13 +306,13 @@ public class RelatorioFragment extends Fragment {
                                 } else {
 
                                     canvinhas.drawText(listaDiaGli.get(i) + " de " + strMonth + " de " + listaAnoGli.get(i), x, y, pintu);
-                                    canvinhas.drawText("Sua glicemia media " + listaNivelGli.get(i) + " mg/dL, às " + listaHoraGli.get(i) + " horas,", x1, y2, pintinho);
+                                    canvinhas.drawText("Sua glicemia media " + listaNivelGli.get(i) + " mg/dL, às " + listaHoraGli.get(i) + " horas,", x, y2, pintinho);
                                     canvinhas.drawText("furou " + listaLocalGli.get(i) + " " + listaLadoGli.get(i), x1, y3, pintinho);
 
                                 }
 
-                                y += 300;
-                                y2 += 250;
+                                y += 285;
+                                y2 += 275;
                                 y3 += 250;
                             }
 
