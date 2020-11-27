@@ -36,6 +36,9 @@
         <item> Não informar </item>
     </string-array>
 
+
+
+
     <string-array name="localAplicacaoInsulina">
         <item>Braço esquerdo</item>
         <item>Braço direito</item>
