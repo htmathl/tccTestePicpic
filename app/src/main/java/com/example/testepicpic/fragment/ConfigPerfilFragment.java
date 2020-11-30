@@ -192,13 +192,11 @@ public class ConfigPerfilFragment extends Fragment {
                     uploadTask.addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getActivity(), "deu bosta", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Não foi possível alterar a foto", Toast.LENGTH_LONG).show();
                         }
                     }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                            Toast.makeText(getActivity(),"não deu bosta", Toast.LENGTH_LONG).show();
                             imagemRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Uri> task) {
