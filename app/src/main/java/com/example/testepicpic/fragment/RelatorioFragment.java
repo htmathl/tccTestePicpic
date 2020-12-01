@@ -202,8 +202,9 @@ public class RelatorioFragment extends Fragment {
                             pinto.setTextSize(35);
                             pinto.setTextAlign(Paint.Align.CENTER);
 
-                            pintu.setTextSize(50);
+                            pintu.setTextSize(40);
                             pintu.setTextAlign(Paint.Align.CENTER);
+                            pintu.setColor( getResources().getColor( R.color.colorPrimary ) );
                             pintu.setTypeface( Typeface.create( Typeface.DEFAULT, Typeface.BOLD ));
 
                             pintao.setTextSize(60);
@@ -231,18 +232,16 @@ public class RelatorioFragment extends Fragment {
                             listaMiau.add( "Alimentação: ");
                             listaMiau.add( "Bem-estar: " );
 
-                            int x = 300, x1 = 100, y0 = 850, y = 750, y2 = 850, y3 = 1150, y4 = 100;
+                            int miau = 0, x2 = 250;
+
+                            int x = 300, x1 = 100, y0 = 800, y = 725, y2 = 800, y3 = 1150, y4 = 100;
 
                             while(y0 < 1810){
 
                                 for( int i = 0; i < listaMiau.size(); i++ ) {
-
                                     canvinhas.drawText( listaMiau.get(i), x1, y0, pipoca);
                                     y0 += 35;
-
                                 }
-                                int nha = y0 + 10 ;
-                                canvinhas.drawText(String.valueOf(y0),600, nha,pinto);
                                 y0+=100;
                             }
 
@@ -304,13 +303,12 @@ public class RelatorioFragment extends Fragment {
                                     pdfTeste.finishPage(pagina2);
 
                                 } else {
-
-                                    canvinhas.drawText(listaDiaGli.get(i) + " de " + strMonth + " de " + listaAnoGli.get(i), x, y, pintu);
-                                    canvinhas.drawText("Sua glicemia media " + listaNivelGli.get(i) + " mg/dL, às " + listaHoraGli.get(i) + " horas,", x, y2, pintinho);
-                                    canvinhas.drawText("furou " + listaLocalGli.get(i) + " " + listaLadoGli.get(i), x1, y3, pintinho);
-
+                                    canvinhas.drawText(listaDiaGli.get(i) + " de " + strMonth + " de " + listaAnoGli.get(i), x, y - miau, pintu);
+                                    canvinhas.drawText("Sua glicemia media " + listaNivelGli.get(i) + " mg/dL, às " + listaHoraGli.get(i) + " horas,", x2, y2, pintinho);
+                                    canvinhas.drawText("hm " + listaNivelInsu.get(i), x2, y2 + 35, pintinho);
                                 }
 
+                                miau+=10;
                                 y += 285;
                                 y2 += 275;
                                 y3 += 250;
@@ -518,12 +516,14 @@ public class RelatorioFragment extends Fragment {
 
                         DatabaseReference reference1 = ref.child("inserção")
                                 .child(currentId)
-                                .child("glicemia")
+                                .child("insulina")
                                 .child(dataSnapshot.getKey());
 
                         reference1.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot1) {
+
+                                int i = 0;
 
                                 for( DataSnapshot dataSnapshot1 : snapshot1.getChildren() ) {
 
@@ -539,15 +539,16 @@ public class RelatorioFragment extends Fragment {
 
                                     if( insulina.getMes() == mesAtual ) {
 
-                                        listaNivelInsu.add( insulina.getNivel() );
-                                        listaDiaInsu.add( insulina.getDia() );
-                                        listaMesInsu.add( insulina.getMes() );
-                                        listaAnoInsu.add( insulina.getAno() );
-                                        listaLocalInsu.add( insulina.getLocal() );
-                                        listaCategoriaInsu.add( insulina.getCategoria() );
-                                        listaHoraInsu.add( horario );
+                                        listaNivelInsu.add(i, insulina.getNivel() );
+                                        listaDiaInsu.add(i, insulina.getDia() );
+                                        listaMesInsu.add(i, insulina.getMes() );
+                                        listaAnoInsu.add(i, insulina.getAno() );
+                                        listaLocalInsu.add(i, insulina.getLocal() );
+                                        listaCategoriaInsu.add(i, insulina.getCategoria() );
+                                        listaHoraInsu.add(i, horario );
 
                                     }
+                                    i++;
 
                                 }
 
@@ -558,6 +559,7 @@ public class RelatorioFragment extends Fragment {
 
                             }
                         });
+                        j++;
 
                     }
 
@@ -581,7 +583,7 @@ public class RelatorioFragment extends Fragment {
 
                         DatabaseReference reference1 = ref.child("inserção")
                                 .child(currentId)
-                                .child("insulina")
+                                .child("exercicio")
                                 .child(dataSnapshot.getKey());
 
                         reference1.addValueEventListener(new ValueEventListener() {

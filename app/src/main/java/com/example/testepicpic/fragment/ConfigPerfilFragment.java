@@ -279,14 +279,17 @@ public class ConfigPerfilFragment extends Fragment implements AdapterView.OnItem
                             .child(currentId + ".jpeg");
 
                     UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
-                    uploadTask.addOnFailureListener(e -> Toast.makeText(getActivity(), "Ops! ocorreu um erro, " + e , Toast.LENGTH_LONG).show()).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    uploadTask.addOnFailureListener(e -> Toast.makeText(getActivity(), "Ops! ocorreu um erro, "  + e , Toast.LENGTH_LONG).show()).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                             Toast.makeText(getActivity(),"Upload realizado com sucesso", Toast.LENGTH_LONG).show();
-                            imagemRef.getDownloadUrl().addOnCompleteListener(task -> {
-                               Uri url =  task.getResult();
-                               atualizaFotoUsuario(url);
+                            imagemRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                   Uri url =  task.getResult();
+                                   atualizaFotoUsuario(url);
+                                }
                             });
 
                         }
