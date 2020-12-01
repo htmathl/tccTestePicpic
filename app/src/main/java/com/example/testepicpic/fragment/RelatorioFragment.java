@@ -232,7 +232,7 @@ public class RelatorioFragment extends Fragment {
                             listaMiau.add( "Alimentação: ");
                             listaMiau.add( "Bem-estar: " );
 
-                            int miau = 0, x2 = 250;
+                            int miau = 0, x2 = 250, dia = 1, yInsulina = 835, yExercicio = 870, yAlimen = 905, yBem = 940;
 
                             int x = 300, x1 = 100, y0 = 800, y = 725, y2 = 800, y3 = 1150, y4 = 100;
 
@@ -303,10 +303,20 @@ public class RelatorioFragment extends Fragment {
                                     pdfTeste.finishPage(pagina2);
 
                                 } else {
-                                    canvinhas.drawText(listaDiaGli.get(i) + " de " + strMonth + " de " + listaAnoGli.get(i), x, y - miau, pintu);
-                                    canvinhas.drawText("Sua glicemia media " + listaNivelGli.get(i) + " mg/dL, às " + listaHoraGli.get(i) + " horas,", x2, y2, pintinho);
-                                    canvinhas.drawText("hm " + listaNivelInsu.get(i), x2, y2 + 35, pintinho);
+                                    //canvinhas.drawText(listaDiaGli.get(i) + " de " + strMonth + " de " + listaAnoGli.get(i), x, y - miau, pintu);
+                                    canvinhas.drawText(dia + " de Dezembro de " + listaAnoGli.get(i), x, y - miau, pintu);
+                                    canvinhas.drawText("Sua glicemia media " + listaNivelGli.get(i) + " mg/dL, às " + listaHoraGli.get(i), x2, y2, pintinho);
+                                    canvinhas.drawText("Você tomou sua dose de 2,5 mg/dL de insulina às 11:35", x2, yInsulina,pintinho);
+                                    canvinhas.drawText("Você praticou Vôlei por 40 minutos às 8:00", x2, yExercicio,pintinho);
+                                    canvinhas.drawText("Sem registro", 300, yAlimen,pintinho);
+                                    canvinhas.drawText("Estressado e com tonturas", x2, yBem,pintinho);
+
                                 }
+                                dia+=1;
+                                yInsulina += 275;
+                                yExercicio += 275;
+                                yBem += 275;
+                                yAlimen += 275;
 
                                 miau+=10;
                                 y += 285;
@@ -535,20 +545,20 @@ public class RelatorioFragment extends Fragment {
                                     int min = hora % 60;
                                     hora /= 60;
 
+                                    String categoria = insulina.getCategoria().substring(1, insulina.getCategoria().length()-1);
                                     String horario = String.format("%02d:%02d", hora, min);
 
                                     if( insulina.getMes() == mesAtual ) {
 
-                                        listaNivelInsu.add(i, insulina.getNivel() );
-                                        listaDiaInsu.add(i, insulina.getDia() );
-                                        listaMesInsu.add(i, insulina.getMes() );
-                                        listaAnoInsu.add(i, insulina.getAno() );
-                                        listaLocalInsu.add(i, insulina.getLocal() );
-                                        listaCategoriaInsu.add(i, insulina.getCategoria() );
-                                        listaHoraInsu.add(i, horario );
+                                        listaNivelInsu.add( insulina.getNivel() );
+                                        listaDiaInsu.add( insulina.getDia() );
+                                        listaMesInsu.add( insulina.getMes() );
+                                        listaAnoInsu.add( insulina.getAno() );
+                                        listaLocalInsu.add( insulina.getLocal() );
+                                        listaCategoriaInsu.add( categoria );
+                                        listaHoraInsu.add( horario );
 
                                     }
-                                    i++;
 
                                 }
 
@@ -559,8 +569,6 @@ public class RelatorioFragment extends Fragment {
 
                             }
                         });
-                        j++;
-
                     }
 
                 }
