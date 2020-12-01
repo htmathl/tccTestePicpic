@@ -171,6 +171,47 @@ public class ConfigTratamentoFragment extends Fragment implements AdapterView.On
             }
         });
 
+        DatabaseReference reference1 = ref.child("ajustes")
+                .child(currentId);
+
+        reference1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if( snapshot.exists() ) {
+
+                    Ajustes ajustes = snapshot.getValue( Ajustes.class );
+
+                    assert ajustes != null;
+                    ano.setText( String.valueOf( ajustes.getAno() ) );
+
+                    switch ( ajustes.getTipo() ) {
+                        case "Seringa":
+                            ta.setSelection(0);
+                            break;
+                        case "Caneta":
+                            ta.setSelection(1);
+                            break;
+                        case "Sistema de infusão continua":
+                            ta.setSelection(2);
+                            break;
+                    }
+
+                    tipoi.setText( ajustes.getTipo() );
+                    hiper.setText( String.valueOf( ajustes.getHiper() ) );
+                    normal.setText( String.valueOf( ajustes.getNormal() ) );
+                    hipo.setText( String.valueOf( ajustes.getHipo() ) );
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         Button btnSalvarConfig = view.findViewById(R.id.btnSalvarConfig);
 
         btnSalvarConfig.setOnClickListener(v -> {
@@ -179,39 +220,43 @@ public class ConfigTratamentoFragment extends Fragment implements AdapterView.On
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("Deseja salvar as novas informações?");
-            builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Ajustes ajustes = new Ajustes();
-                    ajustes.setAno( Integer.parseInt(ano.getText().toString()));
-                    ajustes.setHiper(Double.parseDouble(hiper.getText().toString()));
-                    ajustes.setHipo(Double.parseDouble(hipo.getText().toString()));
-                    ajustes.setNormal(Double.parseDouble(normal.getText().toString()));
-                    ajustes.setTipo(tipoi.getText().toString());
-                    ajustes.setTratamento(tratamento);
-                    ajustes.salvar();
+            builder.setPositiveButton("Sim", (dialog, which) -> {
 
-                    DatabaseReference reference = ref.child("users")
-                            .child(currentId);
+                try {
 
-                    reference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if( ano.getText() != null && hiper.getText() != null && hipo.getText() != null && normal.getText() != null && tipoi.getText() != null && ealtura.getText() != null && epeso.getText() != null ) {
 
-                            Usuario usuario = snapshot.getValue( Usuario.class );
+                        Ajustes ajustes = new Ajustes();
+                        ajustes.setAno( Integer.parseInt(ano.getText().toString()));
+                        ajustes.setHiper(Double.parseDouble(hiper.getText().toString()));
+                        ajustes.setHipo(Double.parseDouble(hipo.getText().toString()));
+                        ajustes.setNormal(Double.parseDouble(normal.getText().toString()));
+                        ajustes.setTipo(tipoi.getText().toString());
+                        ajustes.setTratamento(tratamento);
+                        ajustes.salvar();
 
-                            assert usuario != null;
-                            usuario.setAltura(Integer.parseInt(ealtura.getText().toString()));
-                            usuario.setPeso(Integer.parseInt(epeso.getText().toString()));
-                            usuario.setTipoDiabetes(tipo.getSelectedItem().toString());
-                        }
+                        ref.child("users")
+                                .child(currentId)
+                                .child("tipoDiabetes").setValue(tipo.getSelectedItem().toString());
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                        ref.child("users")
+                                .child(currentId)
+                                .child("altura").setValue(Double.parseDouble( ealtura.getText().toString() ));
 
-                        }
-                    });
+                        ref.child("users")
+                                .child(currentId)
+                                .child("peso").setValue(Double.parseDouble( epeso.getText().toString() ));
+
+                        Toast.makeText(getActivity(), "Pronto :)", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(getActivity(), "Preencha todos os campos", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), "" + e, Toast.LENGTH_LONG).show();
                 }
+
 
             });
 
