@@ -94,7 +94,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/edt_geral_borda_branca"
-                            android:gravity="center" />
+                            android:gravity="center"
+                            android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -118,7 +119,6 @@
 
                         <EditText
                             android:id="@+id/edtano"
-                            style="@style/rdbInsulina"
                             android:layout_width="245dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -128,8 +128,9 @@
                             android:gravity="center"
                             android:hint="2003"
                             android:inputType="number"
-                            android:textColor="@color/preto"
+                            android:textAlignment="center"
                             android:textSize="18sp" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -154,12 +155,12 @@
 
                         <Spinner
                             android:id="@+id/spntra"
-                            style="@style/rdbInsulina"
                             android:layout_width="250dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/edt_geral_borda_branca"
-                            android:gravity="center" />
+                            android:gravity="center"
+                            android:textAlignment="center" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -183,7 +184,8 @@
                     android:background="@drawable/bg_copo"
                     android:elevation="5dp"
                     android:orientation="vertical"
-                    android:paddingRight="20dp">
+                    android:paddingRight="20dp"
+                    android:textAlignment="center">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -214,6 +216,7 @@
                             android:gravity="center"
                             android:hint="Regular"
                             android:inputType="textPersonName"
+                            android:textAlignment="center"
                             android:textColor="@color/preto" />
                     </LinearLayout>
 
@@ -246,6 +249,7 @@
                             android:gravity="center"
                             android:hint="120"
                             android:inputType="number"
+                            android:textAlignment="center"
                             android:textColor="@color/preto" />
                     </LinearLayout>
 
@@ -278,6 +282,7 @@
                             android:gravity="center"
                             android:hint="100"
                             android:inputType="number"
+                            android:textAlignment="center"
                             android:textColor="@color/preto" />
                     </LinearLayout>
 
@@ -311,6 +316,7 @@
                             android:gravity="center"
                             android:hint="80"
                             android:inputType="number"
+                            android:textAlignment="center"
                             android:textColor="@color/preto" />
                     </LinearLayout>
                 </LinearLayout>
@@ -364,7 +370,8 @@
                             android:ems="10"
                             android:gravity="center"
                             android:hint="90"
-                            android:inputType="textPersonName"
+                            android:inputType="numberDecimal"
+                            android:textAlignment="center"
                             android:textColor="@color/preto" />
                     </LinearLayout>
 
@@ -397,7 +404,8 @@
                             android:ems="10"
                             android:gravity="center"
                             android:hint="163"
-                            android:inputType="textPersonName"
+                            android:inputType="numberDecimal"
+                            android:textAlignment="center"
                             android:textColor="@color/preto" />
                     </LinearLayout>
                 </LinearLayout>
