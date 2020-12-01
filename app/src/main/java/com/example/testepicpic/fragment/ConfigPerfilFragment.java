@@ -4,27 +4,25 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.testepicpic.R;
@@ -48,7 +46,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.util.jar.Pack200;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -59,15 +56,18 @@ import static android.app.Activity.RESULT_OK;
  * Use the {@link ConfigPerfilFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ConfigPerfilFragment extends Fragment {
+public class ConfigPerfilFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
 
     private CircleImageView circleImageViewPerfil;
     private StorageReference storageReference;
-    private String currentId, nomeVelho, nomeNovo;
+    private String currentId, nome, idade, genero;
     private String IdentificadorUsuario;
     private DatabaseReference ref;
+    private TextInputEditText edtNome, edtIdade;
+    private Spinner spGenero;
 
+    private Button btnSalvar;
 
     private ImageButton imgbtnCamera, imgbtnGaleria;
 
@@ -132,7 +132,55 @@ public class ConfigPerfilFragment extends Fragment {
         imgbtnCamera = view.findViewById(R.id.imgBtnCamera);
         imgbtnGaleria = view.findViewById(R.id.imgBtnGaleria);
         circleImageViewPerfil = view.findViewById(R.id.circleImageViewFotoPerfil);
+        edtNome  = view.findViewById(R.id.edtNome);
+        edtIdade = view.findViewById(R.id.edtIdade);
+        spGenero = view.findViewById(R.id.spinnergenero2);
+        btnSalvar = view.findViewById(R.id.btnSalvar);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.genero, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spGenero.setAdapter(adapter);
+        spGenero.setOnItemSelectedListener(this);
+
+        DatabaseReference reference = ref.child("users")
+                .child(currentId);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                Usuario usuario = snapshot.getValue( Usuario.class );
+
+                assert usuario != null;
+                nome = usuario.getNome();
+                idade = String.valueOf( usuario.getIdade() );
+                genero = usuario.getGenero();
+
+                edtNome.setText( nome );
+                edtIdade.setText( idade );
+
+                switch ( genero ) {
+                    case "Feminino":
+                        spGenero.setSelection(0);
+                        break;
+                    case "Masculino":
+                        spGenero.setSelection(1);
+                        break;
+                    case "Outro":
+                        spGenero.setSelection(2);
+                        break;
+                    case "Não informar":
+                        spGenero.setSelection(3);
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         FirebaseUser usuario = getUsuarioAtual();
         Uri url = usuario.getPhotoUrl();
@@ -156,6 +204,48 @@ public class ConfigPerfilFragment extends Fragment {
             if(intent.resolveActivity(getActivity().getPackageManager())!=null){
                 startActivityForResult(intent,SELECAO_GALERIA);
             }
+        });
+
+        btnSalvar.setOnClickListener(v -> {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder( getActivity() );
+
+            builder.setTitle("Deseja salvar as alterações?");
+
+            builder.setPositiveButton("Sim", (dialog, which) -> {
+
+                try {
+
+                    ref.child("users")
+                            .child(currentId)
+                            .child("nome")
+                            .setValue( edtNome.getText().toString() );
+
+                    ref.child("users")
+                            .child(currentId)
+                            .child("idade")
+                            .setValue( Integer.parseInt( edtIdade.getText().toString() ) );
+
+                    ref.child("users")
+                            .child(currentId)
+                            .child("genero")
+                            .setValue( spGenero.getSelectedItem().toString() );
+
+                    Toast.makeText(getActivity(), "Informações salvas com sucesso :)", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+
+            });
+
+            builder.setNegativeButton("Não", (dialog, which) -> {
+
+            });
+
+            builder.create();
+            builder.show();
+
         });
 
         return view;
@@ -189,20 +279,29 @@ public class ConfigPerfilFragment extends Fragment {
                             .child(currentId + ".jpeg");
 
                     UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
-                    uploadTask.addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getActivity(), "Não foi possível alterar a foto", Toast.LENGTH_LONG).show();
-                        }
-                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+<<<<<<< HEAD
+                    uploadTask.addOnFailureListener(e -> Toast.makeText(getActivity(), "Ops! ocorreu um erro, "  + e , Toast.LENGTH_LONG).show()).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+=======
+
+                    uploadTask.addOnFailureListener(e -> Toast.makeText(getActivity(), "Ops! ocorreu um erro, " + e , Toast.LENGTH_LONG).show()).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+>>>>>>> 1c435f437f3d813e3bace2a338a761936dfff547
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                            Toast.makeText(getActivity(),"Upload realizado com sucesso", Toast.LENGTH_LONG).show();
+<<<<<<< HEAD
                             imagemRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Uri> task) {
                                    Uri url =  task.getResult();
                                    atualizaFotoUsuario(url);
                                 }
+=======
+                            imagemRef.getDownloadUrl().addOnCompleteListener(task -> {
+                               Uri url =  task.getResult();
+                               atualizaFotoUsuario(url);
+
+>>>>>>> 1c435f437f3d813e3bace2a338a761936dfff547
                             });
 
                         }
@@ -242,6 +341,7 @@ public class ConfigPerfilFragment extends Fragment {
         dialog.show();
 
     }
+
     public void recuperarUsurario() {
         ref = ConfigFirebase.getFirebase();
 
@@ -254,14 +354,17 @@ public class ConfigPerfilFragment extends Fragment {
             currentId = Base64Custom.codificarBase64(email);
         }
     }
+
     public static FirebaseUser getUsuarioAtual(){
         FirebaseAuth usuario = ConfigFirebase.getFirebaseAutenticacao();
         return usuario.getCurrentUser();
     }
+
     public void atualizaFotoUsuario(Uri url){
         atualizarFotoUsuario(url);
 
     }
+
     public static boolean atualizarFotoUsuario(Uri url){
 
         try{
@@ -285,4 +388,13 @@ public class ConfigPerfilFragment extends Fragment {
 
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
