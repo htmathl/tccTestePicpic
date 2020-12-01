@@ -10,6 +10,13 @@
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,12 +41,10 @@
     </LinearLayout>
 
     <TableLayout
+        android:elevation="5dp"
     android:id="@+id/tableLayout1"
     android:layout_width="367dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="15dp"
-    android:layout_marginTop="64dp"
-    android:layout_marginEnd="32dp"
     android:background="@drawable/bg_copo"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +76,7 @@
     </TableRow>
 
     <TableRow
+        android:id="@+id/linha1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -112,7 +118,7 @@
                 android:id="@+id/cbQua"
                 style="@style/rdbInsulina"
                 android:layout_width="45dp"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:layout_margin="2dp"
                 android:text="Qua" />
 
@@ -149,6 +155,7 @@
     </TableRow>
 
     <TableRow
+        android:id="@+id/linha2"
         android:layout_width="match_parent"
         android:layout_height="74dp"
         android:layout_gravity="center"
@@ -177,23 +184,24 @@
 
     </TableRow>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:padding="8dp">
-
-        <Button
-            android:id="@+id/btnAddHora"
+        <TableRow
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="0dp"
-            android:background="#fff"
-            android:text="Salvar"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="@color/corPrincipal"
-            android:textSize="16sp" />
+            android:gravity="center"
+            android:padding="8dp">
 
-    </TableRow>
+            <Button
+                android:id="@+id/btnAddHora"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:background="#fff"
+                android:text="Salvar"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="@color/corPrincipal"
+                android:textSize="16sp" />
+
+        </TableRow>
 
 </TableLayout>
 
@@ -201,16 +209,15 @@
         android:id="@+id/divider2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="290dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/linha_roxa" />
 
     <TableLayout
+        android:elevation="5dp"
         android:id="@+id/tableLayout2"
         android:layout_width="367dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="32dp"
         android:background="@drawable/bg_copo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -337,12 +344,12 @@
 
                 <TextView
                     android:id="@+id/txtmiau2"
-                    android:text="Mudar horário"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:fontFamily="@font/roboto"
                     android:gravity="center"
+                    android:text="16:08"
                     android:textColor="#000"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -373,16 +380,15 @@
         android:id="@+id/divider3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="530dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/linha_roxa" />
 
     <TableLayout
+        android:elevation="5dp"
         android:id="@+id/tableLayout3"
         android:layout_width="367dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="536dp"
-        android:layout_marginEnd="32dp"
         android:background="@drawable/bg_copo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -414,6 +420,7 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/linha5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -492,6 +499,7 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/linha6"
             android:layout_width="match_parent"
             android:layout_height="74dp"
             android:layout_gravity="center"
@@ -544,16 +552,15 @@
         android:id="@+id/divider4"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="760dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/linha_roxa" />
 
     <TableLayout
+        android:elevation="5dp"
         android:id="@+id/tableLayout4"
         android:layout_width="367dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="772dp"
-        android:layout_marginEnd="32dp"
         android:background="@drawable/bg_copo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -585,6 +592,7 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/linha7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -663,6 +671,7 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/linha8"
             android:layout_width="match_parent"
             android:layout_height="74dp"
             android:layout_gravity="center"
@@ -709,6 +718,7 @@
         </TableRow>
 
     </TableLayout>
+    </LinearLayout>
 
 
 </FrameLayout>
