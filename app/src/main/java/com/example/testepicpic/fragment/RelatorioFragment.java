@@ -332,12 +332,21 @@ public class RelatorioFragment extends Fragment {
                             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "/" + struuid + ".pdf");
                             try{
                                 pdfTeste.writeTo(new FileOutputStream(file));
+                                Toast.makeText(getActivity(), "Salvo em downloads", Toast.LENGTH_SHORT).show();
                             } catch (Exception e) {
                                 Toast.makeText(getActivity(), "é n salvou :/", Toast.LENGTH_SHORT).show();
                             }
                             pdfTeste.close();
 
+                        } else {
+
+                            Toast.makeText(getActivity(), "Deve-se inserir registros este mês", Toast.LENGTH_SHORT).show();
+
                         }
+
+                    } else {
+
+                        Toast.makeText(getActivity(), "Erro supremo", Toast.LENGTH_SHORT).show();
 
                     }
 
