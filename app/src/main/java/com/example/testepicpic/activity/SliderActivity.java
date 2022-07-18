@@ -7,8 +7,10 @@ import com.example.testepicpic.R;
 import com.example.testepicpic.adapter.SlideAdapter;
 import com.example.testepicpic.config.ConfigFirebase;
 import com.google.firebase.auth.FirebaseAuth;
+import com.scwang.wave.MultiWaveHeader;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -31,10 +33,22 @@ public class SliderActivity extends AppCompatActivity {
 
     private int pagina;
 
+    MultiWaveHeader waveHeader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slider);
+
+        waveHeader = findViewById(R.id.wave);
+
+        waveHeader.setVelocity(2);
+        waveHeader.setProgress(1);
+        //waveHeader.isRunning();
+        waveHeader.setWaveHeight(50);
+        waveHeader.setStartColor(Color.rgb(107, 82, 175));
+        waveHeader.setCloseColor(Color.rgb(107, 82, 175));
+
 
         viewPager = findViewById(R.id.vpSlider);
         linearLayout = findViewById(R.id.linearSlider);
