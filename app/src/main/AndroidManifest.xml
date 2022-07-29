@@ -28,7 +28,8 @@
         <activity android:name=".activity.CadastroActivity" />
         <activity android:name=".activity.PrincipalActivity" />
         <activity android:name=".activity.AjustesActivity" />
-        <activity android:name=".activity.SplashScreenActivity">
+        <activity android:name=".activity.SplashScreenActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,7 +52,8 @@
             </intent-filter>
         </service>
 
-        <receiver android:name=".broadcast.BootCompletedIntentReceiver">
+        <receiver android:name=".broadcast.BootCompletedIntentReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
